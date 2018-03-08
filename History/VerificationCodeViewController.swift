@@ -1,22 +1,15 @@
 //
-//  SettingsViewController.swift
+//  VerificationCodeViewController.swift
 //  History
 //
-//  Created by Cloudream on 08/03/2018.
+//  Created by 1 on 3/9/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class VerificationCodeViewController: UIViewController {
 
-    
-    
-//    @IBAction func OnClickRegisterOrLogin(_ sender: UIButton) {
-//        // TODO
-//        // https://github.com/leancloud/leancloud-social-ios
-//
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
