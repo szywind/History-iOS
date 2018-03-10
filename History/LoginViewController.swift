@@ -7,14 +7,15 @@
 //
 
 import UIKit
-
-class LoginViewController: UIViewController {
+import LeanCloudSocial
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var phone: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.phone.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,13 +29,33 @@ class LoginViewController: UIViewController {
             
         }
         let confirm = UIAlertAction(title: "确认", style: .default) { (action) in
-            self.performSegue(withIdentifier: "toEnterVerificationCode", sender: self)
+            self.registerWithPhone()
         }
         alert.addAction(cancel)
         alert.addAction(confirm)
         present(alert, animated: true, completion: nil)
     }
     
+    // hide/dismiss keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // hide/dismiss keyboard when user presses return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        phone.resignFirstResponder()
+        return true
+    }
+    
+    func registerWithPhone(){
+        let user = AVUser()
+        user.username = phone.text
+        user.password =  "123456"
+        user.email = "hang@leancloud.rocks"
+        user.mobilePhoneNumber = phone.text
+        user.signUp(nil)
+        self.performSegue(withIdentifier: "toEnterVerificationCode", sender: self)
+    }
     /*
     // MARK: - Navigation
 
