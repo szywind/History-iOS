@@ -2,7 +2,7 @@
 //  SettingsViewController.swift
 //  History
 //
-//  Created by Cloudream on 08/03/2018.
+//  Created by Zhenyuan Shen on 08/03/2018.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 

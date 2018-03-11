@@ -1,14 +1,14 @@
 //
-//  VerificationCodeViewController.swift
+//  BaseViewController.swift
 //  History
 //
-//  Created by 1 on 3/9/18.
+//  Created by Zhenyuan Shen on 3/11/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
 import UIKit
 
-class VerificationCodeViewController: UIViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

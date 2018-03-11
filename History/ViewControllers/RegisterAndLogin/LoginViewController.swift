@@ -2,20 +2,26 @@
 //  LoginViewController.swift
 //  History
 //
-//  Created by 1 on 3/8/18.
+//  Created by Zhenyuan Shen on 3/8/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
 import UIKit
+import LeanCloud
 import LeanCloudSocial
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet var phone: UITextField!
+    @IBOutlet var phoneTextfield: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.phone.delegate = self
+        self.phoneTextfield.delegate = self
+        
+        // test LeanCloud setup as https://leancloud.cn/docs/start.html
+//        let post = LCObject(className: "TestObject")
+//        post.set("words", value: "Hello World!")
+//        post.save()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onConfirmTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "确认手机号", message: phone.text! + "\n我们将发送短信到上面的手机号", preferredStyle: .alert)
+        let alert = UIAlertController(title: "确认手机号", message: phoneTextfield.text! + "\n我们将发送短信到上面的手机号", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "取消", style: .cancel) { (action) in
             
         }
@@ -36,26 +42,49 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    // hide/dismiss keyboard when user touches outside keyboard
+    // Hide/Dismiss keyboard when user touches outside keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-    // hide/dismiss keyboard when user presses return key
+    // Hide/Dismiss keyboard when user presses return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        phone.resignFirstResponder()
+        phoneTextfield.resignFirstResponder()
         return true
     }
     
     func registerWithPhone(){
-        let user = AVUser()
-        user.username = phone.text
-        user.password =  "123456"
-        user.email = "hang@leancloud.rocks"
-        user.mobilePhoneNumber = phone.text
-        user.signUp(nil)
-        self.performSegue(withIdentifier: "toEnterVerificationCode", sender: self)
+        let user = LCUser()
+        user.username = LCString(phoneTextfield.text!)
+        user.password =  LCString("123456")
+//        user.email = "szywind@163.com"
+        user.mobilePhoneNumber = LCString(phoneTextfield.text!)
+        user.signUp { (result) in
+            switch result{
+            case .success:
+                self.performSegue(withIdentifier: "toEnterVerificationCode", sender: self)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
+    
+    func registerWithUsername(){
+        
+    }
+    
+    func instantLoginWithPhone(){
+        
+    }
+    
+    func loginWithPhone(){
+        
+    }
+    
+    func loginWithUsername(){
+        
+    }
+    
     /*
     // MARK: - Navigation
 
