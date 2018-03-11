@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Articles-->
-        <scene sceneID="8dh-wZ-FBw">
-            <objects>
-                <viewController title="Articles" id="P6U-c3-pmo" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WHm-Gj-BNE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="xM6-dH-c7w"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" image="second" id="ove-Ln-gPH"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JkA-Yt-MLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-330" y="55"/>
-        </scene>
         <!--HistoryTree-->
         <scene sceneID="tCw-9I-vPN">
             <objects>
@@ -34,9 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="zFD-qc-5rr"/>
+                        <viewLayoutGuide key="safeArea" id="g9I-nI-Kuc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="first" id="rLH-8L-BHl"/>
+                    <tabBarItem key="tabBarItem" title="历史树" image="first" id="rLH-8L-BHl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4I0-Us-n2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,8 +37,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="kYp-d1-GWb" kind="relationship" relationship="viewControllers" id="Nls-rl-0vY"/>
-                        <segue destination="P6U-c3-pmo" kind="relationship" relationship="viewControllers" id="ieK-uH-nip"/>
                         <segue destination="pf9-Ym-pAk" kind="relationship" relationship="viewControllers" id="IAt-cW-iAz"/>
+                        <segue destination="Xni-Kp-uTY" kind="relationship" relationship="viewControllers" id="C0h-M6-85k"/>
                         <segue destination="XBV-lB-9ip" kind="relationship" relationship="viewControllers" id="NxD-cZ-3op"/>
                     </connections>
                 </tabBarController>
@@ -70,9 +54,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="8Vz-PW-DiV"/>
+                        <viewLayoutGuide key="safeArea" id="Dfa-lU-HSU"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="second" id="dzh-9N-Qan"/>
+                    <tabBarItem key="tabBarItem" title="社区" image="second" id="dzh-9N-Qan"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gG-xY-tOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,25 +249,25 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YPP-eE-hZV" firstAttribute="leading" secondItem="SZJ-kd-h3q" secondAttribute="leading" id="GgL-qD-vum"/>
-                            <constraint firstItem="Mck-sD-eub" firstAttribute="leading" secondItem="SZJ-kd-h3q" secondAttribute="leading" id="J2b-PA-AIq"/>
-                            <constraint firstItem="SZJ-kd-h3q" firstAttribute="trailing" secondItem="YPP-eE-hZV" secondAttribute="trailing" id="KGT-lA-o07"/>
-                            <constraint firstItem="1kQ-lK-PyQ" firstAttribute="top" secondItem="SZJ-kd-h3q" secondAttribute="top" constant="20" id="Rd5-Pb-KZu"/>
+                            <constraint firstItem="YPP-eE-hZV" firstAttribute="leading" secondItem="6EQ-am-2ug" secondAttribute="leading" id="GgL-qD-vum"/>
+                            <constraint firstItem="Mck-sD-eub" firstAttribute="leading" secondItem="6EQ-am-2ug" secondAttribute="leading" id="J2b-PA-AIq"/>
+                            <constraint firstItem="6EQ-am-2ug" firstAttribute="trailing" secondItem="YPP-eE-hZV" secondAttribute="trailing" id="KGT-lA-o07"/>
+                            <constraint firstItem="1kQ-lK-PyQ" firstAttribute="top" secondItem="6EQ-am-2ug" secondAttribute="top" constant="20" id="Rd5-Pb-KZu"/>
                             <constraint firstItem="YPP-eE-hZV" firstAttribute="top" secondItem="1kQ-lK-PyQ" secondAttribute="bottom" constant="3" id="Tl0-5t-MhY"/>
-                            <constraint firstItem="SZJ-kd-h3q" firstAttribute="trailing" secondItem="Mck-sD-eub" secondAttribute="trailing" id="ZFv-1E-smO"/>
-                            <constraint firstItem="SZJ-kd-h3q" firstAttribute="trailing" secondItem="1kQ-lK-PyQ" secondAttribute="trailing" constant="20" id="bOL-CA-dKd"/>
-                            <constraint firstItem="SZJ-kd-h3q" firstAttribute="bottom" secondItem="YPP-eE-hZV" secondAttribute="bottom" id="dm4-6b-hQg"/>
+                            <constraint firstItem="6EQ-am-2ug" firstAttribute="trailing" secondItem="Mck-sD-eub" secondAttribute="trailing" id="ZFv-1E-smO"/>
+                            <constraint firstItem="6EQ-am-2ug" firstAttribute="trailing" secondItem="1kQ-lK-PyQ" secondAttribute="trailing" constant="20" id="bOL-CA-dKd"/>
+                            <constraint firstItem="6EQ-am-2ug" firstAttribute="bottom" secondItem="YPP-eE-hZV" secondAttribute="bottom" id="dm4-6b-hQg"/>
                             <constraint firstItem="Mck-sD-eub" firstAttribute="top" secondItem="1kQ-lK-PyQ" secondAttribute="bottom" constant="3" id="gbV-uP-Dhu"/>
-                            <constraint firstItem="SZJ-kd-h3q" firstAttribute="bottom" secondItem="Mck-sD-eub" secondAttribute="bottom" id="kAr-9s-uhc"/>
-                            <constraint firstItem="1kQ-lK-PyQ" firstAttribute="leading" secondItem="SZJ-kd-h3q" secondAttribute="leading" constant="20" id="nIO-Zc-UST"/>
+                            <constraint firstItem="6EQ-am-2ug" firstAttribute="bottom" secondItem="Mck-sD-eub" secondAttribute="bottom" id="kAr-9s-uhc"/>
+                            <constraint firstItem="1kQ-lK-PyQ" firstAttribute="leading" secondItem="6EQ-am-2ug" secondAttribute="leading" constant="20" id="nIO-Zc-UST"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SZJ-kd-h3q"/>
+                        <viewLayoutGuide key="safeArea" id="6EQ-am-2ug"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Histopedia" id="ePd-ZH-IqU"/>
+                    <navigationItem key="navigationItem" title="History" id="ePd-ZH-IqU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBH-Sb-mVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="439" y="901"/>
+            <point key="canvasLocation" x="502" y="901"/>
         </scene>
         <!--登陆-->
         <scene sceneID="dfr-1f-oV2">
@@ -317,17 +301,17 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="9JF-9R-9oT"/>
+                        <viewLayoutGuide key="safeArea" id="41x-B9-VZG"/>
                     </view>
                     <navigationItem key="navigationItem" title="登陆" id="MJ3-7d-5WQ"/>
                     <connections>
-                        <outlet property="phone" destination="Ifu-IJ-nW2" id="fN3-pR-3hx"/>
+                        <outlet property="phoneTextfield" destination="Ifu-IJ-nW2" id="YNP-3Y-aLd"/>
                         <segue destination="tzJ-qK-p4y" kind="show" identifier="toEnterVerificationCode" id="gKq-ac-RXP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ic-Yf-Cdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1193" y="901"/>
+            <point key="canvasLocation" x="1318" y="901"/>
         </scene>
         <!--Verification Code View Controller-->
         <scene sceneID="gPl-9x-jva">
@@ -356,19 +340,21 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="XVx-7B-u0w"/>
+                        <viewLayoutGuide key="safeArea" id="Mwi-gx-snM"/>
                     </view>
+                    <connections>
+                        <outlet property="verificationCodeTextfield" destination="iaC-kE-bXl" id="c8B-bS-Vwx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0X-i1-dDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1981.5999999999999" y="900.89955022488766"/>
+            <point key="canvasLocation" x="2162" y="901"/>
         </scene>
-        <!--Item-->
+        <!--设置-->
         <scene sceneID="Pi0-3K-tSL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yww-VZ-Rpb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XBV-lB-9ip" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rA6-jJ-NPF"/>
+                    <tabBarItem key="tabBarItem" title="设置" selectedImage="second" id="rA6-jJ-NPF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorTransitionMaskImage="default" id="WoW-M4-0fN">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -379,13 +365,264 @@
                         <segue destination="a4O-SQ-ROi" kind="relationship" relationship="rootViewController" id="WMx-fB-nsz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yww-VZ-Rpb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-331.19999999999999" y="901.34932533733138"/>
+            <point key="canvasLocation" x="-330" y="901"/>
+        </scene>
+        <!--百科-->
+        <scene sceneID="hae-ez-KQ0">
+            <objects>
+                <viewController storyboardIdentifier="EncyclopediaViewController" id="qJU-Xd-pb5" userLabel="百科" customClass="EncyclopediaViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="owG-G5-UZx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cq-hK-kmg" customClass="Segmentio" customModule="Segmentio">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="cYb-ps-pRj"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjV-gm-eJO" userLabel="Container">
+                                <rect key="frame" x="0.0" y="125" width="375" height="542"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoW-kp-YOP">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="qJU-Xd-pb5" id="uMO-cq-Bzc"/>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="RoW-kp-YOP" secondAttribute="trailing" id="5aB-0k-7TK"/>
+                                    <constraint firstAttribute="bottom" secondItem="RoW-kp-YOP" secondAttribute="bottom" id="QsX-TO-1ls"/>
+                                    <constraint firstItem="RoW-kp-YOP" firstAttribute="leading" secondItem="yjV-gm-eJO" secondAttribute="leading" id="WB8-Sr-HVM"/>
+                                    <constraint firstItem="RoW-kp-YOP" firstAttribute="top" secondItem="yjV-gm-eJO" secondAttribute="top" id="lqc-zo-5Oq"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-op-3Cn">
+                                <rect key="frame" x="0.0" y="125" width="375" height="9"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="yFl-Om-TO4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0Cq-hK-kmg" firstAttribute="leading" secondItem="Zya-ze-aG3" secondAttribute="leading" id="2PB-lm-4wp"/>
+                            <constraint firstItem="Zya-ze-aG3" firstAttribute="trailing" secondItem="yjV-gm-eJO" secondAttribute="trailing" id="Ats-R4-hlF"/>
+                            <constraint firstItem="kKm-op-3Cn" firstAttribute="top" secondItem="0Cq-hK-kmg" secondAttribute="bottom" id="Fv8-Cp-P5p"/>
+                            <constraint firstItem="kKm-op-3Cn" firstAttribute="leading" secondItem="Zya-ze-aG3" secondAttribute="leading" id="GtP-5n-7df"/>
+                            <constraint firstItem="Zya-ze-aG3" firstAttribute="bottom" secondItem="yjV-gm-eJO" secondAttribute="bottom" id="Naz-ko-SFs"/>
+                            <constraint firstItem="Zya-ze-aG3" firstAttribute="trailing" secondItem="kKm-op-3Cn" secondAttribute="trailing" id="Wrj-lV-J9p"/>
+                            <constraint firstItem="0Cq-hK-kmg" firstAttribute="top" secondItem="owG-G5-UZx" secondAttribute="top" id="XcY-W3-s9n"/>
+                            <constraint firstItem="yjV-gm-eJO" firstAttribute="leading" secondItem="Zya-ze-aG3" secondAttribute="leading" id="ccW-bW-DB1"/>
+                            <constraint firstItem="Zya-ze-aG3" firstAttribute="trailing" secondItem="0Cq-hK-kmg" secondAttribute="trailing" id="exc-70-utz"/>
+                            <constraint firstItem="yjV-gm-eJO" firstAttribute="top" secondItem="0Cq-hK-kmg" secondAttribute="bottom" id="jUL-95-xex"/>
+                            <constraint firstItem="yjV-gm-eJO" firstAttribute="top" secondItem="0Cq-hK-kmg" secondAttribute="bottom" id="nrw-95-KGN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zya-ze-aG3"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jUL-95-xex"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="百科" id="Cs4-IJ-TYO" userLabel="百科">
+                        <barButtonItem key="leftBarButtonItem" image="barButtonItem:D6b-NS-c0r:image" id="D6b-NS-c0r"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="yjV-gm-eJO" id="CyH-ie-1ld"/>
+                        <outlet property="scrollView" destination="RoW-kp-YOP" id="HFS-LP-ubi"/>
+                        <outlet property="segmentioView" destination="0Cq-hK-kmg" id="fjc-pr-P7e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gxv-Uc-kKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2161" y="55"/>
+        </scene>
+        <!--Content View Controller-->
+        <scene sceneID="45s-Yq-Jho">
+            <objects>
+                <viewController storyboardIdentifier="ContentViewController" id="t2N-cG-KJX" customClass="ContentViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZBB-Op-AdA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Fcb-qV-Y8Z"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MZm-re-Kdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3030" y="55"/>
+        </scene>
+        <!--Encyclopedia Home View Controller-->
+        <scene sceneID="sZQ-7q-MSF">
+            <objects>
+                <viewController storyboardIdentifier="EncyclopediaHomeViewController" id="Apg-p3-ByR" customClass="EncyclopediaHomeViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9T5-dB-mE4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnY-5b-q8c">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <connections>
+                                    <segue destination="DgP-6L-68Z" kind="embed" identifier="EmbedContainerViewController" id="eSv-Fv-dCU"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tt7-SM-z4D" firstAttribute="trailing" secondItem="UnY-5b-q8c" secondAttribute="trailing" id="4VL-zO-FjD"/>
+                            <constraint firstItem="UnY-5b-q8c" firstAttribute="top" secondItem="tt7-SM-z4D" secondAttribute="top" id="iKN-Pl-H4R"/>
+                            <constraint firstItem="UnY-5b-q8c" firstAttribute="leading" secondItem="tt7-SM-z4D" secondAttribute="leading" id="qCH-MF-qMH"/>
+                            <constraint firstItem="tt7-SM-z4D" firstAttribute="bottom" secondItem="UnY-5b-q8c" secondAttribute="bottom" id="wdw-U0-vGo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tt7-SM-z4D"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KhE-y6-fvv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="795-Hx-Snb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="502" y="55"/>
+        </scene>
+        <!--Embed Container View Controller-->
+        <scene sceneID="bj4-Jv-VTC">
+            <objects>
+                <viewController storyboardIdentifier="EmbedContainerViewController" id="DgP-6L-68Z" customClass="EmbedContainerViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="67s-6G-m3O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="g9f-iK-oFP"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="tVM-SZ-GhB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSS-Jp-cFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1318" y="55"/>
+        </scene>
+        <!--百科-->
+        <scene sceneID="gyf-zW-tYl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xni-Kp-uTY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="百科" id="buj-ri-NU5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jH5-S0-3mF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Apg-p3-ByR" kind="relationship" relationship="rootViewController" id="mj5-zN-Tsd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yri-LG-mTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="55"/>
         </scene>
     </scenes>
     <resources>
+        <image name="barButtonItem:D6b-NS-c0r:image" width="16" height="16">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGUFFYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
+ERYbHCIjKSw2PkJGSk1VJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND
+b2xvcoAPEgTAAACAAoAJ0hIJExVaTlMub2JqZWN0c6EUgAOACNISCRcVohgZgASABYAIEAXTHQkeHyAh
+V05TLmJhc2VbTlMucmVsYXRpdmWAAIAHgAZfEHNmaWxlOi8vL0FwcGxpY2F0aW9ucy9YY29kZS5hcHAv
+Q29udGVudHMvUGx1Z0lucy9JREVJbnRlcmZhY2VCdWlsZGVyS2l0LmZyYW1ld29yay9SZXNvdXJjZXMv
+SUJNaXNzaW5nSW1hZ2VHbHlwaC50aWZm0iQlJidaJGNsYXNzbmFtZVgkY2xhc3Nlc1VOU1VSTKImKFhO
+U09iamVjdNIkJSorV05TQXJyYXmiKijVLS4vMAkxMjM0NVdOU1doaXRlXE5TQ29tcG9uZW50c1xOU0Nv
+bG9yU3BhY2VfEBJOU0N1c3RvbUNvbG9yU3BhY2VEMCAwAEMwIDAQA4AKgA7UNzg5CTo7PD1UTlNJRFVO
+U0lDQ1dOU01vZGVsEAmACxAAgA3SPwlAQVdOUy5kYXRhTxERaAAAEWhhcHBsAgAAAG1udHJHUkFZWFla
+IAfcAAgAFwAPAC4AD2Fjc3BBUFBMAAAAAG5vbmUAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAAANMtYXBw
+bAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABWRlc2MAAADAAAAA
+eWRzY20AAAE8AAAH6GNwcnQAAAkkAAAAI3d0cHQAAAlIAAAAFGtUUkMAAAlcAAAIDGRlc2MAAAAAAAAA
+H0dlbmVyaWMgR3JheSBHYW1tYSAyLjIgUHJvZmlsZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtbHVjAAAA
+AAAAAB8AAAAMc2tTSwAAAC4AAAGEZGFESwAAADgAAAGyY2FFUwAAADgAAAHqdmlWTgAAAEAAAAIicHRC
+UgAAAEoAAAJidWtVQQAAACwAAAKsZnJGVQAAAD4AAALYaHVIVQAAADQAAAMWemhUVwAAAB4AAANKbmJO
+TwAAADoAAANoY3NDWgAAACgAAAOiaGVJTAAAACQAAAPKaXRJVAAAAE4AAAPucm9STwAAACoAAAQ8ZGVE
+RQAAAE4AAARma29LUgAAACIAAAS0c3ZTRQAAADgAAAGyemhDTgAAAB4AAATWamFKUAAAACYAAAT0ZWxH
+UgAAACoAAAUacHRQTwAAAFIAAAVEbmxOTAAAAEAAAAWWZXNFUwAAAEwAAAXWdGhUSAAAADIAAAYidHJU
+UgAAACQAAAZUZmlGSQAAAEYAAAZ4aHJIUgAAAD4AAAa+cGxQTAAAAEoAAAb8cnVSVQAAADoAAAdGZW5V
+UwAAADwAAAeAYXJFRwAAACwAAAe8AFYBYQBlAG8AYgBlAGMAbgDhACAAcwBpAHYA4QAgAGcAYQBtAGEA
+IAAyACwAMgBHAGUAbgBlAHIAaQBzAGsAIABnAHIA5QAgADIALAAyACAAZwBhAG0AbQBhAHAAcgBvAGYA
+aQBsAEcAYQBtAG0AYQAgAGQAZQAgAGcAcgBpAHMAbwBzACAAZwBlAG4A6AByAGkAYwBhACAAMgAuADIA
+Qx6lAHUAIABoAOwAbgBoACAATQDgAHUAIAB4AOEAbQAgAEMAaAB1AG4AZwAgAEcAYQBtAG0AYQAgADIA
+LgAyAFAAZQByAGYAaQBsACAARwBlAG4A6QByAGkAYwBvACAAZABhACAARwBhAG0AYQAgAGQAZQAgAEMA
+aQBuAHoAYQBzACAAMgAsADIEFwQwBDMEMAQ7BEwEPQQwACAARwByAGEAeQAtBDMEMAQ8BDAAIAAyAC4A
+MgBQAHIAbwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAAZwByAGkAcwAgAGcAYQBtAG0AYQAgADIA
+LAAyAMEAbAB0AGEAbADhAG4AbwBzACAAcwB6APwAcgBrAGUAIABnAGEAbQBtAGEAIAAyAC4AMpAadShw
+cJaOUUlepgAgADIALgAyACCCcl9pY8+P8ABHAGUAbgBlAHIAaQBzAGsAIABnAHIA5QAgAGcAYQBtAG0A
+YQAgADIALAAyAC0AcAByAG8AZgBpAGwATwBiAGUAYwBuAOEAIAFhAGUAZADhACAAZwBhAG0AYQAgADIA
+LgAyBdIF0AXeBdQAIAXQBeQF1QXoACAF2wXcBdwF2QAgADIALgAyAFAAcgBvAGYAaQBsAG8AIABnAHIA
+aQBnAGkAbwAgAGcAZQBuAGUAcgBpAGMAbwAgAGQAZQBsAGwAYQAgAGcAYQBtAG0AYQAgADIALAAyAEcA
+YQBtAGEAIABnAHIAaQAgAGcAZQBuAGUAcgBpAGMBAwAgADIALAAyAEEAbABsAGcAZQBtAGUAaQBuAGUA
+cwAgAEcAcgBhAHUAcwB0AHUAZgBlAG4ALQBQAHIAbwBmAGkAbAAgAEcAYQBtAG0AYQAgADIALAAyx3y8
+GAAg1ozAyQAgrBC5yAAgADIALgAyACDVBLhc0wzHfGZukBpwcF6mfPtlcAAgADIALgAyACBjz4/wZYdO
+9k4AgiwwsDDsMKQwrDDzMN4AIAAyAC4AMgAgMNcw7TDVMKEwpDDrA5MDtQO9A7kDugPMACADkwO6A8ED
+uQAgA5MDrAO8A7wDsQAgADIALgAyAFAAZQByAGYAaQBsACAAZwBlAG4A6QByAGkAYwBvACAAZABlACAA
+YwBpAG4AegBlAG4AdABvAHMAIABkAGEAIABHAGEAbQBtAGEAIAAyACwAMgBBAGwAZwBlAG0AZQBlAG4A
+IABnAHIAaQBqAHMAIABnAGEAbQBtAGEAIAAyACwAMgAtAHAAcgBvAGYAaQBlAGwAUABlAHIAZgBpAGwA
+IABnAGUAbgDpAHIAaQBjAG8AIABkAGUAIABnAGEAbQBtAGEAIABkAGUAIABnAHIAaQBzAGUAcwAgADIA
+LAAyDiMOMQ4HDioONQ5BDgEOIQ4hDjIOQA4BDiMOIg5MDhcOMQ5IDicORA4bACAAMgAuADIARwBlAG4A
+ZQBsACAARwByAGkAIABHAGEAbQBhACAAMgAsADIAWQBsAGUAaQBuAGUAbgAgAGgAYQByAG0AYQBhAG4A
+IABnAGEAbQBtAGEAIAAyACwAMgAgAC0AcAByAG8AZgBpAGkAbABpAEcAZQBuAGUAcgBpAQ0AawBpACAA
+RwByAGEAeQAgAEcAYQBtAG0AYQAgADIALgAyACAAcAByAG8AZgBpAGwAVQBuAGkAdwBlAHIAcwBhAGwA
+bgB5ACAAcAByAG8AZgBpAGwAIABzAHoAYQByAG8BWwBjAGkAIABnAGEAbQBtAGEAIAAyACwAMgQeBDEE
+SQQwBE8AIARBBDUEQAQwBE8AIAQzBDAEPAQ8BDAAIAAyACwAMgAtBD8EQAQ+BEQEOAQ7BEwARwBlAG4A
+ZQByAGkAYwAgAEcAcgBhAHkAIABHAGEAbQBtAGEAIAAyAC4AMgAgAFAAcgBvAGYAaQBsAGUGOgYnBkUG
+JwAgADIALgAyACAGRAZIBkYAIAYxBkUGJwYvBkoAIAY5BicGRXRleHQAAAAAQ29weXJpZ2h0IEFwcGxl
+IEluYy4sIDIwMTIAAFhZWiAAAAAAAADzUQABAAAAARbMY3VydgAAAAAAAAQAAAAABQAKAA8AFAAZAB4A
+IwAoAC0AMgA3ADsAQABFAEoATwBUAFkAXgBjAGgAbQByAHcAfACBAIYAiwCQAJUAmgCfAKQAqQCuALIA
+twC8AMEAxgDLANAA1QDbAOAA5QDrAPAA9gD7AQEBBwENARMBGQEfASUBKwEyATgBPgFFAUwBUgFZAWAB
+ZwFuAXUBfAGDAYsBkgGaAaEBqQGxAbkBwQHJAdEB2QHhAekB8gH6AgMCDAIUAh0CJgIvAjgCQQJLAlQC
+XQJnAnECegKEAo4CmAKiAqwCtgLBAssC1QLgAusC9QMAAwsDFgMhAy0DOANDA08DWgNmA3IDfgOKA5YD
+ogOuA7oDxwPTA+AD7AP5BAYEEwQgBC0EOwRIBFUEYwRxBH4EjASaBKgEtgTEBNME4QTwBP4FDQUcBSsF
+OgVJBVgFZwV3BYYFlgWmBbUFxQXVBeUF9gYGBhYGJwY3BkgGWQZqBnsGjAadBq8GwAbRBuMG9QcHBxkH
+Kwc9B08HYQd0B4YHmQesB78H0gflB/gICwgfCDIIRghaCG4IggiWCKoIvgjSCOcI+wkQCSUJOglPCWQJ
+eQmPCaQJugnPCeUJ+woRCicKPQpUCmoKgQqYCq4KxQrcCvMLCwsiCzkLUQtpC4ALmAuwC8gL4Qv5DBIM
+KgxDDFwMdQyODKcMwAzZDPMNDQ0mDUANWg10DY4NqQ3DDd4N+A4TDi4OSQ5kDn8Omw62DtIO7g8JDyUP
+QQ9eD3oPlg+zD88P7BAJECYQQxBhEH4QmxC5ENcQ9RETETERTxFtEYwRqhHJEegSBxImEkUSZBKEEqMS
+wxLjEwMTIxNDE2MTgxOkE8UT5RQGFCcUSRRqFIsUrRTOFPAVEhU0FVYVeBWbFb0V4BYDFiYWSRZsFo8W
+shbWFvoXHRdBF2UXiReuF9IX9xgbGEAYZRiKGK8Y1Rj6GSAZRRlrGZEZtxndGgQaKhpRGncanhrFGuwb
+FBs7G2MbihuyG9ocAhwqHFIcexyjHMwc9R0eHUcdcB2ZHcMd7B4WHkAeah6UHr4e6R8THz4faR+UH78f
+6iAVIEEgbCCYIMQg8CEcIUghdSGhIc4h+yInIlUigiKvIt0jCiM4I2YjlCPCI/AkHyRNJHwkqyTaJQkl
+OCVoJZclxyX3JicmVyaHJrcm6CcYJ0kneierJ9woDSg/KHEooijUKQYpOClrKZ0p0CoCKjUqaCqbKs8r
+Ais2K2krnSvRLAUsOSxuLKIs1y0MLUEtdi2rLeEuFi5MLoIuty7uLyQvWi+RL8cv/jA1MGwwpDDbMRIx
+SjGCMbox8jIqMmMymzLUMw0zRjN/M7gz8TQrNGU0njTYNRM1TTWHNcI1/TY3NnI2rjbpNyQ3YDecN9c4
+FDhQOIw4yDkFOUI5fzm8Ofk6Njp0OrI67zstO2s7qjvoPCc8ZTykPOM9Ij1hPaE94D4gPmA+oD7gPyE/
+YT+iP+JAI0BkQKZA50EpQWpBrEHuQjBCckK1QvdDOkN9Q8BEA0RHRIpEzkUSRVVFmkXeRiJGZ0arRvBH
+NUd7R8BIBUhLSJFI10kdSWNJqUnwSjdKfUrESwxLU0uaS+JMKkxyTLpNAk1KTZNN3E4lTm5Ot08AT0lP
+k0/dUCdQcVC7UQZRUFGbUeZSMVJ8UsdTE1NfU6pT9lRCVI9U21UoVXVVwlYPVlxWqVb3V0RXklfgWC9Y
+fVjLWRpZaVm4WgdaVlqmWvVbRVuVW+VcNVyGXNZdJ114XcleGl5sXr1fD19hX7NgBWBXYKpg/GFPYaJh
+9WJJYpxi8GNDY5dj62RAZJRk6WU9ZZJl52Y9ZpJm6Gc9Z5Nn6Wg/aJZo7GlDaZpp8WpIap9q92tPa6dr
+/2xXbK9tCG1gbbluEm5rbsRvHm94b9FwK3CGcOBxOnGVcfByS3KmcwFzXXO4dBR0cHTMdSh1hXXhdj52
+m3b4d1Z3s3gReG54zHkqeYl553pGeqV7BHtje8J8IXyBfOF9QX2hfgF+Yn7CfyN/hH/lgEeAqIEKgWuB
+zYIwgpKC9INXg7qEHYSAhOOFR4Wrhg6GcobXhzuHn4gEiGmIzokziZmJ/opkisqLMIuWi/yMY4zKjTGN
+mI3/jmaOzo82j56QBpBukNaRP5GokhGSepLjk02TtpQglIqU9JVflcmWNJaflwqXdZfgmEyYuJkkmZCZ
+/JpomtWbQpuvnByciZz3nWSd0p5Anq6fHZ+Ln/qgaaDYoUehtqImopajBqN2o+akVqTHpTilqaYapoum
+/adup+CoUqjEqTepqaocqo+rAqt1q+msXKzQrUStuK4trqGvFq+LsACwdbDqsWCx1rJLssKzOLOutCW0
+nLUTtYq2AbZ5tvC3aLfguFm40blKucK6O7q1uy67p7whvJu9Fb2Pvgq+hL7/v3q/9cBwwOzBZ8Hjwl/C
+28NYw9TEUcTOxUvFyMZGxsPHQce/yD3IvMk6ybnKOMq3yzbLtsw1zLXNNc21zjbOts83z7jQOdC60TzR
+vtI/0sHTRNPG1EnUy9VO1dHWVdbY11zX4Nhk2OjZbNnx2nba+9uA3AXcit0Q3ZbeHN6i3ynfr+A24L3h
+ROHM4lPi2+Nj4+vkc+T85YTmDeaW5x/nqegy6LzpRunQ6lvq5etw6/vshu0R7ZzuKO6070DvzPBY8OXx
+cvH/8ozzGfOn9DT0wvVQ9d72bfb794r4Gfio+Tj5x/pX+uf7d/wH/Jj9Kf26/kv+3P9t//+ADNIkJUNE
+XU5TTXV0YWJsZURhdGGjQ0UoVk5TRGF0YdIkJUdIXE5TQ29sb3JTcGFjZaJJKFxOU0NvbG9yU3BhY2XS
+JCVLTFdOU0NvbG9yokso0iQlTk9XTlNJbWFnZaJOKF8QD05TS2V5ZWRBcmNoaXZlctFSU1Ryb290gAEA
+CAARABoAIwAtADIANwBKAFAAWQBgAG0AdAB8AH4AgwCFAIcAjACXAJkAmwCdAKIApQCnAKkAqwCtALQA
+vADIAMoAzADOAUQBSQFUAV0BYwFmAW8BdAF8AX8BigGSAZ8BrAHBAcYBygHMAc4B0AHZAd4B5AHsAe4B
+8AHyAfQB+QIBE20TbxN0E4IThhONE5ITnxOiE68TtBO8E78TxBPME88T4RPkE+kAAAAAAAACAQAAAAAA
+AABUAAAAAAAAAAAAAAAAAAAT6w
+</mutableData>
+        </image>
         <image name="default" width="500" height="500"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
+        <image name="shadow" width="375" height="9"/>
     </resources>
 </document>

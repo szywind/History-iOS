@@ -6,4 +6,5 @@ use_frameworks!
 target 'History' do
   pod 'LeanCloud'
   pod 'LeanCloudSocial'
+  pod 'Segmentio', '~> 3.0'
 end
