@@ -11,7 +11,9 @@ import Segmentio
 
 class EncyclopediaViewController: UIViewController {
 
-    var segmentioStyle = SegmentioStyle.imageOverLabel
+    var segmentioStyle = SegmentioStyle.imageUnderLabel
+    
+    @IBOutlet fileprivate weak var segmentViewHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var segmentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var segmentioView: Segmentio!
