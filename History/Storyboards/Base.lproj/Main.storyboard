@@ -437,6 +437,7 @@
                     <connections>
                         <outlet property="containerView" destination="yjV-gm-eJO" id="CyH-ie-1ld"/>
                         <outlet property="scrollView" destination="RoW-kp-YOP" id="HFS-LP-ubi"/>
+                        <outlet property="segmentViewHeightConstraint" destination="cYb-ps-pRj" id="pss-wi-A3I"/>
                         <outlet property="segmentioView" destination="0Cq-hK-kmg" id="fjc-pr-P7e"/>
                     </connections>
                 </viewController>
@@ -459,7 +460,7 @@
             </objects>
             <point key="canvasLocation" x="3030" y="55"/>
         </scene>
-        <!--Encyclopedia Home View Controller-->
+        <!--History-->
         <scene sceneID="sZQ-7q-MSF">
             <objects>
                 <viewController storyboardIdentifier="EncyclopediaHomeViewController" id="Apg-p3-ByR" customClass="EncyclopediaHomeViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
@@ -483,7 +484,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tt7-SM-z4D"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KhE-y6-fvv"/>
+                    <navigationItem key="navigationItem" title="History" id="KhE-y6-fvv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="795-Hx-Snb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
