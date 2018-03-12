@@ -11,7 +11,9 @@ import Segmentio
 
 class EncyclopediaViewController: UIViewController {
 
-    var segmentioStyle = SegmentioStyle.imageOverLabel
+    var segmentioStyle = SegmentioStyle.imageUnderLabel
+    
+    @IBOutlet fileprivate weak var segmentViewHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var containerView: UIView!
@@ -34,7 +36,14 @@ class EncyclopediaViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        switch segmentioStyle {
+        case .onlyLabel, .imageBeforeLabel, .imageAfterLabel:
+            segmentViewHeightConstraint.constant = 35
+        case .onlyImage:
+            segmentViewHeightConstraint.constant = 100
+        default:
+            break
+        }
     }
 
     override func didReceiveMemoryWarning() {
