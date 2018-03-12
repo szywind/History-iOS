@@ -13,8 +13,6 @@ class EncyclopediaViewController: UIViewController {
 
     var segmentioStyle = SegmentioStyle.imageUnderLabel
     
-    @IBOutlet fileprivate weak var segmentViewHeightConstraint: NSLayoutConstraint!
-
     @IBOutlet weak var segmentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var containerView: UIView!
