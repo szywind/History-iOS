@@ -11,7 +11,7 @@ import Segmentio
 
 class EncyclopediaHomeViewController: UIViewController {
 
-    fileprivate var currentStyle = SegmentioStyle.imageUnderLabel
+    fileprivate var currentStyle = SegmentioStyle.onlyLabel
     fileprivate var containerViewController: EmbedContainerViewController?
     
     override func viewDidLoad() {

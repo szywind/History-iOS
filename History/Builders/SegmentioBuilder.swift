@@ -95,7 +95,7 @@ struct SegmentioBuilder {
         return SegmentioIndicatorOptions(
             type: .bottom,
             ratio: 1,
-            height: 5,
+            height: 3,
             color: ColorPalette.coral
         )
     }
