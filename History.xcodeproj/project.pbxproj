@@ -198,7 +198,7 @@
 		1B267E1E20543EE60041A729 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				1BAEDF2920555FDC0004C804 /*  Encyclopedia */,
+				1BAEDF2920555FDC0004C804 /* Encyclopedia */,
 				1B267E1B20543CF50041A729 /* Base */,
 				1B267E1A20543CCA0041A729 /* Settings */,
 				1B0F76342054311500FF155C /* RegisterAndLogin */,
@@ -247,7 +247,7 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		1BAEDF2920555FDC0004C804 /*  Encyclopedia */ = {
+		1BAEDF2920555FDC0004C804 /* Encyclopedia */ = {
 			isa = PBXGroup;
 			children = (
 				1BAEDF2A205560970004C804 /* EncyclopediaViewController.swift */,
@@ -255,7 +255,7 @@
 				1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */,
 				1BAEDF39205587200004C804 /* EmbedContainerViewController.swift */,
 			);
-			path = " Encyclopedia";
+			path = Encyclopedia;
 			sourceTree = "<group>";
 		};
 		1BAEDF2C20556E310004C804 /* Storyboards */ = {
