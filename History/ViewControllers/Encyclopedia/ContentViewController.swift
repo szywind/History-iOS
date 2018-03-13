@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ContentViewController: UIViewController {
+class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    let elements = ["老子"]
+    
+    var topic: String?
+
+    @IBOutlet weak var recordTableView: UITableView!
+    
     class func create() -> ContentViewController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         return mainStoryboard.instantiateViewController(withIdentifier: String(describing: self)) as! ContentViewController
@@ -19,6 +25,9 @@ class ContentViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        recordTableView.delegate = self
+        recordTableView.dataSource = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +36,24 @@ class ContentViewController: UIViewController {
     }
     
 
+    // MARK: - Table View
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return elements.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = recordTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
+        
+        cell.recordLbl.text = elements[indexPath.row]
+        cell.recordImage.image = UIImage(named: elements[indexPath.row])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     /*
     // MARK: - Navigation
 

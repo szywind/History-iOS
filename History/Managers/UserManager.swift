@@ -23,4 +23,17 @@ class UserManager {
     func isLogin() -> Bool {
         return LCUser.current != nil
     }
+    
+    func getUserId() -> String? {
+        return currentUser().objectId?.value
+    }
+    
+    func getAccountType() -> String? {
+        return currentUser().get(LCConstants.UserKey.accountType)?.stringValue
+    }
+    
+    func getAvatarFile(user: LCUser) -> AVFile? {
+        return user.get(LCConstants.UserKey.avatarFile) as? AVFile
+    }
+    // TODO
 }
