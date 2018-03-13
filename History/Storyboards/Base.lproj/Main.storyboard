@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -451,6 +452,7 @@
                     <connections>
                         <outlet property="containerView" destination="yjV-gm-eJO" id="CyH-ie-1ld"/>
                         <outlet property="scrollView" destination="RoW-kp-YOP" id="HFS-LP-ubi"/>
+                        <outlet property="searchBar" destination="zax-AV-Gfo" id="B4t-mP-Iif"/>
                         <outlet property="segmentViewHeightConstraint" destination="cYb-ps-pRj" id="yOr-ml-sgE"/>
                         <outlet property="segmentioView" destination="0Cq-hK-kmg" id="fjc-pr-P7e"/>
                     </connections>

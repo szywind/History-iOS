@@ -32,5 +32,8 @@ class UserManager {
         return currentUser().get(LCConstants.UserKey.accountType)?.stringValue
     }
     
+    func getAvatarFile(user: LCUser) -> AVFile? {
+        return user.get(LCConstants.UserKey.avatarFile) as? AVFile
+    }
     // TODO
 }
