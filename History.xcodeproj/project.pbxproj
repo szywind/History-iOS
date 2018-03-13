@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00C696852057D41F00A6E394 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C696842057D41F00A6E394 /* RecordTableViewCell.swift */; };
 		00D4B989205143510090D9F4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4B988205143510090D9F4 /* SettingsViewController.swift */; };
 		00ED1ED1204FEB28008CB70A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED1ED0204FEB28008CB70A /* AppDelegate.swift */; };
 		00ED1ED3204FEB28008CB70A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED1ED2204FEB28008CB70A /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00C696842057D41F00A6E394 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		00D4B988205143510090D9F4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		00ED1ECD204FEB27008CB70A /* History.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = History.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00ED1ED0204FEB28008CB70A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				1BAEDF3520557F9D0004C804 /* ContentViewController.swift */,
 				1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */,
 				1BAEDF39205587200004C804 /* EmbedContainerViewController.swift */,
+				00C696842057D41F00A6E394 /* RecordTableViewCell.swift */,
 			);
 			path = Encyclopedia;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				1BAEDF3120556F3A0004C804 /* ColorPalette.swift in Sources */,
 				00D4B989205143510090D9F4 /* SettingsViewController.swift in Sources */,
 				1B267E2820551F140041A729 /* Constants.swift in Sources */,
+				00C696852057D41F00A6E394 /* RecordTableViewCell.swift in Sources */,
 				1BAEDF2F20556EE50004C804 /* SegmentioBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
