@@ -9,10 +9,12 @@
 import UIKit
 import Segmentio
 
-class EncyclopediaViewController: UIViewController {
+class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
 
     var segmentioStyle = SegmentioStyle.imageUnderLabel
-    
+    var searchActive : Bool = false
+
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var containerView: UIView!
@@ -43,6 +45,8 @@ class EncyclopediaViewController: UIViewController {
         default:
             break
         }
+        
+        searchBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,6 +137,46 @@ class EncyclopediaViewController: UIViewController {
     fileprivate func goToControllerAtIndex(_ index: Int) {
         segmentioView.selectedSegmentioIndex = index
     }
+    
+    
+    // MARK: - Search Bar
+    
+//    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+//        searchActive = true;
+//        searchBar.setShowsCancelButton(true, animated: true)
+//    }
+//
+//    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+//        if(searchBar.text == "") {
+//            searchVar = searchVarDefault
+//            self.performSearch()
+//            showFoodType()
+//        }
+//        searchActive = false;
+//        searchBar.endEditing(true)
+//        searchBar.setShowsCancelButton(false, animated: true)
+//    }
+//
+//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+//        searchBar.text = ""
+//        showFoodType()
+//        searchActive = false;
+//        searchBar.endEditing(true)
+//    }
+//
+//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+//        searchVar = searchBar.text!.trimAndLowercase()
+//        self.performSearch()
+//        searchActive = false;
+//        searchBar.endEditing(true)
+//    }
+//
+//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+//        searchVar = searchText.trimAndLowercase()
+//        self.performSearch()
+//    }
+    
+    
     /*
     // MARK: - Navigation
 

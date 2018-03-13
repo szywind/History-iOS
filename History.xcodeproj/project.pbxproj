@@ -31,6 +31,9 @@
 		1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */; };
 		1BAEDF3A205587200004C804 /* EmbedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF39205587200004C804 /* EmbedContainerViewController.swift */; };
 		1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */; };
+		1BF1AFB220582C0500CB479A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB120582C0500CB479A /* Record.swift */; };
+		1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB320582F5600CB479A /* AvatarManager.swift */; };
+		1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB52058391000CB479A /* UIImage+Resized.swift */; };
 		CE64E3CD6980EDABAE96BCDB /* Pods_History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EAB8F39A32F4516DDC432A /* Pods_History.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,9 @@
 		1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaHomeViewController.swift; sourceTree = "<group>"; };
 		1BAEDF39205587200004C804 /* EmbedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedContainerViewController.swift; sourceTree = "<group>"; };
 		1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		1BF1AFB120582C0500CB479A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		1BF1AFB320582F5600CB479A /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
+		1BF1AFB52058391000CB479A /* UIImage+Resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resized.swift"; sourceTree = "<group>"; };
 		1F363DDCFEF5D8F470063156 /* Pods-History.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-History.debug.xcconfig"; path = "Pods/Target Support Files/Pods-History/Pods-History.debug.xcconfig"; sourceTree = "<group>"; };
 		41FFFA8133FF2FF11B3E7F40 /* Pods-History.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-History.release.xcconfig"; path = "Pods/Target Support Files/Pods-History/Pods-History.release.xcconfig"; sourceTree = "<group>"; };
 		A4EAB8F39A32F4516DDC432A /* Pods_History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +225,7 @@
 		1B267E2020543F130041A729 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1BF1AFB120582C0500CB479A /* Record.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				1B267E2420551CC60041A729 /* UserManager.swift */,
+				1BF1AFB320582F5600CB479A /* AvatarManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -283,6 +291,7 @@
 			children = (
 				1BAEDF33205572000004C804 /* UIFont+ExampleFonts.swift */,
 				1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */,
+				1BF1AFB52058391000CB479A /* UIImage+Resized.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -505,6 +514,8 @@
 			files = (
 				1B267E2A205520370041A729 /* LCConstants.swift in Sources */,
 				1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */,
+				1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */,
+				1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */,
 				1B347DE720519E280035CD01 /* VerificationCodeViewController.swift in Sources */,
 				00ED1ED3204FEB28008CB70A /* ViewController.swift in Sources */,
 				00ED1ED9204FEB29008CB70A /* History.xcdatamodeld in Sources */,
@@ -513,6 +524,7 @@
 				1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */,
 				1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */,
 				1B267E1D20543D1E0041A729 /* BaseViewController.swift in Sources */,
+				1BF1AFB220582C0500CB479A /* Record.swift in Sources */,
 				1BAEDF34205572000004C804 /* UIFont+ExampleFonts.swift in Sources */,
 				1B267E2520551CC60041A729 /* UserManager.swift in Sources */,
 				1BAEDF3620557F9D0004C804 /* ContentViewController.swift in Sources */,

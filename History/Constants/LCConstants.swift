@@ -48,10 +48,10 @@ struct LCConstants {
      *
      *  - important: DO NOT modify this struct.
      */
-    struct PeopleAttribute {
+    struct PeopleKey {
         static let name = "name"
-        static let avatar = "avatar"
-        static let info = "info"
+        static let avatarFile = "avatarFile"
+        static let infoFile = "infoFile"
     }
     
 
