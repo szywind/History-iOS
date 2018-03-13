@@ -9,6 +9,8 @@
 import UIKit
 
 class ContentViewController: UIViewController {
+    
+    var topic: String?
 
     class func create() -> ContentViewController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
