@@ -9,6 +9,7 @@
 import Foundation
 import LeanCloud
 import LeanCloudSocial
+
 class UserManager {
     static let sharedInstance: UserManager = {
         return UserManager()

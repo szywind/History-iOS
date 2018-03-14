@@ -80,30 +80,31 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     // Example viewControllers
     
     fileprivate func preparedViewControllers() -> [ContentViewController] {
-        let tornadoController = ContentViewController.create()
+        let peopleController = ContentViewController.create()
+        peopleController.topic = 0
         
-        let earthquakesController = ContentViewController.create()
-
+        let eventController = ContentViewController.create()
+        eventController.topic = 1
         
-        let extremeHeatController = ContentViewController.create()
-
+        let geoController = ContentViewController.create()
+        geoController.topic = 2
         
-        let eruptionController = ContentViewController.create()
-
+        let artController = ContentViewController.create()
+        artController.topic = 3
         
-        let floodsController = ContentViewController.create()
-
+        let techController = ContentViewController.create()
+        techController.topic = 4
         
-        let wildfiresController = ContentViewController.create()
-
+        let allController = ContentViewController.create()
+        allController.topic = -1
         
         return [
-            tornadoController,
-            earthquakesController,
-            extremeHeatController,
-            eruptionController,
-            floodsController,
-            wildfiresController
+            peopleController,
+            eventController,
+            geoController,
+            artController,
+            techController,
+            allController
         ]
     }
     
