@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00C696852057D41F00A6E394 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C696842057D41F00A6E394 /* RecordTableViewCell.swift */; };
+		00C696872059064900A6E394 /* LCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C696862059064600A6E394 /* LCManager.swift */; };
 		00D4B989205143510090D9F4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4B988205143510090D9F4 /* SettingsViewController.swift */; };
 		00ED1ED1204FEB28008CB70A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED1ED0204FEB28008CB70A /* AppDelegate.swift */; };
 		00ED1ED3204FEB28008CB70A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED1ED2204FEB28008CB70A /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		00C696842057D41F00A6E394 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		00C696862059064600A6E394 /* LCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCManager.swift; sourceTree = "<group>"; };
 		00D4B988205143510090D9F4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		00ED1ECD204FEB27008CB70A /* History.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = History.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00ED1ED0204FEB28008CB70A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				1B267E2420551CC60041A729 /* UserManager.swift */,
 				1BF1AFB320582F5600CB479A /* AvatarManager.swift */,
+				00C696862059064600A6E394 /* LCManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				1BAEDF3A205587200004C804 /* EmbedContainerViewController.swift in Sources */,
 				00ED1ED1204FEB28008CB70A /* AppDelegate.swift in Sources */,
 				1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */,
+				00C696872059064900A6E394 /* LCManager.swift in Sources */,
 				1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */,
 				1B267E1D20543D1E0041A729 /* BaseViewController.swift in Sources */,
 				1BF1AFB220582C0500CB479A /* Record.swift in Sources */,

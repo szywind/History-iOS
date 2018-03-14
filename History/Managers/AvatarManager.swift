@@ -12,9 +12,9 @@ import LeanCloud
 import LeanCloudSocial
 
 /**
- *  User avatar manager. Call getEventAvatar, getFriendAvatar and getMyAvatear.
+ *  User avatar manager. Call getMyAvatar, getUserAvatar and getPeopleAvater.
  *
- *  - note: This class use singeton. Call AvatarManager.sharedInstance.
+ *  - note: This class use singleton. Call AvatarManager.sharedInstance.
  */
 class AvatarManager {
     
@@ -42,20 +42,16 @@ class AvatarManager {
             block(UIImage(named: "default"))
         }
     }
-    // TODO
-//    func getPeopleAvatar(user : LCUser, withBlock block : @escaping (_ image : UIImage?) -> Void) {
-//        if let avatarFile = UserManager.sharedInstance.getAvatarFile(user: user) {
-//            avatarFile.getDataInBackground({ (data, error) in
-//                if error == nil {
-//                    block(UIImage(data: data!))
-//                } else {
-//                    block(UIImage(named: "default"))
-//                }
-//            })
-//        } else {
-//            block(UIImage(named: "default"))
-//        }
-//    }
+
+    func getPeopleAvatar(avatarFile : AVFile, withBlock block : @escaping (_ image : UIImage?) -> Void) {
+        avatarFile.getDataInBackground({ (data, error) in
+            if error == nil {
+                block(UIImage(data: data!))
+            } else {
+                block(UIImage(named: "default"))
+            }
+        })
+    }
     
     func updateAvatarWithImage(image : UIImage, withBlock block : @escaping (LCBooleanResult) -> Void) {
         let data = UIImageJPEGRepresentation(image.resized(toWidth: 200)!, 1)

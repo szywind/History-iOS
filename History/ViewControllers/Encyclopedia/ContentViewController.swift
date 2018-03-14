@@ -12,7 +12,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     let elements = ["老子"]
     
-    var topic: String?
+    var topic = 1
 
     @IBOutlet weak var recordTableView: UITableView!
     
@@ -28,6 +28,7 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         recordTableView.delegate = self
         recordTableView.dataSource = self
         
+        fetchRecordsFromLC()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +37,12 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
 
+    func fetchRecordsFromLC(){
+        if topic == 0 {
+            
+        }
+    }
+    
     // MARK: - Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return elements.count
