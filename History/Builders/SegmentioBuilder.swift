@@ -29,7 +29,7 @@ struct SegmentioBuilder {
     
     private static func segmentioContent() -> [SegmentioItem] {
         return [
-            SegmentioItem(title: "Tornado", image: UIImage(named: "tornado")),
+            SegmentioItem(title: "人物", image: UIImage(named: "tornado")),
             SegmentioItem(title: "Earthquakes", image: UIImage(named: "earthquakes")),
             SegmentioItem(title: "Extreme heat", image: UIImage(named: "heat")),
             SegmentioItem(title: "Eruption", image: UIImage(named: "eruption")),

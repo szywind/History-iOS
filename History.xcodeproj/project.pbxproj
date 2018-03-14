@@ -24,6 +24,11 @@
 		1B267E2A205520370041A729 /* LCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B267E29205520370041A729 /* LCConstants.swift */; };
 		1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE4205176490035CD01 /* LoginViewController.swift */; };
 		1B347DE720519E280035CD01 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */; };
+		1B5BBC9820597734006EAF16 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BBC9420597734006EAF16 /* Event+CoreDataClass.swift */; };
+		1B5BBC9B20597734006EAF16 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BBC9720597734006EAF16 /* Person+CoreDataClass.swift */; };
+		1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */; };
+		1BAA2B322059930D00EE5ED4 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B302059930D00EE5ED4 /* Event+CoreDataProperties.swift */; };
+		1BAA2B332059930D00EE5ED4 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B312059930D00EE5ED4 /* Person+CoreDataProperties.swift */; };
 		1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF2A205560970004C804 /* EncyclopediaViewController.swift */; };
 		1BAEDF2F20556EE50004C804 /* SegmentioBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF2E20556EE50004C804 /* SegmentioBuilder.swift */; };
 		1BAEDF3120556F3A0004C804 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF3020556F3A0004C804 /* ColorPalette.swift */; };
@@ -79,6 +84,11 @@
 		1B267E29205520370041A729 /* LCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCConstants.swift; sourceTree = "<group>"; };
 		1B347DE4205176490035CD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
+		1B5BBC9420597734006EAF16 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1B5BBC9720597734006EAF16 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1BAA2B302059930D00EE5ED4 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1BAA2B312059930D00EE5ED4 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1BAEDF2A205560970004C804 /* EncyclopediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaViewController.swift; sourceTree = "<group>"; };
 		1BAEDF2E20556EE50004C804 /* SegmentioBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentioBuilder.swift; sourceTree = "<group>"; };
 		1BAEDF3020556F3A0004C804 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
@@ -227,7 +237,8 @@
 		1B267E2020543F130041A729 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1BF1AFB120582C0500CB479A /* Record.swift */,
+				1B5BBC9C2059773C006EAF16 /* CoreDataModels */,
+				1BF1AFB820595A1200CB479A /* CustomModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,6 +258,7 @@
 				1B267E2420551CC60041A729 /* UserManager.swift */,
 				1BF1AFB320582F5600CB479A /* AvatarManager.swift */,
 				00C696862059064600A6E394 /* LCManager.swift */,
+				1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -258,6 +270,17 @@
 				1B267E29205520370041A729 /* LCConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		1B5BBC9C2059773C006EAF16 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				1BAA2B302059930D00EE5ED4 /* Event+CoreDataProperties.swift */,
+				1BAA2B312059930D00EE5ED4 /* Person+CoreDataProperties.swift */,
+				1B5BBC9420597734006EAF16 /* Event+CoreDataClass.swift */,
+				1B5BBC9720597734006EAF16 /* Person+CoreDataClass.swift */,
+			);
+			path = CoreDataModels;
 			sourceTree = "<group>";
 		};
 		1BAEDF2920555FDC0004C804 /* Encyclopedia */ = {
@@ -297,6 +320,14 @@
 				1BF1AFB52058391000CB479A /* UIImage+Resized.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1BF1AFB820595A1200CB479A /* CustomModels */ = {
+			isa = PBXGroup;
+			children = (
+				1BF1AFB120582C0500CB479A /* Record.swift */,
+			);
+			path = CustomModels;
 			sourceTree = "<group>";
 		};
 		4A2233C284DFEED55924DA18 /* Pods */ = {
@@ -515,7 +546,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAA2B332059930D00EE5ED4 /* Person+CoreDataProperties.swift in Sources */,
 				1B267E2A205520370041A729 /* LCConstants.swift in Sources */,
+				1B5BBC9B20597734006EAF16 /* Person+CoreDataClass.swift in Sources */,
 				1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */,
 				1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */,
 				1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */,
@@ -526,15 +559,18 @@
 				00ED1ED1204FEB28008CB70A /* AppDelegate.swift in Sources */,
 				1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */,
 				00C696872059064900A6E394 /* LCManager.swift in Sources */,
+				1B5BBC9820597734006EAF16 /* Event+CoreDataClass.swift in Sources */,
 				1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */,
 				1B267E1D20543D1E0041A729 /* BaseViewController.swift in Sources */,
 				1BF1AFB220582C0500CB479A /* Record.swift in Sources */,
 				1BAEDF34205572000004C804 /* UIFont+ExampleFonts.swift in Sources */,
 				1B267E2520551CC60041A729 /* UserManager.swift in Sources */,
+				1BAA2B322059930D00EE5ED4 /* Event+CoreDataProperties.swift in Sources */,
 				1BAEDF3620557F9D0004C804 /* ContentViewController.swift in Sources */,
 				1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */,
 				1BAEDF3120556F3A0004C804 /* ColorPalette.swift in Sources */,
 				00D4B989205143510090D9F4 /* SettingsViewController.swift in Sources */,
+				1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */,
 				1B267E2820551F140041A729 /* Constants.swift in Sources */,
 				00C696852057D41F00A6E394 /* RecordTableViewCell.swift in Sources */,
 				1BAEDF2F20556EE50004C804 /* SegmentioBuilder.swift in Sources */,

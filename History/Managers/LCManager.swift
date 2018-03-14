@@ -15,7 +15,7 @@ class PeopleManager {
         return PeopleManager()
     }()
     
-//    func fetchAll
+//    func fetchAllPeople() {
 //        AVObject.fetchAll(inBackground: eventObjectList) { (objectList, error) in
 //        if error != nil {
 //        //                print(error)
