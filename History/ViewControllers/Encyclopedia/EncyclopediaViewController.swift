@@ -8,6 +8,7 @@
 
 import UIKit
 import Segmentio
+import CoreData
 
 class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
 
@@ -20,7 +21,10 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    fileprivate lazy var viewControllers: [UIViewController] = {
+    var people = [Person]()
+    var events = [Event]()
+    
+    fileprivate lazy var viewControllers: [ContentViewController] = {
         return self.preparedViewControllers()
     }()
     
@@ -47,6 +51,12 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
         
         searchBar.delegate = self
+        
+        people = CoreDataManager.fetchPeople()
+        events = CoreDataManager.fetchEvents()
+
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,11 +87,18 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    func refresh() {
+        for viewcontroller in viewControllers {
+            viewcontroller.refresh()
+        }
+    }
+    
     // Example viewControllers
     
     fileprivate func preparedViewControllers() -> [ContentViewController] {
         let peopleController = ContentViewController.create()
         peopleController.topic = 0
+        
         
         let eventController = ContentViewController.create()
         eventController.topic = 1

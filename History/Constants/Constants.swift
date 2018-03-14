@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct Constants {
+    struct Default {
+        static let defaultInfo = "不详"
+    }
+}
