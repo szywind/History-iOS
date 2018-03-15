@@ -9,6 +9,7 @@
 import UIKit
 import Segmentio
 import CoreData
+import LeanCloud
 
 class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
 
@@ -21,12 +22,16 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var people = [Person]()
-    var events = [Event]()
+//    var people = [Person]()
+//    var events = [Event]()
     
-    fileprivate lazy var viewControllers: [ContentViewController] = {
-        return self.preparedViewControllers()
-    }()
+//    fileprivate lazy var viewControllers: [ContentViewController] = {
+//        return self.preparedViewControllers()
+//    }()
+    
+    var count = 0
+    
+    fileprivate var viewControllers = [ContentViewController]()
     
     // MARK: - Init
     
@@ -52,11 +57,8 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         
         searchBar.delegate = self
         
-        people = CoreDataManager.fetchPeople()
-        events = CoreDataManager.fetchEvents()
-
-        
-
+        PersonManager.sharedInstance.fetchAllPeople(withBlock: didFetchPerson)
+        EventManager.sharedInstance.fetchAllEvent(withBlock: didFetchEvent)
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,15 +66,41 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        setupScrollView()
+//
+//        SegmentioBuilder.buildSegmentioView(
+//            segmentioView: segmentioView,
+//            segmentioStyle: segmentioStyle
+//        )
+////        SegmentioBuilder.setupBadgeCountForIndex(segmentioView, index: 1)
+//
+//        segmentioView.selectedSegmentioIndex = selectedSegmentioIndex()
+//
+//        segmentioView.valueDidChange = { [weak self] _, segmentIndex in
+//            if let scrollViewWidth = self?.scrollView.frame.width {
+//                let contentOffsetX = scrollViewWidth * CGFloat(segmentIndex)
+//                self?.scrollView.setContentOffset(
+//                    CGPoint(x: contentOffsetX, y: 0),
+//                    animated: true
+//                )
+//            }
+//        }
+//    }
+    
+    func refresh() {
+//        for viewcontroller in viewControllers {
+//            viewcontroller.refresh()
+//        }
+        
         setupScrollView()
-
+        
         SegmentioBuilder.buildSegmentioView(
             segmentioView: segmentioView,
             segmentioStyle: segmentioStyle
         )
-//        SegmentioBuilder.setupBadgeCountForIndex(segmentioView, index: 1)
+        //        SegmentioBuilder.setupBadgeCountForIndex(segmentioView, index: 1)
         
         segmentioView.selectedSegmentioIndex = selectedSegmentioIndex()
         
@@ -87,43 +115,74 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    func refresh() {
-        for viewcontroller in viewControllers {
-            viewcontroller.refresh()
+    
+    func didFetchPerson(result: LCQueryResult<LCObject>) {
+        let peopleController = ContentViewController.create()
+        peopleController.records = Record.getRecords(people: CoreDataManager.fetchPeople())
+        
+        if viewControllers.count > 0 {
+            viewControllers.insert(peopleController, at: 0)
+        } else {
+            viewControllers.append(peopleController)
+        }
+        
+        if count < 2 {
+            count = count + 1
+            if count == 2 {
+                refresh()
+            }
+        }
+    }
+    
+    func didFetchEvent(result: LCQueryResult<LCObject>) {
+        let eventController = ContentViewController.create()
+        eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(type: 1))
+        
+        let geoController = ContentViewController.create()
+        geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(type: 2))
+        
+        let artController = ContentViewController.create()
+        artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(type: 3))
+        
+        let techController = ContentViewController.create()
+        techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(type: 4))
+        
+        let allController = ContentViewController.create()
+        allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
+        
+        viewControllers.append(eventController)
+        viewControllers.append(geoController)
+        viewControllers.append(artController)
+        viewControllers.append(techController)
+        viewControllers.append(allController)
+        
+        if count < 2 {
+            count = count + 1
+            if count == 2 {
+                refresh()
+            }
         }
     }
     
     // Example viewControllers
     
-    fileprivate func preparedViewControllers() -> [ContentViewController] {
-        let peopleController = ContentViewController.create()
-        peopleController.topic = 0
-        
-        
-        let eventController = ContentViewController.create()
-        eventController.topic = 1
-        
-        let geoController = ContentViewController.create()
-        geoController.topic = 2
-        
-        let artController = ContentViewController.create()
-        artController.topic = 3
-        
-        let techController = ContentViewController.create()
-        techController.topic = 4
-        
-        let allController = ContentViewController.create()
-        allController.topic = -1
-        
-        return [
-            peopleController,
-            eventController,
-            geoController,
-            artController,
-            techController,
-            allController
-        ]
-    }
+//    fileprivate func preparedViewControllers() -> [ContentViewController] {
+//        PersonManager.sharedInstance.fetchAllPeople(withBlock: didFetchPerson)
+//        EventManager.sharedInstance.fetchAllEvent(withBlock: didFetchEvent)
+//
+//
+//
+//
+//
+//        return [
+//            peopleController,
+//            eventController,
+//            geoController,
+//            artController,
+//            techController,
+//            allController
+//        ]
+//    }
     
     fileprivate func selectedSegmentioIndex() -> Int {
         return 0

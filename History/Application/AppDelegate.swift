@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 import LeanCloud
+import LeanCloudSocial
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dev_cn_appKey = "Wf1tUQlil0vn7FPeleN1KCyi"
 
         LeanCloud.initialize(applicationID: dev_cn_appID, applicationKey: dev_cn_appKey)
+        AVOSCloud.setAllLogsEnabled(true)
         
         return true
     }

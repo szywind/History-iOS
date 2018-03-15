@@ -44,14 +44,31 @@ struct LCConstants {
     }
     
     /**
-     *  Keys used in "People" table.
+     *  Keys used in "Person" table.
      *
      *  - important: DO NOT modify this struct.
      */
-    struct PeopleKey {
+    struct PersonKey {
+        static let className = "Person"
+
         static let name = "name"
         static let avatarFile = "avatarFile"
         static let infoFile = "infoFile"
+        static let type = "type"
+    }
+    
+    /**
+     *  Keys used in "Event" table.
+     *
+     *  - important: DO NOT modify this struct.
+     */
+    struct EventKey {
+        static let className = "Event"
+
+        static let name = "name"
+        static let avatarFile = "avatarFile"
+        static let infoFile = "infoFile"
+        static let type = "type"
     }
     
 

@@ -43,7 +43,7 @@ class AvatarManager {
         }
     }
 
-    func getPeopleAvatar(avatarFile : AVFile, withBlock block : @escaping (_ image : UIImage?) -> Void) {
+    func getAvatar(avatarFile : AVFile, withBlock block : @escaping (_ image : UIImage?) -> Void) {
         avatarFile.getDataInBackground({ (data, error) in
             if error == nil {
                 block(UIImage(data: data!))

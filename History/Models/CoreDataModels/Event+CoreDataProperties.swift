@@ -2,7 +2,7 @@
 //  Event+CoreDataProperties.swift
 //  
 //
-//  Created by 1 on 3/15/18.
+//  Created by 1 on 3/16/18.
 //
 //
 
@@ -19,6 +19,6 @@ extension Event {
     @NSManaged public var avatar: NSData?
     @NSManaged public var name: String?
     @NSManaged public var type: Int16
-    @NSManaged public var info: String?
+    @NSManaged public var info: NSData?
 
 }
