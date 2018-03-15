@@ -24,15 +24,52 @@ class Record {
     
     init(person: Person) {
         self.name = person.name
-        self.avatar = UIImage(data: person.avatar! as Data)
-        self.type = 0
-        self.info = person.info!
+        if let avatar_ = person.avatar {
+            self.avatar = UIImage(data: avatar_ as Data)
+        } else {
+            self.avatar = UIImage(named: "default")
+        }
+        
+        self.type = person.type
+        
+        
+        if let info_ = person.info {
+            self.info = NSString(data: info_ as Data, encoding: String.Encoding.utf8.rawValue) as! String
+        } else {
+            self.info = Constants.Default.defaultInfo
+        }
     }
     
     init(event: Event) {
         self.name = event.name
-        self.avatar = UIImage(data: event.avatar! as Data)
+        if let avatar_ = event.avatar {
+            self.avatar = UIImage(data: avatar_ as Data)
+        } else {
+            self.avatar = UIImage(named: "default")
+        }
+        
         self.type = event.type
-        self.info = event.info!
+        
+        if let info_ = event.info {
+            self.info = NSString(data: info_ as Data, encoding: String.Encoding.utf8.rawValue) as! String
+        } else {
+            self.info = Constants.Default.defaultInfo
+        }
+    }
+    
+    static func getRecords(events: [Event]) -> [Record] {
+        var records = [Record]()
+        for event in events {
+            records.append(Record(event: event))
+        }
+        return records
+    }
+    
+    static func getRecords(people: [Person]) -> [Record] {
+        var records = [Record]()
+        for person in people {
+            records.append(Record(person: person))
+        }
+        return records
     }
 }

@@ -9,8 +9,6 @@
 import UIKit
 
 class ContentViewController: UIViewController {
-
-    var topic = 0
     
     var records = [Record] ()
     
