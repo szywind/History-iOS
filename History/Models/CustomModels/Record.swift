@@ -12,10 +12,10 @@ class Record {
     
     var name: String?
     var avatar: UIImage?
-    var type: Int16
+    var type: String?
     var info: String
     
-    init(name: String?, avatar: UIImage?, type: Int16) {
+    init(name: String?, avatar: UIImage?, type: String?) {
         self.name = name
         self.avatar = avatar
         self.type = type

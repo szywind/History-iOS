@@ -15,10 +15,11 @@ extension Person {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Person> {
         return NSFetchRequest<Person>(entityName: "Person")
     }
-
+    
+    @NSManaged public var objectId: String?
     @NSManaged public var avatar: NSData?
     @NSManaged public var name: String?
     @NSManaged public var info: NSData?
-    @NSManaged public var type: Int16
+    @NSManaged public var type: String?
 
 }
