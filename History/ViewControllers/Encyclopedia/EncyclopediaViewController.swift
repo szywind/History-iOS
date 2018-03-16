@@ -29,8 +29,6 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
 //        return self.preparedViewControllers()
 //    }()
     
-    var count = 0
-    
     fileprivate var viewControllers = [ContentViewController]()
     
     // MARK: - Init
@@ -56,9 +54,6 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
         
         searchBar.delegate = self
-        
-        PersonManager.sharedInstance.fetchAllPeople(withBlock: didFetchPerson)
-        EventManager.sharedInstance.fetchAllEvent(withBlock: didFetchEvent)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,34 +61,12 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        setupScrollView()
-//
-//        SegmentioBuilder.buildSegmentioView(
-//            segmentioView: segmentioView,
-//            segmentioStyle: segmentioStyle
-//        )
-////        SegmentioBuilder.setupBadgeCountForIndex(segmentioView, index: 1)
-//
-//        segmentioView.selectedSegmentioIndex = selectedSegmentioIndex()
-//
-//        segmentioView.valueDidChange = { [weak self] _, segmentIndex in
-//            if let scrollViewWidth = self?.scrollView.frame.width {
-//                let contentOffsetX = scrollViewWidth * CGFloat(segmentIndex)
-//                self?.scrollView.setContentOffset(
-//                    CGPoint(x: contentOffsetX, y: 0),
-//                    animated: true
-//                )
-//            }
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        PersonManager.sharedInstance.fetchAllPeople(withBlock: didFetchPerson)
+    }
     
     func refresh() {
-//        for viewcontroller in viewControllers {
-//            viewcontroller.refresh()
-//        }
-        
         setupScrollView()
         
         SegmentioBuilder.buildSegmentioView(
@@ -118,50 +91,41 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     
     func didFetchPerson(result: LCQueryResult<LCObject>) {
         let peopleController = ContentViewController.create()
-        peopleController.records = Record.getRecords(people: CoreDataManager.fetchPeople())
-        
-        if viewControllers.count > 0 {
-            viewControllers.insert(peopleController, at: 0)
-        } else {
-            viewControllers.append(peopleController)
-        }
-        
-        if count < 2 {
-            count = count + 1
-            if count == 2 {
-                refresh()
-            }
-        }
+        peopleController.records = Record.getRecords(people: CoreDataManager.fetchAllPeople())
+        print("person records", peopleController.records.count)
+
+        viewControllers.append(peopleController)
+        EventManager.sharedInstance.fetchAllEvent(withBlock: didFetchEvent)
     }
     
     func didFetchEvent(result: LCQueryResult<LCObject>) {
         let eventController = ContentViewController.create()
-        eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(type: 1))
+        eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
+        print("event records", eventController.records.count)
         
         let geoController = ContentViewController.create()
-        geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(type: 2))
-        
+        geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
+        print("geo records", eventController.records.count)
+
         let artController = ContentViewController.create()
-        artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(type: 3))
-        
+        artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
+        print("art records", eventController.records.count)
+
         let techController = ContentViewController.create()
-        techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(type: 4))
-        
+        techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
+        print("tech records", eventController.records.count)
+
         let allController = ContentViewController.create()
         allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
-        
+        print("all records", eventController.records.count)
+
         viewControllers.append(eventController)
         viewControllers.append(geoController)
         viewControllers.append(artController)
         viewControllers.append(techController)
         viewControllers.append(allController)
         
-        if count < 2 {
-            count = count + 1
-            if count == 2 {
-                refresh()
-            }
-        }
+        refresh()
     }
     
     // Example viewControllers

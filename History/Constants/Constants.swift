@@ -12,4 +12,10 @@ struct Constants {
     struct Default {
         static let defaultInfo = "不详"
     }
+    
+    struct CoreData {
+        static let eventTypeFilterFormat = "type == %@"
+        static let eventIdFilterFormat = "objectId == %@"
+        static let personIdFilterFormat = "objectId == %@"
+    }
 }
