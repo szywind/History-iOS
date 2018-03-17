@@ -8,12 +8,10 @@
 
 import UIKit
 
-class ContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    let elements = ["老子"]
+class ContentViewController: UIViewController {
     
-    var topic: String?
-
+    var records = [Record] ()
+    
     @IBOutlet weak var recordTableView: UITableView!
     
     class func create() -> ContentViewController {
@@ -25,33 +23,16 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        recordTableView.delegate = self
-        recordTableView.dataSource = self
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    // MARK: - Table View
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return elements.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recordTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
-        
-        cell.recordLbl.text = elements[indexPath.row]
-        cell.recordImage.image = UIImage(named: elements[indexPath.row])
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    func refresh() {
+        recordTableView.reloadData()
     }
     
     /*
@@ -64,4 +45,24 @@ class ContentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     */
 
+}
+
+extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
+    // MARK: - Table View
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return records.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = recordTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
+        
+        cell.recordLbl.text = records[indexPath.row].name
+        cell.recordImage.image = records[indexPath.row].avatar
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }

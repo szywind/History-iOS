@@ -8,6 +8,8 @@
 
 import UIKit
 import Segmentio
+import CoreData
+import LeanCloud
 
 class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
 
@@ -20,9 +22,14 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    fileprivate lazy var viewControllers: [UIViewController] = {
-        return self.preparedViewControllers()
-    }()
+//    var people = [Person]()
+//    var events = [Event]()
+    
+//    fileprivate lazy var viewControllers: [ContentViewController] = {
+//        return self.preparedViewControllers()
+//    }()
+    
+    fileprivate var viewControllers = [ContentViewController]()
     
     // MARK: - Init
     
@@ -56,13 +63,17 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        PersonManager.sharedInstance.fetchAllPeople(withBlock: didFetchPerson)
+    }
+    
+    func refresh() {
         setupScrollView()
-
+        
         SegmentioBuilder.buildSegmentioView(
             segmentioView: segmentioView,
             segmentioStyle: segmentioStyle
         )
-//        SegmentioBuilder.setupBadgeCountForIndex(segmentioView, index: 1)
+        //        SegmentioBuilder.setupBadgeCountForIndex(segmentioView, index: 1)
         
         segmentioView.selectedSegmentioIndex = selectedSegmentioIndex()
         
@@ -77,35 +88,65 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    
+    func didFetchPerson(result: LCQueryResult<LCObject>) {
+        let peopleController = ContentViewController.create()
+        peopleController.records = Record.getRecords(people: CoreDataManager.fetchAllPeople())
+        print("person records", peopleController.records.count)
+
+        viewControllers.append(peopleController)
+        EventManager.sharedInstance.fetchAllEvent(withBlock: didFetchEvent)
+    }
+    
+    func didFetchEvent(result: LCQueryResult<LCObject>) {
+        let eventController = ContentViewController.create()
+        eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
+        print("event records", eventController.records.count)
+        
+        let geoController = ContentViewController.create()
+        geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
+        print("geo records", geoController.records.count)
+
+        let artController = ContentViewController.create()
+        artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
+        print("art records", artController.records.count)
+
+        let techController = ContentViewController.create()
+        techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
+        print("tech records", techController.records.count)
+
+        let allController = ContentViewController.create()
+        allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
+        print("all records", allController.records.count)
+
+        viewControllers.append(eventController)
+        viewControllers.append(geoController)
+        viewControllers.append(artController)
+        viewControllers.append(techController)
+        viewControllers.append(allController)
+        
+        refresh()
+    }
+    
     // Example viewControllers
     
-    fileprivate func preparedViewControllers() -> [ContentViewController] {
-        let tornadoController = ContentViewController.create()
-        
-        let earthquakesController = ContentViewController.create()
-
-        
-        let extremeHeatController = ContentViewController.create()
-
-        
-        let eruptionController = ContentViewController.create()
-
-        
-        let floodsController = ContentViewController.create()
-
-        
-        let wildfiresController = ContentViewController.create()
-
-        
-        return [
-            tornadoController,
-            earthquakesController,
-            extremeHeatController,
-            eruptionController,
-            floodsController,
-            wildfiresController
-        ]
-    }
+//    fileprivate func preparedViewControllers() -> [ContentViewController] {
+//        PersonManager.sharedInstance.fetchAllPeople(withBlock: didFetchPerson)
+//        EventManager.sharedInstance.fetchAllEvent(withBlock: didFetchEvent)
+//
+//
+//
+//
+//
+//        return [
+//            peopleController,
+//            eventController,
+//            geoController,
+//            artController,
+//            techController,
+//            allController
+//        ]
+//    }
     
     fileprivate func selectedSegmentioIndex() -> Int {
         return 0
