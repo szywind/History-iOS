@@ -22,6 +22,7 @@
 		1B267E2520551CC60041A729 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B267E2420551CC60041A729 /* UserManager.swift */; };
 		1B267E2820551F140041A729 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B267E2720551F140041A729 /* Constants.swift */; };
 		1B267E2A205520370041A729 /* LCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B267E29205520370041A729 /* LCConstants.swift */; };
+		1B2D9E44205C38000014A964 /* LCManager'.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D9E43205C38000014A964 /* LCManager'.swift */; };
 		1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE4205176490035CD01 /* LoginViewController.swift */; };
 		1B347DE720519E280035CD01 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */; };
 		1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */; };
@@ -83,6 +84,7 @@
 		1B267E2420551CC60041A729 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1B267E2720551F140041A729 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1B267E29205520370041A729 /* LCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCConstants.swift; sourceTree = "<group>"; };
+		1B2D9E43205C38000014A964 /* LCManager'.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LCManager'.swift"; sourceTree = "<group>"; };
 		1B347DE4205176490035CD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
 		1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				00C696862059064600A6E394 /* PersonManager.swift */,
 				1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */,
 				1BAA2B50205ADFF100EE5ED4 /* EventManager.swift */,
+				1B2D9E43205C38000014A964 /* LCManager'.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */,
 				00C696872059064900A6E394 /* PersonManager.swift in Sources */,
 				1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */,
+				1B2D9E44205C38000014A964 /* LCManager'.swift in Sources */,
 				1B267E1D20543D1E0041A729 /* BaseViewController.swift in Sources */,
 				1BF1AFB220582C0500CB479A /* Record.swift in Sources */,
 				1BAEDF34205572000004C804 /* UIFont+ExampleFonts.swift in Sources */,
@@ -745,7 +749,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P34G6RK5WS;
+				DEVELOPMENT_TEAM = J97JG4WE3P;
 				INFOPLIST_FILE = History/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gss.History;
@@ -761,7 +765,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P34G6RK5WS;
+				DEVELOPMENT_TEAM = J97JG4WE3P;
 				INFOPLIST_FILE = History/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gss.History;

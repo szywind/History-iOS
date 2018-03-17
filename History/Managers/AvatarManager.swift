@@ -35,11 +35,11 @@ class AvatarManager {
                 if error == nil {
                     block(UIImage(data: data!))
                 } else {
-                    block(UIImage(named: "default"))
+                    block(UIImage(named: Constants.Default.defaultAvatar))
                 }
             })
         } else {
-            block(UIImage(named: "default"))
+            block(UIImage(named: Constants.Default.defaultAvatar))
         }
     }
 
@@ -48,7 +48,7 @@ class AvatarManager {
             if error == nil {
                 block(UIImage(data: data!))
             } else {
-                block(UIImage(named: "default"))
+                block(UIImage(named: Constants.Default.defaultAvatar))
             }
         })
     }
