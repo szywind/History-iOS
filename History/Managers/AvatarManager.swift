@@ -8,8 +8,7 @@
 
 import Foundation
 import UIKit
-import LeanCloud
-import LeanCloudSocial
+import AVOSCloud
 
 /**
  *  User avatar manager. Call getMyAvatar, getUserAvatar and getPeopleAvater.
@@ -29,41 +28,27 @@ class AvatarManager {
         getUserAvatar(user: UserManager.sharedInstance.currentUser(), withBlock: block)
     }
     
-    func getUserAvatar(user : LCUser, withBlock block : @escaping (_ image : UIImage?) -> Void) {
-        if let avatarFile = UserManager.sharedInstance.getAvatarFile(user: user) {
-            avatarFile.getDataInBackground({ (data, error) in
-                if error == nil {
-                    block(UIImage(data: data!))
-                } else {
-                    block(UIImage(named: "default"))
-                }
-            })
-        } else {
-            block(UIImage(named: "default"))
-        }
-    }
-
-    func getAvatar(avatarFile : AVFile, withBlock block : @escaping (_ image : UIImage?) -> Void) {
-        avatarFile.getDataInBackground({ (data, error) in
-            if error == nil {
-                block(UIImage(data: data!))
-            } else {
-                block(UIImage(named: "default"))
-            }
-        })
+    func getUserAvatar(user : AVUser, withBlock block : @escaping (_ image : UIImage?) -> Void) {
+        let avatarFile = UserManager.sharedInstance.getAvatarFile(user: user)
+        getAvatar(avatarFile: avatarFile, withBlock: block)
     }
     
-    func updateAvatarWithImage(image : UIImage, withBlock block : @escaping (LCBooleanResult) -> Void) {
-        let data = UIImageJPEGRepresentation(image.resized(toWidth: 200)!, 1)
-        let file = AVFile(data: data!)
-        
-        file.saveInBackground { (succeed, error) in
-            if succeed {
-                LCUser.current?.set(LCConstants.UserKey.avatarFile, value: file as! LCValueConvertible)
-                LCUser.current?.save(block)
-            } else {
-                block(error as! LCBooleanResult)
+    func getAvatar(avatarFile : AVFile?, withBlock block : @escaping (_ image : UIImage?) -> Void) {
+        if avatarFile != nil {
+            avatarFile?.download { (url, error) in
+                if error == nil && url != nil {
+                    do {
+                        let imgData = try Data(contentsOf: url!)
+                        block(UIImage(data: imgData))
+                    } catch {
+                        block(UIImage(named: Constants.Default.defaultAvatar))
+                    }
+                } else {
+                    block(UIImage(named: Constants.Default.defaultAvatar))
+                }
             }
+        } else {
+            block(UIImage(named: Constants.Default.defaultAvatar))
         }
     }
     
@@ -71,7 +56,7 @@ class AvatarManager {
         let data = UIImageJPEGRepresentation(image.resized(toWidth: 200)!, 1)
         let file = AVFile(data: data!)
         
-        file.saveInBackground { (succeed, error) in
+        file.upload { (succeed, error) in
             if succeed {
                 AVUser.current()?.setObject(file, forKey: LCConstants.UserKey.avatarFile)
                 AVUser.current()?.saveInBackground(block)
@@ -85,19 +70,3 @@ class AvatarManager {
         AVFile.clearAllPersistentCache()
     }
 }
-
-
-
-//self.user?.avatar?.getDataInBackground { (data: Data?, error: Error?) in
-//    if error != nil || data == nil {
-//        print(error!.localizedDescription)
-//    } else {
-//        if let image = UIImage(data: data!) {
-//            self.avatarImage = image
-//            self.avatarImageButton.imageView?.isHidden = false
-//            self.avatarImageButton.imageView?.frame = self.avatarImageButton.bounds
-//            self.avatarImageButton.setImage(image, for: UIControlState.normal)
-//        }
-//    }
-//}
-

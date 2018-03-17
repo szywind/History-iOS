@@ -9,8 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
-import LeanCloud
-import LeanCloudSocial
+import AVOSCloud
 
 class CoreDataManager {
     
@@ -26,18 +25,32 @@ class CoreDataManager {
         appDelegate.saveContext()
     }
     
-    class func savePerson(personObject: LCObject) {
-        if let personId = personObject.objectId?.stringValue {
+    class func savePerson(personObject: AVObject) {
+        if let personId = personObject.objectId {
             if checkPersonExistence(personId: personId) {
                 return
             }
             let person = Person(context: context)
             person.objectId = personId
-            person.name = personObject.get(LCConstants.PersonKey.name)?.stringValue
-            person.type = personObject.get(LCConstants.PersonKey.type)?.stringValue
+            person.name = personObject.object(forKey: LCConstants.PersonKey.name) as? String
+            person.type = personObject.object(forKey: LCConstants.PersonKey.type) as? String
             
-            person.avatar = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue as? NSData
-            person.info = personObject.get(LCConstants.PersonKey.infoFile)?.dataValue as? NSData
+            if let avatarFile = personObject.object(forKey: LCConstants.PersonKey.avatarFile) as? AVFile {
+                LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
+                    if error == nil && url != nil {
+                        person.avatar = NSData(contentsOf: url!)
+                    }
+                })
+            }
+
+            if let infoFile = personObject.object(forKey: LCConstants.PersonKey.infoFile) as? AVFile {
+                LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
+                    if error == nil && url != nil {
+                        person.info = NSData(contentsOf: url!)
+                    }
+                })
+            }
+            
             
     //        let avatarFile = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue
     //        let avatarFile = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue as! AVFile
@@ -54,19 +67,32 @@ class CoreDataManager {
         }
     }
 
-    class func saveEvent(eventObject: LCObject) {
-        if let eventId = eventObject.objectId?.stringValue {
+    class func saveEvent(eventObject: AVObject) {
+        if let eventId = eventObject.objectId {
             if checkEventExistence(eventId: eventId) {
                 return
             }
-            let event = Person(context: context)
-            event.objectId = eventObject.objectId?.stringValue
-            event.name = eventObject.get(LCConstants.EventKey.name)?.stringValue
-            event.type = eventObject.get(LCConstants.EventKey.type)?.stringValue
             
-    //        event.avatar = eventObject.value(forKey: LCConstants.EventKey.avatarFile) as! NSData
-            event.avatar = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as? NSData
-            event.info = eventObject.get(LCConstants.EventKey.infoFile)?.dataValue as? NSData
+            let event = Event(context: context)
+            event.objectId = eventId
+            event.name = eventObject.object(forKey: LCConstants.EventKey.name) as? String
+            event.type = eventObject.object(forKey: LCConstants.EventKey.type) as? String
+            
+            if let avatarFile = eventObject.object(forKey: LCConstants.EventKey.avatarFile) as? AVFile {
+                LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
+                    if error == nil && url != nil {
+                        event.avatar = NSData(contentsOf: url!)
+                    }
+                })
+            }
+            
+            if let infoFile = eventObject.object(forKey: LCConstants.EventKey.infoFile) as? AVFile {
+                LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
+                    if error == nil && url != nil {
+                        event.info = NSData(contentsOf: url!)
+                    }
+                })
+            }
             
     //        let avatarFile = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as! AVFile
     //        AvatarManager.sharedInstance.getAvatar(avatarFile: avatarFile) { (image) in
@@ -83,12 +109,12 @@ class CoreDataManager {
     }
     
     class func checkPersonExistence(personId: String) -> Bool {
-        var people = fetchfilteredPeople(value: personId, format: Constants.CoreData.personIdFilterFormat)
+        let people = fetchfilteredPeople(value: personId, format: Constants.CoreData.personIdFilterFormat)
         return people.count > 0
     }
     
     class func checkEventExistence(eventId: String) -> Bool {
-        var events = fetchfilteredEvents(value: eventId, format: Constants.CoreData.eventIdFilterFormat)
+        let events = fetchfilteredEvents(value: eventId, format: Constants.CoreData.eventIdFilterFormat)
         return events.count > 0
     }
     

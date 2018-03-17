@@ -9,7 +9,7 @@
 import UIKit
 import Segmentio
 import CoreData
-import LeanCloud
+import AVOSCloud
 
 class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
 
@@ -63,7 +63,7 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        PersonManager.sharedInstance.fetchAllPeople(withBlock: didFetchPerson)
+        PersonManager.sharedInstance.fetchAllPeopleFromLC(withBlock: didFetchPerson)
     }
     
     func refresh() {
@@ -88,36 +88,36 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    
-    func didFetchPerson(result: LCQueryResult<LCObject>) {
+//    func didCreate(succeed : Bool, error : NSError!) 
+    func didFetchPerson(result: Optional<Array<Any>>, error: Optional<Error>) {
         let peopleController = ContentViewController.create()
         peopleController.records = Record.getRecords(people: CoreDataManager.fetchAllPeople())
         print("person records", peopleController.records.count)
 
         viewControllers.append(peopleController)
-        EventManager.sharedInstance.fetchAllEvent(withBlock: didFetchEvent)
+        EventManager.sharedInstance.fetchAllEventsFromLC(withBlock: didFetchEvent)
     }
     
-    func didFetchEvent(result: LCQueryResult<LCObject>) {
+    func didFetchEvent(result: Optional<Array<Any>>, error: Optional<Error>) {
         let eventController = ContentViewController.create()
         eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
         print("event records", eventController.records.count)
         
         let geoController = ContentViewController.create()
         geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
-        print("geo records", eventController.records.count)
+        print("geo records", geoController.records.count)
 
         let artController = ContentViewController.create()
         artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
-        print("art records", eventController.records.count)
+        print("art records", artController.records.count)
 
         let techController = ContentViewController.create()
         techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
-        print("tech records", eventController.records.count)
+        print("tech records", techController.records.count)
 
         let allController = ContentViewController.create()
         allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
-        print("all records", eventController.records.count)
+        print("all records", allController.records.count)
 
         viewControllers.append(eventController)
         viewControllers.append(geoController)

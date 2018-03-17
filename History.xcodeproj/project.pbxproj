@@ -24,6 +24,7 @@
 		1B267E2A205520370041A729 /* LCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B267E29205520370041A729 /* LCConstants.swift */; };
 		1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE4205176490035CD01 /* LoginViewController.swift */; };
 		1B347DE720519E280035CD01 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */; };
+		1B54F16C205D58880083A20C /* LCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B54F16B205D58880083A20C /* LCManager.swift */; };
 		1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */; };
 		1BAA2B4C205AD93400EE5ED4 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */; };
 		1BAA2B4D205AD93400EE5ED4 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B49205AD93200EE5ED4 /* Event+CoreDataProperties.swift */; };
@@ -85,6 +86,7 @@
 		1B267E29205520370041A729 /* LCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCConstants.swift; sourceTree = "<group>"; };
 		1B347DE4205176490035CD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
+		1B54F16B205D58880083A20C /* LCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCManager.swift; sourceTree = "<group>"; };
 		1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1BAA2B49205AD93200EE5ED4 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				00C696862059064600A6E394 /* PersonManager.swift */,
 				1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */,
 				1BAA2B50205ADFF100EE5ED4 /* EventManager.swift */,
+				1B54F16B205D58880083A20C /* LCManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -491,17 +494,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-History/Pods-History-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/LeanCloud/LeanCloud.framework",
-				"${BUILT_PRODUCTS_DIR}/LeanCloudSocial/LeanCloudSocial.framework",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
 				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LeanCloud.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LeanCloudSocial.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +562,7 @@
 				1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */,
 				00C696872059064900A6E394 /* PersonManager.swift in Sources */,
 				1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */,
+				1B54F16C205D58880083A20C /* LCManager.swift in Sources */,
 				1B267E1D20543D1E0041A729 /* BaseViewController.swift in Sources */,
 				1BF1AFB220582C0500CB479A /* Record.swift in Sources */,
 				1BAEDF34205572000004C804 /* UIFont+ExampleFonts.swift in Sources */,
