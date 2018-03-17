@@ -20,6 +20,6 @@ extension Event {
     @NSManaged public var avatar: String?
     @NSManaged public var name: String?
     @NSManaged public var type: String?
-    @NSManaged public var info: NSData?
+    @NSManaged public var info: String?
 
 }
