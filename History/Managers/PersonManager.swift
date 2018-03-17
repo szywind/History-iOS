@@ -34,15 +34,7 @@ class PersonManager {
 //        }
 //    }
 
-    func getPersonInfo(infoFile : AVFile, withBlock block : @escaping (_ data : NSData) -> Void) {
-        infoFile.getDataInBackground({ (data, error) in
-            if error == nil {
-                block(data! as NSData)
-            } else {
-                print(error?.localizedDescription)
-            }
-        })
-    }
+
     
 //    func fetchAllPeople() {
 //        let q = AVQuery(className: LCConstants.PersonKey.className)

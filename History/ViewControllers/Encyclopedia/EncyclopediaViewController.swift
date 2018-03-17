@@ -105,19 +105,19 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         
         let geoController = ContentViewController.create()
         geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
-        print("geo records", eventController.records.count)
+        print("geo records", geoController.records.count)
 
         let artController = ContentViewController.create()
         artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
-        print("art records", eventController.records.count)
+        print("art records", artController.records.count)
 
         let techController = ContentViewController.create()
         techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
-        print("tech records", eventController.records.count)
+        print("tech records", techController.records.count)
 
         let allController = ContentViewController.create()
         allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
-        print("all records", eventController.records.count)
+        print("all records", allController.records.count)
 
         viewControllers.append(eventController)
         viewControllers.append(geoController)

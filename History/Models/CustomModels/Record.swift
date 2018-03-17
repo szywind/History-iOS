@@ -27,7 +27,7 @@ class Record {
         if let avatar_ = person.avatar {
             self.avatar = UIImage(data: avatar_ as Data)
         } else {
-            self.avatar = UIImage(named: "default")
+            self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
         
         self.type = person.type
@@ -45,7 +45,7 @@ class Record {
         if let avatar_ = event.avatar {
             self.avatar = UIImage(data: avatar_ as Data)
         } else {
-            self.avatar = UIImage(named: "default")
+            self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
         
         self.type = event.type

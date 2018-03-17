@@ -36,8 +36,32 @@ class CoreDataManager {
             person.name = personObject.get(LCConstants.PersonKey.name)?.stringValue
             person.type = personObject.get(LCConstants.PersonKey.type)?.stringValue
             
-            person.avatar = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue as? NSData
-            person.info = personObject.get(LCConstants.PersonKey.infoFile)?.dataValue as? NSData
+            // Swift 暂时不支持文件上传和读取，只能用如下的OC SDK (https://forum.leancloud.cn/t/swift-avfile/15970, https://forum.leancloud.cn/t/swift/16679)
+            let personAVObject = AVObject(className: LCConstants.PersonKey.className, objectId: personId)
+            personAVObject.fetchInBackground({ (avObject, error) in
+                if error == nil {
+                    if let avatarFile = avObject?.object(forKey: LCConstants.PersonKey.avatarFile) as? AVFile {
+                        //                    AvatarManager.sharedInstance.getAvatar(avatarFile: avatarFile, withBlock: { (image) in
+                        //                        person.avatar = UIImageJPEGRepresentation(image!, 100) as? NSData
+                        //                    })
+                        LCManager.sharedInstance.getFileData(file: avatarFile) { (data) in
+                            person.avatar = data
+                        }
+                    }
+                    
+                    if let infoFile = avObject?.object(forKey: LCConstants.PersonKey.infoFile) as? AVFile {
+                        LCManager.sharedInstance.getFileData(file: infoFile) { (data) in
+                            person.info = data
+                        }
+                    }
+                } else {
+                    print(error?.localizedDescription)
+                }
+            })
+            
+//            person.avatar = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue as? NSData
+//            person.info = personObject.get(LCConstants.PersonKey.infoFile)?.dataValue as? NSData
+            
             
     //        let avatarFile = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue
     //        let avatarFile = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue as! AVFile
@@ -59,14 +83,33 @@ class CoreDataManager {
             if checkEventExistence(eventId: eventId) {
                 return
             }
-            let event = Person(context: context)
+            let event = Event(context: context)
             event.objectId = eventObject.objectId?.stringValue
             event.name = eventObject.get(LCConstants.EventKey.name)?.stringValue
             event.type = eventObject.get(LCConstants.EventKey.type)?.stringValue
             
+//            let eventAVObject = AVObject(className: LCConstants.EventKey.className, objectId: eventId)
+            let eventAVObject = AVObject.init(className: LCConstants.EventKey.className, objectId: eventId)
+            eventAVObject.fetchInBackground({ (avObject, error) in
+                if error == nil {
+                    if let avatarFile = avObject?.object(forKey: LCConstants.EventKey.avatarFile) as? AVFile {
+                        LCManager.sharedInstance.getFileData(file: avatarFile) { (data) in
+                            event.avatar = data
+                        }
+                    }
+                    
+                    if let infoFile = avObject?.object(forKey: LCConstants.EventKey.infoFile) as? AVFile {
+                        LCManager.sharedInstance.getFileData(file: infoFile) { (data) in
+                            event.info = data
+                        }
+                    }
+                } else {
+                    print(error?.localizedDescription)
+                }
+            })
     //        event.avatar = eventObject.value(forKey: LCConstants.EventKey.avatarFile) as! NSData
-            event.avatar = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as? NSData
-            event.info = eventObject.get(LCConstants.EventKey.infoFile)?.dataValue as? NSData
+//            event.avatar = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as? NSData
+//            event.info = eventObject.get(LCConstants.EventKey.infoFile)?.dataValue as? NSData
             
     //        let avatarFile = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as! AVFile
     //        AvatarManager.sharedInstance.getAvatar(avatarFile: avatarFile) { (image) in
