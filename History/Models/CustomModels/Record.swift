@@ -27,14 +27,14 @@ class Record {
         if let avatar_ = person.avatar {
             self.avatar = UIImage(data: avatar_ as Data)
         } else {
-            self.avatar = UIImage(named: "default")
+            self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
         
         self.type = person.type
         
         
         if let info_ = person.info {
-            self.info = NSString(data: info_ as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            self.info = NSString(data: info_ as Data, encoding: String.Encoding.utf8.rawValue)! as String
         } else {
             self.info = Constants.Default.defaultInfo
         }
@@ -45,13 +45,13 @@ class Record {
         if let avatar_ = event.avatar {
             self.avatar = UIImage(data: avatar_ as Data)
         } else {
-            self.avatar = UIImage(named: "default")
+            self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
         
         self.type = event.type
         
         if let info_ = event.info {
-            self.info = NSString(data: info_ as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            self.info = NSString(data: info_ as Data, encoding: String.Encoding.utf8.rawValue)! as String
         } else {
             self.info = Constants.Default.defaultInfo
         }

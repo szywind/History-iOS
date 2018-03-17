@@ -50,7 +50,7 @@ struct LCConstants {
      */
     struct PersonKey {
         static let className = "Person"
-
+        
         static let name = "name"
         static let avatarFile = "avatarFile"
         static let infoFile = "infoFile"
@@ -64,13 +64,12 @@ struct LCConstants {
      */
     struct EventKey {
         static let className = "Event"
-
+        
         static let name = "name"
         static let avatarFile = "avatarFile"
         static let infoFile = "infoFile"
         static let type = "type"
     }
     
-
+    
 }
-

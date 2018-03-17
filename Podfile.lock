@@ -1,26 +1,26 @@
 PODS:
-  - Alamofire (4.7.0)
-  - AVOSCloud (9.0.0)
-  - LeanCloud (11.0.0):
-    - LeanCloud/Storage (= 11.0.0)
-  - LeanCloud/Storage (11.0.0):
-    - Alamofire (~> 4.5)
-  - LeanCloudSocial (2.0.0):
-    - AVOSCloud
+  - AVOSCloud (9.0.1)
+  - AVOSCloudIM (9.0.1):
+    - AVOSCloud (= 9.0.1)
+    - AVOSCloudIM/_ARC (= 9.0.1)
+    - AVOSCloudIM/_NOARC (= 9.0.1)
+  - AVOSCloudIM/_ARC (9.0.1):
+    - AVOSCloud (= 9.0.1)
+    - AVOSCloudIM/_NOARC (= 9.0.1)
+  - AVOSCloudIM/_NOARC (9.0.1):
+    - AVOSCloud (= 9.0.1)
   - Segmentio (3.0)
 
 DEPENDENCIES:
-  - LeanCloud
-  - LeanCloudSocial
+  - AVOSCloud
+  - AVOSCloudIM
   - Segmentio (~> 3.0)
 
 SPEC CHECKSUMS:
-  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  AVOSCloud: 537aaa3dec9fbcd72fbbb3d98d20610312a8375b
-  LeanCloud: cb29157ba8f4e948f3476b4503903b7e6da9c260
-  LeanCloudSocial: 8709feeead2a49311f0fae1cb6fb6ade97708454
+  AVOSCloud: c107102329a7efac60f36d46e7e9b0e4edc0e060
+  AVOSCloudIM: d534cc9106f54cfc50eb849bcfe5412c1b4fd565
   Segmentio: 1607fba3b42230f5f91e997d1a3f337f1176674c
 
-PODFILE CHECKSUM: 68c6a1a8022c0a18d926441d4e0d40b706164824
+PODFILE CHECKSUM: a44fa86223a71db73ad397de370bf502e5e4534a
 
 COCOAPODS: 1.4.0

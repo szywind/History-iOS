@@ -9,17 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Alamofire.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>LeanCloud.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>LeanCloudSocial.xcscheme</key>
+		<key>AVOSCloudIM.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

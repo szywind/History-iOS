@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import LeanCloudSocial
 
 @objc(Person)
 public class Person: NSManagedObject {

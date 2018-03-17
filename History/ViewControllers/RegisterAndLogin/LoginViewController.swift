@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import LeanCloud
-import LeanCloudSocial
+import AVOSCloud
+
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var phoneTextfield: UITextField!
@@ -54,17 +54,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func registerWithPhone(){
-        let user = LCUser()
-        user.username = LCString(phoneTextfield.text!)
-        user.password =  LCString("123456")
+        let user = AVUser()
+        user.username = phoneTextfield.text
+        user.password = "123456"
 //        user.email = "szywind@163.com"
-        user.mobilePhoneNumber = LCString(phoneTextfield.text!)
-        user.signUp { (result) in
-            switch result{
-            case .success:
+        user.mobilePhoneNumber = phoneTextfield.text ?? ""
+        
+        AVUser.requestMobilePhoneVerify(user.mobilePhoneNumber!) { (succeed, error) in
+            if succeed {
                 self.performSegue(withIdentifier: "toEnterVerificationCode", sender: self)
-            case .failure(let error):
-                print(error)
+            } else {
+                print(error?.localizedDescription)
             }
         }
     }
