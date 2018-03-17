@@ -35,20 +35,32 @@ class CoreDataManager {
             person.name = personObject.object(forKey: LCConstants.PersonKey.name) as? String
             person.type = personObject.object(forKey: LCConstants.PersonKey.type) as? String
             
-            if let avatarFile = personObject.object(forKey: LCConstants.PersonKey.avatarFile) as? AVFile {
-                LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
-                    if error == nil && url != nil {
-                        person.avatar = NSData(contentsOf: url!)
-                    }
-                })
+            if let avatarDict = personObject.object(forKey: LCConstants.PersonKey.avatarFile) as? NSDictionary {
+                if let url = avatarDict.object(forKey: "url") as? String {
+//                    let imgUrl = URL(string: url)
+//                    person.avatar = NSData(contentsOf: imgUrl!)
+                    person.avatar = url
+//                    let avatarFile = AVFile(remoteURL: imgUrl!)
+//                    let avatarFile = AVFile(avObject: AVObject(objectId: objectId))
+//                    LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
+//                        if error == nil && url != nil {
+//                            person.avatar = NSData(contentsOf: url!)
+//                        } else {
+//                            print("[Error] ", error?.localizedDescription)
+//                        }
+//                    })
+                }
             }
 
-            if let infoFile = personObject.object(forKey: LCConstants.PersonKey.infoFile) as? AVFile {
-                LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
-                    if error == nil && url != nil {
-                        person.info = NSData(contentsOf: url!)
-                    }
-                })
+            if let infoDict = personObject.object(forKey: LCConstants.PersonKey.infoFile) as? NSDictionary {
+//                if let url = infoDict.object(forKey: "url") as? URL {
+//                    let infoFile = AVFile(remoteURL: url)
+//                    LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
+//                        if error == nil && url != nil {
+//                            person.info = NSData(contentsOf: url!)
+//                        }
+//                    })
+//                }
             }
             
             
@@ -78,20 +90,22 @@ class CoreDataManager {
             event.name = eventObject.object(forKey: LCConstants.EventKey.name) as? String
             event.type = eventObject.object(forKey: LCConstants.EventKey.type) as? String
             
-            if let avatarFile = eventObject.object(forKey: LCConstants.EventKey.avatarFile) as? AVFile {
-                LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
-                    if error == nil && url != nil {
-                        event.avatar = NSData(contentsOf: url!)
-                    }
-                })
+            if let avatarFile = eventObject.object(forKey: LCConstants.EventKey.avatarFile) as? NSDictionary {
+////                event.avatar = avatarFile.object(forKey: "url") as? String
+//                LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
+//                    if error == nil && url != nil {
+//                        event.avatar = NSData(contentsOf: url!)
+//                    }
+//                })
             }
             
-            if let infoFile = eventObject.object(forKey: LCConstants.EventKey.infoFile) as? AVFile {
-                LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
-                    if error == nil && url != nil {
-                        event.info = NSData(contentsOf: url!)
-                    }
-                })
+            if let infoFile = eventObject.object(forKey: LCConstants.EventKey.infoFile) as? NSDictionary {
+////                event.info = infoFile.object(forKey: "url") as? String
+//                LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
+//                    if error == nil && url != nil {
+//                        event.info = NSData(contentsOf: url!)
+//                    }
+//                })
             }
             
     //        let avatarFile = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as! AVFile

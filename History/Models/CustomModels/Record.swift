@@ -25,7 +25,11 @@ class Record {
     init(person: Person) {
         self.name = person.name
         if let avatar_ = person.avatar {
-            self.avatar = UIImage(data: avatar_ as Data)
+            let url = URL(string: avatar_.convertToHttps())
+            do {
+                let data = try? Data(contentsOf: url!)
+                self.avatar = UIImage(data: data!)
+            }
         } else {
             self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
@@ -43,7 +47,11 @@ class Record {
     init(event: Event) {
         self.name = event.name
         if let avatar_ = event.avatar {
-            self.avatar = UIImage(data: avatar_ as Data)
+            let url = URL(string: avatar_.convertToHttps())
+            do {
+                let data = try? Data(contentsOf: url!)
+                self.avatar = UIImage(data: data!)
+            }
         } else {
             self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
