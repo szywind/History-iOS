@@ -11,7 +11,7 @@ import Segmentio
 import CoreData
 import AVOSCloud
 
-class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
+class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
 
     var segmentioStyle = SegmentioStyle.imageUnderLabel
     var searchActive : Bool = false
@@ -21,13 +21,6 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-    
-//    var people = [Person]()
-//    var events = [Event]()
-    
-//    fileprivate lazy var viewControllers: [ContentViewController] = {
-//        return self.preparedViewControllers()
-//    }()
     
     fileprivate var viewControllers = [ContentViewController]()
     
@@ -54,16 +47,17 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
         
         searchBar.delegate = self
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil, queue: nil) { (_) in
+            self.refresh()
+        }
+        
+        self.setupViewControllers()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        PersonManager.sharedInstance.fetchAllPeopleFromLC(withBlock: didFetchPerson)
     }
     
     func refresh() {
@@ -88,17 +82,14 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-//    func didCreate(succeed : Bool, error : NSError!) 
-    func didFetchPerson(result: Optional<Array<Any>>, error: Optional<Error>) {
+    func setupViewControllers() {
         let peopleController = ContentViewController.create()
         peopleController.records = Record.getRecords(people: CoreDataManager.fetchAllPeople())
         print("person records", peopleController.records.count)
-
+        
         viewControllers.append(peopleController)
-        EventManager.sharedInstance.fetchAllEventsFromLC(withBlock: didFetchEvent)
-    }
+
     
-    func didFetchEvent(result: Optional<Array<Any>>, error: Optional<Error>) {
         let eventController = ContentViewController.create()
         eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
         print("event records", eventController.records.count)
@@ -106,19 +97,19 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         let geoController = ContentViewController.create()
         geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
         print("geo records", geoController.records.count)
-
+        
         let artController = ContentViewController.create()
         artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
         print("art records", artController.records.count)
-
+        
         let techController = ContentViewController.create()
         techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
         print("tech records", techController.records.count)
-
+        
         let allController = ContentViewController.create()
         allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
         print("all records", allController.records.count)
-
+        
         viewControllers.append(eventController)
         viewControllers.append(geoController)
         viewControllers.append(artController)
@@ -128,24 +119,43 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         refresh()
     }
     
-    // Example viewControllers
-    
-//    fileprivate func preparedViewControllers() -> [ContentViewController] {
-//        PersonManager.sharedInstance.fetchAllPeople(withBlock: didFetchPerson)
-//        EventManager.sharedInstance.fetchAllEvent(withBlock: didFetchEvent)
+//    func didFetchPerson(result: Optional<Array<Any>>, error: Optional<Error>) {
+//        let peopleController = ContentViewController.create()
+//        peopleController.records = Record.getRecords(people: CoreDataManager.fetchAllPeople())
+//        print("person records", peopleController.records.count)
 //
+//        viewControllers.append(peopleController)
+//        EventManager.sharedInstance.fetchAllEventsFromLC(withBlock: didFetchEvent)
+//    }
 //
+//    func didFetchEvent(result: Optional<Array<Any>>, error: Optional<Error>) {
+//        let eventController = ContentViewController.create()
+//        eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
+//        print("event records", eventController.records.count)
 //
+//        let geoController = ContentViewController.create()
+//        geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
+//        print("geo records", geoController.records.count)
 //
+//        let artController = ContentViewController.create()
+//        artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
+//        print("art records", artController.records.count)
 //
-//        return [
-//            peopleController,
-//            eventController,
-//            geoController,
-//            artController,
-//            techController,
-//            allController
-//        ]
+//        let techController = ContentViewController.create()
+//        techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
+//        print("tech records", techController.records.count)
+//
+//        let allController = ContentViewController.create()
+//        allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
+//        print("all records", allController.records.count)
+//
+//        viewControllers.append(eventController)
+//        viewControllers.append(geoController)
+//        viewControllers.append(artController)
+//        viewControllers.append(techController)
+//        viewControllers.append(allController)
+//
+//        refresh()
 //    }
     
     fileprivate func selectedSegmentioIndex() -> Int {

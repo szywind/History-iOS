@@ -538,11 +538,67 @@
                     </view>
                     <connections>
                         <outlet property="recordTableView" destination="92k-UI-6qu" id="vgd-tW-iTw"/>
+                        <segue destination="a9n-bE-6Of" kind="show" identifier="showRecordDetails" id="KX0-Ya-zPz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZm-re-Kdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3029.5999999999999" y="54.422788605697157"/>
+        </scene>
+        <!--Encyclopedia Detail View Controller-->
+        <scene sceneID="nFV-J2-LEv">
+            <objects>
+                <viewController id="a9n-bE-6Of" customClass="EncyclopediaDetailViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Awe-wR-4SK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7P-Gz-VZp">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="er6-tg-ZZ6">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="aQl-9o-lWd"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Bgp-aG-Ze8">
+                                        <rect key="frame" x="0.0" y="150" width="414" height="566"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Bgp-aG-Ze8" secondAttribute="bottom" id="7J9-NL-JNA"/>
+                                    <constraint firstItem="er6-tg-ZZ6" firstAttribute="leading" secondItem="k7P-Gz-VZp" secondAttribute="leading" id="KlY-UZ-7Zd"/>
+                                    <constraint firstItem="er6-tg-ZZ6" firstAttribute="top" secondItem="k7P-Gz-VZp" secondAttribute="top" id="RJL-Qu-6dw"/>
+                                    <constraint firstItem="Bgp-aG-Ze8" firstAttribute="leading" secondItem="k7P-Gz-VZp" secondAttribute="leading" id="bJN-es-ajR"/>
+                                    <constraint firstAttribute="trailing" secondItem="er6-tg-ZZ6" secondAttribute="trailing" id="kAX-Tr-KW5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bgp-aG-Ze8" secondAttribute="trailing" id="y1x-wH-5Fc"/>
+                                    <constraint firstItem="Bgp-aG-Ze8" firstAttribute="top" secondItem="er6-tg-ZZ6" secondAttribute="bottom" id="zr0-D0-0p5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3va-ub-5ZR" firstAttribute="trailing" secondItem="k7P-Gz-VZp" secondAttribute="trailing" id="UAQ-2a-VXD"/>
+                            <constraint firstItem="k7P-Gz-VZp" firstAttribute="leading" secondItem="3va-ub-5ZR" secondAttribute="leading" id="WTM-De-Aia"/>
+                            <constraint firstItem="k7P-Gz-VZp" firstAttribute="top" secondItem="3va-ub-5ZR" secondAttribute="top" id="bta-Xp-MXr"/>
+                            <constraint firstItem="3va-ub-5ZR" firstAttribute="bottom" secondItem="k7P-Gz-VZp" secondAttribute="bottom" id="rO7-yl-Ojx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3va-ub-5ZR"/>
+                    </view>
+                    <connections>
+                        <outlet property="infoTextView" destination="Bgp-aG-Ze8" id="kZT-HB-pfI"/>
+                        <outlet property="recordImageView" destination="er6-tg-ZZ6" id="0dV-9a-86w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lWg-aO-RRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3928.985507246377" y="53.804347826086961"/>
         </scene>
         <!--History-->
         <scene sceneID="sZQ-7q-MSF">

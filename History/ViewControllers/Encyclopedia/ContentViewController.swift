@@ -35,6 +35,15 @@ class ContentViewController: UIViewController {
         recordTableView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? EncyclopediaDetailViewController {
+            if let indexPath = recordTableView.indexPathForSelectedRow {
+                guard records.count > indexPath.row else { return }
+                destination.record = records[indexPath.row]
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -64,5 +73,9 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showRecordDetails", sender: self)
     }
 }

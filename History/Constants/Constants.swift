@@ -19,4 +19,8 @@ struct Constants {
         static let eventIdFilterFormat = "objectId == %@"
         static let personIdFilterFormat = "objectId == %@"
     }
+    
+    struct Notification {
+        static let fetchDataFromLC = "didFetchDataNotification"
+    }
 }
