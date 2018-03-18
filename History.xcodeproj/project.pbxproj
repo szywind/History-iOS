@@ -40,6 +40,7 @@
 		1BAEDF3A205587200004C804 /* EmbedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF39205587200004C804 /* EmbedContainerViewController.swift */; };
 		1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */; };
 		1BD8B05B205D9A07003128FF /* String+HTTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8B05A205D9A07003128FF /* String+HTTPS.swift */; };
+		1BD8B05D205E22C0003128FF /* EncyclopediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8B05C205E22C0003128FF /* EncyclopediaDetailViewController.swift */; };
 		1BF1AFB220582C0500CB479A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB120582C0500CB479A /* Record.swift */; };
 		1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB320582F5600CB479A /* AvatarManager.swift */; };
 		1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB52058391000CB479A /* UIImage+Resized.swift */; };
@@ -103,6 +104,7 @@
 		1BAEDF39205587200004C804 /* EmbedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedContainerViewController.swift; sourceTree = "<group>"; };
 		1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		1BD8B05A205D9A07003128FF /* String+HTTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTTPS.swift"; sourceTree = "<group>"; };
+		1BD8B05C205E22C0003128FF /* EncyclopediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaDetailViewController.swift; sourceTree = "<group>"; };
 		1BF1AFB120582C0500CB479A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		1BF1AFB320582F5600CB479A /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
 		1BF1AFB52058391000CB479A /* UIImage+Resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resized.swift"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */,
 				1BAEDF39205587200004C804 /* EmbedContainerViewController.swift */,
 				00C696842057D41F00A6E394 /* RecordTableViewCell.swift */,
+				1BD8B05C205E22C0003128FF /* EncyclopediaDetailViewController.swift */,
 			);
 			path = Encyclopedia;
 			sourceTree = "<group>";
@@ -428,6 +431,11 @@
 					00ED1ECC204FEB27008CB70A = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					00ED1EE3204FEB29008CB70A = {
 						CreatedOnToolsVersion = 9.2;
@@ -554,6 +562,7 @@
 				1B267E2A205520370041A729 /* LCConstants.swift in Sources */,
 				1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */,
 				1BAA2B4E205AD93400EE5ED4 /* Person+CoreDataProperties.swift in Sources */,
+				1BD8B05D205E22C0003128FF /* EncyclopediaDetailViewController.swift in Sources */,
 				1BAA2B51205ADFF100EE5ED4 /* EventManager.swift in Sources */,
 				1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */,
 				1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */,
