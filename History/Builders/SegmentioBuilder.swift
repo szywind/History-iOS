@@ -19,13 +19,21 @@ struct SegmentioBuilder {
         )
     }
     
-    static func buildSegmentioView(segmentioView: Segmentio, segmentioStyle: SegmentioStyle, segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) {
-        segmentioView.setup(
-            content: segmentioContent(),
-            style: segmentioStyle,
-            options: segmentioOptions(segmentioStyle: segmentioStyle, segmentioPosition: segmentioPosition)
-        )
-    }
+//    static func buildSegmentioView(segmentioView: Segmentio, segmentioStyle: SegmentioStyle, segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) {
+//        segmentioView.setup(
+//            content: segmentioContent(),
+//            style: segmentioStyle,
+//            options: segmentioOptions(segmentioStyle: segmentioStyle, segmentioPosition: segmentioPosition)
+//        )
+//    }
+    
+        static func buildSegmentioView(segmentioView: Segmentio, segmentioStyle: SegmentioStyle, segmentioContent: [SegmentioItem] = segmentioContent(), segmentioPosition: SegmentioPosition = .fixed(maxVisibleItems: 3)) {
+            segmentioView.setup(
+                content: segmentioContent,
+                style: segmentioStyle,
+                options: segmentioOptions(segmentioStyle: segmentioStyle, segmentioPosition: segmentioPosition)
+            )
+        }
     
     private static func segmentioContent() -> [SegmentioItem] {
         return [
@@ -71,7 +79,7 @@ struct SegmentioBuilder {
                 titleTextColor: ColorPalette.grayChateau
             ),
             selectedState: segmentioState(
-                backgroundColor: .cyan,
+                backgroundColor: .clear, //.cyan,
                 titleFont: font,
                 titleTextColor: ColorPalette.black
             ),

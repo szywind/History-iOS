@@ -12,6 +12,7 @@ class EncyclopediaDetailViewController: UIViewController {
 
     @IBOutlet weak var infoTextView: UITextView!
     @IBOutlet weak var recordImageView: UIImageView!
+    @IBOutlet weak var recordLbl: UILabel!
     
     var record: Record?
     
@@ -20,6 +21,7 @@ class EncyclopediaDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         infoTextView.text = record?.info
         recordImageView.image = record?.avatar
+        recordLbl.text = record?.name
     }
 
     override func didReceiveMemoryWarning() {

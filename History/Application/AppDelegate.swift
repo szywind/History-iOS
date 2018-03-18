@@ -28,11 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
-//        PersonManager.sharedInstance.fetchAllPeopleFromLC { (_, _) in
-//            EventManager.sharedInstance.fetchAllEventsFromLC { (_, _) in
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
-//            }
-//        }
+        PersonManager.sharedInstance.fetchAllPeopleFromLC { (_, _) in
+            EventManager.sharedInstance.fetchAllEventsFromLC { (_, _) in
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
+            }
+        }
         return true
     }
 

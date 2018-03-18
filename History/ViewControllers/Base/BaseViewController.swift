@@ -34,6 +34,14 @@ class BaseViewController: UIViewController {
         }
     }
     
+    @objc func dismissKeyboard(){
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Bounce back to the main thread to update the UI
+            DispatchQueue.main.async {
+                self.view.endEditing(true)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
