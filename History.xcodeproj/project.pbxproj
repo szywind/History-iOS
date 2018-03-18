@@ -41,6 +41,8 @@
 		1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */; };
 		1BD8B05B205D9A07003128FF /* String+HTTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8B05A205D9A07003128FF /* String+HTTPS.swift */; };
 		1BD8B05D205E22C0003128FF /* EncyclopediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8B05C205E22C0003128FF /* EncyclopediaDetailViewController.swift */; };
+		1BD8B061205EAEE0003128FF /* Libian.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1BD8B060205EAEDF003128FF /* Libian.ttc */; };
+		1BD8B065205EB0DC003128FF /* WeibeiTC-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1BD8B064205EB0DA003128FF /* WeibeiTC-Bold.otf */; };
 		1BF1AFB220582C0500CB479A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB120582C0500CB479A /* Record.swift */; };
 		1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB320582F5600CB479A /* AvatarManager.swift */; };
 		1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1AFB52058391000CB479A /* UIImage+Resized.swift */; };
@@ -105,6 +107,8 @@
 		1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		1BD8B05A205D9A07003128FF /* String+HTTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTTPS.swift"; sourceTree = "<group>"; };
 		1BD8B05C205E22C0003128FF /* EncyclopediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaDetailViewController.swift; sourceTree = "<group>"; };
+		1BD8B060205EAEDF003128FF /* Libian.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Libian.ttc; sourceTree = "<group>"; };
+		1BD8B064205EB0DA003128FF /* WeibeiTC-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WeibeiTC-Bold.otf"; sourceTree = "<group>"; };
 		1BF1AFB120582C0500CB479A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		1BF1AFB320582F5600CB479A /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
 		1BF1AFB52058391000CB479A /* UIImage+Resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resized.swift"; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 		1B267E2220543F420041A729 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1BD8B062205EB0DA003128FF /* weibei.ttf */,
+				1BD8B05E205EAEDF003128FF /* libian.ttf */,
 				00ED1EDA204FEB29008CB70A /* Assets.xcassets */,
 				1BAEDF3020556F3A0004C804 /* ColorPalette.swift */,
 			);
@@ -332,6 +338,38 @@
 				1BD8B05A205D9A07003128FF /* String+HTTPS.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1BD8B05E205EAEDF003128FF /* libian.ttf */ = {
+			isa = PBXGroup;
+			children = (
+				1BD8B05F205EAEDF003128FF /* Libian TC */,
+			);
+			path = libian.ttf;
+			sourceTree = "<group>";
+		};
+		1BD8B05F205EAEDF003128FF /* Libian TC */ = {
+			isa = PBXGroup;
+			children = (
+				1BD8B060205EAEDF003128FF /* Libian.ttc */,
+			);
+			path = "Libian TC";
+			sourceTree = "<group>";
+		};
+		1BD8B062205EB0DA003128FF /* weibei.ttf */ = {
+			isa = PBXGroup;
+			children = (
+				1BD8B063205EB0DA003128FF /* Weibei TC */,
+			);
+			path = weibei.ttf;
+			sourceTree = "<group>";
+		};
+		1BD8B063205EB0DA003128FF /* Weibei TC */ = {
+			isa = PBXGroup;
+			children = (
+				1BD8B064205EB0DA003128FF /* WeibeiTC-Bold.otf */,
+			);
+			path = "Weibei TC";
 			sourceTree = "<group>";
 		};
 		1BF1AFB820595A1200CB479A /* CustomModels */ = {
@@ -475,7 +513,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				00ED1EDE204FEB29008CB70A /* LaunchScreen.storyboard in Resources */,
+				1BD8B065205EB0DC003128FF /* WeibeiTC-Bold.otf in Resources */,
 				00ED1EDB204FEB29008CB70A /* Assets.xcassets in Resources */,
+				1BD8B061205EAEE0003128FF /* Libian.ttc in Resources */,
 				00ED1ED6204FEB28008CB70A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

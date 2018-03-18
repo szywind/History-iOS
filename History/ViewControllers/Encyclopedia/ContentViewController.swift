@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContentViewController: UIViewController {
+class ContentViewController: BaseViewController {
     
     var records = [Record] ()
     
@@ -76,6 +76,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dismissKeyboard()
         performSegue(withIdentifier: "showRecordDetails", sender: self)
     }
 }

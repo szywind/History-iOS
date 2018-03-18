@@ -14,8 +14,10 @@ import AVOSCloud
 class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
 
     var segmentioStyle = SegmentioStyle.imageUnderLabel
-    var searchActive : Bool = false
-
+    var segmentioContent = [SegmentioItem]()
+    var searchActive = false
+    var isSearching = false
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var segmentioView: Segmentio!
@@ -23,6 +25,15 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate var viewControllers = [ContentViewController]()
+    
+    var allPeople = [Record]()
+    var allEvents = [Record]()
+    var events = [Record]()
+    var geo = [Record]()
+    var art = [Record]()
+    var tech = [Record]()
+    
+    var filteredRecords = [Record]()
     
     // MARK: - Init
     
@@ -45,14 +56,15 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
         default:
             break
         }
-        
-        searchBar.delegate = self
-        
+
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil, queue: nil) { (_) in
+            self.setupData()
             self.refresh()
         }
         
-        self.setupViewControllers()
+        setupData()
+        setupSearchBar()
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,12 +72,23 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func setupData() {
+        allPeople = Record.getRecords(people: CoreDataManager.fetchAllPeople())
+        allEvents = Record.getRecords(events: CoreDataManager.fetchAllEvents())
+        events = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
+        geo = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
+        art = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
+        tech = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
+    }
+    
     func refresh() {
+        setupViewControllers()
         setupScrollView()
         
         SegmentioBuilder.buildSegmentioView(
             segmentioView: segmentioView,
-            segmentioStyle: segmentioStyle
+            segmentioStyle: segmentioStyle,
+            segmentioContent: segmentioContent
         )
         //        SegmentioBuilder.setupBadgeCountForIndex(segmentioView, index: 1)
         
@@ -82,81 +105,66 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
         }
     }
     
-    func setupViewControllers() {
-        let peopleController = ContentViewController.create()
-        peopleController.records = Record.getRecords(people: CoreDataManager.fetchAllPeople())
-        print("person records", peopleController.records.count)
+    func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
         
-        viewControllers.append(peopleController)
-
-    
-        let eventController = ContentViewController.create()
-        eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
-        print("event records", eventController.records.count)
-        
-        let geoController = ContentViewController.create()
-        geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
-        print("geo records", geoController.records.count)
-        
-        let artController = ContentViewController.create()
-        artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
-        print("art records", artController.records.count)
-        
-        let techController = ContentViewController.create()
-        techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
-        print("tech records", techController.records.count)
-        
-        let allController = ContentViewController.create()
-        allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
-        print("all records", allController.records.count)
-        
-        viewControllers.append(eventController)
-        viewControllers.append(geoController)
-        viewControllers.append(artController)
-        viewControllers.append(techController)
-        viewControllers.append(allController)
-        
-        refresh()
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BaseViewController.dismissKeyboard))
+//        self.view.addGestureRecognizer(tap)
     }
     
-//    func didFetchPerson(result: Optional<Array<Any>>, error: Optional<Error>) {
-//        let peopleController = ContentViewController.create()
-//        peopleController.records = Record.getRecords(people: CoreDataManager.fetchAllPeople())
-//        print("person records", peopleController.records.count)
-//
-//        viewControllers.append(peopleController)
-//        EventManager.sharedInstance.fetchAllEventsFromLC(withBlock: didFetchEvent)
-//    }
-//
-//    func didFetchEvent(result: Optional<Array<Any>>, error: Optional<Error>) {
-//        let eventController = ContentViewController.create()
-//        eventController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
-//        print("event records", eventController.records.count)
-//
-//        let geoController = ContentViewController.create()
-//        geoController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
-//        print("geo records", geoController.records.count)
-//
-//        let artController = ContentViewController.create()
-//        artController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
-//        print("art records", artController.records.count)
-//
-//        let techController = ContentViewController.create()
-//        techController.records = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
-//        print("tech records", techController.records.count)
-//
-//        let allController = ContentViewController.create()
-//        allController.records = Record.getRecords(events: CoreDataManager.fetchAllEvents())
-//        print("all records", allController.records.count)
-//
-//        viewControllers.append(eventController)
-//        viewControllers.append(geoController)
-//        viewControllers.append(artController)
-//        viewControllers.append(techController)
-//        viewControllers.append(allController)
-//
-//        refresh()
-//    }
+    func setupViewControllers() {
+        viewControllers.removeAll()
+        if isSearching {
+            let filteredController = ContentViewController.create()
+            filteredController.records = filteredRecords
+            print("filtered records", filteredController.records.count)
+            viewControllers.append(filteredController)
+            segmentioContent = [
+                SegmentioItem(title: "搜索结果", image: UIImage(named: "tornado"))
+            ]
+        } else {
+            let peopleController = ContentViewController.create()
+            peopleController.records = allPeople
+            print("person records", peopleController.records.count)
+
+            let allController = ContentViewController.create()
+            allController.records = allEvents
+            print("all records", allController.records.count)
+            
+            let eventController = ContentViewController.create()
+            eventController.records = events
+            print("event records", eventController.records.count)
+            
+            let geoController = ContentViewController.create()
+            geoController.records = geo
+            print("geo records", geoController.records.count)
+            
+            let artController = ContentViewController.create()
+            artController.records = art
+            print("art records", artController.records.count)
+            
+            let techController = ContentViewController.create()
+            techController.records = tech
+            print("tech records", techController.records.count)
+            
+            viewControllers.append(peopleController)
+            viewControllers.append(allController)
+            viewControllers.append(eventController)
+            viewControllers.append(geoController)
+            viewControllers.append(artController)
+            viewControllers.append(techController)
+            
+            segmentioContent = [
+                SegmentioItem(title: "人物", image: UIImage(named: "tornado")),
+                SegmentioItem(title: "全部", image: UIImage(named: "earthquakes")),
+                SegmentioItem(title: "事件", image: UIImage(named: "heat")),
+                SegmentioItem(title: "地理", image: UIImage(named: "eruption")),
+                SegmentioItem(title: "艺术", image: UIImage(named: "floods")),
+                SegmentioItem(title: "科技", image: UIImage(named: "wildfires"))
+            ]
+        }
+    }
     
     fileprivate func selectedSegmentioIndex() -> Int {
         return 0
@@ -191,7 +199,29 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
     
     
     // MARK: - Search Bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredRecords.removeAll()
+        if searchBar.text == nil || searchBar.text == "" {
+            isSearching = false
+            view.endEditing(true)
+        } else {
+            isSearching = true
+            filteredRecords += allPeople.filter({$0.name?.range(of:searchBar.text!) != nil})
+            filteredRecords += allEvents.filter({$0.name?.range(of:searchBar.text!) != nil})
+        }
+        refresh()
+    }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        searchBar.text = ""
+        refresh()
+        dismissKeyboard()
+    }
 //    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
 //        searchActive = true;
 //        searchBar.setShowsCancelButton(true, animated: true)
@@ -221,11 +251,7 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
 //        searchActive = false;
 //        searchBar.endEditing(true)
 //    }
-//
-//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        searchVar = searchText.trimAndLowercase()
-//        self.performSearch()
-//    }
+
     
     
     /*
@@ -252,4 +278,13 @@ extension EncyclopediaViewController: UIScrollViewDelegate {
     }
     
 }
+
+//extension EncyclopediaViewController:  UIGestureRecognizerDelegate {
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        if touch.view?.isDescendant(of: auto) {
+//            return false
+//        }
+//        return true
+//    }
+//}
 
