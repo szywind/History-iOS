@@ -16,23 +16,23 @@ import AVOSCloud
  *  - note: This class use singleton. Call AvatarManager.sharedInstance.
  */
 class AvatarManager {
-    
+
     static var sharedInstance : AvatarManager = {
         return AvatarManager()
     }()
-    
+
     private init() {
     }
-    
+
     func getMyAvatear(withBlock block : @escaping (_ image : UIImage?) -> Void) {
         getUserAvatar(user: UserManager.sharedInstance.currentUser(), withBlock: block)
     }
-    
+
     func getUserAvatar(user : AVUser, withBlock block : @escaping (_ image : UIImage?) -> Void) {
         let avatarFile = UserManager.sharedInstance.getAvatarFile(user: user)
         getAvatar(avatarFile: avatarFile, withBlock: block)
     }
-    
+
     func getAvatar(avatarFile : AVFile?, withBlock block : @escaping (_ image : UIImage?) -> Void) {
         if avatarFile != nil {
             avatarFile?.download { (url, error) in
@@ -51,11 +51,11 @@ class AvatarManager {
             block(UIImage(named: Constants.Default.defaultAvatar))
         }
     }
-    
+
     func updateAvatarWithImage(image : UIImage, withBlock block : @escaping AVBooleanResultBlock) {
         let data = UIImageJPEGRepresentation(image.resized(toWidth: 200)!, 1)
         let file = AVFile(data: data!)
-        
+
         file.upload { (succeed, error) in
             if succeed {
                 AVUser.current()?.setObject(file, forKey: LCConstants.UserKey.avatarFile)
@@ -65,7 +65,7 @@ class AvatarManager {
             }
         }
     }
-    
+
     func clearAllCache() {
         AVFile.clearAllPersistentCache()
     }
