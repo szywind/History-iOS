@@ -25,6 +25,9 @@
 		1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE4205176490035CD01 /* LoginViewController.swift */; };
 		1B347DE720519E280035CD01 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */; };
 		1B54F16C205D58880083A20C /* LCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B54F16B205D58880083A20C /* LCManager.swift */; };
+		1B93CB682060386E003304B2 /* ISTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93CB662060386D003304B2 /* ISTimeline.swift */; };
+		1B93CB692060386E003304B2 /* ISPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93CB672060386D003304B2 /* ISPoint.swift */; };
+		1B93CB6B206038C8003304B2 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93CB6A206038C8003304B2 /* TimelineViewController.swift */; };
 		1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */; };
 		1BAA2B4C205AD93400EE5ED4 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */; };
 		1BAA2B4D205AD93400EE5ED4 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B49205AD93200EE5ED4 /* Event+CoreDataProperties.swift */; };
@@ -91,6 +94,9 @@
 		1B347DE4205176490035CD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
 		1B54F16B205D58880083A20C /* LCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCManager.swift; sourceTree = "<group>"; };
+		1B93CB662060386D003304B2 /* ISTimeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISTimeline.swift; sourceTree = "<group>"; };
+		1B93CB672060386D003304B2 /* ISPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISPoint.swift; sourceTree = "<group>"; };
+		1B93CB6A206038C8003304B2 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1BAA2B49205AD93200EE5ED4 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 		1B267E1E20543EE60041A729 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B93CB652060383A003304B2 /* Timeline */,
 				1BAEDF2920555FDC0004C804 /* Encyclopedia */,
 				1B267E1B20543CF50041A729 /* Base */,
 				1B267E1A20543CCA0041A729 /* Settings */,
@@ -297,6 +304,16 @@
 				1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */,
 			);
 			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		1B93CB652060383A003304B2 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				1B93CB672060386D003304B2 /* ISPoint.swift */,
+				1B93CB662060386D003304B2 /* ISTimeline.swift */,
+				1B93CB6A206038C8003304B2 /* TimelineViewController.swift */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 		1BAEDF2920555FDC0004C804 /* Encyclopedia */ = {
@@ -603,6 +620,8 @@
 				1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */,
 				1BAA2B4E205AD93400EE5ED4 /* Person+CoreDataProperties.swift in Sources */,
 				1BD8B05D205E22C0003128FF /* EncyclopediaDetailViewController.swift in Sources */,
+				1B93CB6B206038C8003304B2 /* TimelineViewController.swift in Sources */,
+				1B93CB692060386E003304B2 /* ISPoint.swift in Sources */,
 				1BAA2B51205ADFF100EE5ED4 /* EventManager.swift in Sources */,
 				1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */,
 				1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */,
@@ -620,6 +639,7 @@
 				1BAEDF34205572000004C804 /* UIFont+ExampleFonts.swift in Sources */,
 				1BAA2B4F205AD93400EE5ED4 /* Person+CoreDataClass.swift in Sources */,
 				1B267E2520551CC60041A729 /* UserManager.swift in Sources */,
+				1B93CB682060386E003304B2 /* ISTimeline.swift in Sources */,
 				1BD8B05B205D9A07003128FF /* String+HTTPS.swift in Sources */,
 				1BAEDF3620557F9D0004C804 /* ContentViewController.swift in Sources */,
 				1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */,

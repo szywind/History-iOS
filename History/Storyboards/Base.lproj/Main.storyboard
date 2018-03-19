@@ -19,14 +19,29 @@
         <!--HistoryTree-->
         <scene sceneID="tCw-9I-vPN">
             <objects>
-                <viewController title="HistoryTree" id="kYp-d1-GWb" sceneMemberID="viewController">
+                <viewController title="HistoryTree" id="kYp-d1-GWb" customClass="TimelineViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OnB-XZ-GFJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFV-XK-5VL" customClass="ISTimeline" customModule="History">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g9I-nI-Kuc" firstAttribute="trailing" secondItem="tFV-XK-5VL" secondAttribute="trailing" id="Flc-HT-5NE"/>
+                            <constraint firstItem="tFV-XK-5VL" firstAttribute="leading" secondItem="g9I-nI-Kuc" secondAttribute="leading" id="UMo-R3-gyV"/>
+                            <constraint firstItem="tFV-XK-5VL" firstAttribute="top" secondItem="g9I-nI-Kuc" secondAttribute="top" id="rBj-Nl-Djb"/>
+                            <constraint firstItem="g9I-nI-Kuc" firstAttribute="bottom" secondItem="tFV-XK-5VL" secondAttribute="bottom" id="w28-Ga-9KT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="g9I-nI-Kuc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="历史树" image="first" id="rLH-8L-BHl"/>
+                    <connections>
+                        <outlet property="timeline" destination="tFV-XK-5VL" id="CoO-sb-FHO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4I0-Us-n2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
