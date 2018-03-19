@@ -17,9 +17,9 @@ extension Person {
     }
     
     @NSManaged public var objectId: String?
-    @NSManaged public var avatar: NSData?
+    @NSManaged public var avatar: String?
     @NSManaged public var name: String?
-    @NSManaged public var info: NSData?
+    @NSManaged public var info: String?
     @NSManaged public var type: String?
 
 }

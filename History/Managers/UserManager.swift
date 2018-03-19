@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import LeanCloud
-import LeanCloudSocial
+import AVOSCloud
 
 class UserManager {
     static let sharedInstance: UserManager = {
@@ -17,24 +16,24 @@ class UserManager {
     
     private init(){}
     
-    func currentUser() -> LCUser {
-        return LCUser.current!
+    func currentUser() -> AVUser {
+        return AVUser.current()!
     }
     
     func isLogin() -> Bool {
-        return LCUser.current != nil
+        return AVUser.current != nil
     }
     
-    func getUserId() -> String? {
-        return currentUser().objectId?.value
+    func getUserId(user: AVUser) -> String? {
+        return user.objectId
     }
     
-    func getAccountType() -> String? {
-        return currentUser().get(LCConstants.UserKey.accountType)?.stringValue
+    func getAccountType(user: AVUser) -> String? {
+        return user.object(forKey: LCConstants.UserKey.accountType) as? String
     }
     
-    func getAvatarFile(user: LCUser) -> AVFile? {
-        return user.get(LCConstants.UserKey.avatarFile) as? AVFile
+    func getAvatarFile(user: AVUser) -> AVFile? {
+        return user.object(forKey: LCConstants.UserKey.avatarFile) as? AVFile
     }
     // TODO
 }

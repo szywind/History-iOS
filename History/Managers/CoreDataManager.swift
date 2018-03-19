@@ -9,8 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
-import LeanCloud
-import LeanCloudSocial
+import AVOSCloud
 
 class CoreDataManager {
     
@@ -26,41 +25,41 @@ class CoreDataManager {
         appDelegate.saveContext()
     }
     
-    class func savePerson(personObject: LCObject) {
-        if let personId = personObject.objectId?.stringValue {
+    class func savePerson(personObject: AVObject) {
+        if let personId = personObject.objectId {
             if checkPersonExistence(personId: personId) {
                 return
             }
             let person = Person(context: context)
             person.objectId = personId
-            person.name = personObject.get(LCConstants.PersonKey.name)?.stringValue
-            person.type = personObject.get(LCConstants.PersonKey.type)?.stringValue
+            person.name = personObject.object(forKey: LCConstants.PersonKey.name) as? String
+            person.type = personObject.object(forKey: LCConstants.PersonKey.type) as? String
             
-            // Swift 暂时不支持文件上传和读取，只能用如下的OC SDK (https://forum.leancloud.cn/t/swift-avfile/15970, https://forum.leancloud.cn/t/swift/16679)
-            let personAVObject = AVObject(className: LCConstants.PersonKey.className, objectId: personId)
-            personAVObject.fetchInBackground({ (avObject, error) in
-                if error == nil {
-                    if let avatarFile = avObject?.object(forKey: LCConstants.PersonKey.avatarFile) as? AVFile {
-                        //                    AvatarManager.sharedInstance.getAvatar(avatarFile: avatarFile, withBlock: { (image) in
-                        //                        person.avatar = UIImageJPEGRepresentation(image!, 100) as? NSData
-                        //                    })
-                        LCManager.sharedInstance.getFileData(file: avatarFile) { (data) in
-                            person.avatar = data
-                        }
-                    }
-                    
-                    if let infoFile = avObject?.object(forKey: LCConstants.PersonKey.infoFile) as? AVFile {
-                        LCManager.sharedInstance.getFileData(file: infoFile) { (data) in
-                            person.info = data
-                        }
-                    }
-                } else {
-                    print(error?.localizedDescription)
+            if let avatarDict = personObject.object(forKey: LCConstants.PersonKey.avatarFile) as? NSDictionary {
+                if let url = avatarDict.object(forKey: "url") as? String {
+                    person.avatar = url
+
+//                    LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
+//                        if error == nil && url != nil {
+//                            person.avatar = NSData(contentsOf: url!)
+//                        } else {
+//                            print("[Error] ", error?.localizedDescription)
+//                        }
+//                    })
                 }
-            })
-            
-//            person.avatar = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue as? NSData
-//            person.info = personObject.get(LCConstants.PersonKey.infoFile)?.dataValue as? NSData
+            }
+
+            if let infoDict = personObject.object(forKey: LCConstants.PersonKey.infoFile) as? NSDictionary {
+                if let url = infoDict.object(forKey: "url") as? String {
+                    person.info = url
+                    
+//                    LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
+//                        if error == nil && url != nil {
+//                            person.info = NSData(contentsOf: url!)
+//                        }
+//                    })
+                }
+            }
             
             
     //        let avatarFile = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue
@@ -78,38 +77,38 @@ class CoreDataManager {
         }
     }
 
-    class func saveEvent(eventObject: LCObject) {
-        if let eventId = eventObject.objectId?.stringValue {
+    class func saveEvent(eventObject: AVObject) {
+        if let eventId = eventObject.objectId {
             if checkEventExistence(eventId: eventId) {
                 return
             }
-            let event = Event(context: context)
-            event.objectId = eventObject.objectId?.stringValue
-            event.name = eventObject.get(LCConstants.EventKey.name)?.stringValue
-            event.type = eventObject.get(LCConstants.EventKey.type)?.stringValue
             
-//            let eventAVObject = AVObject(className: LCConstants.EventKey.className, objectId: eventId)
-            let eventAVObject = AVObject.init(className: LCConstants.EventKey.className, objectId: eventId)
-            eventAVObject.fetchInBackground({ (avObject, error) in
-                if error == nil {
-                    if let avatarFile = avObject?.object(forKey: LCConstants.EventKey.avatarFile) as? AVFile {
-                        LCManager.sharedInstance.getFileData(file: avatarFile) { (data) in
-                            event.avatar = data
-                        }
-                    }
-                    
-                    if let infoFile = avObject?.object(forKey: LCConstants.EventKey.infoFile) as? AVFile {
-                        LCManager.sharedInstance.getFileData(file: infoFile) { (data) in
-                            event.info = data
-                        }
-                    }
-                } else {
-                    print(error?.localizedDescription)
+            let event = Event(context: context)
+            event.objectId = eventId
+            event.name = eventObject.object(forKey: LCConstants.EventKey.name) as? String
+            event.type = eventObject.object(forKey: LCConstants.EventKey.type) as? String
+            
+            if let avatarDict = eventObject.object(forKey: LCConstants.EventKey.avatarFile) as? NSDictionary {
+                if let url = avatarDict.object(forKey: "url") as? String {
+                    event.avatar = url
+//                LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
+//                    if error == nil && url != nil {
+//                        event.avatar = NSData(contentsOf: url!)
+//                    }
+//                })
                 }
-            })
-    //        event.avatar = eventObject.value(forKey: LCConstants.EventKey.avatarFile) as! NSData
-//            event.avatar = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as? NSData
-//            event.info = eventObject.get(LCConstants.EventKey.infoFile)?.dataValue as? NSData
+            }
+            
+            if let infoDict = eventObject.object(forKey: LCConstants.EventKey.infoFile) as? NSDictionary {
+                if let url = infoDict.object(forKey: "url") as? String {
+                    event.info = url
+//                LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
+//                    if error == nil && url != nil {
+//                        event.info = NSData(contentsOf: url!)
+//                    }
+//                })
+                }
+            }
             
     //        let avatarFile = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as! AVFile
     //        AvatarManager.sharedInstance.getAvatar(avatarFile: avatarFile) { (image) in
@@ -126,12 +125,12 @@ class CoreDataManager {
     }
     
     class func checkPersonExistence(personId: String) -> Bool {
-        var people = fetchfilteredPeople(value: personId, format: Constants.CoreData.personIdFilterFormat)
+        let people = fetchfilteredPeople(value: personId, format: Constants.CoreData.personIdFilterFormat)
         return people.count > 0
     }
     
     class func checkEventExistence(eventId: String) -> Bool {
-        var events = fetchfilteredEvents(value: eventId, format: Constants.CoreData.eventIdFilterFormat)
+        let events = fetchfilteredEvents(value: eventId, format: Constants.CoreData.eventIdFilterFormat)
         return events.count > 0
     }
     

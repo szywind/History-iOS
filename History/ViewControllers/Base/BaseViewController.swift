@@ -21,7 +21,27 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func createView() {
+    }
+    
+    // https://stackoverflow.com/questions/37805885/how-to-create-dispatch-queue-in-swift-3
+    func refreshUI() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Bounce back to the main thread to update the UI
+            DispatchQueue.main.async {
+                self.createView()
+            }
+        }
+    }
+    
+    @objc func dismissKeyboard(){
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Bounce back to the main thread to update the UI
+            DispatchQueue.main.async {
+                self.view.endEditing(true)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
