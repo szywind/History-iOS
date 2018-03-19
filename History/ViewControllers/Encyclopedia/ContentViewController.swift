@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContentViewController: UIViewController {
+class ContentViewController: BaseViewController {
     
     var records = [Record] ()
     
@@ -33,6 +33,15 @@ class ContentViewController: UIViewController {
     
     func refresh() {
         recordTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? EncyclopediaDetailViewController {
+            if let indexPath = recordTableView.indexPathForSelectedRow {
+                guard records.count > indexPath.row else { return }
+                destination.record = records[indexPath.row]
+            }
+        }
     }
     
     /*
@@ -64,5 +73,10 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dismissKeyboard()
+        performSegue(withIdentifier: "showRecordDetails", sender: self)
     }
 }

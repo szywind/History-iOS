@@ -25,7 +25,12 @@ class Record {
     init(person: Person) {
         self.name = person.name
         if let avatar_ = person.avatar {
-            self.avatar = UIImage(data: avatar_ as Data)
+            let url = URL(string: avatar_.convertToHttps())
+            if let data = try? Data(contentsOf: url!) {
+                self.avatar = UIImage(data: data)
+            } else {
+                self.avatar = UIImage(named: Constants.Default.defaultAvatar)
+            }
         } else {
             self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
@@ -34,7 +39,12 @@ class Record {
         
         
         if let info_ = person.info {
-            self.info = NSString(data: info_ as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            let url = URL(string: info_.convertToHttps())
+            if let data = try? Data(contentsOf: url!) {
+                self.info = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue)! as String
+            } else {
+                self.info = Constants.Default.defaultInfo
+            }
         } else {
             self.info = Constants.Default.defaultInfo
         }
@@ -43,7 +53,12 @@ class Record {
     init(event: Event) {
         self.name = event.name
         if let avatar_ = event.avatar {
-            self.avatar = UIImage(data: avatar_ as Data)
+            let url = URL(string: avatar_.convertToHttps())
+            if let data = try? Data(contentsOf: url!) {
+                self.avatar = UIImage(data: data)
+            } else {
+                self.avatar = UIImage(named: Constants.Default.defaultAvatar)
+            }
         } else {
             self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
@@ -51,7 +66,12 @@ class Record {
         self.type = event.type
         
         if let info_ = event.info {
-            self.info = NSString(data: info_ as Data, encoding: String.Encoding.utf8.rawValue) as! String
+            let url = URL(string: info_.convertToHttps())
+            if let data = try? Data(contentsOf: url!) {
+                self.info = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue)! as String
+            } else {
+                self.info = Constants.Default.defaultInfo
+            }
         } else {
             self.info = Constants.Default.defaultInfo
         }
