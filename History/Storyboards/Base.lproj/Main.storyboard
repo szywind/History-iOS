@@ -61,6 +61,7 @@
                         <segue destination="pf9-Ym-pAk" kind="relationship" relationship="viewControllers" id="IAt-cW-iAz"/>
                         <segue destination="Xni-Kp-uTY" kind="relationship" relationship="viewControllers" id="C0h-M6-85k"/>
                         <segue destination="XBV-lB-9ip" kind="relationship" relationship="viewControllers" id="NxD-cZ-3op"/>
+                        <segue destination="Ufe-2b-gOk" kind="relationship" relationship="viewControllers" id="hu0-KC-3Pm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jq3-47-Vfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -70,6 +71,7 @@
         <!--Wikipedia-->
         <scene sceneID="keo-6O-95m">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7gG-xY-tOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Wikipedia" id="pf9-Ym-pAk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sUB-6r-dN7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -79,7 +81,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="社区" image="second" id="dzh-9N-Qan"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7gG-xY-tOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-330" y="-743"/>
         </scene>
@@ -712,6 +713,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yri-LG-mTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-330" y="55"/>
+        </scene>
+        <!--Timline-->
+        <scene sceneID="lFm-Jv-rBF">
+            <objects>
+                <tableViewController id="Ufe-2b-gOk" customClass="TimelineTableViewController" customModule="TimelineTableViewCellDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GTD-on-nWG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Ufe-2b-gOk" id="gqc-0t-KZ6"/>
+                            <outlet property="delegate" destination="Ufe-2b-gOk" id="6Te-Qp-yQn"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="fk0-Fz-zz2"/>
+                    <navigationItem key="navigationItem" title="Timline" id="zcK-wN-bpU"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CaK-QF-gnH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="-2306"/>
         </scene>
     </scenes>
     <resources>
