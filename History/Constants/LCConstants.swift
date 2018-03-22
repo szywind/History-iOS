@@ -55,6 +55,10 @@ struct LCConstants {
         static let avatarFile = "avatarFile"
         static let infoFile = "infoFile"
         static let type = "type"
+        static let start = "start"
+        static let end = "end"
+        static let dynasty = "dynasty"
+        static let dynasty_detail = "dynasty_detail"
     }
     
     /**
@@ -69,6 +73,11 @@ struct LCConstants {
         static let avatarFile = "avatarFile"
         static let infoFile = "infoFile"
         static let type = "type"
+        static let start = "start"
+        static let end = "end"
+        static let dynasty = "dynasty"
+        static let dynasty_detail = "dynasty_detail"
+
     }
     
     

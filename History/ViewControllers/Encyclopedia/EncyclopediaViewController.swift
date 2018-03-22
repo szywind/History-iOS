@@ -26,13 +26,6 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
     
     fileprivate var viewControllers = [ContentViewController]()
     
-    var allPeople = [Record]()
-    var allEvents = [Record]()
-    var events = [Record]()
-    var geo = [Record]()
-    var art = [Record]()
-    var tech = [Record]()
-    
     var filteredRecords = [Record]()
     
     // MARK: - Init
@@ -57,14 +50,7 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
             break
         }
 
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil, queue: nil) { (_) in
-            self.setupData()
-            self.refresh()
-        }
-        
-        setupData()
         setupSearchBar()
-        refresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,16 +58,7 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func setupData() {
-        allPeople = Record.getRecords(people: CoreDataManager.fetchAllPeople())
-        allEvents = Record.getRecords(events: CoreDataManager.fetchAllEvents())
-        events = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
-        geo = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
-        art = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
-        tech = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
-    }
-    
-    func refresh() {
+    override func refreshUI() {
         setupViewControllers()
         setupScrollView()
         
@@ -209,7 +186,7 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
             filteredRecords += allPeople.filter({$0.name?.range(of:searchBar.text!) != nil})
             filteredRecords += allEvents.filter({$0.name?.range(of:searchBar.text!) != nil})
         }
-        refresh()
+        refreshUI()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -219,7 +196,7 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         searchBar.text = ""
-        refresh()
+        refreshUI()
         dismissKeyboard()
     }
 //    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
