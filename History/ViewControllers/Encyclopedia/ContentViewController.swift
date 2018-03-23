@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContentViewController: BaseViewController {
+class ContentViewController: UIViewController {
     
     var records = [Record] ()
     

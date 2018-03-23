@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Timeline2ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class Timeline2ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,8 +39,8 @@ class Timeline2ViewController: BaseViewController, UITableViewDelegate, UITableV
     
     func processData() {
         
-        for record in allRecords {
-            let dynastyKey = dynasty2index[record.dynasty!]
+        for record in LocalDataManager.sharedInstance.allRecords {
+            let dynastyKey = LocalDataManager.sharedInstance.dynasty2index[record.dynasty!]
             if var records = dynastyDictionary[dynastyKey!] {
                 records.append(record)
                 dynastyDictionary[dynastyKey!] = records
@@ -52,7 +52,7 @@ class Timeline2ViewController: BaseViewController, UITableViewDelegate, UITableV
         dynastySectionIndices = [Int](dynastyDictionary.keys)
         dynastySectionIndices = dynastySectionIndices.sorted(by: { $0 < $1 })
         for ind in dynastySectionIndices {
-            dynastySectionTitles.append(index2dynasty[ind])
+            dynastySectionTitles.append(LocalDataManager.sharedInstance.index2dynasty[ind])
         }
         for (ind, records) in dynastyDictionary {
             var recordsInSameDynasty = [(TimelinePoint, UIColor, String, String, String?, String?, String?)]()
@@ -66,6 +66,8 @@ class Timeline2ViewController: BaseViewController, UITableViewDelegate, UITableV
             data[ind] = recordsInSameDynasty
         }
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,8 +77,12 @@ class Timeline2ViewController: BaseViewController, UITableViewDelegate, UITableV
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
+        
         tableView.dataSource = self
         tableView.delegate = self
+        
+        refreshUI()
         
         let timelineTableViewCellNib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle(for: TimelineTableViewCell.self))
         tableView.register(timelineTableViewCellNib, forCellReuseIdentifier: "TimelineTableViewCell")
@@ -88,17 +94,13 @@ class Timeline2ViewController: BaseViewController, UITableViewDelegate, UITableV
         tableView.tableFooterView = UIView()
     }
     
-    override func setupData() {
-        super.setupData()
-        processData()
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func refreshUI() {
+    @objc func refreshUI() {
+        processData()
         self.tableView.reloadData()
     }
     /*
