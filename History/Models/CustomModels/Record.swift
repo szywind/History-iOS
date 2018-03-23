@@ -13,17 +13,31 @@ class Record {
     var name: String?
     var avatar: UIImage?
     var type: String?
-    var info: String
+    var info: String?
+    var start: Int16?
+    var end: Int16?
+    var dynasty: String?
+    var dynasty_detail: String?
     
-    init(name: String?, avatar: UIImage?, type: String?) {
+    init(name: String?, avatar: UIImage?, type: String?, start: Int16?, end: Int16?, dynasty: String?, dynasty_detail: String?, info: String = Constants.Default.defaultInfo) {
         self.name = name
         self.avatar = avatar
         self.type = type
-        self.info = Constants.Default.defaultInfo
+        self.info = info
+        self.start = start
+        self.end = end
+        self.dynasty = dynasty
+        self.dynasty_detail = dynasty_detail
     }
     
     init(person: Person) {
         self.name = person.name
+        self.type = person.type
+        self.start = person.start as? Int16
+        self.end = person.end as? Int16
+        self.dynasty = person.dynasty
+        self.dynasty_detail = person.dynasty_detail
+        
         if let avatar_ = person.avatar {
             let url = URL(string: avatar_.convertToHttps())
             if let data = try? Data(contentsOf: url!) {
@@ -34,9 +48,6 @@ class Record {
         } else {
             self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
-        
-        self.type = person.type
-        
         
         if let info_ = person.info {
             let url = URL(string: info_.convertToHttps())
@@ -52,6 +63,12 @@ class Record {
     
     init(event: Event) {
         self.name = event.name
+        self.type = event.type
+        self.start = event.start as? Int16
+        self.end = event.end as? Int16
+        self.dynasty = event.dynasty
+        self.dynasty_detail = event.dynasty_detail
+        
         if let avatar_ = event.avatar {
             let url = URL(string: avatar_.convertToHttps())
             if let data = try? Data(contentsOf: url!) {
@@ -62,8 +79,6 @@ class Record {
         } else {
             self.avatar = UIImage(named: Constants.Default.defaultAvatar)
         }
-        
-        self.type = event.type
         
         if let info_ = event.info {
             let url = URL(string: info_.convertToHttps())

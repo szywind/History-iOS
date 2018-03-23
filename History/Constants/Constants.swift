@@ -22,5 +22,6 @@ struct Constants {
     
     struct Notification {
         static let fetchDataFromLC = "didFetchDataNotification"
+        static let refreshUI = "shouldRefreshUI"
     }
 }

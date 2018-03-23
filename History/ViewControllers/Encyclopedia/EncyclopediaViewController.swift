@@ -11,7 +11,7 @@ import Segmentio
 import CoreData
 import AVOSCloud
 
-class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
+class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
 
     var segmentioStyle = SegmentioStyle.imageUnderLabel
     var segmentioContent = [SegmentioItem]()
@@ -25,13 +25,6 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate var viewControllers = [ContentViewController]()
-    
-    var allPeople = [Record]()
-    var allEvents = [Record]()
-    var events = [Record]()
-    var geo = [Record]()
-    var art = [Record]()
-    var tech = [Record]()
     
     var filteredRecords = [Record]()
     
@@ -57,14 +50,10 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
             break
         }
 
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil, queue: nil) { (_) in
-            self.setupData()
-            self.refresh()
-        }
-        
-        setupData()
         setupSearchBar()
-        refresh()
+        refreshUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,16 +61,7 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func setupData() {
-        allPeople = Record.getRecords(people: CoreDataManager.fetchAllPeople())
-        allEvents = Record.getRecords(events: CoreDataManager.fetchAllEvents())
-        events = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
-        geo = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
-        art = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
-        tech = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
-    }
-    
-    func refresh() {
+    @objc func refreshUI() {
         setupViewControllers()
         setupScrollView()
         
@@ -125,27 +105,27 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
             ]
         } else {
             let peopleController = ContentViewController.create()
-            peopleController.records = allPeople
+            peopleController.records = LocalDataManager.sharedInstance.allPeople
             print("person records", peopleController.records.count)
 
             let allController = ContentViewController.create()
-            allController.records = allEvents
+            allController.records = LocalDataManager.sharedInstance.allEvents
             print("all records", allController.records.count)
             
             let eventController = ContentViewController.create()
-            eventController.records = events
+            eventController.records = LocalDataManager.sharedInstance.events
             print("event records", eventController.records.count)
             
             let geoController = ContentViewController.create()
-            geoController.records = geo
+            geoController.records = LocalDataManager.sharedInstance.geo
             print("geo records", geoController.records.count)
             
             let artController = ContentViewController.create()
-            artController.records = art
+            artController.records = LocalDataManager.sharedInstance.art
             print("art records", artController.records.count)
             
             let techController = ContentViewController.create()
-            techController.records = tech
+            techController.records = LocalDataManager.sharedInstance.tech
             print("tech records", techController.records.count)
             
             viewControllers.append(peopleController)
@@ -206,10 +186,10 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
             view.endEditing(true)
         } else {
             isSearching = true
-            filteredRecords += allPeople.filter({$0.name?.range(of:searchBar.text!) != nil})
-            filteredRecords += allEvents.filter({$0.name?.range(of:searchBar.text!) != nil})
+            filteredRecords += LocalDataManager.sharedInstance.allPeople.filter({$0.name?.range(of:searchBar.text!) != nil})
+            filteredRecords += LocalDataManager.sharedInstance.allEvents.filter({$0.name?.range(of:searchBar.text!) != nil})
         }
-        refresh()
+        refreshUI()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -219,7 +199,7 @@ class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         searchBar.text = ""
-        refresh()
+        refreshUI()
         dismissKeyboard()
     }
 //    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
