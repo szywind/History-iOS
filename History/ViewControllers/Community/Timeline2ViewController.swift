@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Timeline2ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Timeline2ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -79,9 +79,6 @@ class Timeline2ViewController: UIViewController, UITableViewDelegate, UITableVie
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        
         refreshUI()
         
         let timelineTableViewCellNib = UINib(nibName: "TimelineTableViewCell", bundle: Bundle(for: TimelineTableViewCell.self))
@@ -103,6 +100,20 @@ class Timeline2ViewController: UIViewController, UITableViewDelegate, UITableVie
         processData()
         self.tableView.reloadData()
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? EncyclopediaDetailViewController {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                guard let sectionRecords = dynastyDictionary[dynastySectionIndices[indexPath.section]] else {
+                    return
+                }
+                print(sectionRecords[indexPath.row])
+                guard sectionRecords.count > indexPath.row else { return }
+                destination.record = sectionRecords[indexPath.row]
+            }
+        }
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -112,8 +123,9 @@ class Timeline2ViewController: UIViewController, UITableViewDelegate, UITableVie
      // Pass the selected object to the new view controller.
      }
      */
-    
-    
+}
+
+extension Timeline2ViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -169,11 +181,12 @@ class Timeline2ViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let sectionData = data[dynastySectionIndices[indexPath.section]] else {
-            return
-        }
+//        guard let sectionData = data[dynastySectionIndices[indexPath.section]] else {
+//            return
+//        }
+//        print(sectionData[indexPath.row])
+        performSegue(withIdentifier: "showRecordDetails2", sender: self)
         
-        print(sectionData[indexPath.row])
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -196,7 +209,7 @@ class Timeline2ViewController: UIViewController, UITableViewDelegate, UITableVie
      tableView.deleteRows(at: [indexPath], with: .fade)
      } else if editingStyle == .insert {
      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }    
+     }
      }
      */
     
@@ -214,15 +227,4 @@ class Timeline2ViewController: UIViewController, UITableViewDelegate, UITableVie
      return true
      }
      */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
