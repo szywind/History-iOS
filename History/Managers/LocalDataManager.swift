@@ -31,6 +31,7 @@ class LocalDataManager {
     }
     
     func mergeSortedAllRecords() {
+        allRecords.removeAll()
         var ind1 = 0
         var ind2 = 0
         while ind1 < allPeople.count && ind2 < allEvents.count {
