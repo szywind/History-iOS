@@ -9,11 +9,12 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        refreshUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,15 +34,7 @@ class BaseViewController: UIViewController {
             }
         }
     }
-    
-    @objc func dismissKeyboard(){
-        DispatchQueue.global(qos: .userInitiated).async {
-            // Bounce back to the main thread to update the UI
-            DispatchQueue.main.async {
-                self.view.endEditing(true)
-            }
-        }
-    }
+
     /*
     // MARK: - Navigation
 
@@ -52,4 +45,15 @@ class BaseViewController: UIViewController {
     }
     */
 
+}
+
+extension UIViewController {
+    @objc func dismissKeyboard(){
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Bounce back to the main thread to update the UI
+            DispatchQueue.main.async {
+                self.view.endEditing(true)
+            }
+        }
+    }
 }

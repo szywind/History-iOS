@@ -14,8 +14,7 @@ import AVOSCloud
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -26,20 +25,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVOSCloud.setApplicationId(dev_cn_appID, clientKey: dev_cn_appKey)
         AVOSCloud.setAllLogsEnabled(true)
         
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+//        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(3600)
+
         
-        PersonManager.sharedInstance.fetchAllPeopleFromLC { (_, _) in
-            EventManager.sharedInstance.fetchAllEventsFromLC { (_, _) in
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
+        PersonManager.sharedInstance.fetchAllPeopleFromLC { (objects1, error1) in
+            EventManager.sharedInstance.fetchAllEventsFromLC { (objects2, error2) in
+                if (error1 == nil && objects1 != nil ) || (error2 == nil && objects2 != nil) {
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
+                    LocalDataManager.sharedInstance.setupData()
+                }
             }
         }
         return true
     }
 
+    // https://developer.apple.com/documentation/uikit/core_app/managing_your_app_s_life_cycle/preparing_your_app_to_run_in_the_background/updating_your_app_with_background_app_refresh
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        PersonManager.sharedInstance.fetchAllPeopleFromLC { (_, _) in
-            EventManager.sharedInstance.fetchAllEventsFromLC { (_, _) in
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
+        PersonManager.sharedInstance.fetchAllPeopleFromLC { (objects1, error1) in
+            EventManager.sharedInstance.fetchAllEventsFromLC { (objects2, error2) in
+//                if let vc = self.window?.rootViewController as? BaseViewController { // this statement returns false since rootViewCOntroller is UITabBarController
+//                    vc.update()
+//                    completionHandler(.newData)
+//                } else {
+//                    completionHandler(.noData)
+//                }
+                if (error1 == nil && objects1 != nil ) || (error2 == nil && objects2 != nil) {
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
+                    LocalDataManager.sharedInstance.setupData()
+                    completionHandler(.newData)
+                } else {
+                    completionHandler(.noData)
+                }
             }
         }
     }

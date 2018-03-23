@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBAction func onTapped(_ sender: Any) {
+//        DispatchQueue.main.async {
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
+//        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
