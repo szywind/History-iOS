@@ -8,6 +8,7 @@
         <attribute name="info" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -19,11 +20,12 @@
         <attribute name="info" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-54" positionY="9" width="128" height="180"/>
-        <element name="Person" positionX="-54" positionY="-9" width="128" height="180"/>
+        <element name="Event" positionX="-54" positionY="9" width="128" height="195"/>
+        <element name="Person" positionX="-54" positionY="-9" width="128" height="195"/>
     </elements>
 </model>

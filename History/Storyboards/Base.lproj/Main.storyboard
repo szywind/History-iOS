@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Libian.ttc">
+            <string>STLibianTC-Regular</string>
+        </array>
         <array key="WeibeiTC-Bold.otf">
             <string>WeibeiTC-Bold</string>
         </array>
@@ -559,7 +562,7 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENW-Nc-Lan">
                                                             <rect key="frame" x="88" y="25" width="229" height="80"/>
-                                                            <fontDescription key="fontDescription" name="WeibeiTC-Bold" family="Weibei TC" pointSize="22"/>
+                                                            <fontDescription key="fontDescription" name="STLibianTC-Regular" family="Libian TC" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -617,17 +620,17 @@
             <objects>
                 <viewController id="RZe-uT-fKY" customClass="EncyclopediaDetailViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lPv-pC-2bt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="io1-S0-9nF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="951"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yJ-Xv-0pV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zhenyuan Shen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BB-KI-cHs">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="37B-sR-Iih"/>
                                                 </constraints>
@@ -636,13 +639,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T5J-PV-Wh7">
-                                                <rect key="frame" x="0.0" y="50" width="414" height="150"/>
+                                                <rect key="frame" x="0.0" y="50" width="375" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="TDh-mC-a5S"/>
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4mu-eJ-cTA">
-                                                <rect key="frame" x="0.0" y="200" width="414" height="800"/>
+                                                <rect key="frame" x="0.0" y="200" width="375" height="800"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -683,7 +686,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HE7-h8-ah5"/>
                     </view>
-                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="infoTextView" destination="4mu-eJ-cTA" id="sIY-XV-F3r"/>
                         <outlet property="recordImageView" destination="T5J-PV-Wh7" id="Y7T-Vz-G61"/>
@@ -881,6 +883,6 @@ AABUAAAAAAAAAAAAAAAAAAAT6w
         <image name="老子" width="300" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="08K-Iv-Gfj"/>
+        <segue reference="ffm-Wd-quA"/>
     </inferredMetricsTieBreakers>
 </document>
