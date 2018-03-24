@@ -25,5 +25,6 @@ extension Event {
     @NSManaged public var end: NSNumber?
     @NSManaged public var dynasty: String?
     @NSManaged public var dynasty_detail: String?
+    @NSManaged public var pinyin: String?
 
 }

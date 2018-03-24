@@ -14,7 +14,10 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        refreshUI()
+        navigationController?.navigationBar.barTintColor = Constants.Color.naviBarTint
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        refreshUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,18 +25,18 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func createView() {
-    }
-    
-    // https://stackoverflow.com/questions/37805885/how-to-create-dispatch-queue-in-swift-3
-    func refreshUI() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            // Bounce back to the main thread to update the UI
-            DispatchQueue.main.async {
-                self.createView()
-            }
-        }
-    }
+//    func createView() {
+//    }
+//    
+//    // https://stackoverflow.com/questions/37805885/how-to-create-dispatch-queue-in-swift-3
+//    func refreshUI() {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            // Bounce back to the main thread to update the UI
+//            DispatchQueue.main.async {
+//                self.createView()
+//            }
+//        }
+//    }
 
     /*
     // MARK: - Navigation

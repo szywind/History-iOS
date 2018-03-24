@@ -38,6 +38,7 @@ class CoreDataManager {
             person.end = personObject.object(forKey: LCConstants.PersonKey.end) as? NSNumber
             person.dynasty = personObject.object(forKey: LCConstants.PersonKey.dynasty) as? String
             person.dynasty_detail = personObject.object(forKey: LCConstants.PersonKey.dynasty_detail) as? String
+            person.pinyin = personObject.object(forKey: LCConstants.PersonKey.pinyin) as? String
 
             if let avatarDict = personObject.object(forKey: LCConstants.PersonKey.avatarFile) as? NSDictionary {
                 if let url = avatarDict.object(forKey: "url") as? String {
@@ -95,6 +96,7 @@ class CoreDataManager {
             event.end = eventObject.object(forKey: LCConstants.EventKey.end) as? NSNumber
             event.dynasty = eventObject.object(forKey: LCConstants.EventKey.dynasty) as? String
             event.dynasty_detail = eventObject.object(forKey: LCConstants.EventKey.dynasty_detail) as? String
+            event.pinyin = eventObject.object(forKey: LCConstants.EventKey.pinyin) as? String
             
             if let avatarDict = eventObject.object(forKey: LCConstants.EventKey.avatarFile) as? NSDictionary {
                 if let url = avatarDict.object(forKey: "url") as? String {

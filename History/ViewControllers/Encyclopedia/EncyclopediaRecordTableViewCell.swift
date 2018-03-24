@@ -1,5 +1,5 @@
 //
-//  RecordTableViewCell.swift
+//  EncyclopediaRecordTableViewCell.swift
 //  History
 //
 //  Created by Cloudream on 13/03/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecordTableViewCell: UITableViewCell {
+class EncyclopediaRecordTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var recordImage: UIImageView!
