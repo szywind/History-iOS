@@ -17,7 +17,7 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var recordTableView: UITableView!
 
     func processData() {
-        
+//        records = records.sorted(by: { $0.pinyin! < $1.pinyin! || ($0.pinyin! < $1.pinyin! && $0.start! < $1.start!)}) // sort records by alphabetical order
         for record in records {
             let key = record.pinyin?.prefix(1).uppercased()
             if var value = recordDictionary[key!] {
@@ -57,8 +57,11 @@ class ContentViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? EncyclopediaDetailViewController {
             if let indexPath = recordTableView.indexPathForSelectedRow {
-                guard records.count > indexPath.row else { return }
-                destination.record = records[indexPath.row]
+                guard let sectionData = recordDictionary[recordSectionTitles[indexPath.section]] else {
+                    return
+                }
+                guard sectionData.count > indexPath.row else { return }
+                destination.record = sectionData[indexPath.row]
             }
         }
     }
