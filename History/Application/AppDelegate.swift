@@ -37,6 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+        
+        // https://coderwall.com/p/dyqrfa/customize-navigation-bar-appearance-with-swift
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+
         return true
     }
 

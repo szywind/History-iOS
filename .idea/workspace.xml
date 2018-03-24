@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5fe028e-42a0-4db5-ab9b-0d540f364eff" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/History.xcworkspace/xcuserdata/1.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/History.xcworkspace/xcuserdata/1.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/History.xcworkspace/xcuserdata/1.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/History.xcodeproj/xcuserdata/1.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/History.xcodeproj/xcuserdata/1.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/1.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/1.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/History.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/History.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/History.xcworkspace/xcuserdata/1.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/History.xcworkspace/xcuserdata/1.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -173,8 +173,16 @@
       </EXTENSION>
       <method />
     </configuration>
-    <list size="1">
+    <configuration default="false" name="AVOSCloudIM" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="AVOSCloudIM" CONFIG_NAME="Debug" SCHEME_NAME="AVOSCloudIM" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.History" />
+      <item index="1" class="java.lang.String" itemvalue="Application.AVOSCloudIM" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     struct Default {
@@ -23,5 +24,10 @@ struct Constants {
     struct Notification {
         static let fetchDataFromLC = "didFetchDataNotification"
         static let refreshUI = "shouldRefreshUI"
+    }
+    
+    struct Color {
+        static let naviBarTint = UIColor(netHex: 0x522421)
+        static let naviTint = UIColor(netHex: 0xBF8641)
     }
 }

@@ -76,6 +76,8 @@ class Timeline2ViewController: UIViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationController?.navigationBar.barTintColor = Constants.Color.naviBarTint
+        navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
         
@@ -89,6 +91,8 @@ class Timeline2ViewController: UIViewController {
         tableView.estimatedRowHeight = 100
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.tableFooterView = UIView()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
