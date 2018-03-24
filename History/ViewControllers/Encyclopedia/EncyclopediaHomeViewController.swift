@@ -9,18 +9,17 @@
 import UIKit
 import Segmentio
 
-class EncyclopediaHomeViewController: UIViewController, UISearchBarDelegate {
+class EncyclopediaHomeViewController: BaseViewController, UISearchBarDelegate {
 
     fileprivate var currentStyle = SegmentioStyle.onlyLabel
-    fileprivate var containerViewController: EmbedContainerViewController?
+    fileprivate var containerViewController: EncyclopediaEmbedContainerViewController?
     
     var searchBar = UISearchBar()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.barTintColor = Constants.Color.naviBarTint
-        navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
+
 //        searchBar.showsCancelButton = false
 //        searchBar.placeholder = "请输入要搜索的词条"
 //        searchBar.delegate = self
@@ -46,8 +45,8 @@ class EncyclopediaHomeViewController: UIViewController, UISearchBarDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == String(describing: EmbedContainerViewController.self) {
-            containerViewController = segue.destination as? EmbedContainerViewController
+        if segue.identifier == String(describing: EncyclopediaEmbedContainerViewController.self) {
+            containerViewController = segue.destination as? EncyclopediaEmbedContainerViewController
             containerViewController?.style = currentStyle
         }
     }
