@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Timeline2ViewController: UIViewController {
+class TimelineViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -129,7 +129,7 @@ class Timeline2ViewController: UIViewController {
      */
 }
 
-extension Timeline2ViewController: UITableViewDelegate, UITableViewDataSource {
+extension TimelineViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
