@@ -22,7 +22,7 @@
         <!--History-->
         <scene sceneID="Y43-Uf-aba">
             <objects>
-                <viewController id="vdW-YZ-SRO" customClass="Timeline2ViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vdW-YZ-SRO" customClass="TimelineViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NhG-rb-0mW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,12 +38,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2hW-dS-VSv" firstAttribute="trailing" secondItem="vpA-AG-5mk" secondAttribute="trailing" id="9V2-43-ClY"/>
-                            <constraint firstItem="vpA-AG-5mk" firstAttribute="leading" secondItem="2hW-dS-VSv" secondAttribute="leading" id="B3t-3E-QT6"/>
-                            <constraint firstItem="2hW-dS-VSv" firstAttribute="bottom" secondItem="vpA-AG-5mk" secondAttribute="bottom" id="HrJ-EO-qTA"/>
+                            <constraint firstItem="40E-b8-0wK" firstAttribute="trailing" secondItem="vpA-AG-5mk" secondAttribute="trailing" id="9V2-43-ClY"/>
+                            <constraint firstItem="vpA-AG-5mk" firstAttribute="leading" secondItem="40E-b8-0wK" secondAttribute="leading" id="B3t-3E-QT6"/>
+                            <constraint firstItem="40E-b8-0wK" firstAttribute="bottom" secondItem="vpA-AG-5mk" secondAttribute="bottom" id="HrJ-EO-qTA"/>
                             <constraint firstItem="vpA-AG-5mk" firstAttribute="top" secondItem="NhG-rb-0mW" secondAttribute="top" id="Ibj-NB-RAe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2hW-dS-VSv"/>
+                        <viewLayoutGuide key="safeArea" id="40E-b8-0wK"/>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="Ljg-Op-oCL"/>
                     <connections>
@@ -53,38 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNE-uj-cUx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="-2353.6731634182911"/>
-        </scene>
-        <!--HistoryTree-->
-        <scene sceneID="tCw-9I-vPN">
-            <objects>
-                <viewController title="HistoryTree" id="kYp-d1-GWb" customClass="TimelineViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OnB-XZ-GFJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFV-XK-5VL" customClass="ISTimeline" customModule="History">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="g9I-nI-Kuc" firstAttribute="trailing" secondItem="tFV-XK-5VL" secondAttribute="trailing" id="Flc-HT-5NE"/>
-                            <constraint firstItem="tFV-XK-5VL" firstAttribute="leading" secondItem="g9I-nI-Kuc" secondAttribute="leading" id="UMo-R3-gyV"/>
-                            <constraint firstItem="tFV-XK-5VL" firstAttribute="top" secondItem="g9I-nI-Kuc" secondAttribute="top" id="rBj-Nl-Djb"/>
-                            <constraint firstItem="g9I-nI-Kuc" firstAttribute="bottom" secondItem="tFV-XK-5VL" secondAttribute="bottom" id="w28-Ga-9KT"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="g9I-nI-Kuc"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="历史树" image="first" id="rLH-8L-BHl"/>
-                    <connections>
-                        <outlet property="timeline" destination="tFV-XK-5VL" id="CoO-sb-FHO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4I0-Us-n2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-330" y="-1534"/>
+            <point key="canvasLocation" x="999.20000000000005" y="-2353.6731634182911"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tO4-Ht-0Bd">
@@ -96,11 +65,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="kYp-d1-GWb" kind="relationship" relationship="viewControllers" id="Nls-rl-0vY"/>
+                        <segue destination="3ak-r1-FI8" kind="relationship" relationship="viewControllers" id="Wav-8w-nNN"/>
                         <segue destination="pf9-Ym-pAk" kind="relationship" relationship="viewControllers" id="IAt-cW-iAz"/>
                         <segue destination="Xni-Kp-uTY" kind="relationship" relationship="viewControllers" id="C0h-M6-85k"/>
-                        <segue destination="iWr-CH-c6T" kind="relationship" relationship="viewControllers" id="TeH-qx-b3V"/>
                         <segue destination="Qc9-gV-iS8" kind="relationship" relationship="viewControllers" id="b4n-Fn-x21"/>
+                        <segue destination="5aC-XJ-zs0" kind="relationship" relationship="viewControllers" id="iif-Mt-TUl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jq3-47-Vfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -125,7 +94,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="Dfa-lU-HSU"/>
+                        <viewLayoutGuide key="safeArea" id="6gp-Z9-vcZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="社区" image="second" id="dzh-9N-Qan"/>
                 </viewController>
@@ -320,19 +289,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YPP-eE-hZV" firstAttribute="leading" secondItem="6EQ-am-2ug" secondAttribute="leading" id="GgL-qD-vum"/>
-                            <constraint firstItem="Mck-sD-eub" firstAttribute="leading" secondItem="6EQ-am-2ug" secondAttribute="leading" id="J2b-PA-AIq"/>
-                            <constraint firstItem="6EQ-am-2ug" firstAttribute="trailing" secondItem="YPP-eE-hZV" secondAttribute="trailing" id="KGT-lA-o07"/>
-                            <constraint firstItem="1kQ-lK-PyQ" firstAttribute="top" secondItem="6EQ-am-2ug" secondAttribute="top" constant="20" id="Rd5-Pb-KZu"/>
+                            <constraint firstItem="YPP-eE-hZV" firstAttribute="leading" secondItem="Rq0-eN-PeN" secondAttribute="leading" id="GgL-qD-vum"/>
+                            <constraint firstItem="Mck-sD-eub" firstAttribute="leading" secondItem="Rq0-eN-PeN" secondAttribute="leading" id="J2b-PA-AIq"/>
+                            <constraint firstItem="Rq0-eN-PeN" firstAttribute="trailing" secondItem="YPP-eE-hZV" secondAttribute="trailing" id="KGT-lA-o07"/>
+                            <constraint firstItem="1kQ-lK-PyQ" firstAttribute="top" secondItem="Rq0-eN-PeN" secondAttribute="top" constant="20" id="Rd5-Pb-KZu"/>
                             <constraint firstItem="YPP-eE-hZV" firstAttribute="top" secondItem="1kQ-lK-PyQ" secondAttribute="bottom" constant="3" id="Tl0-5t-MhY"/>
-                            <constraint firstItem="6EQ-am-2ug" firstAttribute="trailing" secondItem="Mck-sD-eub" secondAttribute="trailing" id="ZFv-1E-smO"/>
-                            <constraint firstItem="6EQ-am-2ug" firstAttribute="trailing" secondItem="1kQ-lK-PyQ" secondAttribute="trailing" constant="20" id="bOL-CA-dKd"/>
-                            <constraint firstItem="6EQ-am-2ug" firstAttribute="bottom" secondItem="YPP-eE-hZV" secondAttribute="bottom" id="dm4-6b-hQg"/>
+                            <constraint firstItem="Rq0-eN-PeN" firstAttribute="trailing" secondItem="Mck-sD-eub" secondAttribute="trailing" id="ZFv-1E-smO"/>
+                            <constraint firstItem="Rq0-eN-PeN" firstAttribute="trailing" secondItem="1kQ-lK-PyQ" secondAttribute="trailing" constant="20" id="bOL-CA-dKd"/>
+                            <constraint firstItem="Rq0-eN-PeN" firstAttribute="bottom" secondItem="YPP-eE-hZV" secondAttribute="bottom" id="dm4-6b-hQg"/>
                             <constraint firstItem="Mck-sD-eub" firstAttribute="top" secondItem="1kQ-lK-PyQ" secondAttribute="bottom" constant="3" id="gbV-uP-Dhu"/>
-                            <constraint firstItem="6EQ-am-2ug" firstAttribute="bottom" secondItem="Mck-sD-eub" secondAttribute="bottom" id="kAr-9s-uhc"/>
-                            <constraint firstItem="1kQ-lK-PyQ" firstAttribute="leading" secondItem="6EQ-am-2ug" secondAttribute="leading" constant="20" id="nIO-Zc-UST"/>
+                            <constraint firstItem="Rq0-eN-PeN" firstAttribute="bottom" secondItem="Mck-sD-eub" secondAttribute="bottom" id="kAr-9s-uhc"/>
+                            <constraint firstItem="1kQ-lK-PyQ" firstAttribute="leading" secondItem="Rq0-eN-PeN" secondAttribute="leading" constant="20" id="nIO-Zc-UST"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6EQ-am-2ug"/>
+                        <viewLayoutGuide key="safeArea" id="Rq0-eN-PeN"/>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="ePd-ZH-IqU"/>
                 </viewController>
@@ -372,7 +341,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="41x-B9-VZG"/>
+                        <viewLayoutGuide key="safeArea" id="vB6-L6-X38"/>
                     </view>
                     <navigationItem key="navigationItem" title="登陆" id="MJ3-7d-5WQ"/>
                     <connections>
@@ -411,7 +380,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Mwi-gx-snM"/>
+                        <viewLayoutGuide key="safeArea" id="CFO-8R-Y5y"/>
                     </view>
                     <connections>
                         <outlet property="verificationCodeTextfield" destination="iaC-kE-bXl" id="c8B-bS-Vwx"/>
@@ -477,19 +446,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0Cq-hK-kmg" firstAttribute="leading" secondItem="Zya-ze-aG3" secondAttribute="leading" id="2PB-lm-4wp"/>
-                            <constraint firstItem="Zya-ze-aG3" firstAttribute="trailing" secondItem="yjV-gm-eJO" secondAttribute="trailing" id="Ats-R4-hlF"/>
+                            <constraint firstItem="0Cq-hK-kmg" firstAttribute="leading" secondItem="Tdj-2D-iwz" secondAttribute="leading" id="2PB-lm-4wp"/>
+                            <constraint firstItem="Tdj-2D-iwz" firstAttribute="trailing" secondItem="yjV-gm-eJO" secondAttribute="trailing" id="Ats-R4-hlF"/>
                             <constraint firstItem="kKm-op-3Cn" firstAttribute="top" secondItem="0Cq-hK-kmg" secondAttribute="bottom" id="Fv8-Cp-P5p"/>
-                            <constraint firstItem="kKm-op-3Cn" firstAttribute="leading" secondItem="Zya-ze-aG3" secondAttribute="leading" id="GtP-5n-7df"/>
-                            <constraint firstItem="Zya-ze-aG3" firstAttribute="bottom" secondItem="yjV-gm-eJO" secondAttribute="bottom" id="Naz-ko-SFs"/>
-                            <constraint firstItem="Zya-ze-aG3" firstAttribute="trailing" secondItem="kKm-op-3Cn" secondAttribute="trailing" id="Wrj-lV-J9p"/>
+                            <constraint firstItem="kKm-op-3Cn" firstAttribute="leading" secondItem="Tdj-2D-iwz" secondAttribute="leading" id="GtP-5n-7df"/>
+                            <constraint firstItem="Tdj-2D-iwz" firstAttribute="bottom" secondItem="yjV-gm-eJO" secondAttribute="bottom" id="Naz-ko-SFs"/>
+                            <constraint firstItem="Tdj-2D-iwz" firstAttribute="trailing" secondItem="kKm-op-3Cn" secondAttribute="trailing" id="Wrj-lV-J9p"/>
                             <constraint firstItem="0Cq-hK-kmg" firstAttribute="top" secondItem="owG-G5-UZx" secondAttribute="top" id="XcY-W3-s9n"/>
-                            <constraint firstItem="yjV-gm-eJO" firstAttribute="leading" secondItem="Zya-ze-aG3" secondAttribute="leading" id="ccW-bW-DB1"/>
-                            <constraint firstItem="Zya-ze-aG3" firstAttribute="trailing" secondItem="0Cq-hK-kmg" secondAttribute="trailing" id="exc-70-utz"/>
+                            <constraint firstItem="yjV-gm-eJO" firstAttribute="leading" secondItem="Tdj-2D-iwz" secondAttribute="leading" id="ccW-bW-DB1"/>
+                            <constraint firstItem="Tdj-2D-iwz" firstAttribute="trailing" secondItem="0Cq-hK-kmg" secondAttribute="trailing" id="exc-70-utz"/>
                             <constraint firstItem="yjV-gm-eJO" firstAttribute="top" secondItem="0Cq-hK-kmg" secondAttribute="bottom" id="jUL-95-xex"/>
                             <constraint firstItem="yjV-gm-eJO" firstAttribute="top" secondItem="0Cq-hK-kmg" secondAttribute="bottom" id="nrw-95-KGN"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Zya-ze-aG3"/>
+                        <viewLayoutGuide key="safeArea" id="Tdj-2D-iwz"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="jUL-95-xex"/>
@@ -512,10 +481,10 @@
             </objects>
             <point key="canvasLocation" x="2160.8000000000002" y="54.422788605697157"/>
         </scene>
-        <!--Content View Controller-->
+        <!--Encyclopedia Content View Controller-->
         <scene sceneID="45s-Yq-Jho">
             <objects>
-                <viewController storyboardIdentifier="ContentViewController" id="t2N-cG-KJX" customClass="ContentViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EncyclopediaContentViewController" id="t2N-cG-KJX" customClass="EncyclopediaContentViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZBB-Op-AdA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -524,7 +493,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordCell" rowHeight="162" id="Yjt-82-BYO" customClass="RecordTableViewCell" customModule="History">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordCell" rowHeight="162" id="Yjt-82-BYO" customClass="EncyclopediaRecordTableViewCell" customModule="History" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yjt-82-BYO" id="FfO-42-amf">
@@ -580,12 +549,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="92k-UI-6qu" firstAttribute="top" secondItem="Fcb-qV-Y8Z" secondAttribute="top" id="0O5-2l-rmv"/>
-                            <constraint firstItem="Fcb-qV-Y8Z" firstAttribute="bottom" secondItem="92k-UI-6qu" secondAttribute="bottom" id="aMg-qm-TzT"/>
-                            <constraint firstItem="92k-UI-6qu" firstAttribute="leading" secondItem="Fcb-qV-Y8Z" secondAttribute="leading" id="bQq-nz-qtW"/>
-                            <constraint firstItem="Fcb-qV-Y8Z" firstAttribute="trailing" secondItem="92k-UI-6qu" secondAttribute="trailing" id="cXu-tq-nFF"/>
+                            <constraint firstItem="92k-UI-6qu" firstAttribute="top" secondItem="g0u-Q5-c1Q" secondAttribute="top" id="0O5-2l-rmv"/>
+                            <constraint firstItem="g0u-Q5-c1Q" firstAttribute="bottom" secondItem="92k-UI-6qu" secondAttribute="bottom" id="aMg-qm-TzT"/>
+                            <constraint firstItem="92k-UI-6qu" firstAttribute="leading" secondItem="g0u-Q5-c1Q" secondAttribute="leading" id="bQq-nz-qtW"/>
+                            <constraint firstItem="g0u-Q5-c1Q" firstAttribute="trailing" secondItem="92k-UI-6qu" secondAttribute="trailing" id="cXu-tq-nFF"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Fcb-qV-Y8Z"/>
+                        <viewLayoutGuide key="safeArea" id="g0u-Q5-c1Q"/>
                     </view>
                     <connections>
                         <outlet property="recordTableView" destination="92k-UI-6qu" id="vgd-tW-iTw"/>
@@ -659,13 +628,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HE7-h8-ah5" firstAttribute="bottom" secondItem="io1-S0-9nF" secondAttribute="bottom" id="MQP-Fj-viW"/>
-                            <constraint firstItem="io1-S0-9nF" firstAttribute="leading" secondItem="HE7-h8-ah5" secondAttribute="leading" id="Vdh-71-DBJ"/>
-                            <constraint firstItem="HE7-h8-ah5" firstAttribute="trailing" secondItem="io1-S0-9nF" secondAttribute="trailing" id="dvK-WM-imx"/>
+                            <constraint firstItem="xNt-3F-8rA" firstAttribute="bottom" secondItem="io1-S0-9nF" secondAttribute="bottom" id="MQP-Fj-viW"/>
+                            <constraint firstItem="io1-S0-9nF" firstAttribute="leading" secondItem="xNt-3F-8rA" secondAttribute="leading" id="Vdh-71-DBJ"/>
+                            <constraint firstItem="xNt-3F-8rA" firstAttribute="trailing" secondItem="io1-S0-9nF" secondAttribute="trailing" id="dvK-WM-imx"/>
                             <constraint firstItem="io1-S0-9nF" firstAttribute="top" secondItem="lPv-pC-2bt" secondAttribute="top" id="wYx-QI-0Gl"/>
                             <constraint firstItem="0yJ-Xv-0pV" firstAttribute="width" secondItem="lPv-pC-2bt" secondAttribute="width" id="xKG-nl-jRF"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="HE7-h8-ah5"/>
+                        <viewLayoutGuide key="safeArea" id="xNt-3F-8rA"/>
                     </view>
                     <connections>
                         <outlet property="infoTextView" destination="4mu-eJ-cTA" id="sIY-XV-F3r"/>
@@ -688,18 +657,18 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnY-5b-q8c">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <connections>
-                                    <segue destination="DgP-6L-68Z" kind="embed" identifier="EmbedContainerViewController" id="eSv-Fv-dCU"/>
+                                    <segue destination="DgP-6L-68Z" kind="embed" identifier="EncyclopediaEmbedContainerViewController" id="eSv-Fv-dCU"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tt7-SM-z4D" firstAttribute="trailing" secondItem="UnY-5b-q8c" secondAttribute="trailing" id="4VL-zO-FjD"/>
-                            <constraint firstItem="UnY-5b-q8c" firstAttribute="top" secondItem="tt7-SM-z4D" secondAttribute="top" id="iKN-Pl-H4R"/>
-                            <constraint firstItem="UnY-5b-q8c" firstAttribute="leading" secondItem="tt7-SM-z4D" secondAttribute="leading" id="qCH-MF-qMH"/>
-                            <constraint firstItem="tt7-SM-z4D" firstAttribute="bottom" secondItem="UnY-5b-q8c" secondAttribute="bottom" id="wdw-U0-vGo"/>
+                            <constraint firstItem="Hmr-Ki-vVo" firstAttribute="trailing" secondItem="UnY-5b-q8c" secondAttribute="trailing" id="4VL-zO-FjD"/>
+                            <constraint firstItem="UnY-5b-q8c" firstAttribute="top" secondItem="Hmr-Ki-vVo" secondAttribute="top" id="iKN-Pl-H4R"/>
+                            <constraint firstItem="UnY-5b-q8c" firstAttribute="leading" secondItem="Hmr-Ki-vVo" secondAttribute="leading" id="qCH-MF-qMH"/>
+                            <constraint firstItem="Hmr-Ki-vVo" firstAttribute="bottom" secondItem="UnY-5b-q8c" secondAttribute="bottom" id="wdw-U0-vGo"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tt7-SM-z4D"/>
+                        <viewLayoutGuide key="safeArea" id="Hmr-Ki-vVo"/>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="KhE-y6-fvv"/>
                 </viewController>
@@ -707,15 +676,15 @@
             </objects>
             <point key="canvasLocation" x="502" y="55"/>
         </scene>
-        <!--Embed Container View Controller-->
+        <!--Encyclopedia Embed Container View Controller-->
         <scene sceneID="bj4-Jv-VTC">
             <objects>
-                <viewController storyboardIdentifier="EmbedContainerViewController" id="DgP-6L-68Z" customClass="EmbedContainerViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EncyclopediaEmbedContainerViewController" id="DgP-6L-68Z" customClass="EncyclopediaEmbedContainerViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="67s-6G-m3O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="g9f-iK-oFP"/>
+                        <viewLayoutGuide key="safeArea" id="7Fg-Tl-ilG"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="tVM-SZ-GhB"/>
@@ -728,7 +697,7 @@
         <scene sceneID="gyf-zW-tYl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xni-Kp-uTY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="百科" id="buj-ri-NU5"/>
+                    <tabBarItem key="tabBarItem" title="百科" image="second" id="buj-ri-NU5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jH5-S0-3mF">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -744,31 +713,11 @@
             </objects>
             <point key="canvasLocation" x="-330" y="55"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="Be6-i8-a82">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iWr-CH-c6T" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="H4p-u8-pKc"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TQ3-ds-fsh">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vdW-YZ-SRO" kind="relationship" relationship="rootViewController" id="uSV-JR-38t"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Aut-N4-jpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-331.19999999999999" y="-2352.3238380809598"/>
-        </scene>
-        <!--Item-->
+        <!--设置-->
         <scene sceneID="O1a-jc-opX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qc9-gV-iS8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="a3m-RF-aIq"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="second" id="a3m-RF-aIq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ahq-2a-tgL">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -782,6 +731,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PmT-Ib-cON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-330" y="901"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Vds-4M-rnL">
+            <objects>
+                <viewController id="5aC-XJ-zs0" customClass="DraftViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xyl-UM-68E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBR-2d-58l" customClass="ISTimeline" customModule="ISTimeline">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MBR-2d-58l" firstAttribute="leading" secondItem="Ga1-3m-V8C" secondAttribute="leading" id="33O-r8-BJn"/>
+                            <constraint firstItem="Ga1-3m-V8C" firstAttribute="trailing" secondItem="MBR-2d-58l" secondAttribute="trailing" id="3ih-js-MLK"/>
+                            <constraint firstItem="Ga1-3m-V8C" firstAttribute="bottom" secondItem="MBR-2d-58l" secondAttribute="bottom" id="TSA-GM-gSC"/>
+                            <constraint firstItem="MBR-2d-58l" firstAttribute="top" secondItem="Ga1-3m-V8C" secondAttribute="top" id="mRc-su-Zi6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ga1-3m-V8C"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="vJK-jl-DvX"/>
+                    <navigationItem key="navigationItem" id="Kvg-y8-vNy"/>
+                    <connections>
+                        <outlet property="drafttimeline" destination="MBR-2d-58l" id="Lxv-sK-bBM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p9Y-vH-LOA" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="399" y="-1574"/>
+        </scene>
+        <!--时间轴-->
+        <scene sceneID="Hg8-Ag-KZ2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3ak-r1-FI8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="时间轴" image="second" id="Sv2-51-Usc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K6B-KQ-7wo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vdW-YZ-SRO" kind="relationship" relationship="rootViewController" id="iL9-V3-KiA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3oR-Zg-OWV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="-2354"/>
         </scene>
     </scenes>
     <resources>
@@ -879,7 +879,6 @@ AABUAAAAAAAAAAAAAAAAAAAT6w
 </mutableData>
         </image>
         <image name="default" width="500" height="500"/>
-        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
         <image name="shadow" width="375" height="9"/>
         <image name="老子" width="300" height="375"/>

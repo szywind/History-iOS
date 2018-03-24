@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecordTableViewCell: UITableViewCell {
+class EncyclopediaRecordTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var recordImage: UIImageView!

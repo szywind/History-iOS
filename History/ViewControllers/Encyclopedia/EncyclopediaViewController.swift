@@ -11,7 +11,7 @@ import Segmentio
 import CoreData
 import AVOSCloud
 
-class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
+class EncyclopediaViewController: BaseViewController, UISearchBarDelegate {
 
     var segmentioStyle = SegmentioStyle.imageUnderLabel
     var segmentioContent = [SegmentioItem]()
@@ -24,7 +24,7 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    fileprivate var viewControllers = [ContentViewController]()
+    fileprivate var viewControllers = [EncyclopediaContentViewController]()
     
     var filteredRecords = [Record]()
     
@@ -96,7 +96,7 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     func setupViewControllers() {
         viewControllers.removeAll()
         if isSearching {
-            let filteredController = ContentViewController.create()
+            let filteredController = EncyclopediaContentViewController.create()
             filteredController.records = filteredRecords
             print("filtered records", filteredController.records.count)
             viewControllers.append(filteredController)
@@ -104,27 +104,27 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
                 SegmentioItem(title: "搜索结果", image: UIImage(named: "tornado"))
             ]
         } else {
-            let peopleController = ContentViewController.create()
+            let peopleController = EncyclopediaContentViewController.create()
             peopleController.records = LocalDataManager.sharedInstance.allPeople
             print("person records", peopleController.records.count)
 
-            let allController = ContentViewController.create()
+            let allController = EncyclopediaContentViewController.create()
             allController.records = LocalDataManager.sharedInstance.allEvents
             print("all records", allController.records.count)
             
-            let eventController = ContentViewController.create()
+            let eventController = EncyclopediaContentViewController.create()
             eventController.records = LocalDataManager.sharedInstance.events
             print("event records", eventController.records.count)
             
-            let geoController = ContentViewController.create()
+            let geoController = EncyclopediaContentViewController.create()
             geoController.records = LocalDataManager.sharedInstance.geo
             print("geo records", geoController.records.count)
             
-            let artController = ContentViewController.create()
+            let artController = EncyclopediaContentViewController.create()
             artController.records = LocalDataManager.sharedInstance.art
             print("art records", artController.records.count)
             
-            let techController = ContentViewController.create()
+            let techController = EncyclopediaContentViewController.create()
             techController.records = LocalDataManager.sharedInstance.tech
             print("tech records", techController.records.count)
             

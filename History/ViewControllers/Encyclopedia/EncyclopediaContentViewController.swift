@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContentViewController: UIViewController {
+class EncyclopediaContentViewController: BaseViewController {
     
     var records = [Record] ()
     var recordDictionary = [String: [Record]]()
@@ -31,9 +31,9 @@ class ContentViewController: UIViewController {
         recordSectionTitles = recordDictionary.keys.sorted(by: { $0 < $1 })
     }
     
-    class func create() -> ContentViewController {
+    class func create() -> EncyclopediaContentViewController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: self)) as! ContentViewController
+        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: self)) as! EncyclopediaContentViewController
     }
     
     override func viewDidLoad() {
@@ -78,7 +78,7 @@ class ContentViewController: UIViewController {
 
 }
 
-extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
+extension EncyclopediaContentViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table View
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -97,7 +97,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recordTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
+        let cell = recordTableView.dequeueReusableCell(withIdentifier: "recordCell") as! EncyclopediaRecordTableViewCell
         
         // Configure the cell...
         guard let sectionData = recordDictionary[recordSectionTitles[indexPath.section]] else {

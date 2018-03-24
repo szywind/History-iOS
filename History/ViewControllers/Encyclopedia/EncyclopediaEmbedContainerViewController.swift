@@ -11,7 +11,7 @@ import Segmentio
 
 private let animateDuration: TimeInterval = 0.6
 
-class EmbedContainerViewController: UIViewController {
+class EncyclopediaEmbedContainerViewController: UIViewController {
     
     var style = SegmentioStyle.onlyImage
     
