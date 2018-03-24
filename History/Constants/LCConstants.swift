@@ -59,6 +59,7 @@ struct LCConstants {
         static let end = "end"
         static let dynasty = "dynasty"
         static let dynasty_detail = "dynasty_detail"
+        static let pinyin = "pinyin"
     }
     
     /**
@@ -77,7 +78,7 @@ struct LCConstants {
         static let end = "end"
         static let dynasty = "dynasty"
         static let dynasty_detail = "dynasty_detail"
-
+        static let pinyin = "pinyin"
     }
     
     
