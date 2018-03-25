@@ -33,6 +33,12 @@
 		1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE4205176490035CD01 /* LoginViewController.swift */; };
 		1B347DE720519E280035CD01 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */; };
 		1B54F16C205D58880083A20C /* LCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B54F16B205D58880083A20C /* LCManager.swift */; };
+		1B846F98206789AA00FB3D2D /* CommunityHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F97206789AA00FB3D2D /* CommunityHomeViewController.swift */; };
+		1B846F9A20678A7200FB3D2D /* CommunityEmbedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F9920678A7200FB3D2D /* CommunityEmbedContainerViewController.swift */; };
+		1B846F9C20678B2600FB3D2D /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F9B20678B2600FB3D2D /* CommunityViewController.swift */; };
+		1B846F9E20678C6100FB3D2D /* CommunityContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F9D20678C6100FB3D2D /* CommunityContentViewController.swift */; };
+		1B846FA020678D3D00FB3D2D /* CommunityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F9F20678D3D00FB3D2D /* CommunityDetailViewController.swift */; };
+		1B846FA220678DCA00FB3D2D /* CommunityArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846FA120678DCA00FB3D2D /* CommunityArticleTableViewCell.swift */; };
 		1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8F4034206564540080EA01 /* LocalDataManager.swift */; };
 		1B993E312063F7E700D69323 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B993E2F2063F7E700D69323 /* Person+CoreDataProperties.swift */; };
 		1B993E322063F7E700D69323 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B993E302063F7E700D69323 /* Event+CoreDataProperties.swift */; };
@@ -108,6 +114,12 @@
 		1B347DE4205176490035CD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
 		1B54F16B205D58880083A20C /* LCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCManager.swift; sourceTree = "<group>"; };
+		1B846F97206789AA00FB3D2D /* CommunityHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityHomeViewController.swift; sourceTree = "<group>"; };
+		1B846F9920678A7200FB3D2D /* CommunityEmbedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityEmbedContainerViewController.swift; sourceTree = "<group>"; };
+		1B846F9B20678B2600FB3D2D /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		1B846F9D20678C6100FB3D2D /* CommunityContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityContentViewController.swift; sourceTree = "<group>"; };
+		1B846F9F20678D3D00FB3D2D /* CommunityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailViewController.swift; sourceTree = "<group>"; };
+		1B846FA120678DCA00FB3D2D /* CommunityArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityArticleTableViewCell.swift; sourceTree = "<group>"; };
 		1B8F4034206564540080EA01 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		1B993E2F2063F7E700D69323 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/1/Documents/XcodeProjects/History/History/Models/CoreDataModels/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1B993E302063F7E700D69323 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "/Users/1/Documents/XcodeProjects/History/History/Models/CoreDataModels/Event+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -248,7 +260,7 @@
 		1B267E1E20543EE60041A729 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				1BD318162066E07A0033FF51 /* New Group */,
+				1B846F962067899600FB3D2D /* Community */,
 				1B993E1F2062ABC500D69323 /* Timeline */,
 				1B93CB652060383A003304B2 /* Draft */,
 				1BAEDF2920555FDC0004C804 /* Encyclopedia */,
@@ -321,6 +333,19 @@
 			path = CoreDataModels;
 			sourceTree = "<group>";
 		};
+		1B846F962067899600FB3D2D /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				1B846F97206789AA00FB3D2D /* CommunityHomeViewController.swift */,
+				1B846F9920678A7200FB3D2D /* CommunityEmbedContainerViewController.swift */,
+				1B846F9B20678B2600FB3D2D /* CommunityViewController.swift */,
+				1B846F9D20678C6100FB3D2D /* CommunityContentViewController.swift */,
+				1B846F9F20678D3D00FB3D2D /* CommunityDetailViewController.swift */,
+				1B846FA120678DCA00FB3D2D /* CommunityArticleTableViewCell.swift */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
 		1B93CB652060383A003304B2 /* Draft */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,13 +407,6 @@
 				1BD8B05A205D9A07003128FF /* String+HTTPS.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		1BD318162066E07A0033FF51 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		1BD8B05E205EAEDF003128FF /* libian.ttf */ = {
@@ -651,6 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B846F98206789AA00FB3D2D /* CommunityHomeViewController.swift in Sources */,
 				1B267E2A205520370041A729 /* LCConstants.swift in Sources */,
 				1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */,
 				1BD8B05D205E22C0003128FF /* EncyclopediaDetailViewController.swift in Sources */,
@@ -658,6 +677,7 @@
 				1B993E322063F7E700D69323 /* Event+CoreDataProperties.swift in Sources */,
 				1BAA2B51205ADFF100EE5ED4 /* EventManager.swift in Sources */,
 				1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */,
+				1B846FA220678DCA00FB3D2D /* CommunityArticleTableViewCell.swift in Sources */,
 				1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */,
 				1B347DE720519E280035CD01 /* VerificationCodeViewController.swift in Sources */,
 				00ED1ED3204FEB28008CB70A /* ViewController.swift in Sources */,
@@ -671,13 +691,17 @@
 				1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */,
 				1B54F16C205D58880083A20C /* LCManager.swift in Sources */,
 				1B267E1D20543D1E0041A729 /* BaseViewController.swift in Sources */,
+				1B846F9C20678B2600FB3D2D /* CommunityViewController.swift in Sources */,
 				1BF1AFB220582C0500CB479A /* Record.swift in Sources */,
 				1BAEDF34205572000004C804 /* UIFont+ExampleFonts.swift in Sources */,
+				1B846FA020678D3D00FB3D2D /* CommunityDetailViewController.swift in Sources */,
 				1BAA2B4F205AD93400EE5ED4 /* Person+CoreDataClass.swift in Sources */,
 				1B267E2520551CC60041A729 /* UserManager.swift in Sources */,
 				1BD8B05B205D9A07003128FF /* String+HTTPS.swift in Sources */,
 				1BAEDF3620557F9D0004C804 /* EncyclopediaContentViewController.swift in Sources */,
 				1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */,
+				1B846F9A20678A7200FB3D2D /* CommunityEmbedContainerViewController.swift in Sources */,
+				1B846F9E20678C6100FB3D2D /* CommunityContentViewController.swift in Sources */,
 				1BAEDF3120556F3A0004C804 /* ColorPalette.swift in Sources */,
 				1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */,
 				1B1D71432065FE56004BC39C /* DraftViewController.swift in Sources */,

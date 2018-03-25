@@ -10,7 +10,7 @@ import UIKit
 
 class EncyclopediaDetailViewController: UIViewController {
 
-    @IBOutlet weak var infoTextView: UITextView!
+    @IBOutlet weak var recordTextView: UITextView!
     @IBOutlet weak var recordImageView: UIImageView!
     @IBOutlet weak var recordLbl: UILabel!
     
@@ -19,7 +19,7 @@ class EncyclopediaDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        infoTextView.text = record?.info
+        recordTextView.text = record?.info
         recordImageView.image = record?.avatar
         recordLbl.text = record?.name
     }
