@@ -17,13 +17,25 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = Constants.Color.naviBarTint
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        let menuBtn = UIBarButtonItem(image: UIImage(named: "first"), style: .plain, target: self, action: #selector(showSideMenu))
+        
+        
+//        let searchBtn = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
+        //
+            self.navigationItem.leftBarButtonItem = menuBtn
 //        refreshUI()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @objc func showSideMenu() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toggleSideMenu), object: nil)
+    }
+    
     
 //    func createView() {
 //    }
