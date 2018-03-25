@@ -23,11 +23,13 @@ class EncyclopediaHomeViewController: BaseViewController, UISearchBarDelegate {
 //        searchBar.showsCancelButton = false
 //        searchBar.placeholder = "请输入要搜索的词条"
 //        searchBar.delegate = self
-//        searchBar.isHidden = true
+////        searchBar.isHidden = true
+////        searchBar.tintColor = UIColor.white
+////        searchBar.barTintColor = UIColor.white
 //        self.navigationItem.titleView = searchBar
-//        
+        
 //        let searchBtn = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-//
+
 //        self.navigationItem.rightBarButtonItem = searchBtn
     }
     

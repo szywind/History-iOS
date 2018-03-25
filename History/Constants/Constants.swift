@@ -23,7 +23,8 @@ struct Constants {
     
     struct Notification {
         static let fetchDataFromLC = "didFetchDataNotification"
-        static let refreshUI = "shouldRefreshUI"
+        static let refreshUI = "refreshUI"
+        static let toggleSideMenu = "toggleSideMenu"
     }
     
     struct Color {
