@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
         
-        let menuBtn = UIBarButtonItem(image: UIImage(named: "first"), style: .plain, target: self, action: #selector(showSideMenu))
+        let menuBtn = UIBarButtonItem(image: UIImage(named: "first"), style: .plain, target: self, action: #selector(toggleSideMenu))
         
         
 //        let searchBtn = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
@@ -32,7 +32,7 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func showSideMenu() {
+    @objc func toggleSideMenu() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toggleSideMenu), object: nil)
     }
     

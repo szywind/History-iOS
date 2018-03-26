@@ -39,9 +39,8 @@
 		1B846F9E20678C6100FB3D2D /* CommunityContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F9D20678C6100FB3D2D /* CommunityContentViewController.swift */; };
 		1B846FA020678D3D00FB3D2D /* CommunityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F9F20678D3D00FB3D2D /* CommunityDetailViewController.swift */; };
 		1B846FA220678DCA00FB3D2D /* CommunityArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846FA120678DCA00FB3D2D /* CommunityArticleTableViewCell.swift */; };
-		1B846FA82067DDE100FB3D2D /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846FA72067DDE100FB3D2D /* SideMenuViewController.swift */; };
-		1B846FAA2067E03100FB3D2D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846FA92067E03100FB3D2D /* MainViewController.swift */; };
 		1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8F4034206564540080EA01 /* LocalDataManager.swift */; };
+		1B93183520691A5F00FAFDE4 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93183420691A5F00FAFDE4 /* SideMenuViewController.swift */; };
 		1B993E312063F7E700D69323 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B993E2F2063F7E700D69323 /* Person+CoreDataProperties.swift */; };
 		1B993E322063F7E700D69323 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B993E302063F7E700D69323 /* Event+CoreDataProperties.swift */; };
 		1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */; };
@@ -122,9 +121,8 @@
 		1B846F9D20678C6100FB3D2D /* CommunityContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityContentViewController.swift; sourceTree = "<group>"; };
 		1B846F9F20678D3D00FB3D2D /* CommunityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailViewController.swift; sourceTree = "<group>"; };
 		1B846FA120678DCA00FB3D2D /* CommunityArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityArticleTableViewCell.swift; sourceTree = "<group>"; };
-		1B846FA72067DDE100FB3D2D /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
-		1B846FA92067E03100FB3D2D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1B8F4034206564540080EA01 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
+		1B93183420691A5F00FAFDE4 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		1B993E2F2063F7E700D69323 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/1/Documents/XcodeProjects/History/History/Models/CoreDataModels/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1B993E302063F7E700D69323 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "/Users/1/Documents/XcodeProjects/History/History/Models/CoreDataModels/Event+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -256,9 +254,8 @@
 		1B267E1B20543CF50041A729 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				1B846FA92067E03100FB3D2D /* MainViewController.swift */,
 				1B267E1C20543D1E0041A729 /* BaseViewController.swift */,
-				1B846FA72067DDE100FB3D2D /* SideMenuViewController.swift */,
+				1B93183420691A5F00FAFDE4 /* SideMenuViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -677,6 +674,7 @@
 			files = (
 				1B846F98206789AA00FB3D2D /* CommunityHomeViewController.swift in Sources */,
 				1B267E2A205520370041A729 /* LCConstants.swift in Sources */,
+				1B93183520691A5F00FAFDE4 /* SideMenuViewController.swift in Sources */,
 				1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */,
 				1BD8B05D205E22C0003128FF /* EncyclopediaDetailViewController.swift in Sources */,
 				1B1D713A2065FE42004BC39C /* TimelinePoint.swift in Sources */,
@@ -701,14 +699,12 @@
 				1BF1AFB220582C0500CB479A /* Record.swift in Sources */,
 				1BAEDF34205572000004C804 /* UIFont+ExampleFonts.swift in Sources */,
 				1B846FA020678D3D00FB3D2D /* CommunityDetailViewController.swift in Sources */,
-				1B846FA82067DDE100FB3D2D /* SideMenuViewController.swift in Sources */,
 				1BAA2B4F205AD93400EE5ED4 /* Person+CoreDataClass.swift in Sources */,
 				1B267E2520551CC60041A729 /* UserManager.swift in Sources */,
 				1BD8B05B205D9A07003128FF /* String+HTTPS.swift in Sources */,
 				1BAEDF3620557F9D0004C804 /* EncyclopediaContentViewController.swift in Sources */,
 				1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */,
 				1B846F9A20678A7200FB3D2D /* CommunityEmbedContainerViewController.swift in Sources */,
-				1B846FAA2067E03100FB3D2D /* MainViewController.swift in Sources */,
 				1B846F9E20678C6100FB3D2D /* CommunityContentViewController.swift in Sources */,
 				1BAEDF3120556F3A0004C804 /* ColorPalette.swift in Sources */,
 				1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */,
