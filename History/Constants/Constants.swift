@@ -23,11 +23,16 @@ struct Constants {
     
     struct Notification {
         static let fetchDataFromLC = "didFetchDataNotification"
-        static let refreshUI = "shouldRefreshUI"
+        static let refreshUI = "refreshUI"
+        static let toggleSideMenu = "toggleSideMenu"
     }
     
     struct Color {
         static let naviBarTint = UIColor(netHex: 0x522421)
-        static let naviTint = UIColor(netHex: 0xBF8641)
+        static let c1 = UIColor(netHex: 0x522421)
+        static let c2 = UIColor(netHex: 0x8C5A2E)
+        static let c3 = UIColor(netHex: 0xBF8641)
+        static let c4 = UIColor(netHex: 0xB3B372)
+
     }
 }
