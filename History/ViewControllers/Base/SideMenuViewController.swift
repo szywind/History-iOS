@@ -59,6 +59,7 @@ class SideMenuViewController: UIViewController {
             if translation > 0 { // swipe right
                 let delta = (initCenter?.x)! - self.sideMenuConstraint.constant - ((curCenter?.x)! + translation)
                 let alpha_ = 0.5 + 0.5 * delta / 260.0
+                let x_new = min((curCenter?.x)! + translation, (initCenter?.x)! - self.sideMenuConstraint.constant)
 
                 if (curCenter?.x)! < (initCenter?.x)! - self.sideMenuConstraint.constant {
                     lasttranslation = translation
@@ -67,19 +68,20 @@ class SideMenuViewController: UIViewController {
                     UIView.animate(withDuration: 0.1, animations: {
                         //                        self.sideMenuConstraint.constant = min(self.sideMenuConstraint.constant + translation / 10, 0)
                         ////                        self.sideMenuConstraint.constant += translation / 5
-
-                        self.panGestureRecognizer.view!.superview?.center = CGPoint(x: (curCenter?.x)! + translation, y: (curCenter?.y)!)
+                        
+                        self.panGestureRecognizer.view!.superview?.center = CGPoint(x: x_new, y: (curCenter?.y)!)
                         self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
                         self.containerView.alpha = alpha_
                         self.view.layoutIfNeeded()
 
-                        print("r: ", alpha_)
+//                        print("r: ", alpha_)
                     })
                 }
-            } else { // swipe left
+            } else if translation < 0 { // swipe left
                 let delta = (curCenter?.x)! + translation - ((initCenter?.x)! - 260 - self.sideMenuConstraint.constant)
                 let alpha_ = 1 - 0.5 * delta / 260.0
-                
+                let x_new = max((curCenter?.x)! + translation, (self.initCenter?.x)! - 260 - self.sideMenuConstraint.constant)
+
                 if (curCenter?.x)! > (initCenter?.x)! - 260 - self.sideMenuConstraint.constant {
                     lasttranslation = translation
                     self.containerView.isUserInteractionEnabled = false
@@ -87,13 +89,12 @@ class SideMenuViewController: UIViewController {
                     UIView.animate(withDuration: 0.1, animations: {
                         //                        self.sideMenuConstraint.constant = min(self.sideMenuConstraint.constant + translation / 10, 0)
                         ////                        self.sideMenuConstraint.constant += translation / 5
-                        
-                        self.panGestureRecognizer.view?.superview?.center = CGPoint(x: (curCenter?.x)! + translation, y: (curCenter?.y)!)
+                        self.panGestureRecognizer.view?.superview?.center = CGPoint(x: x_new, y: (curCenter?.y)!)
                         self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
                         self.containerView.alpha = alpha_
                         self.view.layoutIfNeeded()
 
-                        print("l: ", alpha_)
+//                        print("l: ", alpha_)
                     })
                     
                 }
@@ -113,14 +114,17 @@ class SideMenuViewController: UIViewController {
             //            }
             
             
-            self.panGestureRecognizer.view?.superview!.center = self.initCenter!
-            self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
-            
             if lasttranslation > 0 { // swipe right
                 showSideMenu()
             } else { // swipe left
                 dismissSideMenu()
             }
+            
+            lasttranslation = 0
+
+            self.panGestureRecognizer.view?.superview!.center = self.initCenter!
+            self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
+
         }
     }
     
@@ -139,7 +143,7 @@ class SideMenuViewController: UIViewController {
     }
     
     @objc func dismissSideMenu() {
-        UIView.animate(withDuration: 0.1, animations: {
+        UIView.animate(withDuration: 0, animations: {
             //                    self.panGestureRecognizer.view?.superview!.center = self.initCenter!
             //                    self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
             self.sideMenuConstraint.constant = -260
@@ -152,7 +156,7 @@ class SideMenuViewController: UIViewController {
     }
     
     @objc func showSideMenu() {
-        UIView.animate(withDuration: 0.1, animations: {
+        UIView.animate(withDuration: 0, animations: {
             //                    self.panGestureRecognizer.view?.superview!.center = CGPoint(x: (self.initCenter?.x)! + 260, y: (self.initCenter?.y)!)
             //                    self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
             self.sideMenuConstraint.constant = 0
