@@ -1124,6 +1124,7 @@
                                     </containerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="mwx-4f-kRo" firstAttribute="leading" secondItem="Rwd-aK-gbK" secondAttribute="leading" id="0bS-LY-gna"/>
                                     <constraint firstItem="Vie-7h-CbB" firstAttribute="leading" secondItem="mwx-4f-kRo" secondAttribute="trailing" id="CUS-21-8NN"/>
@@ -1135,6 +1136,7 @@
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="fkS-LT-qSj" appends="YES" id="r1y-Xe-mUd"/>
+                                    <outletCollection property="gestureRecognizers" destination="Pga-fE-g65" appends="YES" id="ghY-rk-4w3"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -1150,8 +1152,9 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="Vie-7h-CbB" id="JWE-GH-WV0"/>
-                        <outlet property="gestureRecognizer" destination="fkS-LT-qSj" id="fXc-pd-Ife"/>
+                        <outlet property="panGestureRecognizer" destination="fkS-LT-qSj" id="k88-s8-Yte"/>
                         <outlet property="sideMenuConstraint" destination="X1k-A7-puz" id="jkv-Ne-nX4"/>
+                        <outlet property="tapGestureRecognizer" destination="Pga-fE-g65" id="TM6-Gt-nEz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zHV-Xp-e9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1160,6 +1163,11 @@
                         <action selector="onPanPerformed:" destination="J6E-WQ-UlU" id="iyw-ZE-x5b"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="Pga-fE-g65">
+                    <connections>
+                        <action selector="onTapPerformed:" destination="J6E-WQ-UlU" id="bS2-fz-y5N"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2224.8000000000002" y="-419.64017991004499"/>
         </scene>
