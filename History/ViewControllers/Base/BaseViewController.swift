@@ -19,12 +19,9 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_account_circle"), style: .plain, target: self, action: #selector(toggleSideMenu))
+        self.navigationItem.leftBarButtonItem = menuBtn
         
-        
-//        let searchBtn = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-        //
-            self.navigationItem.leftBarButtonItem = menuBtn
-//        refreshUI()
+        setupBackgroundAndBorder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,6 +33,20 @@ class BaseViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toggleSideMenu), object: nil)
     }
     
+    func setupBackgroundAndBorder() {
+        let borderColor = UITableView().separatorColor?.cgColor
+        
+        self.view.layer.borderWidth = 0.5
+        self.view.layer.borderColor = borderColor
+        
+        self.tabBarController?.tabBar.shadowImage = UIImage()
+        self.tabBarController?.tabBar.backgroundImage = UIImage()
+        
+        self.tabBarController?.tabBar.layer.borderWidth = 0.5
+        self.tabBarController?.tabBar.layer.borderColor = borderColor
+        self.tabBarController?.tabBar.backgroundColor = UIColor.clear
+        self.tabBarController?.tabBar.clipsToBounds = true
+    }
     
 //    func createView() {
 //    }
