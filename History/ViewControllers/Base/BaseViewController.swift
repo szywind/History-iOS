@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
         
-        let menuBtn = UIBarButtonItem(image: UIImage(named: "first"), style: .plain, target: self, action: #selector(toggleSideMenu))
+        let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_account_circle"), style: .plain, target: self, action: #selector(toggleSideMenu))
         
         
 //        let searchBtn = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))

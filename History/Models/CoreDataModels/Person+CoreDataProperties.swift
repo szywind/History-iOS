@@ -2,7 +2,7 @@
 //  Person+CoreDataProperties.swift
 //  
 //
-//  Created by 1 on 3/22/18.
+//  Created by Cloudream on 27/03/2018.
 //
 //
 
@@ -17,13 +17,14 @@ extension Person {
     }
 
     @NSManaged public var avatar: String?
+    @NSManaged public var dynasty: String?
+    @NSManaged public var dynasty_detail: String?
+    @NSManaged public var end: NSNumber?
     @NSManaged public var info: String?
     @NSManaged public var name: String?
     @NSManaged public var objectId: String?
-    @NSManaged public var type: String?
-    @NSManaged public var start: NSNumber?
-    @NSManaged public var end: NSNumber?
-    @NSManaged public var dynasty: String?
-    @NSManaged public var dynasty_detail: String?
     @NSManaged public var pinyin: String?
+    @NSManaged public var start: NSNumber?
+    @NSManaged public var type: String?
+
 }
