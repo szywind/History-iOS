@@ -18,6 +18,8 @@ class SideMenuViewController: UIViewController {
     var initCenter: CGPoint?
     var lasttranslation: CGFloat = 0.0
     
+    var blackView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +32,12 @@ class SideMenuViewController: UIViewController {
         // https://stackoverflow.com/questions/3295061/uitapgesturerecognizer-is-overriding-uibutton-actions-on-scrollview/3372440#3372440
         tapGestureRecognizer.cancelsTouchesInView = false
 //        setupTapGesture()
+        
+        blackView.backgroundColor = Constants.Color.bgColor
+        containerView.addSubview(blackView)
+        
+        blackView.frame = CGRect(origin: CGPoint(x: containerView.frame.origin.x - 260, y: containerView.frame.origin.y), size: containerView.frame.size)
+        blackView.alpha = 0
     }
     
 //    func setupTapGesture() {
@@ -72,6 +80,11 @@ class SideMenuViewController: UIViewController {
                         self.panGestureRecognizer.view!.superview?.center = CGPoint(x: x_new, y: (curCenter?.y)!)
                         self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
                         self.containerView.alpha = alpha_
+                        
+//                        self.blackView.frame.origin = CGPoint(x: 0, y: 0)
+   
+                        self.blackView.alpha = 1 - alpha_
+
                         self.view.layoutIfNeeded()
 
 //                        print("r: ", alpha_)
@@ -92,6 +105,8 @@ class SideMenuViewController: UIViewController {
                         self.panGestureRecognizer.view?.superview?.center = CGPoint(x: x_new, y: (curCenter?.y)!)
                         self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
                         self.containerView.alpha = alpha_
+                        self.blackView.alpha = 1 - alpha_
+
                         self.view.layoutIfNeeded()
 
 //                        print("l: ", alpha_)
@@ -151,6 +166,9 @@ class SideMenuViewController: UIViewController {
             self.containerView.alpha = 1
             self.containerView.isUserInteractionEnabled = true
             
+            self.blackView.frame.origin = CGPoint(x: 0, y: 0)
+            self.blackView.alpha = 0
+            
             self.view.layoutIfNeeded()
         })
     }
@@ -164,6 +182,8 @@ class SideMenuViewController: UIViewController {
             self.containerView.alpha = 0.5
             self.containerView.isUserInteractionEnabled = false
             
+            self.blackView.frame.origin = CGPoint(x: 260, y: 0)
+            self.blackView.alpha = 0.5
             self.view.layoutIfNeeded()
         })
     }
