@@ -18,8 +18,6 @@
 		00ED1EDE204FEB29008CB70A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ED1EDC204FEB29008CB70A /* LaunchScreen.storyboard */; };
 		00ED1EE9204FEB2A008CB70A /* HistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED1EE8204FEB2A008CB70A /* HistoryTests.swift */; };
 		00ED1EF4204FEB2A008CB70A /* HistoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED1EF3204FEB2A008CB70A /* HistoryUITests.swift */; };
-		00EEA42E2069E5B30058C7C7 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EEA42C2069E5B20058C7C7 /* Person+CoreDataProperties.swift */; };
-		00EEA42F2069E5B30058C7C7 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EEA42D2069E5B20058C7C7 /* Event+CoreDataProperties.swift */; };
 		1B1D71392065FE42004BC39C /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D71342065FE41004BC39C /* TimelineViewController.swift */; };
 		1B1D713A2065FE42004BC39C /* TimelinePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D71352065FE41004BC39C /* TimelinePoint.swift */; };
 		1B1D713B2065FE42004BC39C /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D71362065FE42004BC39C /* Timeline.swift */; };
@@ -55,6 +53,9 @@
 		1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */; };
 		1BAEDF3A205587200004C804 /* EncyclopediaEmbedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF39205587200004C804 /* EncyclopediaEmbedContainerViewController.swift */; };
 		1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */; };
+		1BB280F9206A89A900BFBF6A /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB280F7206A89A800BFBF6A /* Event+CoreDataProperties.swift */; };
+		1BB280FA206A89A900BFBF6A /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB280F8206A89A900BFBF6A /* Person+CoreDataProperties.swift */; };
+		1BB280FC206A9B6E00BFBF6A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB280FB206A9B6E00BFBF6A /* MenuViewController.swift */; };
 		1BD8B05B205D9A07003128FF /* String+HTTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8B05A205D9A07003128FF /* String+HTTPS.swift */; };
 		1BD8B05D205E22C0003128FF /* EncyclopediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD8B05C205E22C0003128FF /* EncyclopediaDetailViewController.swift */; };
 		1BD8B061205EAEE0003128FF /* Libian.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 1BD8B060205EAEDF003128FF /* Libian.ttc */; };
@@ -100,8 +101,6 @@
 		00ED1EEF204FEB2A008CB70A /* HistoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HistoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00ED1EF3204FEB2A008CB70A /* HistoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryUITests.swift; sourceTree = "<group>"; };
 		00ED1EF5204FEB2A008CB70A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00EEA42C2069E5B20058C7C7 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/a/XcodeProjects/History/History/Models/CoreDataModels/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		00EEA42D2069E5B20058C7C7 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "/Users/a/XcodeProjects/History/History/Models/CoreDataModels/Event+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1B1D71342065FE41004BC39C /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		1B1D71352065FE41004BC39C /* TimelinePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePoint.swift; sourceTree = "<group>"; };
 		1B1D71362065FE42004BC39C /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
@@ -137,6 +136,9 @@
 		1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaHomeViewController.swift; sourceTree = "<group>"; };
 		1BAEDF39205587200004C804 /* EncyclopediaEmbedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaEmbedContainerViewController.swift; sourceTree = "<group>"; };
 		1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		1BB280F7206A89A800BFBF6A /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1BB280F8206A89A900BFBF6A /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1BB280FB206A9B6E00BFBF6A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1BD8B05A205D9A07003128FF /* String+HTTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTTPS.swift"; sourceTree = "<group>"; };
 		1BD8B05C205E22C0003128FF /* EncyclopediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaDetailViewController.swift; sourceTree = "<group>"; };
 		1BD8B060205EAEDF003128FF /* Libian.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Libian.ttc; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				00D4B988205143510090D9F4 /* SettingsViewController.swift */,
+				1BB280FB206A9B6E00BFBF6A /* MenuViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -328,8 +331,8 @@
 		1B5BBC9C2059773C006EAF16 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
-				00EEA42D2069E5B20058C7C7 /* Event+CoreDataProperties.swift */,
-				00EEA42C2069E5B20058C7C7 /* Person+CoreDataProperties.swift */,
+				1BB280F7206A89A800BFBF6A /* Event+CoreDataProperties.swift */,
+				1BB280F8206A89A900BFBF6A /* Person+CoreDataProperties.swift */,
 				1BAA2B4B205AD93300EE5ED4 /* Person+CoreDataClass.swift */,
 				1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */,
 			);
@@ -678,6 +681,9 @@
 				1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */,
 				1BD8B05D205E22C0003128FF /* EncyclopediaDetailViewController.swift in Sources */,
 				1B1D713A2065FE42004BC39C /* TimelinePoint.swift in Sources */,
+				1BB280F9206A89A900BFBF6A /* Event+CoreDataProperties.swift in Sources */,
+				1BB280FC206A9B6E00BFBF6A /* MenuViewController.swift in Sources */,
+				1BB280FA206A89A900BFBF6A /* Person+CoreDataProperties.swift in Sources */,
 				1BAA2B51205ADFF100EE5ED4 /* EventManager.swift in Sources */,
 				1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */,
 				1B846FA220678DCA00FB3D2D /* CommunityArticleTableViewCell.swift in Sources */,
@@ -708,14 +714,12 @@
 				1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */,
 				1B1D71432065FE56004BC39C /* DraftViewController.swift in Sources */,
 				1B1D713C2065FE42004BC39C /* TimelineTableViewCell.swift in Sources */,
-				00EEA42F2069E5B30058C7C7 /* Event+CoreDataProperties.swift in Sources */,
 				00D4B989205143510090D9F4 /* SettingsViewController.swift in Sources */,
 				1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */,
 				1B1D71412065FE56004BC39C /* ISTimeline.swift in Sources */,
 				1B267E2820551F140041A729 /* Constants.swift in Sources */,
 				1B1D71392065FE42004BC39C /* TimelineViewController.swift in Sources */,
 				00C696852057D41F00A6E394 /* EncyclopediaRecordTableViewCell.swift in Sources */,
-				00EEA42E2069E5B30058C7C7 /* Person+CoreDataProperties.swift in Sources */,
 				1BAA2B4C205AD93400EE5ED4 /* Event+CoreDataClass.swift in Sources */,
 				1B1D71422065FE56004BC39C /* ISPoint.swift in Sources */,
 				1BAEDF2F20556EE50004C804 /* SegmentioBuilder.swift in Sources */,

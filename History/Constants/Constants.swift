@@ -28,11 +28,12 @@ struct Constants {
     }
     
     struct Color {
-        static let naviBarTint = UIColor(netHex: 0x522421)
-        static let c1 = UIColor(netHex: 0x522421)
-        static let c2 = UIColor(netHex: 0x8C5A2E)
-        static let c3 = UIColor(netHex: 0xBF8641)
-        static let c4 = UIColor(netHex: 0xB3B372)
+        static let c1: Int = 0x522421
+        static let c2: Int = 0x8C5A2E
+        static let c3: Int = 0xBF8641
+        static let c4: Int = 0xB3B372
+        static let naviBarTint = UIColor(netHex: c1)
+        static let bgColor = UIColor(netHex: c3, alpha: 1.0)
 
     }
 }

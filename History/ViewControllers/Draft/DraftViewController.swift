@@ -48,6 +48,8 @@ class DraftViewController: BaseViewController {
         let c = tabBarItem?.imageInsets // 0, 0, 0, 0
         let d = tabBarItem?.title
         let e = tabBarItem?.titlePositionAdjustment
+        let f = self.tabBarController?.tabBar.frame // (x = 0, y = 519, width = 320, height = 49)
+        let g = self.tabBarController?.tabBarItem
     }
 
     override func didReceiveMemoryWarning() {
