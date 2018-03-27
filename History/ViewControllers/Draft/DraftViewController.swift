@@ -39,6 +39,15 @@ class DraftViewController: BaseViewController {
         timeline.contentInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0)
         timeline.linePositionX = self.view.frame.width / 2.0 + timeline.bounds.origin.x
         timeline.points = myPoints
+        
+
+//        let height = self.super.UITabBar.frame
+        let height = UIApplication.shared.statusBarFrame.height
+        let tabBarItem = self.parent?.tabBarItem
+        let b = tabBarItem?.image?.size // 30, 30
+        let c = tabBarItem?.imageInsets // 0, 0, 0, 0
+        let d = tabBarItem?.title
+        let e = tabBarItem?.titlePositionAdjustment
     }
 
     override func didReceiveMemoryWarning() {
