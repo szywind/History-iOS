@@ -1160,7 +1160,9 @@
                     <connections>
                         <outlet property="containerView" destination="Vie-7h-CbB" id="JWE-GH-WV0"/>
                         <outlet property="panGestureRecognizer" destination="fkS-LT-qSj" id="k88-s8-Yte"/>
-                        <outlet property="sideMenuConstraint" destination="X1k-A7-puz" id="jkv-Ne-nX4"/>
+                        <outlet property="sideMenu" destination="hYA-sC-a4U" id="t67-6q-hHE"/>
+                        <outlet property="sideMenuLeadingConstraint" destination="X1k-A7-puz" id="AHv-pn-4hn"/>
+                        <outlet property="sideMenuWidthConstraint" destination="PeP-wM-oOq" id="k6k-jO-mR0"/>
                         <outlet property="tapGestureRecognizer" destination="Pga-fE-g65" id="TM6-Gt-nEz"/>
                     </connections>
                 </viewController>
@@ -1178,10 +1180,10 @@
             </objects>
             <point key="canvasLocation" x="-2351" y="54"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="hXR-ZX-hhh">
             <objects>
-                <viewController id="q1L-jM-Xvc" sceneMemberID="viewController">
+                <viewController id="q1L-jM-Xvc" customClass="MenuViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UXl-sl-dTn">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1271,26 +1273,26 @@
                                         <rect key="frame" x="0.0" y="618" width="260" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLf-DU-6gV">
-                                                <rect key="frame" x="32" y="8" width="25" height="25"/>
+                                                <rect key="frame" x="32" y="9" width="20" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="TZB-Kd-zmw"/>
-                                                    <constraint firstAttribute="width" constant="25" id="fov-o0-n7G"/>
+                                                    <constraint firstAttribute="height" constant="20" id="TZB-Kd-zmw"/>
+                                                    <constraint firstAttribute="width" constant="20" id="fov-o0-n7G"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="ic_brightness_2"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vt6-LD-bvd">
-                                                <rect key="frame" x="203" y="8" width="25" height="25"/>
+                                                <rect key="frame" x="208" y="9" width="20" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="Zhc-DT-lIM"/>
-                                                    <constraint firstAttribute="height" constant="25" id="nwn-E9-wQx"/>
+                                                    <constraint firstAttribute="width" constant="20" id="Zhc-DT-lIM"/>
+                                                    <constraint firstAttribute="height" constant="20" id="nwn-E9-wQx"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="icons8-qr-code-25"/>
                                             </button>
                                         </subviews>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="mLf-DU-6gV" secondAttribute="bottom" constant="16" id="3jo-c3-knN"/>
-                                            <constraint firstAttribute="bottom" secondItem="vt6-LD-bvd" secondAttribute="bottom" constant="16" id="4Yp-bF-z1J"/>
+                                            <constraint firstAttribute="bottom" secondItem="mLf-DU-6gV" secondAttribute="bottom" constant="20" id="3jo-c3-knN"/>
+                                            <constraint firstAttribute="bottom" secondItem="vt6-LD-bvd" secondAttribute="bottom" constant="20" id="4Yp-bF-z1J"/>
                                             <constraint firstItem="mLf-DU-6gV" firstAttribute="leading" secondItem="JIf-of-y9x" secondAttribute="leading" constant="32" id="Axv-zr-fnL"/>
                                             <constraint firstAttribute="trailing" secondItem="vt6-LD-bvd" secondAttribute="trailing" constant="32" id="Kel-cu-zUd"/>
                                             <constraint firstAttribute="height" constant="49" id="dkX-A9-NnL"/>
@@ -1388,6 +1390,9 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bottomView" destination="JIf-of-y9x" id="Khq-BA-kvf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q6t-QV-OEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
