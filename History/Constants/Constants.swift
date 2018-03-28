@@ -36,4 +36,8 @@ struct Constants {
         static let bgColor = UIColor(netHex: c3, alpha: 1.0)
 
     }
+    
+    struct Constraint {
+        static let sideMenuWidth: CGFloat = 280.0
+    }
 }

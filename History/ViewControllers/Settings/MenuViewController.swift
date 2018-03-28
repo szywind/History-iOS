@@ -10,10 +10,14 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var bottomView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let borderColor = UITableView().separatorColor?.cgColor
+        bottomView.layer.borderWidth = 0.5
+        bottomView.layer.borderColor = borderColor
     }
 
     override func didReceiveMemoryWarning() {
