@@ -135,6 +135,8 @@ class SideMenuViewController: UIViewController {
             //                })
             //            }
             
+            self.panGestureRecognizer.view?.superview!.center = self.initCenter!
+            self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
             
             if lasttranslation > 0 { // swipe right
                 showSideMenu()
@@ -143,10 +145,6 @@ class SideMenuViewController: UIViewController {
             }
             
             lasttranslation = 0
-
-            self.panGestureRecognizer.view?.superview!.center = self.initCenter!
-            self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
-
         }
     }
     
@@ -173,7 +171,7 @@ class SideMenuViewController: UIViewController {
             self.containerView.alpha = 1
             self.containerView.isUserInteractionEnabled = true
             
-            self.blackView.frame.origin = CGPoint(x: 0, y: 0)
+//            self.blackView.frame.origin = CGPoint(x: 0, y: 0)
             self.blackView.alpha = 0
             
             self.view.layoutIfNeeded()
@@ -189,7 +187,7 @@ class SideMenuViewController: UIViewController {
             self.containerView.alpha = 0.5
             self.containerView.isUserInteractionEnabled = false
             
-            self.blackView.frame.origin = CGPoint(x: self.WIDTH, y: 0)
+//            self.blackView.frame.origin = CGPoint(x: self.WIDTH, y: 0)
             self.blackView.alpha = 0.5
             self.view.layoutIfNeeded()
         })
