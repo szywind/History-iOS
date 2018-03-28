@@ -33,7 +33,7 @@ struct Constants {
         static let c3: Int = 0xBF8641
         static let c4: Int = 0xB3B372
         static let naviBarTint = UIColor(netHex: c1)
-        static let bgColor = UIColor(netHex: c3, alpha: 1.0)
+        static let bgColor = UIColor(netHex: c3, alpha: 0.8)
 
     }
     

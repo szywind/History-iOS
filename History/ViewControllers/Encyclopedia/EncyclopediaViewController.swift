@@ -11,22 +11,17 @@ import Segmentio
 import CoreData
 import AVOSCloud
 
-class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
+class EncyclopediaViewController: UIViewController {
 
     var segmentioStyle = SegmentioStyle.imageUnderLabel
     var segmentioContent = [SegmentioItem]()
-    var searchActive = false
-    var isSearching = false
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate var viewControllers = [EncyclopediaContentViewController]()
-    
-    var filteredRecords = [Record]()
     
     // MARK: - Init
     
@@ -49,10 +44,7 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         default:
             break
         }
-
-        setupSearchBar()
         refreshUI()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
     }
 
@@ -85,65 +77,58 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    func setupSearchBar() {
-        searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.done
-        
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BaseViewController.dismissKeyboard))
-//        self.view.addGestureRecognizer(tap)
-    }
-    
     func setupViewControllers() {
         viewControllers.removeAll()
-        if isSearching {
-            let filteredController = EncyclopediaContentViewController.create()
-            filteredController.records = filteredRecords
-            print("filtered records", filteredController.records.count)
-            viewControllers.append(filteredController)
-            segmentioContent = [
-                SegmentioItem(title: "搜索结果", image: UIImage(named: "tornado"))
-            ]
-        } else {
-            let peopleController = EncyclopediaContentViewController.create()
-            peopleController.records = LocalDataManager.sharedInstance.allPeople
-            print("person records", peopleController.records.count)
+//        if isSearching {
+//            let filteredController = EncyclopediaContentViewController.create()
+//            filteredController.records = filteredRecords
+//            print("filtered records", filteredController.records.count)
+//            viewControllers.append(filteredController)
+//            segmentioContent = [
+//                SegmentioItem(title: "搜索结果", image: UIImage(named: "tornado"))
+//            ]
+//        }
 
-            let allController = EncyclopediaContentViewController.create()
-            allController.records = LocalDataManager.sharedInstance.allEvents
-            print("all records", allController.records.count)
+        let peopleController = EncyclopediaContentViewController.create()
+        peopleController.records = LocalDataManager.sharedInstance.allPeople
+        print("person records", peopleController.records.count)
+
+        let allController = EncyclopediaContentViewController.create()
+        allController.records = LocalDataManager.sharedInstance.allEvents
+        print("all records", allController.records.count)
             
-            let eventController = EncyclopediaContentViewController.create()
-            eventController.records = LocalDataManager.sharedInstance.events
-            print("event records", eventController.records.count)
+        let eventController = EncyclopediaContentViewController.create()
+        eventController.records = LocalDataManager.sharedInstance.events
+        print("event records", eventController.records.count)
             
-            let geoController = EncyclopediaContentViewController.create()
-            geoController.records = LocalDataManager.sharedInstance.geo
-            print("geo records", geoController.records.count)
+        let geoController = EncyclopediaContentViewController.create()
+        geoController.records = LocalDataManager.sharedInstance.geo
+        print("geo records", geoController.records.count)
             
-            let artController = EncyclopediaContentViewController.create()
-            artController.records = LocalDataManager.sharedInstance.art
-            print("art records", artController.records.count)
+        let artController = EncyclopediaContentViewController.create()
+        artController.records = LocalDataManager.sharedInstance.art
+        print("art records", artController.records.count)
             
-            let techController = EncyclopediaContentViewController.create()
-            techController.records = LocalDataManager.sharedInstance.tech
-            print("tech records", techController.records.count)
+        let techController = EncyclopediaContentViewController.create()
+        techController.records = LocalDataManager.sharedInstance.tech
+        print("tech records", techController.records.count)
             
-            viewControllers.append(peopleController)
-            viewControllers.append(allController)
-            viewControllers.append(eventController)
-            viewControllers.append(geoController)
-            viewControllers.append(artController)
-            viewControllers.append(techController)
+        viewControllers.append(peopleController)
+        viewControllers.append(allController)
+        viewControllers.append(eventController)
+        viewControllers.append(geoController)
+        viewControllers.append(artController)
+        viewControllers.append(techController)
             
-            segmentioContent = [
-                SegmentioItem(title: "人物", image: UIImage(named: "tornado")),
-                SegmentioItem(title: "全部", image: UIImage(named: "earthquakes")),
-                SegmentioItem(title: "事件", image: UIImage(named: "heat")),
-                SegmentioItem(title: "地理", image: UIImage(named: "eruption")),
-                SegmentioItem(title: "艺术", image: UIImage(named: "floods")),
-                SegmentioItem(title: "科技", image: UIImage(named: "wildfires"))
-            ]
-        }
+        segmentioContent = [
+            SegmentioItem(title: "人物", image: UIImage(named: "tornado")),
+            SegmentioItem(title: "全部", image: UIImage(named: "earthquakes")),
+            SegmentioItem(title: "事件", image: UIImage(named: "heat")),
+            SegmentioItem(title: "地理", image: UIImage(named: "eruption")),
+            SegmentioItem(title: "艺术", image: UIImage(named: "floods")),
+            SegmentioItem(title: "科技", image: UIImage(named: "wildfires"))
+        ]
+
     }
     
     fileprivate func selectedSegmentioIndex() -> Int {
@@ -176,62 +161,6 @@ class EncyclopediaViewController: UIViewController, UISearchBarDelegate {
     fileprivate func goToControllerAtIndex(_ index: Int) {
         segmentioView.selectedSegmentioIndex = index
     }
-    
-    
-    // MARK: - Search Bar
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredRecords.removeAll()
-        if searchBar.text == nil || searchBar.text == "" {
-            isSearching = false
-            view.endEditing(true)
-        } else {
-            isSearching = true
-            filteredRecords += LocalDataManager.sharedInstance.allPeople.filter({$0.name?.range(of:searchBar.text!) != nil})
-            filteredRecords += LocalDataManager.sharedInstance.allEvents.filter({$0.name?.range(of:searchBar.text!) != nil})
-        }
-        refreshUI()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        dismissKeyboard()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
-        searchBar.text = ""
-        refreshUI()
-        dismissKeyboard()
-    }
-//    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-//        searchActive = true;
-//        searchBar.setShowsCancelButton(true, animated: true)
-//    }
-//
-//    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-//        if(searchBar.text == "") {
-//            searchVar = searchVarDefault
-//            self.performSearch()
-//            showFoodType()
-//        }
-//        searchActive = false;
-//        searchBar.endEditing(true)
-//        searchBar.setShowsCancelButton(false, animated: true)
-//    }
-//
-//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-//        searchBar.text = ""
-//        showFoodType()
-//        searchActive = false;
-//        searchBar.endEditing(true)
-//    }
-//
-//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-//        searchVar = searchBar.text!.trimAndLowercase()
-//        self.performSearch()
-//        searchActive = false;
-//        searchBar.endEditing(true)
-//    }
-
     
     
     /*

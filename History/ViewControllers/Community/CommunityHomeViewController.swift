@@ -9,31 +9,16 @@
 import UIKit
 import Segmentio
 
-class CommunityHomeViewController: BaseViewController, UISearchBarDelegate {
+class CommunityHomeViewController: BaseViewController {
     
     fileprivate var currentStyle = SegmentioStyle.onlyLabel
     fileprivate var containerViewController: CommunityEmbedContainerViewController?
     
-    var searchBar = UISearchBar()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        //        searchBar.showsCancelButton = false
-        //        searchBar.placeholder = "请输入要搜索的词条"
-        //        searchBar.delegate = self
-        //        searchBar.isHidden = true
-        //        self.navigationItem.titleView = searchBar
-        //
-        //        let searchBtn = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-        //
-        //        self.navigationItem.rightBarButtonItem = searchBtn
     }
-    
-    //    @objc func searchTapped() {
-    //        searchBar.isHidden = false
-    //    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
