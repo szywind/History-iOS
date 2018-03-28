@@ -17,5 +17,9 @@ extension UIColor {
     convenience init(netHex:Int) {
         self.init(red: CGFloat((netHex >> 16) & 0xff), green: CGFloat((netHex >> 8) & 0xff), blue: CGFloat(netHex & 0xff))
     }
+    
+    convenience init(netHex:Int, alpha: CGFloat) {
+        self.init(red: CGFloat((netHex >> 16) & 0xff) / 255, green: CGFloat((netHex >> 8) & 0xff) / 255, blue: CGFloat(netHex & 0xff) / 255, alpha: alpha)
+    }
 }
 
