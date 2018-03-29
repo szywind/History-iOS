@@ -10,7 +10,6 @@ import UIKit
 
 class CommunityArticleTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var articleLbl: UILabel!
     
