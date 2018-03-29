@@ -1,29 +1,21 @@
 //
-//  EncyclopediaDetailViewController.swift
+//  SearchRecommendViewController.swift
 //  History
 //
-//  Created by 1 on 3/18/18.
+//  Created by Zhenyuan Shen on 3/29/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
 import UIKit
 
-class EncyclopediaDetailViewController: UIViewController {
+class SearchRecommendViewController: UIViewController {
 
-    @IBOutlet weak var recordTextView: UITextView!
-    @IBOutlet weak var recordImageView: UIImageView!
-    @IBOutlet weak var recordLbl: UILabel!
-    
-    var record: Record?
+    @IBOutlet weak var recommTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        recordTextView.isEditable = false
 
-        recordTextView.text = record?.info
-        recordImageView.image = record?.avatar
-        recordLbl.text = record?.name
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +23,10 @@ class EncyclopediaDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func refreshUI() {
+        recommTableView.reloadData()
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -43,3 +38,4 @@ class EncyclopediaDetailViewController: UIViewController {
     */
 
 }
+

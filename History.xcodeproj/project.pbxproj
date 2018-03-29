@@ -53,6 +53,8 @@
 		1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */; };
 		1BAEDF3A205587200004C804 /* EncyclopediaEmbedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF39205587200004C804 /* EncyclopediaEmbedContainerViewController.swift */; };
 		1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */; };
+		1BAFB10B206BFF4A0032B964 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB10A206BFF4A0032B964 /* SearchHomeViewController.swift */; };
+		1BAFB10F206CD5B40032B964 /* SearchRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB10E206CD5B40032B964 /* SearchRecommendViewController.swift */; };
 		1BB280F9206A89A900BFBF6A /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB280F7206A89A800BFBF6A /* Event+CoreDataProperties.swift */; };
 		1BB280FA206A89A900BFBF6A /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB280F8206A89A900BFBF6A /* Person+CoreDataProperties.swift */; };
 		1BB280FC206A9B6E00BFBF6A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB280FB206A9B6E00BFBF6A /* MenuViewController.swift */; };
@@ -136,6 +138,8 @@
 		1BAEDF37205586B80004C804 /* EncyclopediaHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaHomeViewController.swift; sourceTree = "<group>"; };
 		1BAEDF39205587200004C804 /* EncyclopediaEmbedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaEmbedContainerViewController.swift; sourceTree = "<group>"; };
 		1BAEDF3D20559B9C0004C804 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		1BAFB10A206BFF4A0032B964 /* SearchHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHomeViewController.swift; sourceTree = "<group>"; };
+		1BAFB10E206CD5B40032B964 /* SearchRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecommendViewController.swift; sourceTree = "<group>"; };
 		1BB280F7206A89A800BFBF6A /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1BB280F8206A89A900BFBF6A /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1BB280FB206A9B6E00BFBF6A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 		1B267E1E20543EE60041A729 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1BAFB109206BFEDC0032B964 /* Search */,
 				1B846F962067899600FB3D2D /* Community */,
 				1B993E1F2062ABC500D69323 /* Timeline */,
 				1B93CB652060383A003304B2 /* Draft */,
@@ -413,6 +418,15 @@
 				1BD8B05A205D9A07003128FF /* String+HTTPS.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1BAFB109206BFEDC0032B964 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1BAFB10A206BFF4A0032B964 /* SearchHomeViewController.swift */,
+				1BAFB10E206CD5B40032B964 /* SearchRecommendViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		1BD8B05E205EAEDF003128FF /* libian.ttf */ = {
@@ -709,6 +723,7 @@
 				1BAEDF3620557F9D0004C804 /* EncyclopediaContentViewController.swift in Sources */,
 				1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */,
 				1B846F9A20678A7200FB3D2D /* CommunityEmbedContainerViewController.swift in Sources */,
+				1BAFB10F206CD5B40032B964 /* SearchRecommendViewController.swift in Sources */,
 				1B846F9E20678C6100FB3D2D /* CommunityContentViewController.swift in Sources */,
 				1BAEDF3120556F3A0004C804 /* ColorPalette.swift in Sources */,
 				1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */,
@@ -718,6 +733,7 @@
 				1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */,
 				1B1D71412065FE56004BC39C /* ISTimeline.swift in Sources */,
 				1B267E2820551F140041A729 /* Constants.swift in Sources */,
+				1BAFB10B206BFF4A0032B964 /* SearchHomeViewController.swift in Sources */,
 				1B1D71392065FE42004BC39C /* TimelineViewController.swift in Sources */,
 				00C696852057D41F00A6E394 /* EncyclopediaRecordTableViewCell.swift in Sources */,
 				1BAA2B4C205AD93400EE5ED4 /* Event+CoreDataClass.swift in Sources */,

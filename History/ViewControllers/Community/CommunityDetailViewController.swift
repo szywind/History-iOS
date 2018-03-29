@@ -19,6 +19,8 @@ class CommunityDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        articleTextView.isEditable = false
+
         articleTextView.text = record?.info
         articleImageView.image = record?.avatar
         articleLbl.text = record?.name

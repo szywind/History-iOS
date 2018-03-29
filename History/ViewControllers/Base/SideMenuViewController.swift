@@ -135,8 +135,7 @@ class SideMenuViewController: UIViewController {
             //                })
             //            }
             
-            self.panGestureRecognizer.view?.superview!.center = self.initCenter!
-            self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
+
             
             if lasttranslation > 0 { // swipe right
                 showSideMenu()
@@ -145,6 +144,9 @@ class SideMenuViewController: UIViewController {
             }
             
             lasttranslation = 0
+            
+            self.panGestureRecognizer.view?.superview!.center = self.initCenter!
+            self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
         }
     }
     
@@ -173,7 +175,8 @@ class SideMenuViewController: UIViewController {
             
 //            self.blackView.frame.origin = CGPoint(x: 0, y: 0)
             self.blackView.alpha = 0
-            
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+
             self.view.layoutIfNeeded()
         })
     }
@@ -189,6 +192,8 @@ class SideMenuViewController: UIViewController {
             
 //            self.blackView.frame.origin = CGPoint(x: self.WIDTH, y: 0)
             self.blackView.alpha = 0.5
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+
             self.view.layoutIfNeeded()
         })
     }
