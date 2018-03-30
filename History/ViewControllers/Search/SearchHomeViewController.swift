@@ -284,7 +284,7 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sectionTitles
-    }
+//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+//        return sectionTitles
+//    }
 }
