@@ -18,6 +18,8 @@ class MenuViewController: UIViewController {
         let borderColor = UITableView().separatorColor?.cgColor
         bottomView.layer.borderWidth = 0.5
         bottomView.layer.borderColor = borderColor
+        
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
