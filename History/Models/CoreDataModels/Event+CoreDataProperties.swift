@@ -22,7 +22,7 @@ extension Event {
     @NSManaged public var end: NSNumber?
     @NSManaged public var info: String?
     @NSManaged public var name: String?
-    @NSManaged public var objectId: String?
+    @NSManaged public var objectId: String
     @NSManaged public var pinyin: String?
     @NSManaged public var start: NSNumber?
     @NSManaged public var type: String?

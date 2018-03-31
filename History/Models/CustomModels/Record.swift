@@ -19,8 +19,9 @@ class Record {
     var dynasty: String?
     var dynasty_detail: String?
     var pinyin: String?
+    var objectId: String?
     
-    init(name: String?, avatar: UIImage?, type: String?, start: Int16?, end: Int16?, dynasty: String?, dynasty_detail: String?, pinyin: String?, info: String = Constants.Default.defaultInfo) {
+    init(name: String?, avatar: UIImage?, type: String?, start: Int16?, end: Int16?, dynasty: String?, dynasty_detail: String?, pinyin: String?, objectId: String, info: String = Constants.Default.defaultInfo) {
         self.name = name
         self.avatar = avatar
         self.type = type
@@ -30,6 +31,7 @@ class Record {
         self.dynasty = dynasty
         self.dynasty_detail = dynasty_detail
         self.pinyin = pinyin
+        self.objectId = "_" + objectId
     }
     
     init(person: Person) {
@@ -40,6 +42,7 @@ class Record {
         self.dynasty = person.dynasty
         self.dynasty_detail = person.dynasty_detail
         self.pinyin = person.pinyin
+        self.objectId = "p" + person.objectId
         
         if let avatar_ = person.avatar {
             let url = URL(string: avatar_.convertToHttps())
@@ -72,7 +75,8 @@ class Record {
         self.dynasty = event.dynasty
         self.dynasty_detail = event.dynasty_detail
         self.pinyin = event.pinyin
-        
+        self.objectId = "e" + event.objectId
+
         if let avatar_ = event.avatar {
             let url = URL(string: avatar_.convertToHttps())
             if let data = try? Data(contentsOf: url!) {
