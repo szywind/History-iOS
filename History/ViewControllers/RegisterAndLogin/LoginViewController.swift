@@ -25,6 +25,8 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         
         let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
         self.navigationItem.leftBarButtonItem = backButton
+        
+        phoneTextfield.setBottomBOrder()
     }
 
     override func didReceiveMemoryWarning() {

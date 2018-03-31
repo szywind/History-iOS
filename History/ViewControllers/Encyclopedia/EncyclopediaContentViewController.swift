@@ -16,6 +16,7 @@ class EncyclopediaContentViewController: UIViewController {
     
     @IBOutlet weak var recordTableView: UITableView!
 
+    // setup section by alphabet initial
     func processData() {
 //        records = records.sorted(by: { $0.pinyin! < $1.pinyin! || ($0.pinyin! < $1.pinyin! && $0.start! < $1.start!)}) // sort records by alphabetical order
         for record in records {
@@ -115,7 +116,6 @@ extension EncyclopediaContentViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        dismissKeyboard()
         performSegue(withIdentifier: "showRecordDetails", sender: self)
     }
     
