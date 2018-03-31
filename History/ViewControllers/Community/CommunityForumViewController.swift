@@ -63,6 +63,21 @@ class CommunityForumViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupNavBar()
+    }
+  
+    // https://stackoverflow.com/questions/39511088/navigationbar-coloring-in-viewwillappear-happens-too-late-in-ios-10
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.navigationController?.navigationBar.isTranslucent = false
+//        super.viewWillDisappear(animated)
+//    }
+    
     @objc func refreshUI() {
         setupViewControllers()
         setupScrollView()
@@ -87,6 +102,16 @@ class CommunityForumViewController: UIViewController {
         }
     }
     
+
+    // https://stackoverflow.com/questions/19082963/how-to-make-completely-transparent-navigation-bar-in-ios-7
+    // https://stackoverflow.com/questions/18969248/how-to-draw-a-transparent-uitoolbar-or-uinavigationbar-in-ios7
+    func setupNavBar() {
+//        navBarBackgroundImage = self.navigationController?.navigationBar.backgroundImage(for: .default) // navBarBackgroundImage is nil
+//        navBarShadowImage = self.navigationController?.navigationBar.shadowImage // navBarShadowImage is nil
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
     
     func setupViewControllers() {
         viewControllers.removeAll()

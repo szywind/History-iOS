@@ -42,7 +42,7 @@ class CommunityContentViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        refresh()
+        processData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,9 +50,11 @@ class CommunityContentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func refresh() {
-        processData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (self.navigationController?.navigationBar.isTranslucent)! {
+            self.navigationController?.navigationBar.isTranslucent = false
+        }
         topicCollectionView.reloadData()
     }
     
