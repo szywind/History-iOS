@@ -52,9 +52,9 @@ class CommunityContentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (self.navigationController?.navigationBar.isTranslucent)! {
-            self.navigationController?.navigationBar.isTranslucent = false
-        }
+//        if (self.navigationController?.navigationBar.isTranslucent)! {
+//            self.navigationController?.navigationBar.isTranslucent = false
+//        }
         topicCollectionView.reloadData()
     }
     

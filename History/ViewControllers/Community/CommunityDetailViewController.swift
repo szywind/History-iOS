@@ -31,19 +31,22 @@ class CommunityDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if (self.navigationController?.navigationBar.isTranslucent)! {
-            self.navigationController?.navigationBar.isTranslucent = false
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        if (self.navigationController?.navigationBar.isTranslucent)! {
+//            self.navigationController?.navigationBar.isTranslucent = false
+//        }
+//    }
+//
+//    override func willMove(toParentViewController parent: UIViewController?) {
+//        super.willMove(toParentViewController: parent)
+//        if String(describing: parent) == "CommunityForumViewController" {
+//            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//            self.navigationController?.navigationBar.shadowImage = UIImage()
+//            self.navigationController?.navigationBar.isTranslucent = true
+//        }
+//    }
     
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-    }
     /*
      // MARK: - Navigation
      
