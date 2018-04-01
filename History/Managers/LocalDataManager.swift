@@ -55,13 +55,14 @@ class LocalDataManager {
     
     func setupEncyclopediaData() {
         allPeople = Record.getRecords(people: CoreDataManager.fetchAllPeople())
-        allPeople.sort { (record1, record2) -> Bool in
-            record1.start! < record2.start! || (record1.start! == record2.start! && record1.end! < record2.end!)
-        }
         allEvents = Record.getRecords(events: CoreDataManager.fetchAllEvents())
-        allEvents.sort { (record1, record2) -> Bool in
-            record1.start! < record2.start! || (record1.start! == record2.start! && record1.end! < record2.end!)
-        }
+        
+//        allPeople.sort { (record1, record2) -> Bool in
+//            record1.start! < record2.start! || (record1.start! == record2.start! && record1.end! < record2.end!)
+//        }
+//        allEvents.sort { (record1, record2) -> Bool in
+//            record1.start! < record2.start! || (record1.start! == record2.start! && record1.end! < record2.end!)
+//        }
         
         //        allRecords = allPeople + allEvents
         //        allRecords.sorted(by: {$0.start! < $1.start! || ($0.start! == $1.start! && $0.end! < $1.end!)})

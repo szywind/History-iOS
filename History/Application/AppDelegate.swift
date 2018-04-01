@@ -31,10 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PersonManager.sharedInstance.fetchAllPeopleFromLC { (objects1, error1) in
             EventManager.sharedInstance.fetchAllEventsFromLC { (objects2, error2) in
-                if (error1 == nil && objects1 != nil ) || (error2 == nil && objects2 != nil) {
-//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
-                    LocalDataManager.sharedInstance.setupData()
-                }
+//                if (error1 == nil && objects1 != nil ) || (error2 == nil && objects2 != nil) {
+////                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
+//                } else {
+//                    print(error1?.localizedDescription)
+//                    print(error2?.localizedDescription)
+//                }
+                LocalDataManager.sharedInstance.setupData()
             }
         }
         

@@ -147,6 +147,10 @@ class CoreDataManager {
     class func fetchAllPeople() -> [Person] {
         var people = [Person]()
         let personFetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+        // sort by time
+        let sort = [NSSortDescriptor(key: #keyPath(Person.start), ascending: true),
+                    NSSortDescriptor(key: #keyPath(Person.end), ascending: true)]
+        personFetchRequest.sortDescriptors = sort
         do {
             people = try context.fetch(personFetchRequest)
         } catch {
@@ -158,6 +162,10 @@ class CoreDataManager {
     class func fetchAllEvents() -> [Event] {
         var events = [Event]()
         let eventFetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        // sort by time
+        let sort = [NSSortDescriptor(key: #keyPath(Event.start), ascending: true),
+                    NSSortDescriptor(key: #keyPath(Event.end), ascending: true)]
+        eventFetchRequest.sortDescriptors = sort
         do {
             events = try context.fetch(eventFetchRequest)
         } catch {
