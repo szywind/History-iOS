@@ -14,6 +14,7 @@ class CommunityDetailViewController: UIViewController {
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var articleLbl: UILabel!
     
+    @IBOutlet weak var articleTextViewHeightConstraint: NSLayoutConstraint!
     var record: Record?
     
     override func viewDidLoad() {
@@ -22,6 +23,17 @@ class CommunityDetailViewController: UIViewController {
         articleTextView.isEditable = false
 
         articleTextView.text = record?.info
+        articleTextView.isScrollEnabled = false
+        
+        // https://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
+        // https://stackoverflow.com/questions/28389913/resize-textfield-based-on-content
+        // var height = articleTextView.contentSize.height // not work since height is 300
+        let fixedWidth = articleTextView.frame.size.width
+        let newSize = articleTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        let lineHeight = articleTextView.font?.lineHeight
+        
+        articleTextViewHeightConstraint.constant = newSize.height + 2 * lineHeight!
+        
         articleImageView.image = record?.avatar
         articleLbl.text = record?.name
     }

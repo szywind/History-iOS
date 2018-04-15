@@ -9,7 +9,7 @@
 import UIKit
 import AVOSCloud
 
-class LoginViewController: BaseViewController, UITextFieldDelegate {
+class LoginViewController: ViewController, UITextFieldDelegate {
 
     @IBOutlet var phoneTextfield: UITextField!
     override func viewDidLoad() {
@@ -23,9 +23,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
 //        post.set("words", value: "Hello World!")
 //        post.save()
         
-        let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
-        self.navigationItem.leftBarButtonItem = backButton
-        
         phoneTextfield.setBottomBOrder()
     }
 
@@ -34,9 +31,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func back() {
-        self.dismiss(animated: true, completion: nil)
-    }
     @IBAction func onConfirmTapped(_ sender: Any) {
         let alert = UIAlertController(title: "确认手机号", message: phoneTextfield.text! + "\n我们将发送短信到上面的手机号", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "取消", style: .cancel) { (action) in

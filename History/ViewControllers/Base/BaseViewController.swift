@@ -14,6 +14,8 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.isTranslucent = false
+
         navigationController?.navigationBar.barTintColor = Constants.Color.naviBarTint
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
