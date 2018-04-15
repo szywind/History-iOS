@@ -1,4 +1,4 @@
-//
+ //
 //  EncyclopediaDetailViewController.swift
 //  History
 //
@@ -14,6 +14,9 @@ class EncyclopediaDetailViewController: UIViewController {
     @IBOutlet weak var recordImageView: UIImageView!
     @IBOutlet weak var recordLbl: UILabel!
     
+    @IBOutlet weak var recordTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var recordImageViewHeightConstraint: NSLayoutConstraint!
+    
     var record: Record?
     
     override func viewDidLoad() {
@@ -22,6 +25,18 @@ class EncyclopediaDetailViewController: UIViewController {
         recordTextView.isEditable = false
 
         recordTextView.text = record?.info
+        recordTextView.isScrollEnabled = false
+        
+        // adjust the height of image view to the content
+//        recordImageViewHeightConstraint.constant = (record?.avatar?.size.height)! * recordImageView.frame.width / (record?.avatar?.size.width)!
+        
+        // adjust the height of text view to the content
+        let fixedWidth = recordTextView.frame.size.width
+        let newSize = recordTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        let lineHeight = recordTextView.font?.lineHeight
+        recordTextViewHeightConstraint.constant = newSize.height + 2 * lineHeight!
+        
+        
         recordImageView.image = record?.avatar
         recordLbl.text = record?.name
     }

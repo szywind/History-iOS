@@ -106,20 +106,25 @@ class CommunityForumViewController: UIViewController {
 
     // https://stackoverflow.com/questions/19082963/how-to-make-completely-transparent-navigation-bar-in-ios-7
     // https://stackoverflow.com/questions/18969248/how-to-draw-a-transparent-uitoolbar-or-uinavigationbar-in-ios7
+    
+//    var navBarBackgroundImage: UIImage?
+//    var navBarShadowImage: UIImage?
+    
     func setupNavBar() {
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.isNavigationBarHidden = false
 //        navBarBackgroundImage = self.navigationController?.navigationBar.backgroundImage(for: .default) // navBarBackgroundImage is nil
 //        navBarShadowImage = self.navigationController?.navigationBar.shadowImage // navBarShadowImage is nil
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+        
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     func resetNavBar() {
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.isTranslucent = false
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.isTranslucent = false
     }
     
     func setupViewControllers() {
