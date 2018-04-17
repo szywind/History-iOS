@@ -13,6 +13,7 @@ struct Constants {
     struct Default {
         static let defaultInfo = "不详"
         static let defaultAvatar = "default"
+        static let defaultUsernameLimit = 20
     }
     
     struct CoreData {

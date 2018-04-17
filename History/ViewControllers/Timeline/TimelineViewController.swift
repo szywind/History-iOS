@@ -40,7 +40,7 @@ class TimelineViewController: BaseViewController {
     func processData() {
         
         for record in LocalDataManager.sharedInstance.allRecords {
-            let dynastyKey = LocalDataManager.sharedInstance.dynasty2index[record.dynasty!]
+            let dynastyKey = LocalDataManager.dynasty2index[record.dynasty!]
             if var records = dynastyDictionary[dynastyKey!] {
                 records.append(record)
                 dynastyDictionary[dynastyKey!] = records
@@ -52,7 +52,7 @@ class TimelineViewController: BaseViewController {
         dynastySectionIndices = [Int](dynastyDictionary.keys)
         dynastySectionIndices = dynastySectionIndices.sorted(by: { $0 < $1 })
         for ind in dynastySectionIndices {
-            dynastySectionTitles.append(LocalDataManager.sharedInstance.index2dynasty[ind])
+            dynastySectionTitles.append(LocalDataManager.index2dynasty[ind])
         }
         for (ind, records) in dynastyDictionary {
             var recordsInSameDynasty = [(TimelinePoint, UIColor, String, String, String?, String?, String?)]()

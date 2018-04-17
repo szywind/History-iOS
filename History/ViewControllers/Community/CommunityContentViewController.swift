@@ -14,12 +14,12 @@ class CommunityContentViewController: UIViewController {
     var recordDictionary = [String: [Record]]()
     var recordSectionTitles = [String]()
     
-    @IBOutlet weak var recordTableView: UITableView!
+    @IBOutlet weak var topicCollectionView: UICollectionView!
     
     func processData() {
         //        records = records.sorted(by: { $0.pinyin! < $1.pinyin! || ($0.pinyin! < $1.pinyin! && $0.start! < $1.start!)}) // sort records by alphabetical order
         for record in records {
-            let key = record.pinyin?.prefix(1).uppercased()
+            let key = record.dynasty
             if var value = recordDictionary[key!] {
                 value.append(record)
                 recordDictionary[key!] = value
@@ -28,7 +28,9 @@ class CommunityContentViewController: UIViewController {
             }
         }
         
-        recordSectionTitles = recordDictionary.keys.sorted(by: { $0 < $1 })
+        recordSectionTitles = recordDictionary.keys.sorted { (dynasty1, dynasty2) -> Bool in
+            return LocalDataManager.dynasty2index[dynasty1]! < LocalDataManager.dynasty2index[dynasty2]!
+        }
     }
     
     class func create() -> CommunityContentViewController {
@@ -40,7 +42,7 @@ class CommunityContentViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        refresh()
+        processData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,20 +50,23 @@ class CommunityContentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func refresh() {
-        processData()
-        recordTableView.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        if (self.navigationController?.navigationBar.isTranslucent)! {
+//            self.navigationController?.navigationBar.isTranslucent = false
+//        }
+        topicCollectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? CommunityDetailViewController {
-            if let indexPath = recordTableView.indexPathForSelectedRow {
+        if let destination = segue.destination as? CommunityForumViewController {
+            if let indexPath = topicCollectionView.indexPathsForSelectedItems?.first {
                 guard let sectionData = recordDictionary[recordSectionTitles[indexPath.section]] else {
                     return
                 }
                 guard sectionData.count > indexPath.row else { return }
-                destination.record = sectionData[indexPath.row]
+//                destination.topic = sectionData[indexPath.row].objectId
+                destination.posts = [sectionData[indexPath.row]]
             }
         }
     }
@@ -78,48 +83,50 @@ class CommunityContentViewController: UIViewController {
     
 }
 
-extension CommunityContentViewController: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - Table View
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+// MARK: - Collection View
+extension CommunityContentViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return recordDictionary.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sectionData = recordDictionary[recordSectionTitles[section]] else {
             return 0
         }
         return sectionData.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return recordSectionTitles[section]
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recordTableView.dequeueReusableCell(withIdentifier: "articleCell") as! CommunityArticleTableViewCell
-        
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topicCell", for: indexPath) as! CommunityCollectionViewCell
+
         // Configure the cell...
         guard let sectionData = recordDictionary[recordSectionTitles[indexPath.section]] else {
             return cell
         }
-        
-        cell.articleLbl.text = sectionData[indexPath.row].name
-        cell.articleImage.image = sectionData[indexPath.row].avatar
+        cell.topicLbl.text = sectionData[indexPath.row].name
+        cell.topicImage.image = sectionData[indexPath.row].avatar
         
         return cell
+        
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        dismissKeyboard()
-        performSegue(withIdentifier: "showArticleDetails", sender: self)
-    }
-    
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+    func indexTitles(for collectionView: UICollectionView) -> [String]? {
         return recordSectionTitles
+    }
+    
+    // Section Header View
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! SectionHeaderView
+        let title = recordSectionTitles[indexPath.section]
+        
+        sectionHeaderView.dynastyTitle = title
+        
+        return sectionHeaderView
+    }
+    
+    // MARK: - UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "enterForum", sender: self)
     }
 }

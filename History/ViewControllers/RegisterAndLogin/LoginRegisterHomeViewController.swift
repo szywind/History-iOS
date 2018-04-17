@@ -1,25 +1,22 @@
 //
-//  MenuViewController.swift
+//  LoginRegisterHomeViewController.swift
 //  History
 //
-//  Created by 1 on 3/27/18.
+//  Created by Zhenyuan Shen on 4/15/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class LoginRegisterHomeViewController: UIViewController {
 
-    @IBOutlet weak var bottomView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let borderColor = UITableView().separatorColor?.cgColor
-        bottomView.layer.borderWidth = 0.5
-        bottomView.layer.borderColor = borderColor
-        
-        self.navigationController?.navigationBar.isHidden = true
+        let backButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(back))
+//        let backButton = UIBarButtonItem(title: , style: .can, target: self, action: #selector(back))
+        self.navigationItem.leftBarButtonItem = backButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +24,9 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func back() {
+        self.dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

@@ -9,7 +9,7 @@
 import UIKit
 import AVOSCloud
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: ViewController, UITextFieldDelegate {
 
     @IBOutlet var phoneTextfield: UITextField!
     override func viewDidLoad() {
@@ -22,6 +22,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        let post = LCObject(className: "TestObject")
 //        post.set("words", value: "Hello World!")
 //        post.save()
+        
+        phoneTextfield.setBottomBOrder()
     }
 
     override func didReceiveMemoryWarning() {

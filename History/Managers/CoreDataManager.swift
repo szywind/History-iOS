@@ -25,10 +25,46 @@ class CoreDataManager {
         appDelegate.saveContext()
     }
     
+    // https://www.youtube.com/watch?v=3b8P44XdwkQ
+    class func delete(person: Person) -> Bool {
+        context.delete(person)
+        do {
+            try context.save()
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    class func delete(event: Event) -> Bool {
+        context.delete(event)
+        do {
+            try context.save()
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    // https://www.youtube.com/watch?v=3b8P44XdwkQ
+    class func clear() -> Bool {
+        let delete1 = NSBatchDeleteRequest(fetchRequest: Person.fetchRequest())
+        let delete2 = NSBatchDeleteRequest(fetchRequest: Event.fetchRequest())
+        do {
+            try context.execute(delete1)
+            try context.execute(delete2)
+            return true
+        } catch {
+            return false
+        }
+    }
+    
     class func savePerson(personObject: AVObject) {
         if let personId = personObject.objectId {
-            if checkPersonExistence(personId: personId) {
-                return
+            for person in checkPersonExistence(personId: personId) {
+                if !delete(person: person) {
+                    return
+                }
             }
             let person = Person(context: context)
             person.objectId = personId
@@ -84,8 +120,10 @@ class CoreDataManager {
 
     class func saveEvent(eventObject: AVObject) {
         if let eventId = eventObject.objectId {
-            if checkEventExistence(eventId: eventId) {
-                return
+            for event in checkEventExistence(eventId: eventId) {
+                if !delete(event: event) {
+                    return
+                }
             }
             
             let event = Event(context: context)
@@ -134,19 +172,21 @@ class CoreDataManager {
         }
     }
     
-    class func checkPersonExistence(personId: String) -> Bool {
-        let people = fetchfilteredPeople(value: personId, format: Constants.CoreData.personIdFilterFormat)
-        return people.count > 0
+    class func checkPersonExistence(personId: String) -> [Person] {
+        return fetchfilteredPeople(value: personId, format: Constants.CoreData.personIdFilterFormat)
     }
     
-    class func checkEventExistence(eventId: String) -> Bool {
-        let events = fetchfilteredEvents(value: eventId, format: Constants.CoreData.eventIdFilterFormat)
-        return events.count > 0
+    class func checkEventExistence(eventId: String) -> [Event] {
+        return fetchfilteredEvents(value: eventId, format: Constants.CoreData.eventIdFilterFormat)
     }
     
     class func fetchAllPeople() -> [Person] {
         var people = [Person]()
         let personFetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+        // sort by time
+        let sort = [NSSortDescriptor(key: #keyPath(Person.start), ascending: true),
+                    NSSortDescriptor(key: #keyPath(Person.end), ascending: true)]
+        personFetchRequest.sortDescriptors = sort
         do {
             people = try context.fetch(personFetchRequest)
         } catch {
@@ -158,6 +198,10 @@ class CoreDataManager {
     class func fetchAllEvents() -> [Event] {
         var events = [Event]()
         let eventFetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        // sort by time
+        let sort = [NSSortDescriptor(key: #keyPath(Event.start), ascending: true),
+                    NSSortDescriptor(key: #keyPath(Event.end), ascending: true)]
+        eventFetchRequest.sortDescriptors = sort
         do {
             events = try context.fetch(eventFetchRequest)
         } catch {

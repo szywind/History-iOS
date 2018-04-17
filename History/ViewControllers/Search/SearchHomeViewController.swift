@@ -31,10 +31,16 @@ class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupSearchBar()
         switchToRecommendPage()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
+        setupSearchBar()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -231,7 +237,7 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell1 = EncyclopediaRecordTableViewCell()
-        var cell2 = CommunityArticleTableViewCell()
+        var cell2 = CommunityForumTableViewCell()
         
         // Configure the cell...
         var sectionData = [Record]()
@@ -249,9 +255,8 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell1.recordImage.image = sectionData[indexPath.row].avatar
         } else if index == 2 {
             sectionData = filteredPosts
-            cell2 = searchResultTableView.dequeueReusableCell(withIdentifier: "articleCell") as! CommunityArticleTableViewCell
-            cell2.articleLbl.text = sectionData[indexPath.row].name
-            cell2.articleImage.image = sectionData[indexPath.row].avatar
+            cell2 = searchResultTableView.dequeueReusableCell(withIdentifier: "postCell") as! CommunityForumTableViewCell
+            cell2.topicLbl.text = sectionData[indexPath.row].name
         }
         
         if sectionData.isEmpty {
@@ -284,7 +289,7 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sectionTitles
-    }
+//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+//        return sectionTitles
+//    }
 }
