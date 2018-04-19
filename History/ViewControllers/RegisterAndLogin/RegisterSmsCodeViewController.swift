@@ -1,48 +1,43 @@
 //
-//  RegisterHomeViewController.swift
+//  RegisterSmsCodeViewController.swift
 //  History
 //
-//  Created by 1 on 4/17/18.
+//  Created by Zhenyuan Shen on 4/19/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
 import UIKit
+import AVOSCloud
 
-class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
+class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var warningLbl: UILabel!
-    
+    @IBOutlet weak var smsCodeTextField: UITextField!
     @IBOutlet weak var viewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var hintLbl: UILabel!
     
-    @IBOutlet weak var nextBtn: UIButton!
+    var username: String?
+    var phone: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        nameTextField.delegate = self
-        nameTextField.borderStyle = .none
+        smsCodeTextField.delegate = self
+        smsCodeTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+        smsCodeTextField.borderStyle = .none
+
+        hintLbl.text = "请在下面输入验证码以确认\n+86 \(phone!)"
+        hintLbl.numberOfLines = 2
         
-        imageView.isHidden = true
-        warningLbl.isHidden = true
-        imageView.layer.cornerRadius = imageView.frame.size.height / 2
-        
-        nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
-        
-        warningLbl.text = "注意：你的全名不能多于\(Constants.Default.defaultUsernameLimit)个字符。"
-        
-        nextBtn.isEnabled = false
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // https://stackoverflow.com/questions/31774006/how-to-get-height-of-keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     }
-
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
@@ -58,28 +53,16 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
     // https://stackoverflow.com/questions/28394933/how-do-i-check-when-a-uitextfield-changes/35845040
     @objc func textFieldDidChange(textField: UITextField) {
         textField.text = textField.text?.replacingOccurrences(of: " ", with: "")
-
+        
         let length = textField.text?.count ?? 0
         
-        warningLbl.isHidden = true
-        nextBtn.isEnabled = false
-        imageView.isHidden = true
-        
-        if length > 0 {
-            imageView.isHidden = false
-            if length > Constants.Default.defaultUsernameLimit {
-                imageView.image = UIImage(named: "ic_error_white")
-                warningLbl.isHidden = false
-//                imageView.tintColor = UIColor.white
-                imageView.backgroundColor = UIColor.red
-            } else {
-                imageView.image = UIImage(named: "ic_done_white")
-//                imageView.tintColor = UIColor.white
-                imageView.backgroundColor = UIColor.green
-                nextBtn.isEnabled = true
-            }
+        if length == Constants.Default.defaultSmsCodeLength {
+            // TODO
+            // spindle
+            checkSmsCode()
         }
     }
+    
 
     // Hide/Dismiss keyboard when user touches outside keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,18 +72,22 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
     
     // Hide/Dismiss keyboard when user presses return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nameTextField.resignFirstResponder()
+        smsCodeTextField.resignFirstResponder()
         viewBottomConstraint.constant = 0
         return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toRegister" {
-            if let destination = segue.destination as? RegisterPhoneViewController {
-                destination.username = nameTextField.text
+        if segue.identifier == "toSetupPwd" {
+            if let destination = segue.destination as? RegisterPasswordViewController {
+                let user = AVUser()
+                user.username = username
+                user.mobilePhoneNumber = phone
+                destination.user = user
             }
         }
     }
+    
     /*
     // MARK: - Navigation
 
@@ -111,4 +98,25 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
     }
     */
 
+    func checkSmsCode() {
+//        AVUser.verifyMobilePhone(smsCodeTextField.text!) { (succeed, error) in
+        AVOSCloud.verifySmsCode(smsCodeTextField.text!, mobilePhoneNumber: phone!) { (succeed, error) in
+            if succeed {
+                self.performSegue(withIdentifier: "toSetupPwd", sender: self)
+            } else {
+                print(error?.localizedDescription)
+                self.smsCodeTextField.text?.removeAll()
+                
+                // popup alert
+                let alert = UIAlertController(title: "错误", message: "你输入的验证码不正确，请重试。", preferredStyle: .alert)
+     
+                let ok = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                
+                }
+
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
 }

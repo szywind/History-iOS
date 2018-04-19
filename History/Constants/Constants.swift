@@ -14,6 +14,8 @@ struct Constants {
         static let defaultInfo = "不详"
         static let defaultAvatar = "default"
         static let defaultUsernameLimit = 20
+        static let defaultSmsCodeLength = 6
+        static let defaultPasswordLimit = 10
     }
     
     struct CoreData {
@@ -26,6 +28,8 @@ struct Constants {
         static let fetchDataFromLC = "didFetchDataNotification"
         static let refreshUI = "refreshUI"
         static let toggleSideMenu = "toggleSideMenu"
+        static let emailRegister = "emailRegister"
+        static let phoneRegister = "phoneRegister"
     }
     
     struct Color {

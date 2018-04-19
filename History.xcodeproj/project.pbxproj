@@ -47,6 +47,11 @@
 		1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8F4034206564540080EA01 /* LocalDataManager.swift */; };
 		1B8FDF862082F91900BF9560 /* LoginRegisterHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF852082F91900BF9560 /* LoginRegisterHomeViewController.swift */; };
 		1B8FDF8E2086004200BF9560 /* RegisterHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF8D2086004200BF9560 /* RegisterHomeViewController.swift */; };
+		1B8FDF922088462500BF9560 /* RegisterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF912088462500BF9560 /* RegisterPhoneViewController.swift */; };
+		1B8FDF942088CEC500BF9560 /* RegisterSmsCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF932088CEC500BF9560 /* RegisterSmsCodeViewController.swift */; };
+		1B8FDF962088D2A800BF9560 /* RegisterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF952088D2A800BF9560 /* RegisterEmailViewController.swift */; };
+		1B8FDF9A2088D61700BF9560 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF992088D61700BF9560 /* RegisterViewController.swift */; };
+		1B8FDF9C2088D6E900BF9560 /* RegisterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF9B2088D6E900BF9560 /* RegisterPasswordViewController.swift */; };
 		1B93183520691A5F00FAFDE4 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93183420691A5F00FAFDE4 /* SideMenuViewController.swift */; };
 		1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */; };
 		1BAA2B4C205AD93400EE5ED4 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */; };
@@ -139,6 +144,11 @@
 		1B8F4034206564540080EA01 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		1B8FDF852082F91900BF9560 /* LoginRegisterHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterHomeViewController.swift; sourceTree = "<group>"; };
 		1B8FDF8D2086004200BF9560 /* RegisterHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterHomeViewController.swift; sourceTree = "<group>"; };
+		1B8FDF912088462500BF9560 /* RegisterPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPhoneViewController.swift; sourceTree = "<group>"; };
+		1B8FDF932088CEC500BF9560 /* RegisterSmsCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSmsCodeViewController.swift; sourceTree = "<group>"; };
+		1B8FDF952088D2A800BF9560 /* RegisterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailViewController.swift; sourceTree = "<group>"; };
+		1B8FDF992088D61700BF9560 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		1B8FDF9B2088D6E900BF9560 /* RegisterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordViewController.swift; sourceTree = "<group>"; };
 		1B93183420691A5F00FAFDE4 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -261,6 +271,11 @@
 				1B347DE620519E280035CD01 /* VerificationCodeViewController.swift */,
 				1B8FDF852082F91900BF9560 /* LoginRegisterHomeViewController.swift */,
 				1B8FDF8D2086004200BF9560 /* RegisterHomeViewController.swift */,
+				1B8FDF912088462500BF9560 /* RegisterPhoneViewController.swift */,
+				1B8FDF932088CEC500BF9560 /* RegisterSmsCodeViewController.swift */,
+				1B8FDF952088D2A800BF9560 /* RegisterEmailViewController.swift */,
+				1B8FDF992088D61700BF9560 /* RegisterViewController.swift */,
+				1B8FDF9B2088D6E900BF9560 /* RegisterPasswordViewController.swift */,
 			);
 			path = RegisterAndLogin;
 			sourceTree = "<group>";
@@ -711,8 +726,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B846F98206789AA00FB3D2D /* CommunityHomeViewController.swift in Sources */,
+				1B8FDF9A2088D61700BF9560 /* RegisterViewController.swift in Sources */,
 				1B2BAE35206E8C2800D6131E /* UITextField+UnderLine.swift in Sources */,
 				1B267E2A205520370041A729 /* LCConstants.swift in Sources */,
+				1B8FDF9C2088D6E900BF9560 /* RegisterPasswordViewController.swift in Sources */,
 				1B8FDF8E2086004200BF9560 /* RegisterHomeViewController.swift in Sources */,
 				1B93183520691A5F00FAFDE4 /* SideMenuViewController.swift in Sources */,
 				1BAEDF2B205560970004C804 /* EncyclopediaViewController.swift in Sources */,
@@ -762,10 +779,13 @@
 				1B2BAE39206EAEE600D6131E /* SectionHeaderView.swift in Sources */,
 				1BAFB10B206BFF4A0032B964 /* SearchHomeViewController.swift in Sources */,
 				1B1D71392065FE42004BC39C /* TimelineViewController.swift in Sources */,
+				1B8FDF942088CEC500BF9560 /* RegisterSmsCodeViewController.swift in Sources */,
 				00C696852057D41F00A6E394 /* EncyclopediaRecordTableViewCell.swift in Sources */,
 				1BAA2B4C205AD93400EE5ED4 /* Event+CoreDataClass.swift in Sources */,
 				1B2BAE3B206EB2A300D6131E /* CommunityForumTableViewCell.swift in Sources */,
+				1B8FDF962088D2A800BF9560 /* RegisterEmailViewController.swift in Sources */,
 				1B1D71422065FE56004BC39C /* ISPoint.swift in Sources */,
+				1B8FDF922088462500BF9560 /* RegisterPhoneViewController.swift in Sources */,
 				1BAEDF2F20556EE50004C804 /* SegmentioBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
