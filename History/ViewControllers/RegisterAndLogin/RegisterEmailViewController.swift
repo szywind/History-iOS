@@ -19,7 +19,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nextBtn: UIButton!
     
-    var username: String?
+    var mainVC: RegisterViewController?
+
+//    var username: String?
 
 //    class func create() -> RegisterEmailViewController {
 //        let board = UIStoryboard(name: "Main", bundle: nil)
@@ -67,23 +69,38 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @objc func textFieldDidChange(textField: UITextField) {
         textField.text = textField.text?.replacingOccurrences(of: " ", with: "")
         let length = textField.text?.count ?? 0
-        
-        if length < 11 {
+    
+        imageView.isHidden = false
+        if length == 0 {
             imageView.isHidden = true
-            warningLbl.isHidden = true
-            nextBtn.isEnabled = false
-        } else if (length > 11 || (length == 11 && !isValidateEmail(email: textField.text!))) {
-            imageView.isHidden = false
+        }
+        
+        if isValidateEmail(email: textField.text!) {
+            UserManager.sharedInstance.findUser(username: textField.text!) { (objects, error) in
+                if error == nil {
+                    if objects?.count == 0 {
+                        self.imageView.image = UIImage(named: "ic_done_white")
+                        self.imageView.backgroundColor = UIColor.green
+                        self.warningLbl.isHidden = true
+                        self.nextBtn.isEnabled = true
+                    } else {
+                        self.imageView.image = UIImage(named: "ic_error_white")
+                        self.imageView.backgroundColor = UIColor.red
+                        self.warningLbl.isHidden = false
+                        self.warningLbl.text = "该Email账号已存在，请重新输入。"
+                        self.nextBtn.isEnabled = false
+                    }
+                } else {
+                    print(error?.localizedDescription)
+                }
+            }
+        } else {
             imageView.image = UIImage(named: "ic_error_white")
             imageView.backgroundColor = UIColor.red
             warningLbl.isHidden = false
+            warningLbl.text = "请输入有效的Email。"
+
             nextBtn.isEnabled = false
-        } else {
-            imageView.isHidden = false
-            imageView.image = UIImage(named: "ic_done_white")
-            imageView.backgroundColor = UIColor.green
-            warningLbl.isHidden = true
-            nextBtn.isEnabled = true
         }
     }
     
@@ -100,17 +117,12 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSetupPwd" {
-            if let destination = segue.destination as? RegisterPasswordViewController {
-                let user = AVUser()
-                user.username = username
-                user.email = emailTextField.text
-                destination.user = user
-            }
-        }
+    @IBAction func onConfirmTapped(_ sender: Any) {
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toSetupPwdPage), object: nil, userInfo: ["email" : emailTextField.text!])
+        self.mainVC?.email = self.emailTextField.text!
+        mainVC?.emailRegister()
     }
-
+    
     /*
     // MARK: - Navigation
 
@@ -122,17 +134,16 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     */
 
     @IBAction func switchToPhoneRegister(_ sender: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.phoneRegister), object: nil)
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.phoneRegister), object: nil)
+        mainVC?.switchPages()
     }
     
+    // http://emailregex.com/
     // https://www.cnblogs.com/hellocby/archive/2012/12/05/2803094.html
     // http://brainwashinc.com/2017/08/18/ios-swift-3-validate-email-password-format/
+    
     func isValidateEmail(email: String) -> Bool {
-        if email.count < 11 {
-            return true
-        }
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailTest.evaluate(with: email)
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 }

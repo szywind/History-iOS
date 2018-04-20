@@ -15,7 +15,7 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var viewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var hintLbl: UILabel!
     
-    var username: String?
+    var user: AVUser?
     var phone: String?
     
     override func viewDidLoad() {
@@ -26,6 +26,8 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
         smsCodeTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         smsCodeTextField.borderStyle = .none
 
+        phone = user?.mobilePhoneNumber
+        
         hintLbl.text = "请在下面输入验证码以确认\n+86 \(phone!)"
         hintLbl.numberOfLines = 2
         
@@ -80,9 +82,10 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSetupPwd" {
             if let destination = segue.destination as? RegisterPasswordViewController {
-                let user = AVUser()
-                user.username = username
-                user.mobilePhoneNumber = phone
+//                let user = AVUser()
+//                user.username = username
+//                user.mobilePhoneNumber = phone
+//                user.setValue(true, forKey: "mobilePhoneVerified")
                 destination.user = user
             }
         }

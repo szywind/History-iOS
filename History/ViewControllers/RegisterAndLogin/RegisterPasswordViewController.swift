@@ -2,7 +2,7 @@
 //  RegisterPasswordViewController.swift
 //  History
 //
-//  Created by 1 on 4/19/18.
+//  Created by Zhenyuan Shen on 4/19/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
@@ -20,6 +20,8 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
     
     var user: AVUser?
     
+    var done = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +38,9 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
         warningLbl.text = "密码应至少有\(Constants.Default.defaultPasswordLimit)位数字，字母或符号。"
         
         doneBtn.isEnabled = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
+//        let a = user?.username
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +49,22 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
         // https://stackoverflow.com/questions/31774006/how-to-get-height-of-keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        guard done else {
+//            if let username = user?.username! {
+//                let cql = "delete from _User where username='\(username)'"
+//                AVQuery.doCloudQueryInBackground(withCQL: cql, callback: { (result, error) in
+//                    if error == nil {
+//                        print("Successfully delete user.")
+//                    }
+//                })
+//            }
+//            return
+//        }
+//    }
+    
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -96,12 +117,13 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onFinishRegister(_ sender: UIButton) {
-        let a = user?.username
-        let b = user?.mobilePhoneNumber
+
         user?.password = pwdTextField.text!
-        
+        user?.setObject(true, forKey: "valid")
         user?.signUpInBackground({ (succeed, error) in
+//        user?.saveInBackground({ (succeed, error) in
             if succeed {
+                self.done = true
                 self.dismiss(animated: true, completion: nil)
             } else {
                 print(error?.localizedDescription)
