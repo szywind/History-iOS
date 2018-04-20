@@ -2753,13 +2753,13 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcE-QG-Isi" userLabel="phone register container">
                                 <rect key="frame" x="0.0" y="64" width="260" height="603"/>
                                 <connections>
-                                    <segue destination="zhX-ZT-BFG" kind="embed" id="rYv-pu-OQI"/>
+                                    <segue destination="zhX-ZT-BFG" kind="embed" identifier="RegisterPhoneViewController" id="rYv-pu-OQI"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1W-N0-fbS" userLabel="email register container">
                                 <rect key="frame" x="0.0" y="64" width="260" height="603"/>
                                 <connections>
-                                    <segue destination="ssj-oz-Nmz" kind="embed" id="1pR-Xk-Bi2"/>
+                                    <segue destination="ssj-oz-Nmz" kind="embed" identifier="RegisterEmailViewController" id="1pR-Xk-Bi2"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -2779,6 +2779,8 @@
                     <connections>
                         <outlet property="emailRegisterVC" destination="e1W-N0-fbS" id="klx-EB-e7j"/>
                         <outlet property="phoneRegisterVC" destination="KcE-QG-Isi" id="LCE-6z-H6n"/>
+                        <segue destination="vfA-b7-ZYh" kind="show" identifier="toSmsCode" id="fzN-Wt-W7f"/>
+                        <segue destination="1tk-dl-b6j" kind="show" identifier="toSetupPwd" id="cr8-AR-X0L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4b-HC-HgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2790,14 +2792,14 @@
             <objects>
                 <viewController id="1tk-dl-b6j" customClass="RegisterPasswordViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WSE-w3-QCk">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ovo-za-o2Q">
-                                <rect key="frame" x="0.0" y="0.0" width="260" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请设置你的登陆密码。" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwE-Qk-scp">
-                                        <rect key="frame" x="16" y="28" width="228" height="50"/>
+                                        <rect key="frame" x="16" y="72" width="228" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="yxN-XK-8VL"/>
                                         </constraints>
@@ -2806,7 +2808,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQt-Qi-o1r" userLabel="line">
-                                        <rect key="frame" x="8" y="127" width="244" height="1"/>
+                                        <rect key="frame" x="8" y="171" width="244" height="1"/>
                                         <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83137254900000002" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="0Qj-79-IZa"/>
@@ -2814,7 +2816,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1N6-lT-zJd">
-                                        <rect key="frame" x="184" y="557" width="60" height="30"/>
+                                        <rect key="frame" x="184" y="621" width="60" height="30"/>
                                         <color key="backgroundColor" red="0.32156862749999998" green="0.14117647059999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Svj-du-Qj5"/>
@@ -2832,7 +2834,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码应至少有10位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CL-sx-laO">
-                                        <rect key="frame" x="0.0" y="128" width="260" height="30"/>
+                                        <rect key="frame" x="0.0" y="172" width="260" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.60392156860000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="jS8-0c-S28"/>
@@ -2842,7 +2844,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85j-tU-Gc0" userLabel="container">
-                                        <rect key="frame" x="16" y="94" width="228" height="30"/>
+                                        <rect key="frame" x="16" y="138" width="228" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zrl-Ho-smg">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
@@ -2911,21 +2913,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6P9-xq-byJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2846" y="2618"/>
+            <point key="canvasLocation" x="3158" y="2618"/>
         </scene>
         <!--Register Sms Code View Controller-->
         <scene sceneID="2KZ-GM-ndU">
             <objects>
                 <viewController id="vfA-b7-ZYh" customClass="RegisterSmsCodeViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XxN-Mp-iVk">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQM-fC-8nX">
-                                <rect key="frame" x="0.0" y="0.0" width="260" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我们向你发送了一个验证码。" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCV-p2-gvh">
-                                        <rect key="frame" x="16" y="28" width="228" height="50"/>
+                                        <rect key="frame" x="16" y="72" width="228" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Tli-ft-Flj"/>
                                         </constraints>
@@ -2934,7 +2936,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-se-kiR" userLabel="line">
-                                        <rect key="frame" x="8" y="152" width="244" height="1"/>
+                                        <rect key="frame" x="8" y="196" width="244" height="1"/>
                                         <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83137254900000002" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="4VC-7A-ajV" customClass="NSLayoutConstraintHairline" customModule="History" customModuleProvider="target"/>
@@ -2942,7 +2944,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ope-JG-PQY" userLabel="container">
-                                        <rect key="frame" x="16" y="119" width="228" height="30"/>
+                                        <rect key="frame" x="16" y="163" width="228" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iQ5-Zv-LSq">
                                                 <rect key="frame" x="0.0" y="0.0" width="228" height="30"/>
@@ -2963,7 +2965,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyz-2J-HSv">
-                                        <rect key="frame" x="16" y="557" width="100" height="30"/>
+                                        <rect key="frame" x="16" y="621" width="100" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="7kY-Dq-sTt"/>
                                             <constraint firstAttribute="height" constant="30" id="UF1-zF-RUu"/>
@@ -2973,7 +2975,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izj-OX-yPS">
-                                        <rect key="frame" x="16" y="86" width="228" height="17"/>
+                                        <rect key="frame" x="16" y="130" width="228" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -3011,17 +3013,17 @@
                         <outlet property="hintLbl" destination="izj-OX-yPS" id="hoO-SP-tjW"/>
                         <outlet property="smsCodeTextField" destination="iQ5-Zv-LSq" id="3We-KJ-Ljp"/>
                         <outlet property="viewBottomConstraint" destination="mpt-SE-BRS" id="HUk-wf-qOY"/>
-                        <segue destination="1tk-dl-b6j" kind="presentation" identifier="toSetupPwd" id="hMu-CT-JcI"/>
+                        <segue destination="1tk-dl-b6j" kind="show" identifier="toSetupPwd" id="hMu-CT-JcI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0H-4X-Xt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2160" y="2616.3418290854574"/>
+            <point key="canvasLocation" x="2003" y="3009"/>
         </scene>
         <!--Register Phone View Controller-->
         <scene sceneID="Rcu-0o-pTn">
             <objects>
-                <viewController id="zhX-ZT-BFG" customClass="RegisterPhoneViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterPhoneViewController" id="zhX-ZT-BFG" customClass="RegisterPhoneViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2j0-Bm-ISP">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3123,7 +3125,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="onConfirmTapped:" destination="zhX-ZT-BFG" eventType="touchUpInside" id="6Rx-Qf-I2u"/>
-                                            <segue destination="vfA-b7-ZYh" kind="show" identifier="toSmsCode" id="NOe-MA-WcT"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入有效的手机号码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txx-bS-atz">
@@ -3206,12 +3207,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gns-hI-dL8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1498" y="2618"/>
+            <point key="canvasLocation" x="1157" y="3376"/>
         </scene>
         <!--Register Email View Controller-->
         <scene sceneID="gJm-ig-ETX">
             <objects>
-                <viewController id="ssj-oz-Nmz" customClass="RegisterEmailViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterEmailViewController" id="ssj-oz-Nmz" customClass="RegisterEmailViewController" customModule="History" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rnz-0h-2mt">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3250,9 +3251,6 @@
                                                 <integer key="value" value="3"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="1tk-dl-b6j" kind="presentation" identifier="toSetupPwd" id="dKi-Xc-Ypl"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入有效的email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BO-3o-w88">
                                         <rect key="frame" x="0.0" y="128" width="260" height="30"/>
@@ -3349,7 +3347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0g-XI-1Ng" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1497.5999999999999" y="3422.3388305847079"/>
+            <point key="canvasLocation" x="544" y="3376"/>
         </scene>
     </scenes>
     <resources>
@@ -3554,7 +3552,7 @@ AABUAAAAAAAAAAAAAAAAAAAT6w
         <image name="老子" width="300" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dKi-Xc-Ypl"/>
+        <segue reference="cr8-AR-X0L"/>
         <segue reference="lKc-He-ELe"/>
         <segue reference="08K-Iv-Gfj"/>
     </inferredMetricsTieBreakers>
