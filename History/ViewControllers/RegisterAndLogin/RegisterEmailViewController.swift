@@ -21,6 +21,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     
     var username: String?
 
+//    class func create() -> RegisterEmailViewController {
+//        let board = UIStoryboard(name: "Main", bundle: nil)
+//        return board.instantiateViewController(withIdentifier: String(describing: self)) as! RegisterEmailViewController
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

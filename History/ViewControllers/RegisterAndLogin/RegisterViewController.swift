@@ -13,6 +13,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var phoneRegisterVC: UIView!
     @IBOutlet weak var emailRegisterVC: UIView!
     
+    fileprivate var phoneRegisterViewController: RegisterPhoneViewController?
+    fileprivate var emailRegisterViewController: RegisterEmailViewController?
+
+    var username: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,5 +58,15 @@ class RegisterViewController: UIViewController {
     @objc func switchPages() {
         emailRegisterVC.isHidden = !emailRegisterVC.isHidden
         phoneRegisterVC.isHidden = !phoneRegisterVC.isHidden
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == String(describing: RegisterPhoneViewController.self) {
+            phoneRegisterViewController = segue.destination as? RegisterPhoneViewController
+            phoneRegisterViewController?.username = username
+        } else if segue.identifier == String(describing: RegisterEmailViewController.self) {
+            emailRegisterViewController = segue.destination as? RegisterEmailViewController
+            emailRegisterViewController?.username = username
+        }
     }
 }

@@ -96,7 +96,7 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRegister" {
-            if let destination = segue.destination as? RegisterPhoneViewController {
+            if let destination = segue.destination as? RegisterViewController {
                 destination.username = nameTextField.text
             }
         }
