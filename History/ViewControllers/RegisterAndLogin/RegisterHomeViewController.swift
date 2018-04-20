@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVOSCloud
 
 class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
 
@@ -70,9 +71,12 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
             if length > Constants.Default.defaultUsernameLimit {
                 imageView.image = UIImage(named: "ic_error_white")
                 warningLbl.isHidden = false
+                warningLbl.text = "注意：你的全名不能多于\(Constants.Default.defaultUsernameLimit)个字符。"
+
 //                imageView.tintColor = UIColor.white
                 imageView.backgroundColor = UIColor.red
             } else {
+                
                 imageView.image = UIImage(named: "ic_done_white")
 //                imageView.tintColor = UIColor.white
                 imageView.backgroundColor = UIColor.green
@@ -97,7 +101,9 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRegister" {
             if let destination = segue.destination as? RegisterViewController {
-                destination.username = nameTextField.text
+                let user = AVUser()
+                user.setObject(nameTextField.text, forKey: "nickname")
+                destination.user = user
             }
         }
     }

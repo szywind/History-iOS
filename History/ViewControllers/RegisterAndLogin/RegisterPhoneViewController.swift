@@ -20,7 +20,9 @@ class RegisterPhoneViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nextBtn: UIButton!
     
-    var username: String?
+    var mainVC: RegisterViewController?
+    
+//    var username: String?
     
 //    class func create() -> RegisterPhoneViewController {
 //        let board = UIStoryboard(name: "Main", bundle: nil)
@@ -79,13 +81,29 @@ class RegisterPhoneViewController: UIViewController, UITextFieldDelegate {
             imageView.image = UIImage(named: "ic_error_white")
             imageView.backgroundColor = UIColor.red
             warningLbl.isHidden = false
+            warningLbl.text = "请输入有效的手机号码。"
             nextBtn.isEnabled = false
         } else {
-            imageView.isHidden = false
-            imageView.image = UIImage(named: "ic_done_white")
-            imageView.backgroundColor = UIColor.green
-            warningLbl.isHidden = true
-            nextBtn.isEnabled = true
+            UserManager.sharedInstance.findUser(username: textField.text!) { (objects, error) in
+                if error == nil {
+                    if objects?.count == 0 {
+                        self.imageView.isHidden = false
+                        self.imageView.image = UIImage(named: "ic_done_white")
+                        self.imageView.backgroundColor = UIColor.green
+                        self.warningLbl.isHidden = true
+                        self.nextBtn.isEnabled = true
+                    } else {
+                        self.imageView.isHidden = false
+                        self.imageView.image = UIImage(named: "ic_error_white")
+                        self.imageView.backgroundColor = UIColor.red
+                        self.warningLbl.isHidden = false
+                        self.warningLbl.text = "该手机账号已存在，请重新输入。"
+                        self.nextBtn.isEnabled = false
+                    }
+                } else {
+                    print(error?.localizedDescription)
+                }
+            }
         }
     }
     
@@ -108,43 +126,19 @@ class RegisterPhoneViewController: UIViewController, UITextFieldDelegate {
             
         }
         let confirm = UIAlertAction(title: "确认", style: .default) { (action) in
-            self.requireSmsCode()
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toSmsCodePage), object: nil, userInfo: ["phone" : self.phoneTextField.text!])
+            self.mainVC?.phone = self.phoneTextField.text!
+            self.mainVC?.phoneRegister()
         }
         alert.addAction(cancel)
         alert.addAction(confirm)
         present(alert, animated: true, completion: nil)
-    }
-    
-    func requireSmsCode() {
-//        AVUser.requestMobilePhoneVerify(phoneTextField.text!) { (succeed, error) in
 
-        AVOSCloud.requestSmsCode(withPhoneNumber: phoneTextField.text!) { (succeed, error) in
-            if succeed {
-                self.performSegue(withIdentifier: "toSmsCode", sender: self)
-            } else {
-                print(error?.localizedDescription)
-            }
-        }
     }
-    
-//    func registerWithPhone(){
-//        let user = AVUser()
-//        user.username = username
-//        user.password = "123456"
-//        //        user.email = "szywind@163.com"
-//        user.mobilePhoneNumber = phoneTextField.text ?? ""
-//        
-//        AVUser.requestMobilePhoneVerify(user.mobilePhoneNumber!) { (succeed, error) in
-//            if succeed {
-//                self.performSegue(withIdentifier: "toEnterVerificationCode", sender: self)
-//            } else {
-//                print(error?.localizedDescription)
-//            }
-//        }
-//    }
     
     @IBAction func switchToEmailRegister(_ sender: UIButton) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.emailRegister), object: nil)
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.emailRegister), object: nil)
+        mainVC?.switchPages()
     }
     
     // https://blog.csdn.net/liu_esther/article/details/51578762
@@ -170,14 +164,5 @@ class RegisterPhoneViewController: UIViewController, UITextFieldDelegate {
         let isMatch3 = pred3.evaluate(with: mobile)
         
         return isMatch1 || isMatch2 || isMatch3
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSmsCode" {
-            if let destination = segue.destination as? RegisterSmsCodeViewController {
-                destination.username = username
-                destination.phone = phoneTextField.text
-            }
-        }
     }
 }

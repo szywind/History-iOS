@@ -34,13 +34,14 @@ struct LCConstants {
     struct UserKey {
         static let gender = "gender"
         static let avatarFile = "avatarFile"
-        static let nickname = "nickName"
-        static let phone = "phone"
+        static let nickname = "nickname"
+        static let phone = "mobilePhoneNumber"
         static let blockUserIdList = "blockUserIdList"
         static let nicknameNorm = "nicknameNorm"
         static let email = "email"
         static let accountType = "accountType"
         static let location = "geoPoint"
+        static let username = "username"
     }
     
     /**
