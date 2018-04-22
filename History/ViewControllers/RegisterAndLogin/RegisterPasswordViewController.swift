@@ -34,7 +34,6 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
         warningLbl.isHidden = true
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
         
-        
         warningLbl.text = "密码应至少有\(Constants.Default.defaultPasswordLimit)位数字，字母或符号。"
         
         doneBtn.isEnabled = false
@@ -116,7 +115,7 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func onFinishRegister(_ sender: UIButton) {
+    @IBAction func onSignUp(_ sender: UIButton) {
 
         user?.password = pwdTextField.text!
         user?.setObject(true, forKey: "valid")
@@ -125,6 +124,7 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
             if succeed {
                 self.done = true
                 self.dismiss(animated: true, completion: nil)
+//                self.gotoMainPage()
             } else {
                 print(error?.localizedDescription)
             }
@@ -148,4 +148,7 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     */
 
+    func gotoMainPage() {
+        self.performSegue(withIdentifier: "toMainPageTab", sender: self)
+    }
 }

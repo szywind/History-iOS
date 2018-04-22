@@ -90,6 +90,26 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+  
+    @IBAction func resendSmsCode(_ sender: Any) {
+        let alert = UIAlertController(title: "确认手机号", message: phone! + "\n我们将发送短信到上面的手机号，相同手机号每天最多可重发4次", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "取消", style: .cancel) { (action) in
+            
+        }
+        let confirm = UIAlertAction(title: "确认", style: .default) { (action) in
+            //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toSmsCodePage), object: nil, userInfo: ["phone" : self.phoneTextField.text!])
+            AVSMS.requestShortMessage(forPhoneNumber: self.phone!, options: nil) { (succeed, error) in
+                if succeed {
+                    print("successfully resend sms code")
+                } else {
+                    print(error?.localizedDescription)
+                }
+            }
+        }
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation

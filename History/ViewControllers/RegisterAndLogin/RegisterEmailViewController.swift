@@ -75,8 +75,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             imageView.isHidden = true
         }
         
-        if isValidateEmail(email: textField.text!) {
-            UserManager.sharedInstance.findUser(username: textField.text!) { (objects, error) in
+        if textField.text!.isValidateEmail() {
+            UserManager.sharedInstance.findUser(key: LCConstants.UserKey.email, value: textField.text!) { (objects, error) in
                 if error == nil {
                     if objects?.count == 0 {
                         self.imageView.image = UIImage(named: "ic_done_white")
@@ -136,14 +136,5 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @IBAction func switchToPhoneRegister(_ sender: UIButton) {
 //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.phoneRegister), object: nil)
         mainVC?.switchPages()
-    }
-    
-    // http://emailregex.com/
-    // https://www.cnblogs.com/hellocby/archive/2012/12/05/2803094.html
-    // http://brainwashinc.com/2017/08/18/ios-swift-3-validate-email-password-format/
-    
-    func isValidateEmail(email: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 }
