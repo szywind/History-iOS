@@ -1,22 +1,29 @@
 //
-//  LoginRegisterHomeViewController.swift
+//  LoginEmailVerificationViewController.swift
 //  History
 //
-//  Created by Zhenyuan Shen on 4/15/18.
+//  Created by Zhenyuan Shen on 4/22/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
 import UIKit
 
-class LoginRegisterHomeViewController: UIViewController {
+class LoginEmailVerificationViewController: UIViewController {
 
+    @IBOutlet weak var noteLbl: UILabel!
+    
+    var mainVC: LoginResetPasswordViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-//        let backButton = UIBarButtonItem(title: , style: .can, target: self, action: #selector(back))
         self.navigationItem.leftBarButtonItem = cancelButton
+        
+        let email = mainVC?.user?.email
+        noteLbl.text = "我们已经向\(email!)发送了一封邮件。点击邮件中的链接以重置你的密码。\n\n如果没有看到该邮件，请检查可能出现的其他位置，如垃圾邮件箱等"
+        noteLbl.numberOfLines = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +35,10 @@ class LoginRegisterHomeViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func resendEmailLink(_ sender: UIButton) {
+        mainVC?.emailVerify()
+    }
+    
     /*
     // MARK: - Navigation
 

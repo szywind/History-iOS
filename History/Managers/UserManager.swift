@@ -36,4 +36,12 @@ class UserManager {
         return user.object(forKey: LCConstants.UserKey.avatarFile) as? AVFile
     }
     // TODO
+    
+    func findUser(key: String = LCConstants.UserKey.username, value: String, withBlock block: @escaping AVArrayResultBlock) {
+        let query = AVUser.query()
+        query.whereKey(key, equalTo: value)
+        query.findObjectsInBackground({ (objects, error) in
+            block(objects, error)
+        })
+    }
 }
