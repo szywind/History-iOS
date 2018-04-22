@@ -37,9 +37,9 @@ class UserManager {
     }
     // TODO
     
-    func findUser(username: String, withBlock block: @escaping AVArrayResultBlock) {
+    func findUser(key: String = LCConstants.UserKey.username, value: String, withBlock block: @escaping AVArrayResultBlock) {
         let query = AVUser.query()
-        query.whereKey(LCConstants.UserKey.username, equalTo: username)
+        query.whereKey(key, equalTo: value)
         query.findObjectsInBackground({ (objects, error) in
             block(objects, error)
         })

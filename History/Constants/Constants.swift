@@ -15,7 +15,7 @@ struct Constants {
         static let defaultAvatar = "default"
         static let defaultUsernameLimit = 20
         static let defaultSmsCodeLength = 6
-        static let defaultPasswordLimit = 10
+        static let defaultPasswordLimit = 8
         static let defaultPassword = "0000000000"
         static let defaultValid = false
     }
