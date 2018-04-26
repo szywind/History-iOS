@@ -2,7 +2,7 @@
 //  MenuViewController.swift
 //  History
 //
-//  Created by 1 on 3/27/18.
+//  Created by Zhenyuan Shen on 3/27/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
@@ -10,6 +10,8 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var signUpBtn: UIButton!
+    
     @IBOutlet weak var bottomView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,9 @@ class MenuViewController: UIViewController {
         bottomView.layer.borderColor = borderColor
         
         self.navigationController?.navigationBar.isHidden = true
+        
+        signUpBtn.layer.borderWidth = 1
+        signUpBtn.layer.borderColor = Constants.Color.naviBarTint.cgColor
     }
 
     override func didReceiveMemoryWarning() {

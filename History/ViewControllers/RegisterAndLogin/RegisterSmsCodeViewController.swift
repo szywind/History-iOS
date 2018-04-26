@@ -59,8 +59,7 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
         let length = textField.text?.count ?? 0
         
         if length == Constants.Default.defaultSmsCodeLength {
-            // TODO
-            // spindle
+            self.showProgressBar()
             checkSmsCode()
         }
     }
@@ -124,6 +123,7 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
     func checkSmsCode() {
 //        AVUser.verifyMobilePhone(smsCodeTextField.text!) { (succeed, error) in
         AVOSCloud.verifySmsCode(smsCodeTextField.text!, mobilePhoneNumber: phone!) { (succeed, error) in
+            self.hideProgressBar()
             if succeed {
                 self.performSegue(withIdentifier: "toSetupPwd", sender: self)
             } else {
@@ -131,14 +131,7 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
                 self.smsCodeTextField.text?.removeAll()
                 
                 // popup alert
-                let alert = UIAlertController(title: "错误", message: "你输入的验证码不正确，请重试。", preferredStyle: .alert)
-     
-                let ok = UIAlertAction(title: "OK", style: .cancel) { (action) in
-                
-                }
-
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+                self.showErrorAlert(title: "错误", msg: "你输入的验证码不正确，请重试。")
             }
         }
     }

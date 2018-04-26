@@ -134,7 +134,7 @@ class LoginResetPasswordViewController: UIViewController, UITextFieldDelegate {
                 }
             } else {
                 print(error?.localizedDescription)
-                self.errorAlert()
+                self.showErrorAlert(title: "错误", msg: "未找到" + self.userTextField.text! + "对应的账号，请确认输入正确的手机号码或email并重试")
             }
         }
 
@@ -148,7 +148,7 @@ class LoginResetPasswordViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: "toSmsCode", sender: self)
             } else {
                 print(error?.localizedDescription)
-                self.errorAlert()
+                self.showErrorAlert(title: "错误", msg: "未找到" + self.userTextField.text! + "对应的账号，请确认输入正确的手机号码或email并重试")
             }
         }
     }
@@ -159,22 +159,11 @@ class LoginResetPasswordViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: "toEmailVerification", sender: self)
             } else {
                 print(error?.localizedDescription)
-                self.errorAlert()
+                self.showErrorAlert(title: "错误", msg: "未找到" + self.userTextField.text! + "对应的账号，请确认输入正确的手机号码或email并重试")
             }
         }
     }
 
-    func errorAlert() { // TODO
-        // popup alert
-        let alert = UIAlertController(title: "错误", message: "未找到" + userTextField.text! + "对应的账号，请确认输入正确的手机号码或email并重试", preferredStyle: .alert)
-        
-        let ok = UIAlertAction(title: "OK", style: .cancel) { (action) in
-            
-        }
-        
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSmsCode" {
