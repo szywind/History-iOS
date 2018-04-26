@@ -133,26 +133,18 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 //                    self.showErrorAlert(NSLocalizedString("wrong password", comment:"wrong password"), msg: "")
 //                }
                 print(error?.localizedDescription)
-                self.errorAlert()
+                self.showErrorAlert(title: "错误", msg: "登录失败，请确认输入正确的手机号码或email并重试") { (action) in
+                    self.userTextField.text?.removeAll()
+                    self.pwdTextField.text?.removeAll()
+                    
+                    self.loginBtn.isEnabled = false
+                }
             }
         }
     }
     
     func gotoMainPage() {
         self.performSegue(withIdentifier: "toMainPageTab", sender: self)
-    }
-    
-    func errorAlert() {
-        // popup alert
-        let alert = UIAlertController(title: "错误", message: "登录失败，请确认输入正确的手机号码或email并重试", preferredStyle: .alert)
-        
-        let ok = UIAlertAction(title: "OK", style: .cancel) { (action) in
-            self.userTextField.text?.removeAll()
-            self.pwdTextField.text?.removeAll()
-        }
-        
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
     }
     
     /*

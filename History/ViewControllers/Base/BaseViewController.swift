@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class BaseViewController: UIViewController {
     
@@ -75,6 +76,7 @@ class BaseViewController: UIViewController {
 
 }
 
+
 extension UIViewController {
     @objc func dismissKeyboard(){
         DispatchQueue.global(qos: .userInitiated).async {
@@ -83,5 +85,43 @@ extension UIViewController {
                 self.view.endEditing(true)
             }
         }
+    }
+    
+    func showProgressBar() {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.custom)
+        SVProgressHUD.setBackgroundColor(Constants.Color.backgroundGray)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Bounce back to the main thread to update the UI
+            DispatchQueue.main.async {
+                SVProgressHUD.show()
+                self.view.isUserInteractionEnabled = false
+                self.navigationController?.navigationBar.isUserInteractionEnabled = false
+            }
+        }
+    }
+
+    func hideProgressBar() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Bounce back to the main thread to update the UI
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                self.view.isUserInteractionEnabled = true
+                self.navigationController?.navigationBar.isUserInteractionEnabled = true
+            }
+        }
+    }
+
+    func showErrorAlert(title: String, msg: String){
+        showErrorAlert(title: title, msg: msg, handler: nil)
+    }
+
+    func showErrorAlert(title: String, msg: String, handler: ((UIAlertAction) -> Void)?) {
+        // popup alert
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: handler)
+        
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
 }

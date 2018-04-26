@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4I0-Us-n2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="970" y="-1535"/>
+            <point key="canvasLocation" x="502" y="-1535"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tO4-Ht-0Bd">
@@ -2428,7 +2428,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                                 <userGuides>
                                     <userLayoutGuide location="180" affinity="minY"/>
-                                    <userLayoutGuide location="118" affinity="minY"/>
+                                    <userLayoutGuide location="117" affinity="minY"/>
                                     <userLayoutGuide location="118" affinity="minY"/>
                                     <userLayoutGuide location="118" affinity="minY"/>
                                     <userLayoutGuide location="118" affinity="minY"/>
@@ -2647,6 +2647,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomView" destination="JIf-of-y9x" id="Khq-BA-kvf"/>
+                        <outlet property="signUpBtn" destination="tCn-Nv-5ML" id="bDT-w0-hFD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q6t-QV-OEq" userLabel="First Responder" sceneMemberID="firstResponder"/>

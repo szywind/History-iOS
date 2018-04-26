@@ -42,8 +42,10 @@ struct Constants {
         static let c3: Int = 0xBF8641
         static let c4: Int = 0xB3B372
         static let naviBarTint = UIColor(netHex: c1)
-        static let bgColor = UIColor(netHex: c3, alpha: 0.8)
+        static let backgroundOrange = UIColor(netHex: c3, alpha: 0.8)
         static let coral = UIColor(red: 244, green: 111, blue: 96)
+        static let backgroundGray = UIColor(netHex:0xE8E8E8)
+
     }
     
     struct Constraint {
