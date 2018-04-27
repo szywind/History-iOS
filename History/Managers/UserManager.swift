@@ -21,7 +21,7 @@ class UserManager {
     }
     
     func isLogin() -> Bool {
-        return AVUser.current != nil
+        return AVUser.current() != nil
     }
     
     func getUserId(user: AVUser) -> String? {
@@ -35,6 +35,11 @@ class UserManager {
     func getAvatarFile(user: AVUser) -> AVFile? {
         return user.object(forKey: LCConstants.UserKey.avatarFile) as? AVFile
     }
+    
+    func logout() {
+        AVUser.logOut()
+    }
+    
     // TODO
     
     func findUser(key: String = LCConstants.UserKey.username, value: String, withBlock block: @escaping AVArrayResultBlock) {

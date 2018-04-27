@@ -126,6 +126,7 @@ class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
             numSection += 1
             sectionTitles.append(allSectionTitles[0])
         }
+        
         filteredEvents = LocalDataManager.sharedInstance.allEvents.filter({$0.name?.range(of: searchWord) != nil})
         if !filteredEvents.isEmpty {
             section2index[numSection] = 1

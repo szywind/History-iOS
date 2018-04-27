@@ -113,8 +113,9 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     }
     
     @IBAction func onLoginTapped(_ sender: UIButton) {
-
+        self.showProgressBar()
         AVUser.logInWithUsername(inBackground: userTextField.text!, password: pwdTextField.text!) { (user, error) in
+            self.hideProgressBar()
             if error == nil {
 //                UserManager.sharedInstance.setUserLocation()
 //                AVUser.current()?.saveInBackground()
