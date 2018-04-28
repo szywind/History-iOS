@@ -16,7 +16,7 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var menuTableView: UITableView!
     
-    let titles = [["信息", "关注", "收藏", "文库"], ["设置和隐私", "关于我们"]]
+    let titles = [["信息", "关注", "书签", "知识库"], ["设置和隐私", "关于我们"]]
     let icons = [["ic_person_outline", "ic_people_outline", "ic_bookmark_border", "ic_star_border"], ["ic_settings", "ic_help_outline"]]
     let segues = [["toProfile", "toSubscriber", "toBookmark", "toLibrary"], ["toSettings", "toInfo"]]
     override func viewDidLoad() {

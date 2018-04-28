@@ -50,6 +50,7 @@
 		1B828F3220940CFA004FBEF2 /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F3120940CFA004FBEF2 /* ReplyTableViewCell.swift */; };
 		1B828F3420941170004FBEF2 /* CommunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F3320941170004FBEF2 /* CommunityTableViewController.swift */; };
 		1B828F36209415F0004FBEF2 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F35209415F0004FBEF2 /* UserTableViewCell.swift */; };
+		1B828F38209483FA004FBEF2 /* NumberImageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F37209483FA004FBEF2 /* NumberImageBuilder.swift */; };
 		1B846F98206789AA00FB3D2D /* CommunityHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F97206789AA00FB3D2D /* CommunityHomeViewController.swift */; };
 		1B846F9A20678A7200FB3D2D /* CommunityEmbedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F9920678A7200FB3D2D /* CommunityEmbedContainerViewController.swift */; };
 		1B846F9C20678B2600FB3D2D /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B846F9B20678B2600FB3D2D /* CommunityViewController.swift */; };
@@ -160,6 +161,7 @@
 		1B828F3120940CFA004FBEF2 /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
 		1B828F3320941170004FBEF2 /* CommunityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewController.swift; sourceTree = "<group>"; };
 		1B828F35209415F0004FBEF2 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		1B828F37209483FA004FBEF2 /* NumberImageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberImageBuilder.swift; sourceTree = "<group>"; };
 		1B846F97206789AA00FB3D2D /* CommunityHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityHomeViewController.swift; sourceTree = "<group>"; };
 		1B846F9920678A7200FB3D2D /* CommunityEmbedContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityEmbedContainerViewController.swift; sourceTree = "<group>"; };
 		1B846F9B20678B2600FB3D2D /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				1BAEDF2E20556EE50004C804 /* SegmentioBuilder.swift */,
+				1B828F37209483FA004FBEF2 /* NumberImageBuilder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				1BAFB10B206BFF4A0032B964 /* SearchHomeViewController.swift in Sources */,
 				1B1D71392065FE42004BC39C /* TimelineViewController.swift in Sources */,
 				1B8FDF942088CEC500BF9560 /* RegisterSmsCodeViewController.swift in Sources */,
+				1B828F38209483FA004FBEF2 /* NumberImageBuilder.swift in Sources */,
 				00C696852057D41F00A6E394 /* RecordTableViewCell.swift in Sources */,
 				1BAA2B4C205AD93400EE5ED4 /* Event+CoreDataClass.swift in Sources */,
 				1B2BAE3B206EB2A300D6131E /* PostTableViewCell.swift in Sources */,

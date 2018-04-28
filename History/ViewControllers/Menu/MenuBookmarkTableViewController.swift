@@ -10,6 +10,8 @@ import UIKit
 
 class MenuBookmarkTableViewController: UITableViewController {
     
+    var records = [Record]()
+    
     class func create() -> MenuBookmarkTableViewController {
         let board = UIStoryboard(name: "Main", bundle: nil)
         return board.instantiateViewController(withIdentifier: String(describing: self)) as! MenuBookmarkTableViewController
@@ -23,6 +25,8 @@ class MenuBookmarkTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.separatorStyle = .none
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,16 +36,23 @@ class MenuBookmarkTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return records.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell
+        
+        cell.topicLbl.text = records[indexPath.row].name
+        
+        return cell
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

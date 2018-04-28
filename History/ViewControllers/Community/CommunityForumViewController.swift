@@ -47,8 +47,13 @@ class CommunityForumViewController: UIViewController {
         switch segmentioStyle {
         case .onlyLabel, .imageBeforeLabel, .imageAfterLabel:
             segmentViewHeightConstraint.constant = 35
+            break
         case .onlyImage:
-            segmentViewHeightConstraint.constant = 100
+            segmentViewHeightConstraint.constant = 50
+            break
+        case .imageUnderLabel, .imageOverLabel:
+            segmentViewHeightConstraint.constant = 85
+            break
         default:
             break
         }
