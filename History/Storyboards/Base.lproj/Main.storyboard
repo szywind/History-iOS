@@ -1300,7 +1300,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="io1-S0-9nF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yJ-Xv-0pV">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
@@ -2119,13 +2119,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKi-Fd-00e">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="951"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPl-wH-fdv">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YN9-H2-mE0" userLabel="header">
-                                                <rect key="frame" x="8" y="28" width="359" height="60"/>
+                                                <rect key="frame" x="8" y="8" width="359" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hT2-gh-7hP" userLabel="labels">
                                                         <rect key="frame" x="0.0" y="40" width="359" height="30"/>
@@ -2221,7 +2221,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TdD-X7-ZUL">
-                                                <rect key="frame" x="0.0" y="572" width="375" height="428"/>
+                                                <rect key="frame" x="0.0" y="552" width="375" height="448"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="117" id="8Fr-D8-g7C" customClass="CommunityReplyTableViewCell" customModule="History" customModuleProvider="target">
@@ -2235,13 +2235,13 @@
                                                 </prototypes>
                                             </tableView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTH-yf-kVl">
-                                                <rect key="frame" x="8" y="96" width="359" height="160"/>
+                                                <rect key="frame" x="8" y="76" width="359" height="160"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="160" id="ivy-Nv-Fhe"/>
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vv5-hR-I99">
-                                                <rect key="frame" x="8" y="264" width="359" height="300"/>
+                                                <rect key="frame" x="8" y="244" width="359" height="300"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="O3X-Ie-Lga"/>
@@ -12779,7 +12779,7 @@ AAAABAEAAAAAAAAAWQAAAAAAAAAAAAAAAAAG+mk
     <inferredMetricsTieBreakers>
         <segue reference="fzN-Wt-W7f"/>
         <segue reference="hMu-CT-JcI"/>
-        <segue reference="M8a-wo-sfx"/>
-        <segue reference="rtw-5d-uWV"/>
+        <segue reference="lKc-He-ELe"/>
+        <segue reference="08K-Iv-Gfj"/>
     </inferredMetricsTieBreakers>
 </document>

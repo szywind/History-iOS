@@ -63,7 +63,7 @@ extension UIViewController {
     //    var navBarBackgroundImage: UIImage?
     //    var navBarShadowImage: UIImage?
     
-    func setupNavBar() {
+    func makeNavBarTransparent() {
         //        navBarBackgroundImage = self.navigationController?.navigationBar.backgroundImage(for: .default) // navBarBackgroundImage is nil
         //        navBarShadowImage = self.navigationController?.navigationBar.shadowImage // navBarShadowImage is nil
         
@@ -74,9 +74,29 @@ extension UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
     
-    func resetNavBar() {
+    func makeNavBarOpaque() {
         navigationController?.isNavigationBarHidden = true
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.isTranslucent = false
     }
+    
+    func setupNavBar() {
+        navigationController?.navigationBar.barTintColor = Constants.Color.naviBarTint
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    func addNavBarMask() {
+        let imageView = UIImageView()
+        imageView.backgroundColor = Constants.Color.naviBarTint
+        let navframe = navigationController?.navigationBar.frame
+        let height = (navframe?.origin.y)! + (navframe?.height)!
+        imageView.frame = CGRect(x: 0, y: 0, width: (navframe?.width)!, height: height)
+        view.addSubview(imageView)
+    }
+    
 }

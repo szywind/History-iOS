@@ -36,6 +36,8 @@ class CommunityDetailViewController: UIViewController {
         
         articleImageView.image = record?.avatar
         articleLbl.text = record?.name
+        
+        addNavBarMask()
     }
     
     override func didReceiveMemoryWarning() {

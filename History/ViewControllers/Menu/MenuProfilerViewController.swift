@@ -27,7 +27,7 @@ class MenuProfilerViewController: BaseMenuViewController {
     }
 
     override func initUI() {
-        
+        setupNavBar()
     }
 
     /*
