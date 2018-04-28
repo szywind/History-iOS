@@ -10,6 +10,13 @@ import UIKit
 
 class MenuSubscriberTableViewController: UITableViewController {
 
+    var records = [Record]()
+    
+    class func create() -> MenuSubscriberTableViewController {
+        let board = UIStoryboard(name: "Main", bundle: nil)
+        return board.instantiateViewController(withIdentifier: String(describing: self)) as! MenuSubscriberTableViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +25,9 @@ class MenuSubscriberTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.separatorStyle = .none
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,14 +37,23 @@ class MenuSubscriberTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return records.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as! UserTableViewCell
+        
+        cell.avatarImage.image = records[indexPath.row].avatar
+        cell.nameLbl.text = records[indexPath.row].name
+        
+        return cell
     }
 
     /*

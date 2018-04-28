@@ -19,7 +19,7 @@ class BaseMenuViewController: UIViewController {
     
     var segmentioStyle = SegmentioStyle.onlyLabel
     var segmentioContent = [SegmentioItem]()
-    fileprivate var viewControllers = [UIViewController]()
+//    fileprivate var viewControllers = [UIViewController]()
 
     
     override func viewDidLoad() {
@@ -35,6 +35,8 @@ class BaseMenuViewController: UIViewController {
         
         self.initUI()
     }
+    
+    
 
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
@@ -61,8 +63,13 @@ class BaseMenuViewController: UIViewController {
         switch segmentioStyle {
         case .onlyLabel, .imageBeforeLabel, .imageAfterLabel:
             segmentViewHeightConstraint.constant = 35
+            break
         case .onlyImage:
-            segmentViewHeightConstraint.constant = 100
+            segmentViewHeightConstraint.constant = 50
+            break
+        case .imageUnderLabel, .imageOverLabel:
+            segmentViewHeightConstraint.constant = 85
+            break
         default:
             break
         }
@@ -97,38 +104,37 @@ class BaseMenuViewController: UIViewController {
     }
     
     func setupViewControllers() {
-        viewControllers.removeAll()
-        segmentioContent = []
+//        viewControllers.removeAll()
+//        segmentioContent = []
     }
     
-    fileprivate func selectedSegmentioIndex() -> Int {
+    func selectedSegmentioIndex() -> Int {
         return 0
     }
     
     // MARK: - Setup container view
-    
-    fileprivate func setupScrollView() {
-        scrollView.contentSize = CGSize(
-            width: UIScreen.main.bounds.width * CGFloat(viewControllers.count),
-            height: containerView.frame.height
-        )
-        
-        for (index, viewController) in viewControllers.enumerated() {
-            viewController.view.frame = CGRect(
-                x: UIScreen.main.bounds.width * CGFloat(index),
-                y: 0,
-                width: scrollView.frame.width,
-                height: scrollView.frame.height
-            )
-            addChildViewController(viewController)
-            scrollView.addSubview(viewController.view, options: .useAutoresize) // module's extension
-            viewController.didMove(toParentViewController: self)
-        }
+    func setupScrollView() {
+//        scrollView.contentSize = CGSize(
+//            width: UIScreen.main.bounds.width * CGFloat(viewControllers.count),
+//            height: containerView.frame.height
+//        )
+//        
+//        for (index, viewController) in viewControllers.enumerated() {
+//            viewController.view.frame = CGRect(
+//                x: UIScreen.main.bounds.width * CGFloat(index),
+//                y: 0,
+//                width: scrollView.frame.width,
+//                height: scrollView.frame.height
+//            )
+//            addChildViewController(viewController)
+//            scrollView.addSubview(viewController.view, options: .useAutoresize) // module's extension
+//            viewController.didMove(toParentViewController: self)
+//        }
     }
     
     // MARK: - Actions
     
-    fileprivate func goToControllerAtIndex(_ index: Int) {
+    func goToControllerAtIndex(_ index: Int) {
         segmentioView.selectedSegmentioIndex = index
     }
     
