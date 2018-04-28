@@ -14,16 +14,11 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.isTranslucent = false
-
-        navigationController?.navigationBar.barTintColor = Constants.Color.naviBarTint
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_account_circle"), style: .plain, target: self, action: #selector(toggleSideMenu))
         self.navigationItem.leftBarButtonItem = menuBtn
         
-        setupBackgroundAndBorder()
+        initUI()
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,11 +30,13 @@ class BaseViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toggleSideMenu), object: nil)
     }
     
-    func setupBackgroundAndBorder() {
+    func initUI() {
+        setupNavBar()
+        
         let borderColor = UITableView().separatorColor?.cgColor
         
-        self.view.layer.borderWidth = 0.5
-        self.view.layer.borderColor = borderColor
+//        self.view.layer.borderWidth = 0.5
+//        self.view.layer.borderColor = borderColor
         
         self.tabBarController?.tabBar.shadowImage = UIImage()
         self.tabBarController?.tabBar.backgroundImage = UIImage()
@@ -48,6 +45,8 @@ class BaseViewController: UIViewController {
         self.tabBarController?.tabBar.layer.borderColor = borderColor
         self.tabBarController?.tabBar.backgroundColor = UIColor.clear
         self.tabBarController?.tabBar.clipsToBounds = true
+        
+        addNavBarMask()
     }
     
 //    func createView() {

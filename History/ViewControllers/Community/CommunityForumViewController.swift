@@ -63,10 +63,10 @@ class CommunityForumViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupNavBar()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        setupNavBar()
+//    }
   
     // https://stackoverflow.com/questions/39511088/navigationbar-coloring-in-viewwillappear-happens-too-late-in-ios-10
 //    override func willMove(toParentViewController parent: UIViewController?) {
@@ -74,10 +74,10 @@ class CommunityForumViewController: UIViewController {
 //        self.navigationController?.navigationBar.isTranslucent = false
 //    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        resetNavBar()
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        resetNavBar()
+//    }
     
     @objc func refreshUI() {
         setupViewControllers()

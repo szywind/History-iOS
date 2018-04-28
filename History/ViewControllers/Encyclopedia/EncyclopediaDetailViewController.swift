@@ -39,6 +39,8 @@ class EncyclopediaDetailViewController: UIViewController {
         
         recordImageView.image = record?.avatar
         recordLbl.text = record?.name
+        
+        addNavBarMask()
     }
 
     override func didReceiveMemoryWarning() {
