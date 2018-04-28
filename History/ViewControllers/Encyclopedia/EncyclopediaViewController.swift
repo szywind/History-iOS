@@ -21,7 +21,7 @@ class EncyclopediaViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    fileprivate var viewControllers = [EncyclopediaContentViewController]()
+    fileprivate var viewControllers = [EncyclopediaTableViewController]()
     
     // MARK: - Init
     
@@ -89,27 +89,27 @@ class EncyclopediaViewController: UIViewController {
 //            ]
 //        }
 
-        let peopleController = EncyclopediaContentViewController.create()
+        let peopleController = EncyclopediaTableViewController.create()
         peopleController.records = LocalDataManager.sharedInstance.allPeople
         print("person records", peopleController.records.count)
 
-        let allController = EncyclopediaContentViewController.create()
+        let allController = EncyclopediaTableViewController.create()
         allController.records = LocalDataManager.sharedInstance.allEvents
         print("all records", allController.records.count)
             
-        let eventController = EncyclopediaContentViewController.create()
+        let eventController = EncyclopediaTableViewController.create()
         eventController.records = LocalDataManager.sharedInstance.events
         print("event records", eventController.records.count)
             
-        let geoController = EncyclopediaContentViewController.create()
+        let geoController = EncyclopediaTableViewController.create()
         geoController.records = LocalDataManager.sharedInstance.geo
         print("geo records", geoController.records.count)
             
-        let artController = EncyclopediaContentViewController.create()
+        let artController = EncyclopediaTableViewController.create()
         artController.records = LocalDataManager.sharedInstance.art
         print("art records", artController.records.count)
             
-        let techController = EncyclopediaContentViewController.create()
+        let techController = EncyclopediaTableViewController.create()
         techController.records = LocalDataManager.sharedInstance.tech
         print("tech records", techController.records.count)
             
