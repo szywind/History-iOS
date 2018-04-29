@@ -12,6 +12,9 @@ import AVOSCloud
 
 class MenuSubscriberViewController: BaseMenuViewController {
 
+    @IBOutlet weak var viewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
+    
     var followers = [AVUser]()
     var followees = [AVUser]()
 
@@ -21,6 +24,7 @@ class MenuSubscriberViewController: BaseMenuViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        initCenter = panGestureRecognizer.view?.superview?.center
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,4 +84,54 @@ class MenuSubscriberViewController: BaseMenuViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    @IBAction func onPanPerformed(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: self.view.superview).y
+        let curCenter = panGestureRecognizer.view!.superview?.center
+        print("curCenter: ", curCenter?.x, curCenter?.y)
+        if sender.state == .began || sender.state == .changed {
+            if translation > 0 { // pull down
+                let y_new = min((curCenter?.y)! + translation, (initCenter?.y)!)
+
+                if (curCenter?.y)! < (initCenter?.y)! {
+                    
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self.panGestureRecognizer.view!.superview?.center = CGPoint(x: (curCenter?.x)!, y: y_new)
+                        self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
+                        
+                        self.view.layoutIfNeeded()
+                    })
+                }
+            } else if translation < 0 { // pull up
+                let y_new = max((curCenter?.y)! + translation, (self.initCenter?.y)! - HEIGHT)
+                
+                if (curCenter?.y)! > (initCenter?.y)! - HEIGHT {
+                    UIView.animate(withDuration: 0.1, animations: {
+
+                        self.panGestureRecognizer.view?.superview?.center = CGPoint(x: (curCenter?.x)!, y: y_new)
+                        self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
+                        
+                        self.view.layoutIfNeeded()
+                    })
+                    
+                }
+            }
+        } else if sender.state == .ended {
+            
+            //            if sideMenuLeadingConstraint.constant < -200 {
+            //                UIView.animate(withDuration: 0.2, animations: {
+            //                    self.sideMenuLeadingConstraint.constant = - WIDTH
+            //                    self.view.layoutIfNeeded()
+            //                })
+            //            } else {
+            //                UIView.animate(withDuration: 0.2, animations: {
+            //                    self.sideMenuLeadingConstraint.constant = 0
+            //                    self.view.layoutIfNeeded()
+            //                })
+            //            }
+            
+            self.panGestureRecognizer.view?.superview!.center = self.initCenter!
+            self.panGestureRecognizer.setTranslation(CGPoint.zero, in: self.view.superview)
+        }
+    }
 }
