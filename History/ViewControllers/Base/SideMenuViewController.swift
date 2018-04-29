@@ -40,7 +40,7 @@ class SideMenuViewController: UIViewController {
         tapGestureRecognizer.cancelsTouchesInView = false
 //        setupTapGesture()
         
-        blackView.backgroundColor = Constants.Color.bgColor
+        blackView.backgroundColor = Constants.Color.backgroundOrange
         containerView.addSubview(blackView)
         
         blackView.frame = CGRect(origin: CGPoint(x: containerView.frame.origin.x - WIDTH, y: containerView.frame.origin.y), size: containerView.frame.size)

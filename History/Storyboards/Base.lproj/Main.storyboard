@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4I0-Us-n2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="970" y="-1535"/>
+            <point key="canvasLocation" x="502" y="-1535"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tO4-Ht-0Bd">
@@ -150,7 +150,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asR-N2-KgX">
-                                                            <rect key="frame" x="25" y="16" width="210" height="130"/>
+                                                            <rect key="frame" x="25" y="16" width="325" height="130"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="老子" translatesAutoresizingMaskIntoConstraints="NO" id="Iy8-pM-dNR">
                                                                     <rect key="frame" x="0.0" y="25" width="80" height="80"/>
@@ -165,7 +165,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7T-yV-vbo">
-                                                                    <rect key="frame" x="88" y="25" width="114" height="80"/>
+                                                                    <rect key="frame" x="88" y="25" width="229" height="80"/>
                                                                     <fontDescription key="fontDescription" name="STLibianTC-Regular" family="Libian TC" pointSize="22"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -201,10 +201,10 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woM-jm-ZHh">
-                                                            <rect key="frame" x="10" y="5" width="240" height="60"/>
+                                                            <rect key="frame" x="10" y="5" width="355" height="60"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tn-3x-ODN">
-                                                                    <rect key="frame" x="0.0" y="30" width="240" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="30" width="355" height="30"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jerry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWe-RI-RrA">
                                                                             <rect key="frame" x="76" y="0.0" width="40" height="30"/>
@@ -225,7 +225,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gg9-s3-CQ5">
-                                                                            <rect key="frame" x="140" y="0.0" width="100" height="30"/>
+                                                                            <rect key="frame" x="255" y="0.0" width="100" height="30"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点赞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-bo-ATW">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="30"/>
@@ -276,7 +276,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="凯西：我预测AC米兰将以2-0击败尤文图斯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oaf-jx-wjE">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -2428,7 +2428,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                                 <userGuides>
                                     <userLayoutGuide location="180" affinity="minY"/>
-                                    <userLayoutGuide location="118" affinity="minY"/>
+                                    <userLayoutGuide location="117" affinity="minY"/>
                                     <userLayoutGuide location="118" affinity="minY"/>
                                     <userLayoutGuide location="118" affinity="minY"/>
                                     <userLayoutGuide location="118" affinity="minY"/>
@@ -2647,6 +2647,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomView" destination="JIf-of-y9x" id="Khq-BA-kvf"/>
+                        <outlet property="signUpBtn" destination="tCn-Nv-5ML" id="bDT-w0-hFD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q6t-QV-OEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2930,7 +2931,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXI-7l-eBM">
-                                                                    <rect key="frame" x="25" y="16" width="210" height="130"/>
+                                                                    <rect key="frame" x="25" y="16" width="325" height="130"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="老子" translatesAutoresizingMaskIntoConstraints="NO" id="f4D-Ju-NfS">
                                                                             <rect key="frame" x="0.0" y="25" width="80" height="80"/>
@@ -2945,7 +2946,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77G-G6-QkM">
-                                                                            <rect key="frame" x="88" y="25" width="114" height="80"/>
+                                                                            <rect key="frame" x="88" y="25" width="229" height="80"/>
                                                                             <fontDescription key="fontDescription" name="STLibianTC-Regular" family="Libian TC" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -3894,7 +3895,7 @@ AABUAAAAAAAAAAAAAAAAAAAT6w
         <image name="老子" width="300" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fzN-Wt-W7f"/>
+        <segue reference="BBm-2H-RAy"/>
         <segue reference="cr8-AR-X0L"/>
         <segue reference="lKc-He-ELe"/>
         <segue reference="08K-Iv-Gfj"/>

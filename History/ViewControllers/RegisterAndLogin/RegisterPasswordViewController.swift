@@ -116,11 +116,12 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onSignUp(_ sender: UIButton) {
-
+        self.showProgressBar()
         user?.password = pwdTextField.text!
         user?.setObject(true, forKey: "valid")
         user?.signUpInBackground({ (succeed, error) in
 //        user?.saveInBackground({ (succeed, error) in
+            self.hideProgressBar()
             if succeed {
                 self.done = true
                 self.dismiss(animated: true, completion: nil)
