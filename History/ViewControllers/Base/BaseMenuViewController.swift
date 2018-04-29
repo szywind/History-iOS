@@ -13,6 +13,7 @@ class BaseMenuViewController: UIViewController {
 
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var segmentViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -21,6 +22,8 @@ class BaseMenuViewController: UIViewController {
     var segmentioContent = [SegmentioItem]()
 //    fileprivate var viewControllers = [UIViewController]()
 
+    var initCenter: CGPoint?
+    var HEIGHT: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,8 @@ class BaseMenuViewController: UIViewController {
         
         avatar.layer.cornerRadius = avatar.frame.height / 2
         avatar.layer.shadowColor = UIColor.white.cgColor
+        
+        HEIGHT = headerView.frame.height - (navigationController?.navigationBar.frame.height)!
         
         self.initUI()
     }

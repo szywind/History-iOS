@@ -14,6 +14,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     
     @IBOutlet weak var followBtn: UIButton!
+    @IBOutlet weak var followBtnWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
