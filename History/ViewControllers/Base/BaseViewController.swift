@@ -14,11 +14,26 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_account_circle"), style: .plain, target: self, action: #selector(toggleSideMenu))
         self.navigationItem.leftBarButtonItem = menuBtn
-        
+
         initUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO
+        
+//        navigationItem.leftBarButtonItem?.setBackgroundImage(UIImage(named: "ic_account_circle"), for: .normal, barMetrics: .defaultPrompt)
+//
+//        if UserManager.sharedInstance.isLogin() {
+//            if let urlStr = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.avatarURL) as? String {
+//                let url = URL(string: urlStr.convertToHttps())
+//                if let data = try? Data(contentsOf: url!) {
+//                    navigationItem.leftBarButtonItem?.setBackgroundImage(UIImage(data: data), for: .normal, barMetrics: .defaultPrompt)
+//                }
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -49,4 +49,17 @@ class UserManager {
             block(objects, error)
         })
     }
+    
+    func saveUser(nickname: String, image: UIImage, withBlock block : @escaping AVBooleanResultBlock) {
+            
+        AvatarManager.sharedInstance.updateAvatarWithImage(image: image) { (succeed, error) in
+            if succeed {
+                self.currentUser().setObject(nickname, forKey: LCConstants.UserKey.nickname)
+//                self.currentUser().setObject(phone, forKey: LCConstants.UserKey.phone)
+//                self.currentUser().setObject(gender, forKey: LCConstants.UserKey.gender)
+//                self.setUserLocation()
+                self.currentUser().saveInBackground(block)
+            }
+        }
+    }
 }

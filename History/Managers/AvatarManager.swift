@@ -52,13 +52,14 @@ class AvatarManager {
         }
     }
 
-    func updateAvatarWithImage(image : UIImage, withBlock block : @escaping AVBooleanResultBlock) {
-        let data = UIImageJPEGRepresentation(image.resized(toWidth: 200)!, 1)
+    func updateAvatarWithImage(image: UIImage, withBlock block : @escaping AVBooleanResultBlock) {
+        let data =  UIImagePNGRepresentation(image.resized(toWidth: 200)!)
         let file = AVFile(data: data!)
 
         file.upload { (succeed, error) in
             if succeed {
-                AVUser.current()?.setObject(file, forKey: LCConstants.UserKey.avatarFile)
+                AVUser.current()?.setObject(file.url(), forKey: LCConstants.UserKey.avatarURL)
+//                AVUser.current()?.setObject(file, forKey: LCConstants.UserKey.avatarFile) // LC bug?
                 AVUser.current()?.saveInBackground(block)
             } else {
                 block(false, error)

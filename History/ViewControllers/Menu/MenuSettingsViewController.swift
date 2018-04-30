@@ -2,18 +2,31 @@
 //  MenuSettingsViewController.swift
 //  History
 //
-//  Created by Zhenyuan Shen on 08/03/2018.
+//  Created by Zhenyuan Shen on 4/30/18.
 //  Copyright © 2018 GSS. All rights reserved.
 //
 
 import UIKit
 
-class MenuSettingsViewController: BaseViewController {
+class MenuSettingsViewController: UIViewController {
 
+    @IBOutlet weak var logoutBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        //        let cancelBtn = UIBarButtonItem(image: UIImage(named: "ic_keyboard_arrow_left"), style: .plain, target: self, action: #selector(cancel))
+        self.navigationItem.leftBarButtonItem = cancelBtn
+        
+        logoutBtn.layer.borderWidth = 1
+        logoutBtn.layer.borderColor = Constants.Color.naviBarTint.cgColor
+        logoutBtn.isHidden = !UserManager.sharedInstance.isLogin()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +35,15 @@ class MenuSettingsViewController: BaseViewController {
     }
     
 
+    @IBAction func onLogout(_ sender: UIButton) {
+        UserManager.sharedInstance.logout()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func cancel(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
