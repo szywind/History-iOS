@@ -62,7 +62,8 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     
     // https://stackoverflow.com/questions/28394933/how-do-i-check-when-a-uitextfield-changes/35845040
     @objc func textFieldDidChange(textField: UITextField) {
-        textField.text = textField.text?.replacingOccurrences(of: " ", with: "")
+//        textField.text = textField.text?.replacingOccurrences(of: " ", with: "")
+        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let length = textField.text?.count ?? 0
         loginBtn.isEnabled = (!(userTextField.text?.isEmpty)! && !(pwdTextField.text?.isEmpty)!)
@@ -113,8 +114,9 @@ class LoginViewController: ViewController, UITextFieldDelegate {
     }
     
     @IBAction func onLoginTapped(_ sender: UIButton) {
-
+        self.showProgressBar()
         AVUser.logInWithUsername(inBackground: userTextField.text!, password: pwdTextField.text!) { (user, error) in
+            self.hideProgressBar()
             if error == nil {
 //                UserManager.sharedInstance.setUserLocation()
 //                AVUser.current()?.saveInBackground()

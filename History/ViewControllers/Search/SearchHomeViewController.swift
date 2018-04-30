@@ -126,6 +126,7 @@ class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
             numSection += 1
             sectionTitles.append(allSectionTitles[0])
         }
+        
         filteredEvents = LocalDataManager.sharedInstance.allEvents.filter({$0.name?.range(of: searchWord) != nil})
         if !filteredEvents.isEmpty {
             section2index[numSection] = 1
@@ -236,8 +237,8 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell1 = EncyclopediaRecordTableViewCell()
-        var cell2 = CommunityForumTableViewCell()
+        var cell1 = RecordTableViewCell()
+        var cell2 = PostTableViewCell()
         
         // Configure the cell...
         var sectionData = [Record]()
@@ -245,17 +246,17 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
 
         if index == 0 {
             sectionData = filteredPeople
-            cell1 = searchResultTableView.dequeueReusableCell(withIdentifier: "recordCell") as! EncyclopediaRecordTableViewCell
+            cell1 = searchResultTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
             cell1.recordLbl.text = sectionData[indexPath.row].name
             cell1.recordImage.image = sectionData[indexPath.row].avatar
         } else if index == 1 {
             sectionData = filteredEvents
-            cell1 = searchResultTableView.dequeueReusableCell(withIdentifier: "recordCell") as! EncyclopediaRecordTableViewCell
+            cell1 = searchResultTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
             cell1.recordLbl.text = sectionData[indexPath.row].name
             cell1.recordImage.image = sectionData[indexPath.row].avatar
         } else if index == 2 {
             sectionData = filteredPosts
-            cell2 = searchResultTableView.dequeueReusableCell(withIdentifier: "postCell") as! CommunityForumTableViewCell
+            cell2 = searchResultTableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell
             cell2.topicLbl.text = sectionData[indexPath.row].name
         }
         
@@ -272,9 +273,9 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismissKeyboard()

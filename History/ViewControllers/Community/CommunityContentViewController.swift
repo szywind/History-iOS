@@ -34,8 +34,8 @@ class CommunityContentViewController: UIViewController {
     }
     
     class func create() -> CommunityContentViewController {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        return mainStoryboard.instantiateViewController(withIdentifier: String(describing: self)) as! CommunityContentViewController
+        let board = UIStoryboard(name: "Main", bundle: nil)
+        return board.instantiateViewController(withIdentifier: String(describing: self)) as! CommunityContentViewController
     }
     
     override func viewDidLoad() {

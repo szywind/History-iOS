@@ -42,6 +42,7 @@ struct LCConstants {
         static let accountType = "accountType"
         static let location = "geoPoint"
         static let username = "username"
+        static let avatarURL = "avatarURL"
     }
     
     /**
@@ -61,6 +62,8 @@ struct LCConstants {
         static let dynasty = "dynasty"
         static let dynasty_detail = "dynasty_detail"
         static let pinyin = "pinyin"
+        static let avatarURL = "avatarURL"
+        static let infoURL = "infoURL"
     }
     
     /**
@@ -80,6 +83,8 @@ struct LCConstants {
         static let dynasty = "dynasty"
         static let dynasty_detail = "dynasty_detail"
         static let pinyin = "pinyin"
+        static let avatarURL = "avatarURL"
+        static let infoURL = "infoURL"
     }
     
     

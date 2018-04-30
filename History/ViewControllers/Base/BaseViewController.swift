@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class BaseViewController: UIViewController {
     
@@ -15,16 +14,26 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.isTranslucent = false
-
-        navigationController?.navigationBar.barTintColor = Constants.Color.naviBarTint
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.white]
-        
         let menuBtn = UIBarButtonItem(image: UIImage(named: "ic_account_circle"), style: .plain, target: self, action: #selector(toggleSideMenu))
         self.navigationItem.leftBarButtonItem = menuBtn
+
+        initUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO
         
-        setupBackgroundAndBorder()
+//        navigationItem.leftBarButtonItem?.setBackgroundImage(UIImage(named: "ic_account_circle"), for: .normal, barMetrics: .defaultPrompt)
+//
+//        if UserManager.sharedInstance.isLogin() {
+//            if let urlStr = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.avatarURL) as? String {
+//                let url = URL(string: urlStr.convertToHttps())
+//                if let data = try? Data(contentsOf: url!) {
+//                    navigationItem.leftBarButtonItem?.setBackgroundImage(UIImage(data: data), for: .normal, barMetrics: .defaultPrompt)
+//                }
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,11 +45,13 @@ class BaseViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toggleSideMenu), object: nil)
     }
     
-    func setupBackgroundAndBorder() {
+    func initUI() {
+        setupNavBar()
+        
         let borderColor = UITableView().separatorColor?.cgColor
         
-        self.view.layer.borderWidth = 0.5
-        self.view.layer.borderColor = borderColor
+//        self.view.layer.borderWidth = 0.5
+//        self.view.layer.borderColor = borderColor
         
         self.tabBarController?.tabBar.shadowImage = UIImage()
         self.tabBarController?.tabBar.backgroundImage = UIImage()
@@ -49,6 +60,8 @@ class BaseViewController: UIViewController {
         self.tabBarController?.tabBar.layer.borderColor = borderColor
         self.tabBarController?.tabBar.backgroundColor = UIColor.clear
         self.tabBarController?.tabBar.clipsToBounds = true
+        
+        addNavBarMask()
     }
     
 //    func createView() {
@@ -74,54 +87,4 @@ class BaseViewController: UIViewController {
     }
     */
 
-}
-
-
-extension UIViewController {
-    @objc func dismissKeyboard(){
-        DispatchQueue.global(qos: .userInitiated).async {
-            // Bounce back to the main thread to update the UI
-            DispatchQueue.main.async {
-                self.view.endEditing(true)
-            }
-        }
-    }
-    
-    func showProgressBar() {
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.custom)
-        SVProgressHUD.setBackgroundColor(Constants.Color.backgroundGray)
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            // Bounce back to the main thread to update the UI
-            DispatchQueue.main.async {
-                SVProgressHUD.show()
-                self.view.isUserInteractionEnabled = false
-                self.navigationController?.navigationBar.isUserInteractionEnabled = false
-            }
-        }
-    }
-
-    func hideProgressBar() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            // Bounce back to the main thread to update the UI
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-                self.view.isUserInteractionEnabled = true
-                self.navigationController?.navigationBar.isUserInteractionEnabled = true
-            }
-        }
-    }
-
-    func showErrorAlert(title: String, msg: String){
-        showErrorAlert(title: title, msg: msg, handler: nil)
-    }
-
-    func showErrorAlert(title: String, msg: String, handler: ((UIAlertAction) -> Void)?) {
-        // popup alert
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: handler)
-        
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
-    }
 }

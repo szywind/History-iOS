@@ -28,7 +28,7 @@ class CommunityForumViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    fileprivate var viewControllers = [CommunityForumContentViewController]()
+    fileprivate var viewControllers = [CommunityTableViewController]()
     
     
     // MARK: - Init
@@ -47,8 +47,13 @@ class CommunityForumViewController: UIViewController {
         switch segmentioStyle {
         case .onlyLabel, .imageBeforeLabel, .imageAfterLabel:
             segmentViewHeightConstraint.constant = 35
+            break
         case .onlyImage:
-            segmentViewHeightConstraint.constant = 100
+            segmentViewHeightConstraint.constant = 50
+            break
+        case .imageUnderLabel, .imageOverLabel:
+            segmentViewHeightConstraint.constant = 85
+            break
         default:
             break
         }
@@ -63,10 +68,10 @@ class CommunityForumViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupNavBar()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        setupNavBar()
+//    }
   
     // https://stackoverflow.com/questions/39511088/navigationbar-coloring-in-viewwillappear-happens-too-late-in-ios-10
 //    override func willMove(toParentViewController parent: UIViewController?) {
@@ -74,10 +79,10 @@ class CommunityForumViewController: UIViewController {
 //        self.navigationController?.navigationBar.isTranslucent = false
 //    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        resetNavBar()
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        resetNavBar()
+//    }
     
     @objc func refreshUI() {
         setupViewControllers()
@@ -103,41 +108,17 @@ class CommunityForumViewController: UIViewController {
         }
     }
     
-
-    // https://stackoverflow.com/questions/19082963/how-to-make-completely-transparent-navigation-bar-in-ios-7
-    // https://stackoverflow.com/questions/18969248/how-to-draw-a-transparent-uitoolbar-or-uinavigationbar-in-ios7
-    
-//    var navBarBackgroundImage: UIImage?
-//    var navBarShadowImage: UIImage?
-    
-    func setupNavBar() {
-//        navBarBackgroundImage = self.navigationController?.navigationBar.backgroundImage(for: .default) // navBarBackgroundImage is nil
-//        navBarShadowImage = self.navigationController?.navigationBar.shadowImage // navBarShadowImage is nil
-        
-        navigationController?.isNavigationBarHidden = true
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-    }
-    
-    func resetNavBar() {
-        navigationController?.isNavigationBarHidden = true
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.isTranslucent = false
-    }
-    
     func setupViewControllers() {
         viewControllers.removeAll()
-        let peopleController = CommunityForumContentViewController.create()
+        let peopleController = CommunityTableViewController.create()
         peopleController.records = LocalDataManager.sharedInstance.allPeople
         print("person records", peopleController.records.count)
         
-        let allController = CommunityForumContentViewController.create()
+        let allController = CommunityTableViewController.create()
         allController.records = LocalDataManager.sharedInstance.allEvents
         print("all records", allController.records.count)
         
-        let eventController = CommunityForumContentViewController.create()
+        let eventController = CommunityTableViewController.create()
         eventController.records = LocalDataManager.sharedInstance.events
         print("event records", eventController.records.count)
         
