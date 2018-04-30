@@ -873,7 +873,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="MhL-79-BSL" kind="show" identifier="toRegister" id="BJp-fb-Gtz"/>
+                                            <action selector="onNextTapped:" destination="a3U-AP-lgK" eventType="touchUpInside" id="J90-sH-D0c"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注意：你的全名不能多于25个字符。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSi-8n-rUz">
@@ -949,14 +949,15 @@
                     <connections>
                         <outlet property="imageView" destination="Olq-SD-MWN" id="8Ob-UF-xMc"/>
                         <outlet property="nameTextField" destination="bOX-af-MIJ" id="Jra-fI-4ms"/>
-                        <outlet property="nextBtn" destination="S8v-Kd-V1u" id="McJ-eo-0q9"/>
+                        <outlet property="nextBtn" destination="S8v-Kd-V1u" id="WMG-7d-H54"/>
                         <outlet property="viewBottomConstraint" destination="uiP-ES-CIc" id="lUI-sC-FOS"/>
                         <outlet property="warningLbl" destination="iSi-8n-rUz" id="Kzv-hw-S3I"/>
+                        <segue destination="MhL-79-BSL" kind="show" identifier="toRegister" id="YXb-xz-uf7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voZ-Uj-ZDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-771.20000000000005" y="3130.8845577211396"/>
+            <point key="canvasLocation" x="-1110" y="3146"/>
         </scene>
         <!--Login Reset Password View Controller-->
         <scene sceneID="gPl-9x-jva">
@@ -3064,7 +3065,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4b-HC-HgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112" y="3130.8845577211396"/>
+            <point key="canvasLocation" x="-240" y="3146"/>
         </scene>
         <!--Register Password View Controller-->
         <scene sceneID="jjJ-68-6tx">
@@ -3300,7 +3301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0H-4X-Xt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="816" y="3130.8845577211396"/>
+            <point key="canvasLocation" x="477" y="3156"/>
         </scene>
         <!--Register Phone View Controller-->
         <scene sceneID="Rcu-0o-pTn">
