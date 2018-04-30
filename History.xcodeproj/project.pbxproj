@@ -45,6 +45,7 @@
 		1B5F4DE220920A14005C449C /* MenuProfilerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4DE120920A14005C449C /* MenuProfilerViewController.swift */; };
 		1B5F4DE42092C0D7005C449C /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4DE32092C0D7005C449C /* MenuTableViewCell.swift */; };
 		1B5F4DE62092C56A005C449C /* BaseMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4DE52092C56A005C449C /* BaseMenuViewController.swift */; };
+		1B7A68252097297E002C5ADC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7A68242097297E002C5ADC /* LocationManager.swift */; };
 		1B828F272093B55C004FBEF2 /* MenuSubscriberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F262093B55C004FBEF2 /* MenuSubscriberTableViewController.swift */; };
 		1B828F292093B965004FBEF2 /* MenuBookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F282093B965004FBEF2 /* MenuBookmarkTableViewController.swift */; };
 		1B828F2F20940BDA004FBEF2 /* EncyclopediaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F2E20940BDA004FBEF2 /* EncyclopediaTableViewController.swift */; };
@@ -68,6 +69,7 @@
 		1B8FDF9E208B9C1600BF9560 /* LoginResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF9D208B9C1600BF9560 /* LoginResetPasswordViewController.swift */; };
 		1B8FDFA0208BA70900BF9560 /* String+CheckPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FDF9F208BA70900BF9560 /* String+CheckPattern.swift */; };
 		1B93183520691A5F00FAFDE4 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93183420691A5F00FAFDE4 /* SideMenuViewController.swift */; };
+		1B9C129C209718F60060F995 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9C129B209718F60060F995 /* State.swift */; };
 		1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */; };
 		1BAA2B4C205AD93400EE5ED4 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */; };
 		1BAA2B4F205AD93400EE5ED4 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA2B4B205AD93300EE5ED4 /* Person+CoreDataClass.swift */; };
@@ -157,6 +159,7 @@
 		1B5F4DE120920A14005C449C /* MenuProfilerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuProfilerViewController.swift; sourceTree = "<group>"; };
 		1B5F4DE32092C0D7005C449C /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		1B5F4DE52092C56A005C449C /* BaseMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuViewController.swift; sourceTree = "<group>"; };
+		1B7A68242097297E002C5ADC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1B828F262093B55C004FBEF2 /* MenuSubscriberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSubscriberTableViewController.swift; sourceTree = "<group>"; };
 		1B828F282093B965004FBEF2 /* MenuBookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBookmarkTableViewController.swift; sourceTree = "<group>"; };
 		1B828F2E20940BDA004FBEF2 /* EncyclopediaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaTableViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		1B8FDF9D208B9C1600BF9560 /* LoginResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResetPasswordViewController.swift; sourceTree = "<group>"; };
 		1B8FDF9F208BA70900BF9560 /* String+CheckPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CheckPattern.swift"; sourceTree = "<group>"; };
 		1B93183420691A5F00FAFDE4 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		1B9C129B209718F60060F995 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		1BAA2B2E2059838800EE5ED4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1BAA2B4B205AD93300EE5ED4 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 				1BAA2B50205ADFF100EE5ED4 /* EventManager.swift */,
 				1B54F16B205D58880083A20C /* LCManager.swift */,
 				1B8F4034206564540080EA01 /* LocalDataManager.swift */,
+				1B7A68242097297E002C5ADC /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 			isa = PBXGroup;
 			children = (
 				1BF1AFB120582C0500CB479A /* Record.swift */,
+				1B9C129B209718F60060F995 /* State.swift */,
 			);
 			path = CustomModels;
 			sourceTree = "<group>";
@@ -785,6 +791,7 @@
 				1B2BAE35206E8C2800D6131E /* UITextField+UnderLine.swift in Sources */,
 				1B828F2F20940BDA004FBEF2 /* EncyclopediaTableViewController.swift in Sources */,
 				1B828F36209415F0004FBEF2 /* UserTableViewCell.swift in Sources */,
+				1B7A68252097297E002C5ADC /* LocationManager.swift in Sources */,
 				1B267E2A205520370041A729 /* LCConstants.swift in Sources */,
 				1B10E01520934EEB00A0A4DD /* MenuBookmarkViewController.swift in Sources */,
 				1B828F3420941170004FBEF2 /* CommunityTableViewController.swift in Sources */,
@@ -838,6 +845,7 @@
 				1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */,
 				1B13034B2095E74400411950 /* MenuEditProfileViewController.swift in Sources */,
 				1B1D71432065FE56004BC39C /* DraftViewController.swift in Sources */,
+				1B9C129C209718F60060F995 /* State.swift in Sources */,
 				1B828F292093B965004FBEF2 /* MenuBookmarkTableViewController.swift in Sources */,
 				1B10E0172093509F00A0A4DD /* UIViewController+Functions.swift in Sources */,
 				1B1D713C2065FE42004BC39C /* TimelineTableViewCell.swift in Sources */,
@@ -1026,6 +1034,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P34G6RK5WS;
 				INFOPLIST_FILE = History/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gss.History;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1043,6 +1052,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P34G6RK5WS;
 				INFOPLIST_FILE = History/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gss.History;
 				PRODUCT_NAME = "$(TARGET_NAME)";

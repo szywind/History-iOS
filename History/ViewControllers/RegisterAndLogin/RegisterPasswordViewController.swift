@@ -9,7 +9,7 @@
 import UIKit
 import AVOSCloud
 
-class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
+class RegisterPasswordViewController: LocationManager, UITextFieldDelegate {
     @IBOutlet weak var pwdTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var warningLbl: UILabel!
@@ -120,6 +120,12 @@ class RegisterPasswordViewController: UIViewController, UITextFieldDelegate {
         self.showProgressBar()
         user?.password = pwdTextField.text!
         user?.setObject(true, forKey: "valid")
+        
+        if State.currentLocation == nil {
+            requestLocation()
+        }
+        UserManager.sharedInstance.setUserLocation(user: user)
+        
         user?.signUpInBackground({ (succeed, error) in
 //        user?.saveInBackground({ (succeed, error) in
             self.hideProgressBar()
