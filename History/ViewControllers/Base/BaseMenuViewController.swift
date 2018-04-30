@@ -17,6 +17,7 @@ class BaseMenuViewController: UIViewController {
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var nicknameLbl: UILabel!
     
     var segmentioStyle = SegmentioStyle.onlyLabel
     var segmentioContent = [SegmentioItem]()
@@ -34,13 +35,26 @@ class BaseMenuViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = cancelBtn
         
         avatar.layer.cornerRadius = avatar.frame.height / 2
-        avatar.layer.shadowColor = UIColor.white.cgColor
+//        avatar.layer.shadowColor = UIColor.white.cgColor
+        avatar.layer.borderWidth = 1
+        avatar.layer.borderColor = UIColor.white.cgColor
         
         HEIGHT = headerView.frame.height - (navigationController?.navigationBar.frame.height)!
         
         self.initUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nicknameLbl.text = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.nickname) as? String
+
+        if let urlStr = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.avatarURL) as? String {
+            let url = URL(string: urlStr.convertToHttps())
+            if let data = try? Data(contentsOf: url!) {
+                avatar.image = UIImage(data: data)
+            }
+        }
+    }
     
 
 //    override func viewWillAppear(_ animated: Bool) {

@@ -30,6 +30,14 @@ class MenuProfilerViewController: BaseMenuViewController {
         setupNavBar()
     }
 
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toEditProfile" {
+//            if let destination = segue.destination as? MenuEditProfileViewController {
+//                destination.nickname = nicknameLbl.text
+//            }
+//        }
+//    }
+    
     /*
     // MARK: - Navigation
 

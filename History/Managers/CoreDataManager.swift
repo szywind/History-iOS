@@ -76,31 +76,34 @@ class CoreDataManager {
             person.dynasty_detail = personObject.object(forKey: LCConstants.PersonKey.dynasty_detail) as? String
             person.pinyin = personObject.object(forKey: LCConstants.PersonKey.pinyin) as? String
 
-            if let avatarDict = personObject.object(forKey: LCConstants.PersonKey.avatarFile) as? NSDictionary {
-                if let url = avatarDict.object(forKey: "url") as? String {
-                    person.avatar = url
-
-//                    LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
-//                        if error == nil && url != nil {
-//                            person.avatar = NSData(contentsOf: url!)
-//                        } else {
-//                            print("[Error] ", error?.localizedDescription)
-//                        }
-//                    })
-                }
-            }
-
-            if let infoDict = personObject.object(forKey: LCConstants.PersonKey.infoFile) as? NSDictionary {
-                if let url = infoDict.object(forKey: "url") as? String {
-                    person.info = url
-                    
-//                    LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
-//                        if error == nil && url != nil {
-//                            person.info = NSData(contentsOf: url!)
-//                        }
-//                    })
-                }
-            }
+            person.avatar = personObject.object(forKey: LCConstants.PersonKey.avatarURL) as? String
+            person.info = personObject.object(forKey: LCConstants.PersonKey.infoURL) as? String
+                
+//            if let avatarDict = personObject.object(forKey: LCConstants.PersonKey.avatarFile) as? NSDictionary {
+//                if let url = avatarDict.object(forKey: "url") as? String {
+//                    person.avatar = url
+//
+////                    LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
+////                        if error == nil && url != nil {
+////                            person.avatar = NSData(contentsOf: url!)
+////                        } else {
+////                            print("[Error] ", error?.localizedDescription)
+////                        }
+////                    })
+//                }
+//            }
+//
+//            if let infoDict = personObject.object(forKey: LCConstants.PersonKey.infoFile) as? NSDictionary {
+//                if let url = infoDict.object(forKey: "url") as? String {
+//                    person.info = url
+//
+////                    LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
+////                        if error == nil && url != nil {
+////                            person.info = NSData(contentsOf: url!)
+////                        }
+////                    })
+//                }
+//            }
             
             
     //        let avatarFile = personObject.get(LCConstants.PersonKey.avatarFile)?.dataValue
@@ -136,27 +139,30 @@ class CoreDataManager {
             event.dynasty_detail = eventObject.object(forKey: LCConstants.EventKey.dynasty_detail) as? String
             event.pinyin = eventObject.object(forKey: LCConstants.EventKey.pinyin) as? String
             
-            if let avatarDict = eventObject.object(forKey: LCConstants.EventKey.avatarFile) as? NSDictionary {
-                if let url = avatarDict.object(forKey: "url") as? String {
-                    event.avatar = url
-//                LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
-//                    if error == nil && url != nil {
-//                        event.avatar = NSData(contentsOf: url!)
-//                    }
-//                })
-                }
-            }
+            event.avatar = eventObject.object(forKey: LCConstants.EventKey.avatarURL) as? String
+            event.info = eventObject.object(forKey: LCConstants.EventKey.infoURL) as? String
             
-            if let infoDict = eventObject.object(forKey: LCConstants.EventKey.infoFile) as? NSDictionary {
-                if let url = infoDict.object(forKey: "url") as? String {
-                    event.info = url
-//                LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
-//                    if error == nil && url != nil {
-//                        event.info = NSData(contentsOf: url!)
-//                    }
-//                })
-                }
-            }
+//            if let avatarDict = eventObject.object(forKey: LCConstants.EventKey.avatarFile) as? NSDictionary {
+//                if let url = avatarDict.object(forKey: "url") as? String {
+//                    event.avatar = url
+////                LCManager.sharedInstance.getFileData(file: avatarFile, withBlock: { (url, error) in
+////                    if error == nil && url != nil {
+////                        event.avatar = NSData(contentsOf: url!)
+////                    }
+////                })
+//                }
+//            }
+//
+//            if let infoDict = eventObject.object(forKey: LCConstants.EventKey.infoFile) as? NSDictionary {
+//                if let url = infoDict.object(forKey: "url") as? String {
+//                    event.info = url
+////                LCManager.sharedInstance.getFileData(file: infoFile, withBlock: { (url, error) in
+////                    if error == nil && url != nil {
+////                        event.info = NSData(contentsOf: url!)
+////                    }
+////                })
+//                }
+//            }
             
     //        let avatarFile = eventObject.get(LCConstants.EventKey.avatarFile)?.dataValue as! AVFile
     //        AvatarManager.sharedInstance.getAvatar(avatarFile: avatarFile) { (image) in

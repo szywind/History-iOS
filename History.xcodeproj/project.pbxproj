@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00C696852057D41F00A6E394 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C696842057D41F00A6E394 /* RecordTableViewCell.swift */; };
 		00C696872059064900A6E394 /* PersonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C696862059064600A6E394 /* PersonManager.swift */; };
-		00D4B989205143510090D9F4 /* MenuSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D4B988205143510090D9F4 /* MenuSettingsViewController.swift */; };
 		00ED1ED1204FEB28008CB70A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED1ED0204FEB28008CB70A /* AppDelegate.swift */; };
 		00ED1ED3204FEB28008CB70A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED1ED2204FEB28008CB70A /* ViewController.swift */; };
 		00ED1ED6204FEB28008CB70A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00ED1ED4204FEB28008CB70A /* Main.storyboard */; };
@@ -22,6 +21,8 @@
 		1B10E01520934EEB00A0A4DD /* MenuBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10E01420934EEB00A0A4DD /* MenuBookmarkViewController.swift */; };
 		1B10E0172093509F00A0A4DD /* UIViewController+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10E0162093509F00A0A4DD /* UIViewController+Functions.swift */; };
 		1B10E01920935DBF00A0A4DD /* MenuLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10E01820935DBF00A0A4DD /* MenuLibraryViewController.swift */; };
+		1B13034B2095E74400411950 /* MenuEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B13034A2095E74400411950 /* MenuEditProfileViewController.swift */; };
+		1B13034D2096A51F00411950 /* MenuSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B13034C2096A51F00411950 /* MenuSettingsViewController.swift */; };
 		1B1D71392065FE42004BC39C /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D71342065FE41004BC39C /* TimelineViewController.swift */; };
 		1B1D713A2065FE42004BC39C /* TimelinePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D71352065FE41004BC39C /* TimelinePoint.swift */; };
 		1B1D713B2065FE42004BC39C /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D71362065FE42004BC39C /* Timeline.swift */; };
@@ -114,7 +115,6 @@
 /* Begin PBXFileReference section */
 		00C696842057D41F00A6E394 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		00C696862059064600A6E394 /* PersonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonManager.swift; sourceTree = "<group>"; };
-		00D4B988205143510090D9F4 /* MenuSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSettingsViewController.swift; sourceTree = "<group>"; };
 		00ED1ECD204FEB27008CB70A /* History.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = History.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00ED1ED0204FEB28008CB70A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00ED1ED2204FEB28008CB70A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +133,8 @@
 		1B10E01420934EEB00A0A4DD /* MenuBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBookmarkViewController.swift; sourceTree = "<group>"; };
 		1B10E0162093509F00A0A4DD /* UIViewController+Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Functions.swift"; sourceTree = "<group>"; };
 		1B10E01820935DBF00A0A4DD /* MenuLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLibraryViewController.swift; sourceTree = "<group>"; };
+		1B13034A2095E74400411950 /* MenuEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEditProfileViewController.swift; sourceTree = "<group>"; };
+		1B13034C2096A51F00411950 /* MenuSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSettingsViewController.swift; sourceTree = "<group>"; };
 		1B1D71342065FE41004BC39C /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		1B1D71352065FE41004BC39C /* TimelinePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePoint.swift; sourceTree = "<group>"; };
 		1B1D71362065FE42004BC39C /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
@@ -312,7 +314,6 @@
 		1B267E1A20543CCA0041A729 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				00D4B988205143510090D9F4 /* MenuSettingsViewController.swift */,
 				1BB280FB206A9B6E00BFBF6A /* MenuViewController.swift */,
 				1B5F4DE120920A14005C449C /* MenuProfilerViewController.swift */,
 				1B10E01220934E6100A0A4DD /* MenuSubscriberViewController.swift */,
@@ -320,6 +321,8 @@
 				1B10E01820935DBF00A0A4DD /* MenuLibraryViewController.swift */,
 				1B828F262093B55C004FBEF2 /* MenuSubscriberTableViewController.swift */,
 				1B828F282093B965004FBEF2 /* MenuBookmarkTableViewController.swift */,
+				1B13034A2095E74400411950 /* MenuEditProfileViewController.swift */,
+				1B13034C2096A51F00411950 /* MenuSettingsViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				1BAA2B4F205AD93400EE5ED4 /* Person+CoreDataClass.swift in Sources */,
 				1B267E2520551CC60041A729 /* UserManager.swift in Sources */,
 				1B828F272093B55C004FBEF2 /* MenuSubscriberTableViewController.swift in Sources */,
+				1B13034D2096A51F00411950 /* MenuSettingsViewController.swift in Sources */,
 				1BD8B05B205D9A07003128FF /* String+HTTPS.swift in Sources */,
 				1BAEDF3E20559B9C0004C804 /* UIColor+RGB.swift in Sources */,
 				1B10E01920935DBF00A0A4DD /* MenuLibraryViewController.swift in Sources */,
@@ -832,11 +836,11 @@
 				1B846F9E20678C6100FB3D2D /* CommunityContentViewController.swift in Sources */,
 				1BAEDF3120556F3A0004C804 /* ColorPalette.swift in Sources */,
 				1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */,
+				1B13034B2095E74400411950 /* MenuEditProfileViewController.swift in Sources */,
 				1B1D71432065FE56004BC39C /* DraftViewController.swift in Sources */,
 				1B828F292093B965004FBEF2 /* MenuBookmarkTableViewController.swift in Sources */,
 				1B10E0172093509F00A0A4DD /* UIViewController+Functions.swift in Sources */,
 				1B1D713C2065FE42004BC39C /* TimelineTableViewCell.swift in Sources */,
-				00D4B989205143510090D9F4 /* MenuSettingsViewController.swift in Sources */,
 				1BAA2B2F2059838800EE5ED4 /* CoreDataManager.swift in Sources */,
 				1B1D71412065FE56004BC39C /* ISTimeline.swift in Sources */,
 				1B267E2820551F140041A729 /* Constants.swift in Sources */,

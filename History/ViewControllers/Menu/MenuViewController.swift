@@ -14,7 +14,9 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var usernameHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var nicknameLbl: UILabel!
     
     let titles = [["信息", "关注", "书签", "知识库"], ["设置和隐私", "关于我们"]]
     let icons = [["ic_person_outline", "ic_people_outline", "ic_bookmark_border", "ic_star_border"], ["ic_settings", "ic_help_outline"]]
@@ -31,15 +33,29 @@ class MenuViewController: UIViewController {
         
         signUpBtn.layer.borderWidth = 1
         signUpBtn.layer.borderColor = Constants.Color.naviBarTint.cgColor
+        
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        avatarImageView.layer.borderWidth = 1
+        avatarImageView.layer.borderColor = UIColor.white.cgColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         signUpBtn.isHidden = UserManager.sharedInstance.isLogin()
+        
         if UserManager.sharedInstance.isLogin() {
             usernameHeightConstraint.constant = 40
+            nicknameLbl.text = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.nickname) as? String
+            
+            if let urlStr = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.avatarURL) as? String {
+                let url = URL(string: urlStr.convertToHttps())
+                if let data = try? Data(contentsOf: url!) {
+                    avatarImageView.image = UIImage(data: data)
+                }
+            }
         } else {
             usernameHeightConstraint.constant = 0
+            avatarImageView.image = UIImage(named: "default")
         }
     }
 
@@ -94,7 +110,11 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismissKeyboard()
-        performSegue(withIdentifier: segues[indexPath.section][indexPath.row], sender: self)
+        if UserManager.sharedInstance.isLogin() {
+            performSegue(withIdentifier: segues[indexPath.section][indexPath.row], sender: self)
+        } else {
+            showErrorAlert(title: "提醒", msg: "请先登录账号")
+        }
     }
     
     // https://stackoverflow.com/questions/31693901/design-uitableviews-section-header-in-interface-builder
