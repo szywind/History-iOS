@@ -19,6 +19,8 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nextBtn: UIButton!
     
+    var inputNickname: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,10 +60,9 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
     
     // https://stackoverflow.com/questions/28394933/how-do-i-check-when-a-uitextfield-changes/35845040
     @objc func textFieldDidChange(textField: UITextField) {
-        //        textField.text = textField.text?.replacingOccurrences(of: " ", with: "")
-        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        let length = textField.text?.count ?? 0
+        inputNickname = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        let length = inputNickname?.count ?? 0
         
         warningLbl.isHidden = true
         nextBtn.isEnabled = false
@@ -103,7 +104,7 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "toRegister" {
             if let destination = segue.destination as? RegisterViewController {
                 let user = AVUser()
-                user.setObject(nameTextField.text, forKey: "nickname")
+                user.setObject(inputNickname, forKey: "nickname")
                 destination.user = user
             }
         }

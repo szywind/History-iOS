@@ -22,6 +22,7 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
     var imagePicker = UIImagePickerController()
 
     var nickname: String?
+    var inputNickname: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,10 +89,9 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
     
     // https://stackoverflow.com/questions/28394933/how-do-i-check-when-a-uitextfield-changes/35845040
     @objc func textFieldDidChange(textField: UITextField) {
-//        textField.text = textField.text?.replacingOccurrences(of: " ", with: "")
-        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        inputNickname = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        let length = textField.text?.count ?? 0
+        let length = inputNickname?.count ?? 0
         
         warningLbl.isHidden = true
         navigationItem.rightBarButtonItem?.isEnabled = true
@@ -135,8 +135,8 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func save() {
-        if !(nicknameTextField.text?.isEmpty)! {
-            nickname = nicknameTextField.text
+        if !(inputNickname?.isEmpty)! {
+            nickname = inputNickname
         }
         showProgressBar()
         UserManager.sharedInstance.saveUser(nickname: nickname!, image: avatar.image!){ (succeed, error) in
