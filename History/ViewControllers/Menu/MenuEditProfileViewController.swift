@@ -88,8 +88,6 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
     
     // https://stackoverflow.com/questions/28394933/how-do-i-check-when-a-uitextfield-changes/35845040
     @objc func textFieldDidChange(textField: UITextField) {
-//        textField.text = textField.text?.replacingOccurrences(of: " ", with: "")
-        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
 
         let length = textField.text?.count ?? 0
         
