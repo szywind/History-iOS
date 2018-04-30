@@ -46,6 +46,7 @@
 		1B5F4DE42092C0D7005C449C /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4DE32092C0D7005C449C /* MenuTableViewCell.swift */; };
 		1B5F4DE62092C56A005C449C /* BaseMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4DE52092C56A005C449C /* BaseMenuViewController.swift */; };
 		1B7A68252097297E002C5ADC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7A68242097297E002C5ADC /* LocationManager.swift */; };
+		1B7A68272097495C002C5ADC /* FollowerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7A68262097495C002C5ADC /* FollowerManager.swift */; };
 		1B828F272093B55C004FBEF2 /* MenuSubscriberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F262093B55C004FBEF2 /* MenuSubscriberTableViewController.swift */; };
 		1B828F292093B965004FBEF2 /* MenuBookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F282093B965004FBEF2 /* MenuBookmarkTableViewController.swift */; };
 		1B828F2F20940BDA004FBEF2 /* EncyclopediaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B828F2E20940BDA004FBEF2 /* EncyclopediaTableViewController.swift */; };
@@ -160,6 +161,7 @@
 		1B5F4DE32092C0D7005C449C /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		1B5F4DE52092C56A005C449C /* BaseMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuViewController.swift; sourceTree = "<group>"; };
 		1B7A68242097297E002C5ADC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		1B7A68262097495C002C5ADC /* FollowerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerManager.swift; sourceTree = "<group>"; };
 		1B828F262093B55C004FBEF2 /* MenuSubscriberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSubscriberTableViewController.swift; sourceTree = "<group>"; };
 		1B828F282093B965004FBEF2 /* MenuBookmarkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBookmarkTableViewController.swift; sourceTree = "<group>"; };
 		1B828F2E20940BDA004FBEF2 /* EncyclopediaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncyclopediaTableViewController.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				1B54F16B205D58880083A20C /* LCManager.swift */,
 				1B8F4034206564540080EA01 /* LocalDataManager.swift */,
 				1B7A68242097297E002C5ADC /* LocationManager.swift */,
+				1B7A68262097495C002C5ADC /* FollowerManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 				1BB280FC206A9B6E00BFBF6A /* MenuViewController.swift in Sources */,
 				1BB280FA206A89A900BFBF6A /* Person+CoreDataProperties.swift in Sources */,
 				1B5F4DE62092C56A005C449C /* BaseMenuViewController.swift in Sources */,
+				1B7A68272097495C002C5ADC /* FollowerManager.swift in Sources */,
 				1BAA2B51205ADFF100EE5ED4 /* EventManager.swift in Sources */,
 				1BF1AFB62058391000CB479A /* UIImage+Resized.swift in Sources */,
 				1BF1AFB420582F5600CB479A /* AvatarManager.swift in Sources */,

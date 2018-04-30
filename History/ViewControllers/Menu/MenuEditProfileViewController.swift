@@ -135,6 +135,7 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func save() {
+        nicknameTextField.text = inputNickname
         if !(inputNickname?.isEmpty)! {
             nickname = inputNickname
         }
