@@ -46,14 +46,9 @@ class BaseMenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        nicknameLbl.text = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.nickname) as? String
-
-        if let urlStr = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.avatarURL) as? String {
-            let url = URL(string: urlStr.convertToHttps())
-            if let data = try? Data(contentsOf: url!) {
-                avatar.image = UIImage(data: data)
-            }
-        }
+        
+        nicknameLbl.text = UserManager.sharedInstance.getNickname()
+        avatar.image = UserManager.sharedInstance.getAvatar()
     }
     
 

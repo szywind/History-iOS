@@ -10,17 +10,25 @@ import UIKit
 import Segmentio
 import AVOSCloud
 
+enum CellType {
+    case follower
+    case followee
+    case celeb
+    case recommendation
+}
+
 class MenuSubscriberViewController: BaseMenuViewController {
 
     @IBOutlet weak var viewTopConstraint: NSLayoutConstraint!
     @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
-    var followers = [AVUser]()
-    var followees = [AVUser]()
-
+    var users = [AVUser]()
+    var followeeIds = [String]()
+    
     var viewControllers = [MenuSubscriberTableViewController]()
     
     override func viewDidLoad() {
+        setupData()
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
@@ -33,27 +41,45 @@ class MenuSubscriberViewController: BaseMenuViewController {
     }
     
     override func setupViewControllers() {
-        viewControllers.removeAll()
+        self.viewControllers.removeAll()
         let followerController = MenuSubscriberTableViewController.create()
-        followerController.records = LocalDataManager.sharedInstance.allPeople
-        
-        let followeeController = MenuSubscriberTableViewController.create()
-        let celebController = MenuSubscriberTableViewController.create()
-        let recomController = MenuSubscriberTableViewController.create()
+        followerController.type = .follower
+        followerController.users = users
+        followerController.followees = followeeIds
 
+        //        followerController.records = LocalDataManager.sharedInstance.allPeople
+        //        followerController.users = hotusers
+            
+        let followeeController = MenuSubscriberTableViewController.create()
+        followeeController.type = .followee
+        followeeController.users = users
+        followeeController.followees = followeeIds
         
-        viewControllers.append(followerController)
-        viewControllers.append(followeeController)
-        viewControllers.append(celebController)
-        viewControllers.append(recomController)
-        
-        segmentioContent = [
+        let celebController = MenuSubscriberTableViewController.create()
+        celebController.type = .celeb
+        celebController.users = users
+        celebController.followees = followeeIds
+            
+        let recomController = MenuSubscriberTableViewController.create()
+        recomController.type = .recommendation
+        recomController.users = users
+        recomController.followees = followeeIds
+            
+        self.viewControllers.append(followerController)
+        self.viewControllers.append(followeeController)
+        self.viewControllers.append(celebController)
+        self.viewControllers.append(recomController)
+            
+        self.segmentioContent = [
             SegmentioItem(title: "关注者", image: nil),
             SegmentioItem(title: "正在关注", image: nil),
             SegmentioItem(title: "最热用户", image: nil),
             SegmentioItem(title: "可能喜欢", image: nil)
         ]
+        
     }
+    
+
     
     // MARK: - Setup container view
     override func setupScrollView() {
@@ -84,6 +110,22 @@ class MenuSubscriberViewController: BaseMenuViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    func setupData() {
+        followeeIds = [String]()
+        users = [AVUser]()
+        FollowManager.sharedInstance.getAllFollowees { (objects, error) in
+            if error == nil && (objects?.count)! > 0 {
+                for object in objects!{
+                    let user = object as! AVUser
+                    //                    let bar = UserManager.sharedInstance.getNickname(user: foo)
+                    self.users.append(user)
+                    self.followeeIds.append(user.objectId!)
+                }
+            }
+            self.refreshUI()
+        }
+    }
     
     @IBAction func onPanPerformed(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.view.superview).y

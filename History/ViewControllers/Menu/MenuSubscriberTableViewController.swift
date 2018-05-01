@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import AVOSCloud
 
 class MenuSubscriberTableViewController: UITableViewController {
 
-    var records = [Record]()
+    var type: CellType = .follower
+    
+    var users: [AVUser]?
+    var followees: [String]?
     
     class func create() -> MenuSubscriberTableViewController {
         let board = UIStoryboard(name: "Main", bundle: nil)
@@ -27,7 +31,7 @@ class MenuSubscriberTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         tableView.separatorStyle = .none
-
+        setupData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +39,58 @@ class MenuSubscriberTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func setupData() {
+        switch type {
+        case .followee:
+            break
+        case .follower:
+            users = [AVUser]()
+            FollowManager.sharedInstance.fetchAllFollowers { (objects, error) in
+                if error == nil && (objects?.count)! > 0 {
+                    for object in objects!{
+                        self.users?.append(object as! AVUser)
+                        
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+        case .celeb, .recommendation:
+            users = [AVUser]()
+            UserManager.sharedInstance.findHotUsers { (objects, error) in
+                if error == nil && (objects?.count)! > 0 {
+                    for object in objects!{
+                        self.users?.append(object as! AVUser)
+                    }
+                    //                self.users = objects as! [AVUser]
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    @objc func onFollowTapped(_ sender: UIButton) {
+        let user = users?[sender.tag]
+        AVUser.current()?.follow((user?.objectId)!, andCallback: { (succeed, error) in
+            if succeed {
+                print("succeed")
+                self.tableView.reloadData()
+            } else {
+                print(error?.localizedDescription)
+            }
+        })
+    }
+    
+    @objc func onUnfollowTapped(_ sender: UIButton) {
+        let user = users?[sender.tag]
+        AVUser.current()?.unfollow((user?.objectId)!, andCallback: { (succeed, error) in
+            if succeed {
+                print("succeed")
+                self.tableView.reloadData()
+            } else {
+                print(error?.localizedDescription)
+            }
+        })
+    }
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,15 +100,33 @@ class MenuSubscriberTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return records.count
+        return users!.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as! UserTableViewCell
         
-        cell.avatarImage.image = records[indexPath.row].avatar
-        cell.nameLbl.text = records[indexPath.row].name
+//        cell.avatarImage.image = records[indexPath.row].avatar
+//        cell.nameLbl.text = records[indexPath.row].name
+        cell.nameLbl.text = UserManager.sharedInstance.getNickname(user: users?[indexPath.row])
+        cell.avatarImage.image = UserManager.sharedInstance.getAvatar(user: users?[indexPath.row])
         
+        cell.followBtn.tag = indexPath.row
+        cell.followBtn.addTarget(self, action: #selector(onFollowTapped(_:)), for: UIControlEvents.touchUpInside)
+        cell.unfollowBtn.tag = indexPath.row
+        cell.unfollowBtn.addTarget(self, action: #selector(onUnfollowTapped(_:)), for: UIControlEvents.touchUpInside)
+        
+//        FollowManager.sharedInstance.checkExistFollowee(user: users[indexPath.row], block: { (objects, error) in
+//
+//            if error == nil && (objects?.count)! > 0 {
+//                cell.followBtn.isHidden = true
+//            } else {
+//                cell.followBtn.isHidden = false
+//            }
+//            cell.unfollowBtn.isHidden = !cell.followBtn.isHidden
+//        })
+        cell.followBtn.isHidden = (self.followees?.contains((users?[indexPath.row].objectId)!))!
+        cell.unfollowBtn.isHidden = !cell.followBtn.isHidden
         return cell
     }
 
