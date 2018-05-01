@@ -43,6 +43,8 @@ struct LCConstants {
         static let location = "geoPoint"
         static let username = "username"
         static let avatarURL = "avatarURL"
+        static let followers = "followers"
+        static let followings = "followings"
     }
     
     /**
@@ -87,5 +89,21 @@ struct LCConstants {
         static let infoURL = "infoURL"
     }
     
+    /**
+     *  Keys used in "_Followee" table.
+     *
+     *  - important: DO NOT modify this struct.
+     */
+    struct FolloweeKey {
+        static let followee = "followee"
+    }
     
+    /**
+     *  Keys used in "_Follower" table.
+     *
+     *  - important: DO NOT modify this struct.
+     */
+    struct FollowerKey {
+        static let follower = "follower"
+    }
 }
