@@ -873,7 +873,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="MhL-79-BSL" kind="show" identifier="toRegister" id="BJp-fb-Gtz"/>
+                                            <action selector="onNextTapped:" destination="a3U-AP-lgK" eventType="touchUpInside" id="J90-sH-D0c"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注意：你的全名不能多于25个字符。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSi-8n-rUz">
@@ -949,14 +949,15 @@
                     <connections>
                         <outlet property="imageView" destination="Olq-SD-MWN" id="8Ob-UF-xMc"/>
                         <outlet property="nameTextField" destination="bOX-af-MIJ" id="Jra-fI-4ms"/>
-                        <outlet property="nextBtn" destination="S8v-Kd-V1u" id="McJ-eo-0q9"/>
+                        <outlet property="nextBtn" destination="S8v-Kd-V1u" id="WMG-7d-H54"/>
                         <outlet property="viewBottomConstraint" destination="uiP-ES-CIc" id="lUI-sC-FOS"/>
                         <outlet property="warningLbl" destination="iSi-8n-rUz" id="Kzv-hw-S3I"/>
+                        <segue destination="MhL-79-BSL" kind="show" identifier="toRegister" id="YXb-xz-uf7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voZ-Uj-ZDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-771.20000000000005" y="3130.8845577211396"/>
+            <point key="canvasLocation" x="-1110" y="3146"/>
         </scene>
         <!--Login Reset Password View Controller-->
         <scene sceneID="gPl-9x-jva">
@@ -3064,7 +3065,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4b-HC-HgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112" y="3130.8845577211396"/>
+            <point key="canvasLocation" x="-240" y="3146"/>
         </scene>
         <!--Register Password View Controller-->
         <scene sceneID="jjJ-68-6tx">
@@ -3300,7 +3301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0H-4X-Xt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="816" y="3130.8845577211396"/>
+            <point key="canvasLocation" x="477" y="3156"/>
         </scene>
         <!--Register Phone View Controller-->
         <scene sceneID="Rcu-0o-pTn">
@@ -4388,7 +4389,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Pd-HS-WdT">
-                                            <rect key="frame" x="32" y="8" width="311" height="60"/>
+                                            <rect key="frame" x="32" y="8" width="327" height="60"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:Zyl-2z-cQu:image" translatesAutoresizingMaskIntoConstraints="NO" id="Zyl-2z-cQu">
                                                     <rect key="frame" x="0.0" y="5" width="50" height="50"/>
@@ -4403,19 +4404,29 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6h-SF-FDq">
-                                                    <rect key="frame" x="58" y="5.5" width="185" height="50"/>
-                                                    <fontDescription key="fontDescription" name="STLibianTC-Regular" family="Libian TC" pointSize="22"/>
+                                                    <rect key="frame" x="58" y="5.5" width="181" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADc-CT-R0f">
-                                                    <rect key="frame" x="251" y="15.5" width="60" height="30"/>
+                                                    <rect key="frame" x="247" y="15.5" width="80" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="D0V-cg-k7v"/>
-                                                        <constraint firstAttribute="width" constant="60" id="U9b-r5-lvu"/>
+                                                        <constraint firstAttribute="width" constant="80" id="U9b-r5-lvu"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.32156862749999998" green="0.14117647059999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="关注"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUi-K8-5In">
+                                                    <rect key="frame" x="247" y="15.5" width="80" height="30"/>
+                                                    <color key="tintColor" red="0.32156862749999998" green="0.14117647059999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="正在关注"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="3"/>
@@ -4430,7 +4441,11 @@
                                                 <constraint firstItem="o6h-SF-FDq" firstAttribute="centerY" secondItem="ADc-CT-R0f" secondAttribute="centerY" id="bq3-We-fv1"/>
                                                 <constraint firstItem="Zyl-2z-cQu" firstAttribute="centerY" secondItem="o6h-SF-FDq" secondAttribute="centerY" id="bu3-EH-3Gv"/>
                                                 <constraint firstItem="ADc-CT-R0f" firstAttribute="leading" secondItem="o6h-SF-FDq" secondAttribute="trailing" constant="8" id="d3z-PG-WAX"/>
+                                                <constraint firstItem="fUi-K8-5In" firstAttribute="leading" secondItem="ADc-CT-R0f" secondAttribute="leading" id="gGX-BV-soi"/>
+                                                <constraint firstItem="fUi-K8-5In" firstAttribute="height" secondItem="ADc-CT-R0f" secondAttribute="height" id="iDG-OW-TGD"/>
+                                                <constraint firstItem="fUi-K8-5In" firstAttribute="width" secondItem="ADc-CT-R0f" secondAttribute="width" id="jEG-uC-v18"/>
                                                 <constraint firstItem="Zyl-2z-cQu" firstAttribute="leading" secondItem="4Pd-HS-WdT" secondAttribute="leading" id="jr4-Xl-1X0"/>
+                                                <constraint firstItem="fUi-K8-5In" firstAttribute="top" secondItem="ADc-CT-R0f" secondAttribute="top" id="px9-rd-my3"/>
                                                 <constraint firstItem="Zyl-2z-cQu" firstAttribute="height" secondItem="o6h-SF-FDq" secondAttribute="height" id="stV-ZV-u2U"/>
                                                 <constraint firstAttribute="trailing" secondItem="ADc-CT-R0f" secondAttribute="trailing" id="tUF-of-z07"/>
                                             </constraints>
@@ -4438,7 +4453,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="4Pd-HS-WdT" secondAttribute="bottom" constant="8" id="2ia-eY-Tcu"/>
-                                        <constraint firstAttribute="trailing" secondItem="4Pd-HS-WdT" secondAttribute="trailing" constant="32" id="B7T-4D-OvN"/>
+                                        <constraint firstAttribute="trailing" secondItem="4Pd-HS-WdT" secondAttribute="trailing" constant="16" id="B7T-4D-OvN"/>
                                         <constraint firstItem="4Pd-HS-WdT" firstAttribute="top" secondItem="BaB-yW-fKk" secondAttribute="top" constant="8" id="GCj-ds-89p"/>
                                         <constraint firstItem="4Pd-HS-WdT" firstAttribute="leading" secondItem="BaB-yW-fKk" secondAttribute="leading" constant="32" id="Vsw-Xq-0b9"/>
                                         <constraint firstItem="4Pd-HS-WdT" firstAttribute="centerY" secondItem="BaB-yW-fKk" secondAttribute="centerY" id="oKO-uN-HKh"/>
@@ -4449,6 +4464,7 @@
                                     <outlet property="followBtn" destination="ADc-CT-R0f" id="3XN-dH-ZKU"/>
                                     <outlet property="followBtnWidthConstraint" destination="U9b-r5-lvu" id="qKM-yi-Udc"/>
                                     <outlet property="nameLbl" destination="o6h-SF-FDq" id="Nlg-lD-ZcZ"/>
+                                    <outlet property="unfollowBtn" destination="fUi-K8-5In" id="bWJ-Zv-y1K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -4460,7 +4476,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2U-bk-xZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="5720.6896551724139"/>
+            <point key="canvasLocation" x="502" y="5721"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u8D-xU-WwF">
@@ -4768,7 +4784,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQ3-XY-I55" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="6474.5127436281864"/>
+            <point key="canvasLocation" x="502" y="6475"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XHO-jR-j9n">

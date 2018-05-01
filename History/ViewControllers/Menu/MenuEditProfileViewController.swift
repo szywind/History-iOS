@@ -63,16 +63,11 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
         // https://stackoverflow.com/questions/31774006/how-to-get-height-of-keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         
-        nickname = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.nickname) as? String
+        nickname = UserManager.sharedInstance.getNickname()
         nicknameTextField.text = nickname
         nicknameTextField.placeholder = nickname
         
-        if let urlStr = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.avatarURL) as? String {
-            let url = URL(string: urlStr.convertToHttps())
-            if let data = try? Data(contentsOf: url!) {
-                avatar.image = UIImage(data: data)
-            }
-        }
+        avatar.image = UserManager.sharedInstance.getAvatar()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -135,6 +130,7 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func save() {
+        nicknameTextField.text = inputNickname
         if !(inputNickname?.isEmpty)! {
             nickname = inputNickname
         }

@@ -45,14 +45,8 @@ class MenuViewController: UIViewController {
         
         if UserManager.sharedInstance.isLogin() {
             usernameHeightConstraint.constant = 40
-            nicknameLbl.text = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.nickname) as? String
-            
-            if let urlStr = UserManager.sharedInstance.currentUser().object(forKey: LCConstants.UserKey.avatarURL) as? String {
-                let url = URL(string: urlStr.convertToHttps())
-                if let data = try? Data(contentsOf: url!) {
-                    avatarImageView.image = UIImage(data: data)
-                }
-            }
+            nicknameLbl.text = UserManager.sharedInstance.getNickname()
+            avatarImageView.image = UserManager.sharedInstance.getAvatar()
         } else {
             usernameHeightConstraint.constant = 0
             avatarImageView.image = UIImage(named: "default")

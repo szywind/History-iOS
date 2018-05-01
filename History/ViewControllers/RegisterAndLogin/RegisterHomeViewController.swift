@@ -100,6 +100,11 @@ class RegisterHomeViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBAction func onNextTapped(_ sender: UIButton) {
+        nameTextField.text = inputNickname
+        performSegue(withIdentifier: "toRegister", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRegister" {
             if let destination = segue.destination as? RegisterViewController {
