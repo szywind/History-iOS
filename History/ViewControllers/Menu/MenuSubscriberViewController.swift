@@ -23,7 +23,7 @@ class MenuSubscriberViewController: BaseMenuViewController {
     @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
     var users = [AVUser]()
-    var followeeIds = [String]()
+    var followeeIds = Set<String>()
     
     var viewControllers = [MenuSubscriberTableViewController]()
     
@@ -45,26 +45,30 @@ class MenuSubscriberViewController: BaseMenuViewController {
         let followerController = MenuSubscriberTableViewController.create()
         followerController.type = .follower
         followerController.users = users
-        followerController.followees = followeeIds
-
+//        followerController.followees = followeeIds
+        followerController.mainVC = self
+        
         //        followerController.records = LocalDataManager.sharedInstance.allPeople
         //        followerController.users = hotusers
             
         let followeeController = MenuSubscriberTableViewController.create()
         followeeController.type = .followee
         followeeController.users = users
-        followeeController.followees = followeeIds
+//        followeeController.followees = followeeIds
+        followeeController.mainVC = self
         
         let celebController = MenuSubscriberTableViewController.create()
         celebController.type = .celeb
         celebController.users = users
-        celebController.followees = followeeIds
-            
+//        celebController.followees = followeeIds
+        celebController.mainVC = self
+        
         let recomController = MenuSubscriberTableViewController.create()
         recomController.type = .recommendation
         recomController.users = users
-        recomController.followees = followeeIds
-            
+//        recomController.followees = followeeIds
+        recomController.mainVC = self
+        
         self.viewControllers.append(followerController)
         self.viewControllers.append(followeeController)
         self.viewControllers.append(celebController)
@@ -112,7 +116,7 @@ class MenuSubscriberViewController: BaseMenuViewController {
      */
     
     func setupData() {
-        followeeIds = [String]()
+        followeeIds.removeAll()
         users = [AVUser]()
         FollowManager.sharedInstance.getAllFollowees { (objects, error) in
             if error == nil && (objects?.count)! > 0 {
@@ -120,7 +124,7 @@ class MenuSubscriberViewController: BaseMenuViewController {
                     let user = object as! AVUser
                     //                    let bar = UserManager.sharedInstance.getNickname(user: foo)
                     self.users.append(user)
-                    self.followeeIds.append(user.objectId!)
+                    self.followeeIds.insert(user.objectId!)
                 }
             }
             self.refreshUI()
