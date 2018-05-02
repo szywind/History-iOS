@@ -13,8 +13,8 @@ class MenuSubscriberTableViewController: UITableViewController {
 
     var type: CellType = .follower
     
-    var users: [AVUser]?
-    var followees: [String]?
+    var users = [AVUser]()
+    var mainVC: MenuSubscriberViewController?
     
     class func create() -> MenuSubscriberTableViewController {
         let board = UIStoryboard(name: "Main", bundle: nil)
@@ -32,6 +32,8 @@ class MenuSubscriberTableViewController: UITableViewController {
         
         tableView.separatorStyle = .none
         setupData()
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(refreshUI(notification:)), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,22 +46,22 @@ class MenuSubscriberTableViewController: UITableViewController {
         case .followee:
             break
         case .follower:
-            users = [AVUser]()
+            users.removeAll()
             FollowManager.sharedInstance.fetchAllFollowers { (objects, error) in
                 if error == nil && (objects?.count)! > 0 {
                     for object in objects!{
-                        self.users?.append(object as! AVUser)
+                        self.users.append(object as! AVUser)
                         
                     }
                     self.tableView.reloadData()
                 }
             }
         case .celeb, .recommendation:
-            users = [AVUser]()
+            users.removeAll()
             UserManager.sharedInstance.findHotUsers { (objects, error) in
                 if error == nil && (objects?.count)! > 0 {
                     for object in objects!{
-                        self.users?.append(object as! AVUser)
+                        self.users.append(object as! AVUser)
                     }
                     //                self.users = objects as! [AVUser]
                     self.tableView.reloadData()
@@ -69,11 +71,23 @@ class MenuSubscriberTableViewController: UITableViewController {
     }
     
     @objc func onFollowTapped(_ sender: UIButton) {
-        let user = users?[sender.tag]
-        AVUser.current()?.follow((user?.objectId)!, andCallback: { (succeed, error) in
+        let user = users[sender.tag]
+        AVUser.current()?.follow((user.objectId)!, andCallback: { (succeed, error) in
             if succeed {
-                print("succeed")
-                self.tableView.reloadData()
+                print("succeed in following")
+                self.mainVC?.followeeIds.insert((user.objectId)!)
+                
+                for viewController in (self.mainVC?.viewControllers)! {
+                    if viewController.type == .followee {
+                        viewController.users.append(user)
+                    }
+                    viewController.tableView.reloadData()
+                }
+//                self.followees.insert((user.objectId)!)
+//                if self.type == .followee {
+//                    self.users.append(user)
+//                }
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.updateFollowee), object: nil, userInfo: ["user": user])
             } else {
                 print(error?.localizedDescription)
             }
@@ -81,16 +95,43 @@ class MenuSubscriberTableViewController: UITableViewController {
     }
     
     @objc func onUnfollowTapped(_ sender: UIButton) {
-        let user = users?[sender.tag]
-        AVUser.current()?.unfollow((user?.objectId)!, andCallback: { (succeed, error) in
+        let user = users[sender.tag]
+        AVUser.current()?.unfollow((user.objectId)!, andCallback: { (succeed, error) in
             if succeed {
-                print("succeed")
-                self.tableView.reloadData()
+                print("succeed in unfollowing")
+                self.mainVC?.followeeIds.remove(user.objectId!)
+
+                for viewController in (self.mainVC?.viewControllers)! {
+                    if viewController.type == .followee {
+                        viewController.users.remove(at: viewController.users.index(of: user)!)
+                    }
+                    viewController.tableView.reloadData()
+                }
+//                self.followees.remove(user.objectId!)
+//                if self.type == .followee {
+//                    self.users.remove(at: sender.tag)
+//                }
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.updateFollowee), object: nil, userInfo: ["user": user, "index": sender.tag])
             } else {
                 print(error?.localizedDescription)
             }
         })
     }
+    
+//    @objc func refreshUI(notification: NSNotification) {
+//        let user = notification.userInfo!["user"] as? AVUser
+//        if self.type == .followee {
+//            if self.users.contains(user!) {
+//                // unfollow
+//                self.users.remove(at: notification.userInfo!["index"] as! Int)
+//            } else {
+//                // follow
+//                self.users.append(user!)
+//            }
+//        }
+//        tableView.reloadData()
+//    }
+    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
@@ -100,7 +141,7 @@ class MenuSubscriberTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return users!.count
+        return users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,8 +149,8 @@ class MenuSubscriberTableViewController: UITableViewController {
         
 //        cell.avatarImage.image = records[indexPath.row].avatar
 //        cell.nameLbl.text = records[indexPath.row].name
-        cell.nameLbl.text = UserManager.sharedInstance.getNickname(user: users?[indexPath.row])
-        cell.avatarImage.image = UserManager.sharedInstance.getAvatar(user: users?[indexPath.row])
+        cell.nameLbl.text = UserManager.sharedInstance.getNickname(user: users[indexPath.row])
+        cell.avatarImage.image = UserManager.sharedInstance.getAvatar(user: users[indexPath.row])
         
         cell.followBtn.tag = indexPath.row
         cell.followBtn.addTarget(self, action: #selector(onFollowTapped(_:)), for: UIControlEvents.touchUpInside)
@@ -125,7 +166,7 @@ class MenuSubscriberTableViewController: UITableViewController {
 //            }
 //            cell.unfollowBtn.isHidden = !cell.followBtn.isHidden
 //        })
-        cell.followBtn.isHidden = (self.followees?.contains((users?[indexPath.row].objectId)!))!
+        cell.followBtn.isHidden = (mainVC?.followeeIds.contains((users[indexPath.row].objectId)!))!
         cell.unfollowBtn.isHidden = !cell.followBtn.isHidden
         return cell
     }

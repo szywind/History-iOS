@@ -30,6 +30,7 @@ struct Constants {
         static let fetchDataFromLC = "didFetchDataNotification"
         static let refreshUI = "refreshUI"
         static let toggleSideMenu = "toggleSideMenu"
+        static let updateFollowee = "updateFollowee"
 //        static let emailRegister = "emailRegister"
 //        static let phoneRegister = "phoneRegister"
 //        static let toSmsCodePage = "toSmsCodePage"
