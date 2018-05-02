@@ -126,4 +126,19 @@ class UserManager {
             block(objects, error)
         })
     }
+    
+    func updateCounter(forKey key: String, amount: NSNumber, user: AVUser?=nil) {
+        currentUser().saveInBackground({ (succeed, error) in
+            if succeed {
+                self.currentUser().incrementKey(key, byAmount: amount)
+                self.currentUser().fetchWhenSave = true
+                self.currentUser().saveInBackground()
+                
+                // send notification to user to increment his/her follower field
+                // TODO
+            } else {
+                print(error?.localizedDescription)
+            }
+        })
+    }
 }

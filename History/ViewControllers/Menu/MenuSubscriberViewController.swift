@@ -132,6 +132,7 @@ class MenuSubscriberViewController: BaseMenuViewController {
     }
     
     @IBAction func onPanPerformed(_ sender: UIPanGestureRecognizer) {
+        return
         let translation = sender.translation(in: self.view.superview).y
         let curCenter = panGestureRecognizer.view!.superview?.center
         print("curCenter: ", curCenter?.x, curCenter?.y)
