@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVOSCloud
 
 class CommunityDetailViewController: UIViewController {
     
@@ -14,15 +15,16 @@ class CommunityDetailViewController: UIViewController {
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var articleLbl: UILabel!
     
+    @IBOutlet weak var articleImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var articleTextViewHeightConstraint: NSLayoutConstraint!
-    var record: Record?
+    var post: AVObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         articleTextView.isEditable = false
 
-        articleTextView.text = record?.info
+        articleTextView.text = PostManager.sharedInstance.getText(post: post!)
         articleTextView.isScrollEnabled = false
         
         // https://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
@@ -34,8 +36,13 @@ class CommunityDetailViewController: UIViewController {
         
         articleTextViewHeightConstraint.constant = newSize.height + 2 * lineHeight!
         
-        articleImageView.image = record?.avatar
-        articleLbl.text = record?.name
+        if let image = PostManager.sharedInstance.getImage(post: post!) {
+            articleImageView.image = image
+        } else {
+            articleImageHeightConstraint.constant = 0
+        }
+        
+        articleLbl.text = PostManager.sharedInstance.getTitle(post: post!)
         
         addNavBarMask()
     }

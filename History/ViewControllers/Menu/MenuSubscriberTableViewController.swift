@@ -11,7 +11,7 @@ import AVOSCloud
 
 class MenuSubscriberTableViewController: UITableViewController {
 
-    var type: CellType = .follower
+    var type: UserCellType = .follower
     
     var users = [AVUser]()
     var mainVC: MenuSubscriberViewController?
@@ -75,6 +75,8 @@ class MenuSubscriberTableViewController: UITableViewController {
         AVUser.current()?.follow((user.objectId)!, andCallback: { (succeed, error) in
             if succeed {
                 print("succeed in following")
+                UserManager.sharedInstance.updateCounter(forKey: LCConstants.UserKey.followees, amount: 1)
+                
                 self.mainVC?.followeeIds.insert((user.objectId)!)
                 
                 for viewController in (self.mainVC?.viewControllers)! {
@@ -96,26 +98,39 @@ class MenuSubscriberTableViewController: UITableViewController {
     
     @objc func onUnfollowTapped(_ sender: UIButton) {
         let user = users[sender.tag]
-        AVUser.current()?.unfollow((user.objectId)!, andCallback: { (succeed, error) in
-            if succeed {
-                print("succeed in unfollowing")
-                self.mainVC?.followeeIds.remove(user.objectId!)
-
-                for viewController in (self.mainVC?.viewControllers)! {
-                    if viewController.type == .followee {
-                        viewController.users.remove(at: viewController.users.index(of: user)!)
+        
+        let alert = UIAlertController(title: UserManager.sharedInstance.getNickname(user: user), message: nil, preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: "取消关注", style: .destructive, handler: {
+            (UIAlertAction) -> Void in
+            
+            AVUser.current()?.unfollow((user.objectId)!, andCallback: { (succeed, error) in
+                if succeed {
+                    print("succeed in unfollowing")
+                    UserManager.sharedInstance.updateCounter(forKey: LCConstants.UserKey.followees, amount: -1)
+                    
+                    self.mainVC?.followeeIds.remove(user.objectId!)
+                    
+                    for viewController in (self.mainVC?.viewControllers)! {
+                        if viewController.type == .followee {
+                            viewController.users.remove(at: viewController.users.index(of: user)!)
+                        }
+                        viewController.tableView.reloadData()
                     }
-                    viewController.tableView.reloadData()
+                    //                self.followees.remove(user.objectId!)
+                    //                if self.type == .followee {
+                    //                    self.users.remove(at: sender.tag)
+                    //                }
+                    //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.updateFollowee), object: nil, userInfo: ["user": user, "index": sender.tag])
+                } else {
+                    print(error?.localizedDescription)
                 }
-//                self.followees.remove(user.objectId!)
-//                if self.type == .followee {
-//                    self.users.remove(at: sender.tag)
-//                }
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.updateFollowee), object: nil, userInfo: ["user": user, "index": sender.tag])
-            } else {
-                print(error?.localizedDescription)
-            }
+            })
+            
         })
+        alert.addAction(action)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        self.present(alert, animated:true, completion:nil)
     }
     
 //    @objc func refreshUI(notification: NSNotification) {

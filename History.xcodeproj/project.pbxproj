@@ -42,6 +42,9 @@
 		1B2BAE3D206FC3A700D6131E /* CommunityForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BAE3C206FC3A700D6131E /* CommunityForumViewController.swift */; };
 		1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B347DE4205176490035CD01 /* LoginViewController.swift */; };
 		1B54F16C205D58880083A20C /* LCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B54F16B205D58880083A20C /* LCManager.swift */; };
+		1B570F26209AD62000D7ABC1 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B570F25209AD62000D7ABC1 /* PostManager.swift */; };
+		1B570F28209AD63B00D7ABC1 /* ReplyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B570F27209AD63B00D7ABC1 /* ReplyManager.swift */; };
+		1B570F2C209B24F300D7ABC1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B570F2B209B24F300D7ABC1 /* Post.swift */; };
 		1B5F4DE220920A14005C449C /* MenuProfilerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4DE120920A14005C449C /* MenuProfilerViewController.swift */; };
 		1B5F4DE42092C0D7005C449C /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4DE32092C0D7005C449C /* MenuTableViewCell.swift */; };
 		1B5F4DE62092C56A005C449C /* BaseMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4DE52092C56A005C449C /* BaseMenuViewController.swift */; };
@@ -157,6 +160,9 @@
 		1B2BAE3C206FC3A700D6131E /* CommunityForumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityForumViewController.swift; sourceTree = "<group>"; };
 		1B347DE4205176490035CD01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1B54F16B205D58880083A20C /* LCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCManager.swift; sourceTree = "<group>"; };
+		1B570F25209AD62000D7ABC1 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
+		1B570F27209AD63B00D7ABC1 /* ReplyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyManager.swift; sourceTree = "<group>"; };
+		1B570F2B209B24F300D7ABC1 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1B5F4DE120920A14005C449C /* MenuProfilerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuProfilerViewController.swift; sourceTree = "<group>"; };
 		1B5F4DE32092C0D7005C449C /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		1B5F4DE52092C56A005C449C /* BaseMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuViewController.swift; sourceTree = "<group>"; };
@@ -400,6 +406,8 @@
 				1B8F4034206564540080EA01 /* LocalDataManager.swift */,
 				1B7A68242097297E002C5ADC /* LocationManager.swift */,
 				1B7A682920981B43002C5ADC /* FollowManager.swift */,
+				1B570F25209AD62000D7ABC1 /* PostManager.swift */,
+				1B570F27209AD63B00D7ABC1 /* ReplyManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -571,6 +579,7 @@
 			children = (
 				1BF1AFB120582C0500CB479A /* Record.swift */,
 				1B9C129B209718F60060F995 /* State.swift */,
+				1B570F2B209B24F300D7ABC1 /* Post.swift */,
 			);
 			path = CustomModels;
 			sourceTree = "<group>";
@@ -802,6 +811,7 @@
 				1B2BAE35206E8C2800D6131E /* UITextField+UnderLine.swift in Sources */,
 				1B828F2F20940BDA004FBEF2 /* EncyclopediaTableViewController.swift in Sources */,
 				1B828F36209415F0004FBEF2 /* UserTableViewCell.swift in Sources */,
+				1B570F26209AD62000D7ABC1 /* PostManager.swift in Sources */,
 				1B7A68252097297E002C5ADC /* LocationManager.swift in Sources */,
 				1B267E2A205520370041A729 /* LCConstants.swift in Sources */,
 				1B10E01520934EEB00A0A4DD /* MenuBookmarkViewController.swift in Sources */,
@@ -828,6 +838,7 @@
 				00ED1ED1204FEB28008CB70A /* AppDelegate.swift in Sources */,
 				1B347DE5205176490035CD01 /* LoginViewController.swift in Sources */,
 				1B8FDFA0208BA70900BF9560 /* String+CheckPattern.swift in Sources */,
+				1B570F2C209B24F300D7ABC1 /* Post.swift in Sources */,
 				00C696872059064900A6E394 /* PersonManager.swift in Sources */,
 				1BAEDF38205586B80004C804 /* EncyclopediaHomeViewController.swift in Sources */,
 				1B54F16C205D58880083A20C /* LCManager.swift in Sources */,
@@ -855,6 +866,7 @@
 				1BAEDF3120556F3A0004C804 /* ColorPalette.swift in Sources */,
 				1B8F4035206564550080EA01 /* LocalDataManager.swift in Sources */,
 				1B13034B2095E74400411950 /* MenuEditProfileViewController.swift in Sources */,
+				1B570F28209AD63B00D7ABC1 /* ReplyManager.swift in Sources */,
 				1B1D71432065FE56004BC39C /* DraftViewController.swift in Sources */,
 				1B9C129C209718F60060F995 /* State.swift in Sources */,
 				1B7A682A20981B43002C5ADC /* FollowManager.swift in Sources */,
