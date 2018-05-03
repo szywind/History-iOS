@@ -106,4 +106,45 @@ struct LCConstants {
     struct FollowerKey {
         static let follower = "follower"
     }
+    
+    /**
+     *  Keys used in "Post" table.
+     *
+     *  - important: DO NOT modify this struct.
+     */
+    struct PostKey {
+        static let className = "Post"
+        
+        static let authorId = "authorId"
+        static let dislikes = "dislikes"
+        static let imageFile = "imageFile"
+        static let imageURL = "imageURL"
+        static let likes = "likes"
+        static let replies = "replies"
+        static let subscribers = "subscribers"
+        static let textFile = "textFile"
+        static let textURL = "textURL"
+        static let title = "title"
+        static let dynasty = "dynasty"
+        static let type = "type"
+        static let subtopic = "subtopic"
+        static let reviews = "reviews"
+    }
+    
+    /**
+     *  Keys used in "Reply" table.
+     *
+     *  - important: DO NOT modify this struct.
+     */
+    struct ReplyKey {
+        static let className = "Reply"
+        
+        static let authorId = "authorId"
+        static let dislikes = "dislikes"
+        static let likes = "likes"
+        static let replies = "replies"
+        static let postId = "postId"
+        static let text = "text"
+        static let referenceId = "referenceId"
+    }
 }

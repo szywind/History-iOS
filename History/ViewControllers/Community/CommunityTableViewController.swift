@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import AVOSCloud
 
 class CommunityTableViewController: UITableViewController {
 
-    var records = [Record] ()
+    var posts = [AVObject]()
+    var type: PostCellType = .latest
     
     class func create() -> CommunityTableViewController {
         let board = UIStoryboard(name: "Main", bundle: nil)
@@ -25,11 +27,23 @@ class CommunityTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setupData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupData() {
+        switch type {
+        case .latest:
+            break
+        case .hot:
+            posts = posts.sorted(by: {PostManager.sharedInstance.getReplies(post: $0) > PostManager.sharedInstance.getReplies(post: $1)})
+        case .best:
+            posts = posts.sorted(by: {PostManager.sharedInstance.getLikes(post: $0) > PostManager.sharedInstance.getLikes(post: $1)})
+        }
     }
     
     func refresh() {
@@ -39,20 +53,20 @@ class CommunityTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? CommunityDetailViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
-                destination.record = records[indexPath.row]
+                destination.post = posts[indexPath.row]
             }
         }
     }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return records.count
+        return posts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell
         
-        cell.topicLbl.text = records[indexPath.row].name
+        cell.topicLbl.text = PostManager.sharedInstance.getTitle(post: posts[indexPath.row])
         
         return cell
     }

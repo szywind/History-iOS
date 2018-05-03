@@ -1758,6 +1758,7 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8f-Er-ztG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                            <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83137254900000002" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="STLibianTC-Regular" family="Libian TC" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -2127,13 +2128,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKi-Fd-00e">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="951"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPl-wH-fdv">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YN9-H2-mE0" userLabel="header">
-                                                <rect key="frame" x="8" y="8" width="359" height="60"/>
+                                                <rect key="frame" x="8" y="28" width="359" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hT2-gh-7hP" userLabel="labels">
                                                         <rect key="frame" x="0.0" y="40" width="359" height="30"/>
@@ -2229,8 +2230,11 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TdD-X7-ZUL">
-                                                <rect key="frame" x="0.0" y="552" width="375" height="448"/>
+                                                <rect key="frame" x="0.0" y="564" width="375" height="436"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="436" id="bw0-nl-UTX"/>
+                                                </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="117" id="8Fr-D8-g7C" customClass="CommunityReplyTableViewCell" customModule="History" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="117"/>
@@ -2242,39 +2246,50 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTH-yf-kVl">
-                                                <rect key="frame" x="8" y="76" width="359" height="160"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="160" id="ivy-Nv-Fhe"/>
-                                                </constraints>
-                                            </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vv5-hR-I99">
-                                                <rect key="frame" x="8" y="244" width="359" height="300"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3q-31-COe">
+                                                <rect key="frame" x="8" y="88" width="359" height="476"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vv5-hR-I99">
+                                                        <rect key="frame" x="0.0" y="168" width="359" height="300"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="300" id="O3X-Ie-Lga"/>
+                                                        </constraints>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTH-yf-kVl">
+                                                        <rect key="frame" x="0.0" y="20" width="359" height="140"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="160" id="ivy-Nv-Fhe"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="300" id="O3X-Ie-Lga"/>
+                                                    <constraint firstItem="Vv5-hR-I99" firstAttribute="top" secondItem="uTH-yf-kVl" secondAttribute="bottom" id="3bV-OV-TSl"/>
+                                                    <constraint firstItem="Vv5-hR-I99" firstAttribute="leading" secondItem="q3q-31-COe" secondAttribute="leading" id="4pb-eH-Lzh"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Vv5-hR-I99" secondAttribute="bottom" constant="8" id="ANz-Aj-irx"/>
+                                                    <constraint firstItem="uTH-yf-kVl" firstAttribute="top" secondItem="q3q-31-COe" secondAttribute="top" constant="8" id="LpL-LN-nMI"/>
+                                                    <constraint firstItem="uTH-yf-kVl" firstAttribute="leading" secondItem="q3q-31-COe" secondAttribute="leading" id="RkV-On-fFI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Vv5-hR-I99" secondAttribute="trailing" id="gdf-JU-p7p"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uTH-yf-kVl" secondAttribute="trailing" id="sVJ-Cz-e0H"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Vv5-hR-I99" firstAttribute="leading" secondItem="EPl-wH-fdv" secondAttribute="leading" constant="8" id="3Av-Rd-1V3"/>
+                                            <constraint firstItem="q3q-31-COe" firstAttribute="leading" secondItem="EPl-wH-fdv" secondAttribute="leading" constant="8" id="2bU-ao-NRn"/>
                                             <constraint firstAttribute="bottom" secondItem="TdD-X7-ZUL" secondAttribute="bottom" id="97I-07-aN1"/>
-                                            <constraint firstAttribute="trailing" secondItem="uTH-yf-kVl" secondAttribute="trailing" constant="8" id="I3t-xr-Dd2"/>
-                                            <constraint firstItem="uTH-yf-kVl" firstAttribute="top" secondItem="YN9-H2-mE0" secondAttribute="bottom" constant="8" id="Kpy-uL-mBO"/>
-                                            <constraint firstItem="Vv5-hR-I99" firstAttribute="top" secondItem="uTH-yf-kVl" secondAttribute="bottom" constant="8" id="Z7v-Fd-A3l"/>
+                                            <constraint firstItem="TdD-X7-ZUL" firstAttribute="top" secondItem="q3q-31-COe" secondAttribute="bottom" id="CCR-QX-qVc"/>
+                                            <constraint firstItem="q3q-31-COe" firstAttribute="top" secondItem="YN9-H2-mE0" secondAttribute="bottom" id="Lyp-R4-XoB"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="YN9-H2-mE0" secondAttribute="trailing" id="bch-RN-qZh"/>
-                                            <constraint firstItem="TdD-X7-ZUL" firstAttribute="top" secondItem="Vv5-hR-I99" secondAttribute="bottom" constant="8" id="eWa-ia-gBV"/>
+                                            <constraint firstAttribute="trailing" secondItem="q3q-31-COe" secondAttribute="trailing" constant="8" id="fSf-oS-ZSu"/>
                                             <constraint firstItem="YN9-H2-mE0" firstAttribute="leading" secondItem="EPl-wH-fdv" secondAttribute="leadingMargin" id="fhf-Mf-rlN"/>
-                                            <constraint firstAttribute="height" constant="1000" id="fj7-Pl-coH"/>
                                             <constraint firstItem="YN9-H2-mE0" firstAttribute="top" secondItem="EPl-wH-fdv" secondAttribute="topMargin" id="hLN-vM-JDe"/>
                                             <constraint firstAttribute="trailing" secondItem="TdD-X7-ZUL" secondAttribute="trailing" id="hMc-Gu-jbX"/>
                                             <constraint firstItem="TdD-X7-ZUL" firstAttribute="leading" secondItem="EPl-wH-fdv" secondAttribute="leading" id="iwx-Oe-4dp"/>
-                                            <constraint firstItem="uTH-yf-kVl" firstAttribute="leading" secondItem="EPl-wH-fdv" secondAttribute="leading" constant="8" id="mQ2-bf-ykG"/>
-                                            <constraint firstAttribute="trailing" secondItem="Vv5-hR-I99" secondAttribute="trailing" constant="8" id="smG-yV-SNV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2298,6 +2313,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="articleImageHeightConstraint" destination="ivy-Nv-Fhe" id="LLw-LN-hwG"/>
                         <outlet property="articleImageView" destination="uTH-yf-kVl" id="DsM-Qa-j5M"/>
                         <outlet property="articleLbl" destination="jiR-da-h5k" id="Z56-28-LTr"/>
                         <outlet property="articleTextView" destination="Vv5-hR-I99" id="WGI-PB-x1N"/>
@@ -12982,7 +12998,7 @@ AAAABAEAAAAAAAAAWQAAAAAAAAAAAAAAAAAG+mk
     <inferredMetricsTieBreakers>
         <segue reference="fzN-Wt-W7f"/>
         <segue reference="hMu-CT-JcI"/>
-        <segue reference="lKc-He-ELe"/>
-        <segue reference="FtP-7i-oTJ"/>
+        <segue reference="M8a-wo-sfx"/>
+        <segue reference="08K-Iv-Gfj"/>
     </inferredMetricsTieBreakers>
 </document>
