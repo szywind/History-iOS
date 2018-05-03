@@ -88,30 +88,33 @@ class CommunityViewController: UIViewController {
     
     func setupViewControllers() {
         viewControllers.removeAll()
+        let subscribeController = CommunityContentViewController.create()
+        
         let peopleController = CommunityContentViewController.create()
-        peopleController.records = LocalDataManager.sharedInstance.allPeople
-        print("person records", peopleController.records.count)
+        peopleController.topics = LocalDataManager.sharedInstance.allPeople
+        print("person records", peopleController.topics.count)
             
         let allController = CommunityContentViewController.create()
-        allController.records = LocalDataManager.sharedInstance.allEvents
-        print("all records", allController.records.count)
+        allController.topics = LocalDataManager.sharedInstance.allEvents
+        print("all records", allController.topics.count)
             
         let eventController = CommunityContentViewController.create()
-        eventController.records = LocalDataManager.sharedInstance.events
-        print("event records", eventController.records.count)
+        eventController.topics = LocalDataManager.sharedInstance.events
+        print("event records", eventController.topics.count)
             
         let geoController = CommunityContentViewController.create()
-        geoController.records = LocalDataManager.sharedInstance.geo
-        print("geo records", geoController.records.count)
+        geoController.topics = LocalDataManager.sharedInstance.geo
+        print("geo records", geoController.topics.count)
             
         let artController = CommunityContentViewController.create()
-        artController.records = LocalDataManager.sharedInstance.art
-        print("art records", artController.records.count)
+        artController.topics = LocalDataManager.sharedInstance.art
+        print("art records", artController.topics.count)
             
         let techController = CommunityContentViewController.create()
-        techController.records = LocalDataManager.sharedInstance.tech
-        print("tech records", techController.records.count)
-            
+        techController.topics = LocalDataManager.sharedInstance.tech
+        print("tech records", techController.topics.count)
+        
+        viewControllers.append(subscribeController)
         viewControllers.append(peopleController)
         viewControllers.append(allController)
         viewControllers.append(eventController)
@@ -120,12 +123,13 @@ class CommunityViewController: UIViewController {
         viewControllers.append(techController)
             
         segmentioContent = [
-            SegmentioItem(title: "人物", image: UIImage(named: "tornado")),
-            SegmentioItem(title: "全部", image: UIImage(named: "earthquakes")),
-            SegmentioItem(title: "事件", image: UIImage(named: "heat")),
-            SegmentioItem(title: "地理", image: UIImage(named: "eruption")),
-            SegmentioItem(title: "艺术", image: UIImage(named: "floods")),
-            SegmentioItem(title: "科技", image: UIImage(named: "wildfires"))
+            SegmentioItem(title: "关注", image: nil),
+            SegmentioItem(title: "人物", image: nil),
+            SegmentioItem(title: "全部", image: nil),
+            SegmentioItem(title: "事件", image: nil),
+            SegmentioItem(title: "地理", image: nil),
+            SegmentioItem(title: "艺术", image: nil),
+            SegmentioItem(title: "科技", image: nil)
         ]
     }
     

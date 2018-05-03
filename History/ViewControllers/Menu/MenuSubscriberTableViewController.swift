@@ -11,7 +11,7 @@ import AVOSCloud
 
 class MenuSubscriberTableViewController: UITableViewController {
 
-    var type: CellType = .follower
+    var type: UserCellType = .follower
     
     var users = [AVUser]()
     var mainVC: MenuSubscriberViewController?

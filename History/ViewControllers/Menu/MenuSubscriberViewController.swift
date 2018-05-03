@@ -10,7 +10,7 @@ import UIKit
 import Segmentio
 import AVOSCloud
 
-enum CellType {
+enum UserCellType {
     case follower
     case followee
     case celeb

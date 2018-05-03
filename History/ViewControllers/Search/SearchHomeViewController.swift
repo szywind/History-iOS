@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVOSCloud
 
 class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
     
@@ -21,7 +22,7 @@ class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
     
     var filteredPeople = [Record]()
     var filteredEvents = [Record]()
-    var filteredPosts = [Record]()
+    var filteredPosts = [AVObject]()
     var numSection = 0
     let allSectionTitles = ["人物", "事件", "社区"]
     var sectionTitles = [String]()
@@ -134,14 +135,21 @@ class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
             sectionTitles.append(allSectionTitles[1])
         }
         
-        filteredPosts = filteredPeople + filteredEvents
+        PostManager.sharedInstance.findPosts(forKey: LCConstants.PostKey.subtopic, value: searchWord, withBlock: { (objects, error) in
+            if error == nil && (objects?.count)! > 0 {
+                self.filteredPosts.removeAll()
+                for object in objects! {
+                    self.filteredPosts.append(object as! AVObject)
+                }
+            }
+            self.refreshUI()
+        })
+        
         if !filteredPosts.isEmpty {
             section2index[numSection] = 2
             numSection += 1
             sectionTitles.append(allSectionTitles[2])
         }
-        
-        refreshUI()
     }
     
     @objc private func cancelSearch() {
@@ -193,7 +201,7 @@ class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
         } else if segue.identifier == "showArticleDetails3" {
             if let destination = segue.destination as? CommunityDetailViewController {
                 if let indexPath = searchResultTableView.indexPathForSelectedRow {
-                    var sectionData = [Record]()
+                    var sectionData = [AVObject]()
                     let index = section2index[indexPath.section]
                     if index == 2 {
                         sectionData = filteredPosts
@@ -203,7 +211,7 @@ class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
                         return
                     }
                     guard sectionData.count > indexPath.row else { return }
-                    destination.record = sectionData[indexPath.row]
+                    destination.post = sectionData[indexPath.row]
                 }
             }
         }
@@ -241,28 +249,27 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
         var cell2 = PostTableViewCell()
         
         // Configure the cell...
-        var sectionData = [Record]()
         let index = section2index[indexPath.section]
 
         if index == 0 {
-            sectionData = filteredPeople
+            let sectionData = filteredPeople
             cell1 = searchResultTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
             cell1.recordLbl.text = sectionData[indexPath.row].name
             cell1.recordImage.image = sectionData[indexPath.row].avatar
         } else if index == 1 {
-            sectionData = filteredEvents
+            let sectionData = filteredEvents
             cell1 = searchResultTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
             cell1.recordLbl.text = sectionData[indexPath.row].name
             cell1.recordImage.image = sectionData[indexPath.row].avatar
         } else if index == 2 {
-            sectionData = filteredPosts
+            let sectionData = filteredPosts
             cell2 = searchResultTableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell
-            cell2.topicLbl.text = sectionData[indexPath.row].name
+            cell2.topicLbl.text = PostManager.sharedInstance.getTitle(post: sectionData[indexPath.row])
         }
         
-        if sectionData.isEmpty {
-            return cell1
-        }
+//        if sectionData.isEmpty {
+//            return cell1
+//        }
         
         if index! < 2 {
 

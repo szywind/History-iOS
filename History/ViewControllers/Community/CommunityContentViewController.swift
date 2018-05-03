@@ -10,25 +10,25 @@ import UIKit
 
 class CommunityContentViewController: UIViewController {
     
-    var records = [Record] ()
-    var recordDictionary = [String: [Record]]()
-    var recordSectionTitles = [String]()
+    var topics = [Record] ()
+    var topicDictionary = [String: [Record]]()
+    var topicSectionTitles = [String]()
     
     @IBOutlet weak var topicCollectionView: UICollectionView!
     
     func processData() {
-        //        records = records.sorted(by: { $0.pinyin! < $1.pinyin! || ($0.pinyin! < $1.pinyin! && $0.start! < $1.start!)}) // sort records by alphabetical order
-        for record in records {
-            let key = record.dynasty
-            if var value = recordDictionary[key!] {
-                value.append(record)
-                recordDictionary[key!] = value
+        //        topics = topics.sorted(by: { $0.pinyin! < $1.pinyin! || ($0.pinyin! < $1.pinyin! && $0.start! < $1.start!)}) // sort topics by alphabetical order
+        for topic in topics {
+            let key = topic.dynasty
+            if var value = topicDictionary[key!] {
+                value.append(topic)
+                topicDictionary[key!] = value
             } else {
-                recordDictionary[key!] = [record]
+                topicDictionary[key!] = [topic]
             }
         }
         
-        recordSectionTitles = recordDictionary.keys.sorted { (dynasty1, dynasty2) -> Bool in
+        topicSectionTitles = topicDictionary.keys.sorted { (dynasty1, dynasty2) -> Bool in
             return LocalDataManager.dynasty2index[dynasty1]! < LocalDataManager.dynasty2index[dynasty2]!
         }
     }
@@ -61,12 +61,13 @@ class CommunityContentViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? CommunityForumViewController {
             if let indexPath = topicCollectionView.indexPathsForSelectedItems?.first {
-                guard let sectionData = recordDictionary[recordSectionTitles[indexPath.section]] else {
+                guard let sectionData = topicDictionary[topicSectionTitles[indexPath.section]] else {
                     return
                 }
                 guard sectionData.count > indexPath.row else { return }
 //                destination.topic = sectionData[indexPath.row].objectId
-                destination.posts = [sectionData[indexPath.row]]
+//                destination.posts = [sectionData[indexPath.row]]
+                destination.topic = sectionData[indexPath.row].name
             }
         }
     }
@@ -86,11 +87,11 @@ class CommunityContentViewController: UIViewController {
 // MARK: - Collection View
 extension CommunityContentViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return recordDictionary.count
+        return topicDictionary.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sectionData = recordDictionary[recordSectionTitles[section]] else {
+        guard let sectionData = topicDictionary[topicSectionTitles[section]] else {
             return 0
         }
         return sectionData.count
@@ -101,7 +102,7 @@ extension CommunityContentViewController: UICollectionViewDelegate, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topicCell", for: indexPath) as! CommunityCollectionViewCell
 
         // Configure the cell...
-        guard let sectionData = recordDictionary[recordSectionTitles[indexPath.section]] else {
+        guard let sectionData = topicDictionary[topicSectionTitles[indexPath.section]] else {
             return cell
         }
         cell.topicLbl.text = sectionData[indexPath.row].name
@@ -112,13 +113,13 @@ extension CommunityContentViewController: UICollectionViewDelegate, UICollection
     }
     
     func indexTitles(for collectionView: UICollectionView) -> [String]? {
-        return recordSectionTitles
+        return topicSectionTitles
     }
     
     // Section Header View
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeaderView", for: indexPath) as! SectionHeaderView
-        let title = recordSectionTitles[indexPath.section]
+        let title = topicSectionTitles[indexPath.section]
         
         sectionHeaderView.dynastyTitle = title
         

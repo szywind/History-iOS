@@ -11,6 +11,12 @@ import Segmentio
 import CoreData
 import AVOSCloud
 
+enum PostCellType {
+    case latest
+    case hot
+    case best
+}
+
 class CommunityForumViewController: UIViewController {
     
 //    var topic: String! {
@@ -19,9 +25,11 @@ class CommunityForumViewController: UIViewController {
 //            refreshUI()
 //        }
 //    }
-    var posts = [Record]()
+    
+    var topic: String?
     var segmentioStyle = SegmentioStyle.onlyLabel
     var segmentioContent = [SegmentioItem]()
+    var posts = [AVObject]()
     
     @IBOutlet weak var segmentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var segmentioView: Segmentio!
@@ -58,9 +66,10 @@ class CommunityForumViewController: UIViewController {
             break
         }
         
-        refreshUI()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
+        
+        self.segmentioView.isHidden = true
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,10 +77,10 @@ class CommunityForumViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        setupNavBar()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupData()
+    }
   
     // https://stackoverflow.com/questions/39511088/navigationbar-coloring-in-viewwillappear-happens-too-late-in-ios-10
 //    override func willMove(toParentViewController parent: UIViewController?) {
@@ -83,6 +92,22 @@ class CommunityForumViewController: UIViewController {
 //        super.viewWillDisappear(animated)
 //        resetNavBar()
 //    }
+    
+    func setupData() {
+        PostManager.sharedInstance.fetchPostFromLC(forKey: LCConstants.PostKey.subtopic, value: topic!, withBlock: { (objects, error) in
+            if error == nil && (objects?.count)! > 0 {
+                self.posts.removeAll()
+                for object in objects! {
+                    self.posts.append(object as! AVObject)
+                }
+                self.segmentioView.isHidden = false
+                self.refreshUI()
+            } else {
+                self.segmentioView.isHidden = true
+                print(error?.localizedDescription)
+            }
+        })
+    }
     
     @objc func refreshUI() {
         setupViewControllers()
@@ -110,21 +135,24 @@ class CommunityForumViewController: UIViewController {
     
     func setupViewControllers() {
         viewControllers.removeAll()
-        let peopleController = CommunityTableViewController.create()
-        peopleController.records = LocalDataManager.sharedInstance.allPeople
-        print("person records", peopleController.records.count)
+        let latestController = CommunityTableViewController.create()
+        latestController.posts = posts
+        latestController.type = .latest
+        print("latest posts", latestController.posts.count)
         
-        let allController = CommunityTableViewController.create()
-        allController.records = LocalDataManager.sharedInstance.allEvents
-        print("all records", allController.records.count)
+        let hotController = CommunityTableViewController.create()
+        hotController.posts = posts
+        hotController.type = .hot
+        print("hottest posts", hotController.posts.count)
         
-        let eventController = CommunityTableViewController.create()
-        eventController.records = LocalDataManager.sharedInstance.events
-        print("event records", eventController.records.count)
+        let bestController = CommunityTableViewController.create()
+        bestController.posts = posts
+        bestController.type = .best
+        print("best posts", bestController.posts.count)
         
-        viewControllers.append(peopleController)
-        viewControllers.append(allController)
-        viewControllers.append(eventController)
+        viewControllers.append(latestController)
+        viewControllers.append(hotController)
+        viewControllers.append(bestController)
 
         
         segmentioContent = [
