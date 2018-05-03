@@ -55,6 +55,12 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
         
         addHintImageView.isUserInteractionEnabled = true
         addHintImageView.addGestureRecognizer(singleTap)
+        
+        nickname = UserManager.sharedInstance.getNickname()
+        nicknameTextField.text = nickname
+        nicknameTextField.placeholder = nickname
+        
+        avatar.image = UserManager.sharedInstance.getAvatar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,12 +68,6 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
         
         // https://stackoverflow.com/questions/31774006/how-to-get-height-of-keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        
-        nickname = UserManager.sharedInstance.getNickname()
-        nicknameTextField.text = nickname
-        nicknameTextField.placeholder = nickname
-        
-        avatar.image = UserManager.sharedInstance.getAvatar()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -131,7 +131,7 @@ class MenuEditProfileViewController: UIViewController, UIImagePickerControllerDe
     
     @objc func save() {
         nicknameTextField.text = inputNickname
-        if !(inputNickname?.isEmpty)! {
+        if  inputNickname != nil && !(inputNickname?.isEmpty)! {
             nickname = inputNickname
         }
         showProgressBar()
