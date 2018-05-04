@@ -74,6 +74,11 @@ class LocalDataManager {
         tech = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
     }
     
+    func setupCommunityData() -> [Record] {
+        let followingTopics = Record.getRecords(people: CoreDataManager.fetchfilteredPeople(array: State.currentFollowTopics, format: Constants.CoreData.personNameFilterFormat))
+            + Record.getRecords(events: CoreDataManager.fetchfilteredEvents(array: State.currentFollowTopics, format: Constants.CoreData.eventNameFilterFormat))
+        return followingTopics
+    }
     
     @objc func setupData() {
         setupEncyclopediaData()

@@ -230,11 +230,39 @@ class CoreDataManager {
         return events
     }
     
+    class func fetchfilteredEvents(array: Set<String>, format: String) -> [Event] {
+        var events = [Event]()
+        let eventFetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        
+        eventFetchRequest.predicate = NSPredicate(format: format, array)
+        do {
+            events = try context.fetch(eventFetchRequest)
+            return events
+        } catch {
+            print(error.localizedDescription)
+        }
+        return events
+    }
+    
     class func fetchfilteredPeople(value: String, format: String) -> [Person] {
         var people = [Person]()
         let personFetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
         
         personFetchRequest.predicate = NSPredicate(format: format, value)
+        do {
+            people = try context.fetch(personFetchRequest)
+            return people
+        } catch {
+            print(error.localizedDescription)
+        }
+        return people
+    }
+    
+    class func fetchfilteredPeople(array: Set<String>, format: String) -> [Person] {
+        var people = [Person]()
+        let personFetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+        
+        personFetchRequest.predicate = NSPredicate(format: format, array)
         do {
             people = try context.fetch(personFetchRequest)
             return people
