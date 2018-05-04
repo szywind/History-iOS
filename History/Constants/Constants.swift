@@ -18,6 +18,7 @@ struct Constants {
         static let defaultPasswordLimit = 8
         static let defaultPassword = "0000000000"
         static let defaultValid = false
+        static let defaultNickname = ""
     }
     
     struct CoreData {
