@@ -15,6 +15,9 @@ class CommunityDetailViewController: UIViewController {
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var articleLbl: UILabel!
     
+    @IBOutlet weak var authorLbl: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    
     @IBOutlet weak var articleImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var articleTextViewHeightConstraint: NSLayoutConstraint!
     var post: AVObject?
@@ -43,6 +46,21 @@ class CommunityDetailViewController: UIViewController {
         }
         
         articleLbl.text = PostManager.sharedInstance.getTitle(post: post!)
+        articleLbl.adjustsFontSizeToFitWidth = true
+        articleLbl.numberOfLines = 3
+        
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        
+        PostManager.sharedInstance.getAuthor(post: post!) { (objects, error) in
+            if error == nil && (objects?.count)! == 1 {
+                let user = objects?.first as! AVUser
+                self.avatarImageView.image = UserManager.sharedInstance.getAvatar(user: user)
+                self.authorLbl.text = UserManager.sharedInstance.getNickname(user: user)
+            } else {
+                self.avatarImageView.image = UIImage(named: Constants.Default.defaultAvatar)
+                self.authorLbl.text = Constants.Default.defaultNickname
+            }
+        }
         
         addNavBarMask()
     }

@@ -68,6 +68,15 @@ class CommunityTableViewController: UITableViewController {
         
         cell.topicLbl.text = PostManager.sharedInstance.getTitle(post: posts[indexPath.row])
         
+        PostManager.sharedInstance.getAuthor(post: posts[indexPath.row]) { (objects, error) in
+            if error == nil && (objects?.count)! == 1 {
+                let user = objects?.first as! AVUser
+                cell.authorLbl.text = UserManager.sharedInstance.getNickname(user: user)
+            } else {
+                cell.authorLbl.text = Constants.Default.defaultNickname
+            }
+//            self.refresh()
+        }
         return cell
     }
     
