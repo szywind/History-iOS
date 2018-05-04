@@ -21,6 +21,9 @@ class PostTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        topicLbl.adjustsFontSizeToFitWidth = true
+        topicLbl.numberOfLines = 3
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
