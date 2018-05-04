@@ -11,7 +11,7 @@ import UIKit
 class Record {
     
     var name: String?
-    var avatar: UIImage?
+    var avatar: UIImage? // TODO
     var type: String?
     var info: String?
     var start: Int16?

@@ -11,4 +11,5 @@ import CoreLocation
 
 struct State {
     static var currentLocation: CLLocation?
+    static var currentFollowTopics = Set<String>()
 }

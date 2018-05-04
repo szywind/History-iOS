@@ -23,7 +23,6 @@ class CommunityViewController: UIViewController {
     
     fileprivate var viewControllers = [CommunityContentViewController]()
     
-    
     // MARK: - Init
     
     class func create() -> CommunityViewController {
@@ -51,9 +50,16 @@ class CommunityViewController: UIViewController {
             break
         }
         
-        refreshUI()
+        if UserManager.sharedInstance.isLogin() {
+            State.currentFollowTopics = Set(UserManager.sharedInstance.getFollowTopics()!)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshUI()
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,16 +94,22 @@ class CommunityViewController: UIViewController {
     
     func setupViewControllers() {
         viewControllers.removeAll()
-        let subscribeController = CommunityContentViewController.create()
+        segmentioContent = []
+        if UserManager.sharedInstance.isLogin() {
+            let subscribeController = CommunityContentViewController.create()
+            subscribeController.topics = LocalDataManager.sharedInstance.setupCommunityData()
+            viewControllers.append(subscribeController)
+            segmentioContent.append(SegmentioItem(title: "关注", image: nil))
+        }
         
         let peopleController = CommunityContentViewController.create()
         peopleController.topics = LocalDataManager.sharedInstance.allPeople
         print("person records", peopleController.topics.count)
             
-        let allController = CommunityContentViewController.create()
-        allController.topics = LocalDataManager.sharedInstance.allEvents
-        print("all records", allController.topics.count)
-            
+//        let allController = CommunityContentViewController.create()
+//        allController.topics = LocalDataManager.sharedInstance.allEvents
+//        print("all records", allController.topics.count)
+        
         let eventController = CommunityContentViewController.create()
         eventController.topics = LocalDataManager.sharedInstance.events
         print("event records", eventController.topics.count)
@@ -114,23 +126,22 @@ class CommunityViewController: UIViewController {
         techController.topics = LocalDataManager.sharedInstance.tech
         print("tech records", techController.topics.count)
         
-        viewControllers.append(subscribeController)
         viewControllers.append(peopleController)
-        viewControllers.append(allController)
+//        viewControllers.append(allController)
         viewControllers.append(eventController)
         viewControllers.append(geoController)
         viewControllers.append(artController)
         viewControllers.append(techController)
             
-        segmentioContent = [
-            SegmentioItem(title: "关注", image: nil),
+        segmentioContent.append(contentsOf: [
+//            SegmentioItem(title: "关注", image: nil),
             SegmentioItem(title: "人物", image: nil),
-            SegmentioItem(title: "全部", image: nil),
+//            SegmentioItem(title: "全部", image: nil),
             SegmentioItem(title: "事件", image: nil),
             SegmentioItem(title: "地理", image: nil),
             SegmentioItem(title: "艺术", image: nil),
             SegmentioItem(title: "科技", image: nil)
-        ]
+        ])
     }
     
     fileprivate func selectedSegmentioIndex() -> Int {

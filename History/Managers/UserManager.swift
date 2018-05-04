@@ -59,6 +59,13 @@ class UserManager {
         return user?.object(forKey: LCConstants.UserKey.nickname) as? String
     }
     
+    func getFollowTopics(user: AVUser?=nil) -> [String]? {
+        guard user != nil else {
+            return currentUser().object(forKey: LCConstants.UserKey.followTopics) as? [String] ?? []
+        }
+        return user?.object(forKey: LCConstants.UserKey.nickname) as? [String] ?? []
+    }
+    
     func getAvatar(user: AVUser?=nil) -> UIImage? {
         guard user != nil else {
             if let urlStr = currentUser().object(forKey: LCConstants.UserKey.avatarURL) as? String {
@@ -95,6 +102,12 @@ class UserManager {
         }
         return curLocation
     }
+    
+    func setFollowTopics(withBlock block : @escaping AVBooleanResultBlock) {
+        currentUser().setObject(Array(State.currentFollowTopics), forKey: LCConstants.UserKey.followTopics)
+        currentUser().saveInBackground(block)
+    }
+    
     // TODO
     
     func findUser(key: String = LCConstants.UserKey.username, value: String, withBlock block: @escaping AVArrayResultBlock) {

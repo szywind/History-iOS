@@ -25,6 +25,8 @@ struct Constants {
         static let eventTypeFilterFormat = "type == %@"
         static let eventIdFilterFormat = "objectId == %@"
         static let personIdFilterFormat = "objectId == %@"
+        static let personNameFilterFormat = "name IN %@"
+        static let eventNameFilterFormat = "name IN %@"
     }
     
     struct Notification {

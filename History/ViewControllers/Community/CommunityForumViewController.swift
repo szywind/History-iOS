@@ -26,7 +26,7 @@ class CommunityForumViewController: UIViewController {
 //        }
 //    }
     
-    var topic: String?
+    var topic: Record?
     var segmentioStyle = SegmentioStyle.onlyLabel
     var segmentioContent = [SegmentioItem]()
     var posts = [AVObject]()
@@ -35,6 +35,9 @@ class CommunityForumViewController: UIViewController {
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var followBtn: UIButton!
+    @IBOutlet weak var unfollowBtn: UIButton!
+    @IBOutlet weak var encyclopediaBtn: UIButton!
     
     fileprivate var viewControllers = [CommunityTableViewController]()
     
@@ -70,6 +73,12 @@ class CommunityForumViewController: UIViewController {
         
         self.segmentioView.isHidden = true
 
+        encyclopediaBtn.layer.borderWidth = 1
+        encyclopediaBtn.layer.borderColor = UIColor.white.cgColor
+        followBtn.layer.borderWidth = 1
+        followBtn.layer.borderColor = UIColor.white.cgColor
+        unfollowBtn.layer.borderWidth = 1
+        unfollowBtn.layer.borderColor = UIColor.white.cgColor
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,6 +88,10 @@ class CommunityForumViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        followBtn.isHidden = (State.currentFollowTopics.contains((topic?.name!)!))
+        unfollowBtn.isHidden = !followBtn.isHidden
+ 
         setupData()
     }
   
@@ -93,8 +106,51 @@ class CommunityForumViewController: UIViewController {
 //        resetNavBar()
 //    }
     
+    @IBAction func onFollowTapped(_ sender: UIButton) {
+        if UserManager.sharedInstance.isLogin() {
+            State.currentFollowTopics.insert((topic?.name)!)
+            UserManager.sharedInstance.setFollowTopics(withBlock: { (succeed, error) in
+                if succeed {
+                    self.followBtn.isHidden = !self.followBtn.isHidden
+                    self.unfollowBtn.isHidden = !self.unfollowBtn.isHidden
+                } else {
+                    print(error?.localizedDescription)
+                    State.currentFollowTopics.remove((self.topic?.name!)!)
+                }
+            })
+        } else {
+            showErrorAlert(title: "提醒", msg: "请先登录账号")
+        }
+    }
+    
+    @IBAction func onUnfollowTapped(_ sender: UIButton) {
+        if UserManager.sharedInstance.isLogin() {
+            let alert = UIAlertController(title: topic?.name, message: nil, preferredStyle: .actionSheet)
+            let action = UIAlertAction(title: "取消关注", style: .destructive, handler: {
+                (UIAlertAction) -> Void in
+                
+                State.currentFollowTopics.remove((self.topic?.name!)!)
+                UserManager.sharedInstance.setFollowTopics(withBlock: { (succeed, error) in
+                    if succeed {
+                        self.followBtn.isHidden = !self.followBtn.isHidden
+                        self.unfollowBtn.isHidden = !self.unfollowBtn.isHidden
+                    } else {
+                        print(error?.localizedDescription)
+                        State.currentFollowTopics.insert((self.topic?.name)!)
+                    }
+                })  
+            })
+            alert.addAction(action)
+            let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            self.present(alert, animated:true, completion:nil)
+        } else {
+            showErrorAlert(title: "提醒", msg: "请先登录账号")
+        }
+    }
+    
     func setupData() {
-        PostManager.sharedInstance.fetchPostFromLC(forKey: LCConstants.PostKey.subtopic, value: topic!, withBlock: { (objects, error) in
+        PostManager.sharedInstance.fetchPostFromLC(forKey: LCConstants.PostKey.subtopic, value: (topic?.name)!, withBlock: { (objects, error) in
             if error == nil && (objects?.count)! > 0 {
                 self.posts.removeAll()
                 for object in objects! {
@@ -130,6 +186,12 @@ class CommunityForumViewController: UIViewController {
                     animated: true
                 )
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? EncyclopediaDetailViewController {
+            destination.record = topic
         }
     }
     
@@ -191,10 +253,6 @@ class CommunityForumViewController: UIViewController {
     
     fileprivate func goToControllerAtIndex(_ index: Int) {
         segmentioView.selectedSegmentioIndex = index
-    }
-    
-    func setupPosts() {
-        
     }
     
     /*

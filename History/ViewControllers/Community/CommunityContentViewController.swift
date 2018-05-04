@@ -10,7 +10,7 @@ import UIKit
 
 class CommunityContentViewController: UIViewController {
     
-    var topics = [Record] ()
+    var topics = [Record]()
     var topicDictionary = [String: [Record]]()
     var topicSectionTitles = [String]()
     
@@ -67,7 +67,7 @@ class CommunityContentViewController: UIViewController {
                 guard sectionData.count > indexPath.row else { return }
 //                destination.topic = sectionData[indexPath.row].objectId
 //                destination.posts = [sectionData[indexPath.row]]
-                destination.topic = sectionData[indexPath.row].name
+                destination.topic = sectionData[indexPath.row]
             }
         }
     }
