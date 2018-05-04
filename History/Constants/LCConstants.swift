@@ -45,6 +45,7 @@ struct LCConstants {
         static let avatarURL = "avatarURL"
         static let followers = "followers"
         static let followees = "followees"
+        static let followTopics = "followTopics"
     }
     
     /**

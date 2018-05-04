@@ -11,7 +11,7 @@ import UIKit
 class Post {
     
     var title: String?
-    var image: UIImage?
+    var image: UIImage? // TODO
     var type: String?
     var text: String?
     var dynasty: String?
