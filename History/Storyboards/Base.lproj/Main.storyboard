@@ -151,16 +151,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woM-jm-ZHh">
-                                                            <rect key="frame" x="32" y="8" width="311" height="60"/>
+                                                            <rect key="frame" x="16" y="8" width="343" height="60"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tn-3x-ODN">
-                                                                    <rect key="frame" x="0.0" y="30" width="311" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="30" width="343" height="30"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jerry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWe-RI-RrA">
-                                                                            <rect key="frame" x="76" y="0.0" width="40" height="30"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="40" id="sll-ec-LXh"/>
-                                                                            </constraints>
+                                                                            <rect key="frame" x="68" y="0.0" width="159" height="30"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -175,7 +172,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gg9-s3-CQ5">
-                                                                            <rect key="frame" x="211" y="0.0" width="100" height="30"/>
+                                                                            <rect key="frame" x="243" y="0.0" width="100" height="30"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点赞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-bo-ATW">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="30"/>
@@ -215,19 +212,20 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="bottom" secondItem="gg9-s3-CQ5" secondAttribute="bottom" id="E46-o3-XEt"/>
                                                                         <constraint firstAttribute="bottom" secondItem="hXJ-I3-pdR" secondAttribute="bottom" id="EWw-ff-Aue"/>
-                                                                        <constraint firstItem="PWe-RI-RrA" firstAttribute="leading" secondItem="hXJ-I3-pdR" secondAttribute="trailing" constant="16" id="Efc-9H-PGI"/>
+                                                                        <constraint firstItem="PWe-RI-RrA" firstAttribute="leading" secondItem="hXJ-I3-pdR" secondAttribute="trailing" constant="8" id="Efc-9H-PGI"/>
                                                                         <constraint firstAttribute="bottom" secondItem="PWe-RI-RrA" secondAttribute="bottom" id="HHe-K0-Xpy"/>
                                                                         <constraint firstAttribute="trailing" secondItem="gg9-s3-CQ5" secondAttribute="trailing" id="III-YU-5x8"/>
                                                                         <constraint firstItem="PWe-RI-RrA" firstAttribute="top" secondItem="8tn-3x-ODN" secondAttribute="top" id="TuV-zA-Jzi"/>
                                                                         <constraint firstItem="gg9-s3-CQ5" firstAttribute="top" secondItem="8tn-3x-ODN" secondAttribute="top" id="ecf-yu-orF"/>
+                                                                        <constraint firstItem="gg9-s3-CQ5" firstAttribute="leading" secondItem="PWe-RI-RrA" secondAttribute="trailing" constant="16" id="h53-2o-0vL"/>
                                                                         <constraint firstItem="hXJ-I3-pdR" firstAttribute="top" secondItem="8tn-3x-ODN" secondAttribute="top" id="oTx-9N-glM"/>
                                                                         <constraint firstAttribute="height" constant="30" id="tDf-RW-d1O"/>
                                                                         <constraint firstItem="hXJ-I3-pdR" firstAttribute="leading" secondItem="8tn-3x-ODN" secondAttribute="leading" id="uTc-IA-19l"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="凯西：我预测AC米兰将以2-0击败尤文图斯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oaf-jx-wjE">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="311" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -246,11 +244,11 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="woM-jm-ZHh" secondAttribute="trailing" constant="32" id="DKr-nm-4zB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="woM-jm-ZHh" secondAttribute="trailing" constant="16" id="DKr-nm-4zB"/>
                                                         <constraint firstAttribute="bottom" secondItem="woM-jm-ZHh" secondAttribute="bottom" constant="8" id="SyJ-12-MSp"/>
                                                         <constraint firstItem="woM-jm-ZHh" firstAttribute="top" secondItem="dQO-G0-p7q" secondAttribute="top" constant="8" id="Ux3-DP-meo"/>
                                                         <constraint firstItem="woM-jm-ZHh" firstAttribute="centerY" secondItem="dQO-G0-p7q" secondAttribute="centerY" id="sfh-Ie-6m6"/>
-                                                        <constraint firstItem="woM-jm-ZHh" firstAttribute="leading" secondItem="dQO-G0-p7q" secondAttribute="leading" constant="32" id="xl0-Lb-9BE"/>
+                                                        <constraint firstItem="woM-jm-ZHh" firstAttribute="leading" secondItem="dQO-G0-p7q" secondAttribute="leading" constant="16" id="xl0-Lb-9BE"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -1994,13 +1992,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WrE-aO-yND">
-                                            <rect key="frame" x="8" y="8" width="359" height="60"/>
+                                            <rect key="frame" x="16" y="8" width="343" height="60"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiC-ab-JWR">
-                                                    <rect key="frame" x="0.0" y="30" width="359" height="30"/>
+                                                    <rect key="frame" x="0.0" y="30" width="343" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jerry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igT-0u-WNV">
-                                                            <rect key="frame" x="76" y="0.0" width="151" height="30"/>
+                                                            <rect key="frame" x="68" y="0.0" width="159" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -2015,7 +2013,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="D5o-VN-MsG">
-                                                            <rect key="frame" x="259" y="0.0" width="100" height="30"/>
+                                                            <rect key="frame" x="243" y="0.0" width="100" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点赞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaE-3z-jJt">
                                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="30"/>
@@ -2054,10 +2052,10 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="igT-0u-WNV" firstAttribute="top" secondItem="WiC-ab-JWR" secondAttribute="top" id="1zs-U4-q6J"/>
-                                                        <constraint firstItem="igT-0u-WNV" firstAttribute="leading" secondItem="npi-l0-Jlj" secondAttribute="trailing" constant="16" id="Ef9-d4-zZr"/>
+                                                        <constraint firstItem="igT-0u-WNV" firstAttribute="leading" secondItem="npi-l0-Jlj" secondAttribute="trailing" constant="8" id="Ef9-d4-zZr"/>
                                                         <constraint firstAttribute="bottom" secondItem="npi-l0-Jlj" secondAttribute="bottom" id="PFr-S7-ssw"/>
                                                         <constraint firstItem="D5o-VN-MsG" firstAttribute="top" secondItem="WiC-ab-JWR" secondAttribute="top" id="TXe-YB-ikG"/>
-                                                        <constraint firstItem="D5o-VN-MsG" firstAttribute="leading" secondItem="igT-0u-WNV" secondAttribute="trailing" constant="32" id="V5O-An-x1h"/>
+                                                        <constraint firstItem="D5o-VN-MsG" firstAttribute="leading" secondItem="igT-0u-WNV" secondAttribute="trailing" constant="16" id="V5O-An-x1h"/>
                                                         <constraint firstAttribute="height" constant="30" id="Y44-yn-Sho"/>
                                                         <constraint firstAttribute="bottom" secondItem="igT-0u-WNV" secondAttribute="bottom" id="Y7w-fI-tdv"/>
                                                         <constraint firstAttribute="bottom" secondItem="D5o-VN-MsG" secondAttribute="bottom" id="Yif-Mj-kbx"/>
@@ -2066,8 +2064,8 @@
                                                         <constraint firstAttribute="trailing" secondItem="D5o-VN-MsG" secondAttribute="trailing" id="yEd-3i-Ral"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="凯西：我预测AC米兰将以2-0击败尤文图斯" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzv-GD-X69">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="凯西：我预测AC米兰将以2-0击败尤文图斯" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzv-GD-X69">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2088,8 +2086,8 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="WrE-aO-yND" firstAttribute="centerY" secondItem="50u-36-QCP" secondAttribute="centerY" id="HPb-Ls-fFG"/>
-                                        <constraint firstAttribute="trailing" secondItem="WrE-aO-yND" secondAttribute="trailing" constant="8" id="KsW-r1-ILt"/>
-                                        <constraint firstItem="WrE-aO-yND" firstAttribute="leading" secondItem="50u-36-QCP" secondAttribute="leading" constant="8" id="W5t-3y-kca"/>
+                                        <constraint firstAttribute="trailing" secondItem="WrE-aO-yND" secondAttribute="trailing" constant="16" id="KsW-r1-ILt"/>
+                                        <constraint firstItem="WrE-aO-yND" firstAttribute="leading" secondItem="50u-36-QCP" secondAttribute="leading" constant="16" id="W5t-3y-kca"/>
                                         <constraint firstAttribute="bottom" secondItem="WrE-aO-yND" secondAttribute="bottom" constant="8" id="dzE-gb-Jw9"/>
                                         <constraint firstItem="WrE-aO-yND" firstAttribute="top" secondItem="50u-36-QCP" secondAttribute="top" constant="8" id="lhc-x0-Rgl"/>
                                     </constraints>
@@ -2134,7 +2132,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YN9-H2-mE0" userLabel="header">
                                                 <rect key="frame" x="16" y="8" width="343" height="118"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="凯西：我预测AC米兰将以2-0击败尤文图斯" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiR-da-h5k">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="凯西：我预测AC米兰将以2-0击败尤文图斯" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jiR-da-h5k">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="JK9-gg-N2J"/>
@@ -13016,7 +13014,7 @@ AAAABAEAAAAAAAAAWQAAAAAAAAAAAAAAAAAG+mk
     <inferredMetricsTieBreakers>
         <segue reference="fzN-Wt-W7f"/>
         <segue reference="hMu-CT-JcI"/>
-        <segue reference="M8a-wo-sfx"/>
-        <segue reference="08K-Iv-Gfj"/>
+        <segue reference="lKc-He-ELe"/>
+        <segue reference="FtP-7i-oTJ"/>
     </inferredMetricsTieBreakers>
 </document>

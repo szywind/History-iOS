@@ -142,14 +142,14 @@ class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
                     self.filteredPosts.append(object as! AVObject)
                 }
             }
+            
+            if !self.filteredPosts.isEmpty {
+                self.section2index[self.numSection] = 2
+                self.numSection += 1
+                self.sectionTitles.append(self.allSectionTitles[2])
+            }
             self.refreshUI()
         })
-        
-        if !filteredPosts.isEmpty {
-            section2index[numSection] = 2
-            numSection += 1
-            sectionTitles.append(allSectionTitles[2])
-        }
     }
     
     @objc private func cancelSearch() {
@@ -265,6 +265,16 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
             let sectionData = filteredPosts
             cell2 = searchResultTableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell
             cell2.topicLbl.text = PostManager.sharedInstance.getTitle(post: sectionData[indexPath.row])
+
+            PostManager.sharedInstance.getAuthor(post: sectionData[indexPath.row]) { (objects, error) in
+                if error == nil && (objects?.count)! == 1 {
+                    let user = objects?.first as! AVUser
+                    cell2.authorLbl.text = UserManager.sharedInstance.getNickname(user: user)
+                } else {
+                    cell2.authorLbl.text = Constants.Default.defaultNickname
+                }
+//                self.refreshUI()
+            }
         }
         
 //        if sectionData.isEmpty {
