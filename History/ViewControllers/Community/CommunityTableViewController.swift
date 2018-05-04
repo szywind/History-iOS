@@ -12,7 +12,6 @@ import AVOSCloud
 class CommunityTableViewController: UITableViewController {
 
     var posts = [AVObject]()
-    var authors = [AVUser?]()
     var type: PostCellType = .latest
     
     class func create() -> CommunityTableViewController {
@@ -45,20 +44,6 @@ class CommunityTableViewController: UITableViewController {
         case .best:
             posts = posts.sorted(by: {PostManager.sharedInstance.getLikes(post: $0) > PostManager.sharedInstance.getLikes(post: $1)})
         }
-        
-        authors.removeAll()
-        for post in posts {
-            PostManager.sharedInstance.getAuthor(post: post) { (objects, error) in
-                if error == nil && (objects?.count)! == 1 {
-                    let user = objects?.first as! AVUser
-                    self.authors.append(user)
-                } else {
-                    self.authors.append(nil)
-                }
-                self.refresh()
-            }
-        }
-        
     }
     
     func refresh() {
@@ -69,9 +54,6 @@ class CommunityTableViewController: UITableViewController {
         if let destination = segue.destination as? CommunityDetailViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 destination.post = posts[indexPath.row]
-                if authors.count > indexPath.row {
-                    destination.user = authors[indexPath.row]
-                }
             }
         }
     }
@@ -85,8 +67,15 @@ class CommunityTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell
         
         cell.topicLbl.text = PostManager.sharedInstance.getTitle(post: posts[indexPath.row])
-        if authors.count > indexPath.row {
-            cell.authorLbl.text = UserManager.sharedInstance.getNickname(user: authors[indexPath.row])
+        
+        PostManager.sharedInstance.getAuthor(post: posts[indexPath.row]) { (objects, error) in
+            if error == nil && (objects?.count)! == 1 {
+                let user = objects?.first as! AVUser
+                cell.authorLbl.text = UserManager.sharedInstance.getNickname(user: user)
+            } else {
+                cell.authorLbl.text = Constants.Default.defaultNickname
+            }
+//            self.refresh()
         }
         return cell
     }
