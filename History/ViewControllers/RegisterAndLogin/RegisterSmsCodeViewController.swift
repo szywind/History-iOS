@@ -17,6 +17,8 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
     
     var user: AVUser?
     var phone: String?
+    var isSignup = true
+    var smsCode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +62,6 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
         let length = textField.text?.count ?? 0
         
         if length == Constants.Default.defaultSmsCodeLength {
-            self.showProgressBar()
             checkSmsCode()
         }
     }
@@ -87,6 +88,8 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
 //                user.mobilePhoneNumber = phone
 //                user.setValue(true, forKey: "mobilePhoneVerified")
                 destination.user = user
+                destination.isSignup = isSignup
+                destination.smsCode = smsCode
             }
         }
     }
@@ -98,11 +101,22 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
         }
         let confirm = UIAlertAction(title: "确认", style: .default) { (action) in
             //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.toSmsCodePage), object: nil, userInfo: ["phone" : self.phoneTextField.text!])
-            AVSMS.requestShortMessage(forPhoneNumber: self.phone!, options: nil) { (succeed, error) in
-                if succeed {
-                    print("successfully resend sms code")
-                } else {
-                    print(error?.localizedDescription)
+            if self.isSignup {
+                AVSMS.requestShortMessage(forPhoneNumber: self.phone!, options: nil) { (succeed, error) in
+                    if succeed {
+                        print("successfully resend sms code")
+                    } else {
+                        print(error?.localizedDescription)
+                    }
+                }
+            } else {
+                AVUser.requestPasswordReset(withPhoneNumber: self.phone!) { (succeed, error) in
+//                AVUser.requestPasswordResetCode(forPhoneNumber: self.phone!, options: nil) { (succeed, error) in
+                    if succeed {
+                        print("successfully resend sms code")
+                    } else {
+                        print(error?.localizedDescription)
+                    }
                 }
             }
         }
@@ -122,18 +136,26 @@ class RegisterSmsCodeViewController: UIViewController, UITextFieldDelegate {
     */
 
     func checkSmsCode() {
-//        AVUser.verifyMobilePhone(smsCodeTextField.text!) { (succeed, error) in
-        AVOSCloud.verifySmsCode(smsCodeTextField.text!, mobilePhoneNumber: phone!) { (succeed, error) in
-            self.hideProgressBar()
-            if succeed {
-                self.performSegue(withIdentifier: "toSetupPwd", sender: self)
-            } else {
-                print(error?.localizedDescription)
-                self.smsCodeTextField.text?.removeAll()
-                
-                // popup alert
-                self.showErrorAlert(title: "错误", msg: "你输入的验证码不正确，请重试。")
+        if isSignup {
+            self.showProgressBar()
+    //        AVUser.verifyMobilePhone(smsCodeTextField.text!) { (succeed, error) in
+            AVOSCloud.verifySmsCode(smsCodeTextField.text!, mobilePhoneNumber: phone!) { (succeed, error) in
+                self.hideProgressBar()
+                if succeed {
+                    self.smsCode = self.smsCodeTextField.text!
+                    self.performSegue(withIdentifier: "toSetupPwd", sender: self)
+                } else {
+                    print(error?.localizedDescription)
+                    self.smsCodeTextField.text?.removeAll()
+                    
+                    // popup alert
+                    self.showErrorAlert(title: "错误", msg: "你输入的验证码不正确，请重试。")
+                }
             }
+        } else {
+            smsCode = smsCodeTextField.text!
+            smsCodeTextField.text?.removeAll()
+            performSegue(withIdentifier: "toSetupPwd", sender: self)
         }
     }
 }
