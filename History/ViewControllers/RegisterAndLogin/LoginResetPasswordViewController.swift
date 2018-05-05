@@ -37,7 +37,7 @@ class LoginResetPasswordViewController: UIViewController, UITextFieldDelegate {
         
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
         
-        warningLbl.text = "请输入有效的手机号码。" // "注意：你的电话号码应该为11位。"
+        warningLbl.text = "请输入有效的手机号码或email。" // "注意：你的电话号码应该为11位。"
         
         imageView.isHidden = true
         warningLbl.isHidden = true
@@ -93,7 +93,7 @@ class LoginResetPasswordViewController: UIViewController, UITextFieldDelegate {
                 self.nextBtn.isEnabled = false
             }
         }
-        
+        nextBtn.isHidden = !nextBtn.isEnabled
     }
     
     // Hide/Dismiss keyboard when user touches outside keyboard
@@ -143,8 +143,8 @@ class LoginResetPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     func phoneVerify() {
-        AVUser.requestPasswordResetCode(forPhoneNumber: userTextField.text!, options: nil) { (succeed, error) in
-//        AVSMS.requestShortMessage(forPhoneNumber: userTextField.text!, options: nil) { (succeed, error) in
+        AVUser.requestPasswordReset(withPhoneNumber: userTextField.text!) { (succeed, error) in
+//        AVUser.requestPasswordResetCode(forPhoneNumber: userTextField.text!, options: nil) { (succeed, error) in
             if succeed {
                 self.performSegue(withIdentifier: "toSmsCode", sender: self)
             } else {
@@ -170,6 +170,7 @@ class LoginResetPasswordViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "toSmsCode" {
             if let destination = segue.destination as? RegisterSmsCodeViewController {
                 destination.user = user
+                destination.isSignup = false
             }
         } else if segue.identifier == "toEmailVerification" {
             if let destination = segue.destination as? LoginEmailVerificationViewController {
