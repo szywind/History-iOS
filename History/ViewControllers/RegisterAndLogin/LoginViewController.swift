@@ -136,8 +136,8 @@ class LoginViewController: ViewController, UITextFieldDelegate {
 //                }
                 print(error?.localizedDescription)
                 self.showErrorAlert(title: "错误", msg: "登录失败，请确认输入正确的手机号码或email并重试") { (action) in
-                    self.userTextField.text?.removeAll()
-                    self.pwdTextField.text?.removeAll()
+//                    self.userTextField.text?.removeAll()
+//                    self.pwdTextField.text?.removeAll()
                     
                     self.loginBtn.isEnabled = false
                 }

@@ -21,6 +21,8 @@ class RegisterPasswordViewController: LocationManager, UITextFieldDelegate {
     var user: AVUser?
     
     var done = false
+    var isSignup = true
+    var smsCode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,17 +128,42 @@ class RegisterPasswordViewController: LocationManager, UITextFieldDelegate {
         }
         UserManager.sharedInstance.setUserLocation(user: user)
         
-        user?.signUpInBackground({ (succeed, error) in
-//        user?.saveInBackground({ (succeed, error) in
-            self.hideProgressBar()
-            if succeed {
-                self.done = true
-                self.dismiss(animated: true, completion: nil)
-//                self.gotoMainPage()
-            } else {
-                print(error?.localizedDescription)
-            }
-        })
+        if isSignup {
+            user?.signUpInBackground({ (succeed, error) in
+    //        user?.saveInBackground({ (succeed, error) in
+                self.hideProgressBar()
+                if succeed {
+                    self.done = true
+                    self.dismiss(animated: true, completion: nil)
+    //                self.gotoMainPage()
+                } else {
+                    print(error?.localizedDescription)
+                    self.showErrorAlert(title: "错误", msg: "请重试", handler: { (_) in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }
+            })
+        } else {
+            AVUser.resetPassword(withSmsCode: smsCode!, newPassword: pwdTextField.text!, block: { (succeed, error) in
+//            user?.saveInBackground({ (succeed, error) in
+                self.hideProgressBar()
+                if succeed {
+                    self.done = true
+                    AVUser.logInWithUsername(inBackground: (self.user?.mobilePhoneNumber)!, password: self.pwdTextField.text!, block: { (_, error) in
+                        if error != nil {
+                            print(error?.localizedDescription)
+                        }
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    //                self.gotoMainPage()
+                } else {
+                    print(error?.localizedDescription)
+                    self.showErrorAlert(title: "错误", msg: "请确认输入正确的验证码并重试", handler: { (_) in
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            })
+        }
     }
     
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

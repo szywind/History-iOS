@@ -125,10 +125,12 @@ class RegisterViewController: UIViewController {
         if segue.identifier == "toSmsCode" {
             if let destination = segue.destination as? RegisterSmsCodeViewController {
                 destination.user = user
+                destination.isSignup = true
             }
         } else if segue.identifier == "toSetupPwd" {
             if let destination = segue.destination as? RegisterPasswordViewController {
                 destination.user = user
+                destination.isSignup = true
             }
         } else if segue.identifier == String(describing: RegisterPhoneViewController.self) {
             self.phoneRegisterViewController = segue.destination as? RegisterPhoneViewController
