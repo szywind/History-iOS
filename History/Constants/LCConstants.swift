@@ -45,7 +45,7 @@ struct LCConstants {
         static let avatarURL = "avatarURL"
         static let followers = "followers"
         static let followees = "followees"
-        static let followTopics = "followTopics"
+        static let subscribeTopics = "subscribeTopics"
     }
     
     /**
@@ -128,6 +128,7 @@ struct LCConstants {
         static let title = "title"
         static let dynasty = "dynasty"
         static let type = "type"
+        static let topic = "topic"
         static let subtopic = "subtopic"
         static let reviews = "reviews"
     }

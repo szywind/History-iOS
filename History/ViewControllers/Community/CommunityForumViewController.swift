@@ -89,7 +89,7 @@ class CommunityForumViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        followBtn.isHidden = (State.currentFollowTopics.contains((topic?.name!)!))
+        followBtn.isHidden = (State.currentSubscribeTopics.contains((topic?.name!)!))
         unfollowBtn.isHidden = !followBtn.isHidden
  
         setupData()
@@ -108,14 +108,14 @@ class CommunityForumViewController: UIViewController {
     
     @IBAction func onFollowTapped(_ sender: UIButton) {
         if UserManager.sharedInstance.isLogin() {
-            State.currentFollowTopics.insert((topic?.name)!)
-            UserManager.sharedInstance.setFollowTopics(withBlock: { (succeed, error) in
+            State.currentSubscribeTopics.insert((topic?.name)!)
+            UserManager.sharedInstance.setSubscribeTopics(withBlock: { (succeed, error) in
                 if succeed {
                     self.followBtn.isHidden = !self.followBtn.isHidden
                     self.unfollowBtn.isHidden = !self.unfollowBtn.isHidden
                 } else {
                     print(error?.localizedDescription)
-                    State.currentFollowTopics.remove((self.topic?.name!)!)
+                    State.currentSubscribeTopics.remove((self.topic?.name!)!)
                 }
             })
         } else {
@@ -129,14 +129,14 @@ class CommunityForumViewController: UIViewController {
             let action = UIAlertAction(title: "取消关注", style: .destructive, handler: {
                 (UIAlertAction) -> Void in
                 
-                State.currentFollowTopics.remove((self.topic?.name!)!)
-                UserManager.sharedInstance.setFollowTopics(withBlock: { (succeed, error) in
+                State.currentSubscribeTopics.remove((self.topic?.name!)!)
+                UserManager.sharedInstance.setSubscribeTopics(withBlock: { (succeed, error) in
                     if succeed {
                         self.followBtn.isHidden = !self.followBtn.isHidden
                         self.unfollowBtn.isHidden = !self.unfollowBtn.isHidden
                     } else {
                         print(error?.localizedDescription)
-                        State.currentFollowTopics.insert((self.topic?.name)!)
+                        State.currentSubscribeTopics.insert((self.topic?.name)!)
                     }
                 })  
             })

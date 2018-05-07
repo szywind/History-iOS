@@ -59,11 +59,11 @@ class UserManager {
         return user?.object(forKey: LCConstants.UserKey.nickname) as? String
     }
     
-    func getFollowTopics(user: AVUser?=nil) -> [String]? {
+    func getSubscribeTopics(user: AVUser?=nil) -> [String]? {
         guard user != nil else {
-            return currentUser().object(forKey: LCConstants.UserKey.followTopics) as? [String] ?? []
+            return currentUser().object(forKey: LCConstants.UserKey.subscribeTopics) as? [String] ?? []
         }
-        return user?.object(forKey: LCConstants.UserKey.nickname) as? [String] ?? []
+        return user?.object(forKey: LCConstants.UserKey.subscribeTopics) as? [String] ?? []
     }
     
     func getAvatar(user: AVUser?=nil) -> UIImage? {
@@ -103,8 +103,8 @@ class UserManager {
         return curLocation
     }
     
-    func setFollowTopics(withBlock block : @escaping AVBooleanResultBlock) {
-        currentUser().setObject(Array(State.currentFollowTopics), forKey: LCConstants.UserKey.followTopics)
+    func setSubscribeTopics(withBlock block : @escaping AVBooleanResultBlock) {
+        currentUser().setObject(Array(State.currentSubscribeTopics), forKey: LCConstants.UserKey.subscribeTopics)
         currentUser().saveInBackground(block)
     }
     
@@ -131,10 +131,11 @@ class UserManager {
         }
     }
     
-    func findHotUsers(pageSize: Int=10, withBlock block: @escaping AVArrayResultBlock) {
+    func findHotUsers(base: Int=0, pageSize: Int=10, withBlock block: @escaping AVArrayResultBlock) {
         let query = AVUser.query()
         query.order(byDescending: LCConstants.UserKey.followers)
         query.limit = pageSize
+        query.skip = base
         query.findObjectsInBackground({ (objects, error) in
             block(objects, error)
         })

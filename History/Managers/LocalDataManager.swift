@@ -20,12 +20,11 @@ class LocalDataManager {
     var art = [Record]()
     var tech = [Record]()
     var allRecords = [Record]()
-    static let dynasty2index = ["夏":0, "商":1, "西周":2, "春秋":3, "战国":4, "秦":5, "西汉":6, "东汉":7, "三国":8, "西晋":9, "南北朝":10,
-                         "隋":11, "唐":12, "五代十国":13, "北宋":14, "辽":15, "金":16, "南宋":17, "元":18, "明":19, "清":20]
-    static let index2dynasty = ["夏", "商", "西周", "春秋", "战国", "秦", "西汉", "东汉", "三国", "西晋", "南北朝",
+    static let dynasty2index = ["夏":0, "商":1, "西周":2, "春秋":3, "战国":4, "秦":5, "西汉":6, "东汉":7, "三国":8, "西晋":9, "东晋":10, "南北朝":11,
+                         "隋":12, "唐":13, "五代十国":14, "北宋":15, "辽":16, "金":17, "南宋":18, "元":19, "明":20, "清":21]
+    static let index2dynasty = ["夏", "商", "西周", "春秋", "战国", "秦", "西汉", "东汉", "三国", "西晋", "东晋", "南北朝",
                          "隋", "唐", "五代十国", "北宋", "辽", "金", "南宋", "元", "明", "清"]
     
-   
     init() {
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.setupData), name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
     }
@@ -74,9 +73,9 @@ class LocalDataManager {
         tech = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "technology", format: Constants.CoreData.eventTypeFilterFormat))
     }
     
-    func setupCommunityData() -> [Record] {
-        let followingTopics = Record.getRecords(people: CoreDataManager.fetchfilteredPeople(array: State.currentFollowTopics, format: Constants.CoreData.personNameFilterFormat))
-            + Record.getRecords(events: CoreDataManager.fetchfilteredEvents(array: State.currentFollowTopics, format: Constants.CoreData.eventNameFilterFormat))
+    func getFollowingTopics() -> [Record] {
+        let followingTopics = Record.getRecords(people: CoreDataManager.fetchfilteredPeople(array: State.currentSubscribeTopics, format: Constants.CoreData.personNameFilterFormat))
+            + Record.getRecords(events: CoreDataManager.fetchfilteredEvents(array: State.currentSubscribeTopics, format: Constants.CoreData.eventNameFilterFormat))
         return followingTopics
     }
     

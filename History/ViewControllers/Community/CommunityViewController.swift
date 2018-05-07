@@ -51,7 +51,7 @@ class CommunityViewController: UIViewController {
         }
         
         if UserManager.sharedInstance.isLogin() {
-            State.currentFollowTopics = Set(UserManager.sharedInstance.getFollowTopics()!)
+            State.currentSubscribeTopics = Set(UserManager.sharedInstance.getSubscribeTopics()!)
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
@@ -97,7 +97,7 @@ class CommunityViewController: UIViewController {
         segmentioContent = []
         if UserManager.sharedInstance.isLogin() {
             let subscribeController = CommunityContentViewController.create()
-            subscribeController.topics = LocalDataManager.sharedInstance.setupCommunityData()
+            subscribeController.topics = LocalDataManager.sharedInstance.getFollowingTopics()
             viewControllers.append(subscribeController)
             segmentioContent.append(SegmentioItem(title: "关注", image: nil))
         }
