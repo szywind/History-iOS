@@ -34,7 +34,7 @@ class EncyclopediaDetailViewController: UIViewController {
         let fixedWidth = recordTextView.frame.size.width
         let newSize = recordTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         let lineHeight = recordTextView.font?.lineHeight
-        recordTextViewHeightConstraint.constant = newSize.height + 2 * lineHeight!
+        recordTextViewHeightConstraint.constant = newSize.height + 5 * lineHeight!
         
         
         recordImageView.image = record?.avatar
