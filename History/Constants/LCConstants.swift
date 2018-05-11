@@ -46,6 +46,10 @@ struct LCConstants {
         static let followers = "followers"
         static let followees = "followees"
         static let subscribeTopics = "subscribeTopics"
+        static let subscribeList = "subscribeList"
+        static let likeList = "likeList"
+        static let dislikeList = "dislikeList"
+        static let replyList = "replyList"
     }
     
     /**
