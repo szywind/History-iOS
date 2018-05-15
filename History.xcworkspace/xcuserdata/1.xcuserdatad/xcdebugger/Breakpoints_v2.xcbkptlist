@@ -1345,8 +1345,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "create()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1361,8 +1361,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1441,8 +1441,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1457,8 +1457,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "234"
             endingLineNumber = "234"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "setupScrollView()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2033,8 +2033,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2300,12 +2300,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.592384"
+            timestampString = "547727110.2993079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "getAvatar(user:)"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "logout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2332,12 +2332,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.592688"
+            timestampString = "547727110.299895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "getAvatar(user:)"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "logout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2540,13 +2540,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.5931571"
+            timestampString = "547727110.3002549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "getAvatar(user:)"
-            landmarkType = "7">
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "UserManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2556,13 +2556,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.5933779"
+            timestampString = "547727110.300486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "getAvatar(user:)"
-            landmarkType = "7">
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "UserManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2620,12 +2620,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.593598"
+            timestampString = "547727110.300745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "getReplyList(user:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "getAvatar(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2636,28 +2636,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.593865"
+            timestampString = "547727110.300964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "UserManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.594134"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "getList(user:key:)"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "getAvatar(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2668,12 +2652,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.594447"
+            timestampString = "547727110.301178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "getList(user:key:)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "getAvatar(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2684,12 +2668,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.5947731"
+            timestampString = "547727110.301387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "getList(user:key:)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "getAvatar(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2700,12 +2684,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.5950789"
+            timestampString = "547727110.301597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "getList(user:key:)"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "getAvatar(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2716,12 +2700,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/Managers/UserManager.swift"
-            timestampString = "547357046.595297"
+            timestampString = "547727110.301803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "getList(user:key:)"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "getAvatar(user:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "History/Managers/UserManager.swift"
+            timestampString = "547727110.302012"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "getAvatar(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2748,13 +2748,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/ViewControllers/Menu/MenuSubscriberTableViewController.swift"
-            timestampString = "547157942.818471"
+            timestampString = "547727110.302246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2764,13 +2764,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/ViewControllers/Menu/MenuSubscriberTableViewController.swift"
-            timestampString = "547157942.818874"
+            timestampString = "547727110.302296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "onFollowTapped(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2780,13 +2780,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "History/ViewControllers/Menu/MenuSubscriberTableViewController.swift"
-            timestampString = "547157942.819141"
+            timestampString = "547727110.302336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
             endingLineNumber = "149"
-            landmarkName = "MenuSubscriberTableViewController"
-            landmarkType = "3">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2849,8 +2849,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
             endingLineNumber = "90"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2865,8 +2865,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2897,8 +2897,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
             endingLineNumber = "154"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "setupData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

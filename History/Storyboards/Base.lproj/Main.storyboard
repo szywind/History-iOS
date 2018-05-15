@@ -1303,7 +1303,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="io1-S0-9nF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yJ-Xv-0pV">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
@@ -13053,7 +13053,7 @@ AAAABAEAAAAAAAAAWQAAAAAAAAAAAAAAAAAG+mk
     <inferredMetricsTieBreakers>
         <segue reference="BBm-2H-RAy"/>
         <segue reference="hMu-CT-JcI"/>
-        <segue reference="M8a-wo-sfx"/>
-        <segue reference="zyC-HG-fuI"/>
+        <segue reference="lKc-He-ELe"/>
+        <segue reference="FtP-7i-oTJ"/>
     </inferredMetricsTieBreakers>
 </document>

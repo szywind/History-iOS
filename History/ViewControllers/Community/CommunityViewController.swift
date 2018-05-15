@@ -51,7 +51,10 @@ class CommunityViewController: UIViewController {
         }
         
         if UserManager.sharedInstance.isLogin() {
+            State.currentSubscribeTopics.removeAll()
             State.currentSubscribeTopics = Set(UserManager.sharedInstance.getSubscribeTopics()!)
+        } else {
+            State.currentSubscribeTopics.removeAll()
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)

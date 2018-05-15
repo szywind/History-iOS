@@ -159,17 +159,16 @@ class UserManager {
         })
     }
     
+    func saveUser(nickname: String, withBlock block : @escaping AVBooleanResultBlock) {
+        self.currentUser().setObject(nickname, forKey: LCConstants.UserKey.nickname)
+        self.setUserLocation()
+        self.currentUser().saveInBackground(block)
+    }
+    
     func saveUser(nickname: String, image: UIImage, withBlock block : @escaping AVBooleanResultBlock) {
             
-        AvatarManager.sharedInstance.updateAvatarWithImage(image: image) { (succeed, error) in
-            if succeed {
-                self.currentUser().setObject(nickname, forKey: LCConstants.UserKey.nickname)
-//                self.currentUser().setObject(phone, forKey: LCConstants.UserKey.phone)
-//                self.currentUser().setObject(gender, forKey: LCConstants.UserKey.gender)
-                self.setUserLocation()
-                self.currentUser().saveInBackground(block)
-            }
-        }
+        AvatarManager.sharedInstance.updateAvatarWithImage(image: image) { (_, _) in }
+        saveUser(nickname: nickname, withBlock: block)
     }
     
     func findHotUsers(base: Int=0, pageSize: Int=10, withBlock block: @escaping AVArrayResultBlock) {

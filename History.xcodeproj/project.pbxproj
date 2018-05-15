@@ -272,7 +272,6 @@
 		00ED1ECF204FEB27008CB70A /* History */ = {
 			isa = PBXGroup;
 			children = (
-				1B7A68282097F275002C5ADC /* Utils */,
 				00ED1EDF204FEB29008CB70A /* Info.plist */,
 				1BAEDF32205571990004C804 /* Extensions */,
 				1BAEDF2D20556EC80004C804 /* Builders */,
@@ -430,13 +429,6 @@
 				1BAA2B48205AD93200EE5ED4 /* Event+CoreDataClass.swift */,
 			);
 			path = CoreDataModels;
-			sourceTree = "<group>";
-		};
-		1B7A68282097F275002C5ADC /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		1B828F3020940C1C004FBEF2 /* Cell */ = {
