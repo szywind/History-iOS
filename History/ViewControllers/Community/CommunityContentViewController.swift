@@ -19,7 +19,8 @@ class CommunityContentViewController: UIViewController {
     func processData() {
         //        topics = topics.sorted(by: { $0.pinyin! < $1.pinyin! || ($0.pinyin! < $1.pinyin! && $0.start! < $1.start!)}) // sort topics by alphabetical order
         for topic in topics {
-            let key = topic.dynasty
+//            let key = topic.dynasty
+            let key = topic.pinyin?.prefix(1).uppercased()
             if var value = topicDictionary[key!] {
                 value.append(topic)
                 topicDictionary[key!] = value

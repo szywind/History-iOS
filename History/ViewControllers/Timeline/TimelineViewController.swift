@@ -39,7 +39,7 @@ class TimelineViewController: BaseViewController {
     
     func processData() {
         
-        for record in LocalDataManager.sharedInstance.allRecords {
+        for record in LocalDataManager.sharedInstance.allPeople {
             let dynastyKey = LocalDataManager.dynasty2index[record.dynasty!]
             if var records = dynastyDictionary[dynastyKey!] {
                 records.append(record)

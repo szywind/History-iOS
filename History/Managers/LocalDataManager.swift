@@ -20,13 +20,17 @@ class LocalDataManager {
     var art = [Record]()
     var tech = [Record]()
     var allRecords = [Record]()
-    static let dynasty2index = ["夏":0, "商":1, "西周":2, "春秋":3, "战国":4, "秦":5, "西汉":6, "东汉":7, "三国":8, "西晋":9, "东晋":10, "南北朝":11,
-                         "隋":12, "唐":13, "五代十国":14, "北宋":15, "辽":16, "金":17, "南宋":18, "元":19, "明":20, "清":21]
-    static let index2dynasty = ["夏", "商", "西周", "春秋", "战国", "秦", "西汉", "东汉", "三国", "西晋", "东晋", "南北朝",
+
+    static let index2dynasty = ["三皇五帝", "夏", "商", "西周", "春秋", "战国", "秦", "西汉", "东汉", "三国", "西晋", "东晋", "南北朝",
                          "隋", "唐", "五代十国", "北宋", "辽", "金", "南宋", "元", "明", "清"]
+    
+    static var dynasty2index = [String: Int]()
     
     init() {
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.setupData), name: NSNotification.Name(rawValue: Constants.Notification.fetchDataFromLC), object: nil)
+        for index in 0..<LocalDataManager.index2dynasty.count {
+            LocalDataManager.dynasty2index[LocalDataManager.index2dynasty[index]] = index
+        }
     }
     
     func mergeSortedAllRecords() {
@@ -66,7 +70,7 @@ class LocalDataManager {
         //        allRecords = allPeople + allEvents
         //        allRecords.sorted(by: {$0.start! < $1.start! || ($0.start! == $1.start! && $0.end! < $1.end!)})
         
-        mergeSortedAllRecords()
+//        mergeSortedAllRecords()
         events = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "event", format: Constants.CoreData.eventTypeFilterFormat))
         geo = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "geography", format: Constants.CoreData.eventTypeFilterFormat))
         art = Record.getRecords(events: CoreDataManager.fetchfilteredEvents(value: "art", format: Constants.CoreData.eventTypeFilterFormat))
