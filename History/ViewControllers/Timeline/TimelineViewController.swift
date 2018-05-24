@@ -58,9 +58,9 @@ class TimelineViewController: BaseViewController {
             var recordsInSameDynasty = [(TimelinePoint, UIColor, String, String, String?, String?, String?)]()
             for j in 0..<records.count {
                 if j < records.count - 1 {
-                    recordsInSameDynasty.append((TimelinePoint(), UIColor.lightGray, records[j].dynasty_detail!, records[j].name!, nil, nil, "Sun"))
+                    recordsInSameDynasty.append((TimelinePoint(), UIColor.lightGray, records[j].dynasty!, records[j].name!, nil, nil, "Sun"))
                 } else {
-                    recordsInSameDynasty.append((TimelinePoint(), UIColor.clear, records[j].dynasty_detail!, records[j].name!, nil, nil, "Moon"))
+                    recordsInSameDynasty.append((TimelinePoint(), UIColor.clear, records[j].dynasty!, records[j].name!, nil, nil, "Moon"))
                 }
             }
             data[ind] = recordsInSameDynasty

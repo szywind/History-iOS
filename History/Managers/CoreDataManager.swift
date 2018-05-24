@@ -26,7 +26,7 @@ class CoreDataManager {
     }
     
     // https://www.youtube.com/watch?v=3b8P44XdwkQ
-    class func delete(person: Person) -> Bool {
+    class func delete(person: PersonEntity) -> Bool {
         context.delete(person)
         do {
             try context.save()
@@ -36,7 +36,7 @@ class CoreDataManager {
         }
     }
     
-    class func delete(event: Event) -> Bool {
+    class func delete(event: EventEntity) -> Bool {
         context.delete(event)
         do {
             try context.save()
@@ -48,8 +48,8 @@ class CoreDataManager {
     
     // https://www.youtube.com/watch?v=3b8P44XdwkQ
     class func clear() -> Bool {
-        let delete1 = NSBatchDeleteRequest(fetchRequest: Person.fetchRequest())
-        let delete2 = NSBatchDeleteRequest(fetchRequest: Event.fetchRequest())
+        let delete1 = NSBatchDeleteRequest(fetchRequest: PersonEntity.fetchRequest())
+        let delete2 = NSBatchDeleteRequest(fetchRequest: EventEntity.fetchRequest())
         do {
             try context.execute(delete1)
             try context.execute(delete2)
@@ -59,25 +59,25 @@ class CoreDataManager {
         }
     }
     
-    class func savePerson(personObject: AVObject) {
+    class func savePerson(personObject: AVObject) -> PersonEntity? {
         if let personId = personObject.objectId {
             for person in checkPersonExistence(personId: personId) {
                 if !delete(person: person) {
-                    return
+                    return nil
                 }
             }
-            let person = Person(context: context)
+            let person = PersonEntity(context: context)
             person.objectId = personId
             person.name = personObject.object(forKey: LCConstants.PersonKey.name) as? String
             person.type = personObject.object(forKey: LCConstants.PersonKey.type) as? String
             person.start = personObject.object(forKey: LCConstants.PersonKey.start) as? NSNumber
             person.end = personObject.object(forKey: LCConstants.PersonKey.end) as? NSNumber
             person.dynasty = personObject.object(forKey: LCConstants.PersonKey.dynasty) as? String
-            person.dynasty_detail = personObject.object(forKey: LCConstants.PersonKey.dynasty_detail) as? String
+//            person.dynasty_detail = personObject.object(forKey: LCConstants.PersonKey.dynasty_detail) as? String
             person.pinyin = personObject.object(forKey: LCConstants.PersonKey.pinyin) as? String
 
-            person.avatar = personObject.object(forKey: LCConstants.PersonKey.avatarURL) as? String
-            person.info = personObject.object(forKey: LCConstants.PersonKey.infoURL) as? String
+            person.avatarURL = personObject.object(forKey: LCConstants.PersonKey.avatarURL) as? String
+            person.infoURL = personObject.object(forKey: LCConstants.PersonKey.infoURL) as? String
                 
 //            if let avatarDict = personObject.object(forKey: LCConstants.PersonKey.avatarFile) as? NSDictionary {
 //                if let url = avatarDict.object(forKey: "url") as? String {
@@ -118,29 +118,32 @@ class CoreDataManager {
     //        }
             
             save()
+            return person
+        } else {
+            return nil
         }
     }
 
-    class func saveEvent(eventObject: AVObject) {
+    class func saveEvent(eventObject: AVObject) -> EventEntity? {
         if let eventId = eventObject.objectId {
             for event in checkEventExistence(eventId: eventId) {
                 if !delete(event: event) {
-                    return
+                    return nil
                 }
             }
             
-            let event = Event(context: context)
+            let event = EventEntity(context: context)
             event.objectId = eventId
             event.name = eventObject.object(forKey: LCConstants.EventKey.name) as? String
             event.type = eventObject.object(forKey: LCConstants.EventKey.type) as? String
             event.start = eventObject.object(forKey: LCConstants.EventKey.start) as? NSNumber
             event.end = eventObject.object(forKey: LCConstants.EventKey.end) as? NSNumber
             event.dynasty = eventObject.object(forKey: LCConstants.EventKey.dynasty) as? String
-            event.dynasty_detail = eventObject.object(forKey: LCConstants.EventKey.dynasty_detail) as? String
+//            event.dynasty_detail = eventObject.object(forKey: LCConstants.EventKey.dynasty_detail) as? String
             event.pinyin = eventObject.object(forKey: LCConstants.EventKey.pinyin) as? String
             
-            event.avatar = eventObject.object(forKey: LCConstants.EventKey.avatarURL) as? String
-            event.info = eventObject.object(forKey: LCConstants.EventKey.infoURL) as? String
+            event.avatarURL = eventObject.object(forKey: LCConstants.EventKey.avatarURL) as? String
+            event.infoURL = eventObject.object(forKey: LCConstants.EventKey.infoURL) as? String
             
 //            if let avatarDict = eventObject.object(forKey: LCConstants.EventKey.avatarFile) as? NSDictionary {
 //                if let url = avatarDict.object(forKey: "url") as? String {
@@ -175,23 +178,27 @@ class CoreDataManager {
     //        }
             
             save()
+            return event
+        } else {
+            return nil
         }
     }
     
-    class func checkPersonExistence(personId: String) -> [Person] {
+    class func checkPersonExistence(personId: String) -> [PersonEntity] {
         return fetchfilteredPeople(value: personId, format: Constants.CoreData.personIdFilterFormat)
     }
     
-    class func checkEventExistence(eventId: String) -> [Event] {
+    class func checkEventExistence(eventId: String) -> [EventEntity] {
         return fetchfilteredEvents(value: eventId, format: Constants.CoreData.eventIdFilterFormat)
     }
     
-    class func fetchAllPeople() -> [Person] {
-        var people = [Person]()
-        let personFetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
-        // sort by time
-        let sort = [NSSortDescriptor(key: #keyPath(Person.start), ascending: true),
-                    NSSortDescriptor(key: #keyPath(Person.end), ascending: true)]
+    class func fetchAllPeople() -> [PersonEntity] {
+        var people = [PersonEntity]()
+        let personFetchRequest: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
+        // sort by pinyin then time
+        let sort = [NSSortDescriptor(key: #keyPath(PersonEntity.pinyin), ascending: true),
+                    NSSortDescriptor(key: #keyPath(PersonEntity.start), ascending: true),
+                    NSSortDescriptor(key: #keyPath(PersonEntity.end), ascending: true)]
         personFetchRequest.sortDescriptors = sort
         do {
             people = try context.fetch(personFetchRequest)
@@ -201,12 +208,13 @@ class CoreDataManager {
         return people
     }
     
-    class func fetchAllEvents() -> [Event] {
-        var events = [Event]()
-        let eventFetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
-        // sort by time
-        let sort = [NSSortDescriptor(key: #keyPath(Event.start), ascending: true),
-                    NSSortDescriptor(key: #keyPath(Event.end), ascending: true)]
+    class func fetchAllEvents() -> [EventEntity] {
+        var events = [EventEntity]()
+        let eventFetchRequest: NSFetchRequest<EventEntity> = EventEntity.fetchRequest()
+        // sort by pinyin then time
+        let sort = [NSSortDescriptor(key: #keyPath(EventEntity.pinyin), ascending: true),
+                    NSSortDescriptor(key: #keyPath(EventEntity.start), ascending: true),
+                    NSSortDescriptor(key: #keyPath(EventEntity.end), ascending: true)]
         eventFetchRequest.sortDescriptors = sort
         do {
             events = try context.fetch(eventFetchRequest)
@@ -216,9 +224,15 @@ class CoreDataManager {
         return events
     }
     
-    class func fetchfilteredEvents(value: String, format: String) -> [Event] {
-        var events = [Event]()
-        let eventFetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+    class func fetchfilteredEvents(value: String, format: String) -> [EventEntity] {
+        var events = [EventEntity]()
+        let eventFetchRequest: NSFetchRequest<EventEntity> = EventEntity.fetchRequest()
+        
+        // sort by pinyin then time
+        let sort = [NSSortDescriptor(key: #keyPath(EventEntity.pinyin), ascending: true),
+                    NSSortDescriptor(key: #keyPath(EventEntity.start), ascending: true),
+                    NSSortDescriptor(key: #keyPath(EventEntity.end), ascending: true)]
+        eventFetchRequest.sortDescriptors = sort
         
         eventFetchRequest.predicate = NSPredicate(format: format, value)
         do {
@@ -230,9 +244,9 @@ class CoreDataManager {
         return events
     }
     
-    class func fetchfilteredEvents(array: Set<String>, format: String) -> [Event] {
-        var events = [Event]()
-        let eventFetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+    class func fetchfilteredEvents(array: Set<String>, format: String) -> [EventEntity] {
+        var events = [EventEntity]()
+        let eventFetchRequest: NSFetchRequest<EventEntity> = EventEntity.fetchRequest()
         
         eventFetchRequest.predicate = NSPredicate(format: format, array)
         do {
@@ -244,9 +258,9 @@ class CoreDataManager {
         return events
     }
     
-    class func fetchfilteredPeople(value: String, format: String) -> [Person] {
-        var people = [Person]()
-        let personFetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+    class func fetchfilteredPeople(value: String, format: String) -> [PersonEntity] {
+        var people = [PersonEntity]()
+        let personFetchRequest: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
         
         personFetchRequest.predicate = NSPredicate(format: format, value)
         do {
@@ -258,9 +272,9 @@ class CoreDataManager {
         return people
     }
     
-    class func fetchfilteredPeople(array: Set<String>, format: String) -> [Person] {
-        var people = [Person]()
-        let personFetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+    class func fetchfilteredPeople(array: Set<String>, format: String) -> [PersonEntity] {
+        var people = [PersonEntity]()
+        let personFetchRequest: NSFetchRequest<PersonEntity> = PersonEntity.fetchRequest()
         
         personFetchRequest.predicate = NSPredicate(format: format, array)
         do {

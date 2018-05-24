@@ -105,6 +105,8 @@ class CommunityViewController: UIViewController {
             segmentioContent.append(SegmentioItem(title: "关注", image: nil))
         }
         
+        LocalDataManager.sharedInstance.sort()
+        
         let peopleController = CommunityContentViewController.create()
         peopleController.topics = LocalDataManager.sharedInstance.allPeople
         print("person records", peopleController.topics.count)

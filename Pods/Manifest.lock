@@ -9,21 +9,27 @@ PODS:
     - AVOSCloudIM/_NOARC (= 9.0.1)
   - AVOSCloudIM/_NOARC (9.0.1):
     - AVOSCloud (= 9.0.1)
+  - Kingfisher (4.6.3)
+  - Nuke (6.1)
   - Segmentio (3.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AVOSCloud
   - AVOSCloudIM
+  - Kingfisher (~> 4.0)
+  - Nuke (~> 6.0)
   - Segmentio (~> 3.0)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AVOSCloud: c107102329a7efac60f36d46e7e9b0e4edc0e060
   AVOSCloudIM: d534cc9106f54cfc50eb849bcfe5412c1b4fd565
+  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
+  Nuke: 0513c8d156bd9a2adb15db70622c3527f44542c5
   Segmentio: 1607fba3b42230f5f91e997d1a3f337f1176674c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 698f11b6a24631913ff415bf2df451c39f4058bf
+PODFILE CHECKSUM: f6f6b198797e42c758c3e8661fc762cf94b5d97a
 
 COCOAPODS: 1.4.0

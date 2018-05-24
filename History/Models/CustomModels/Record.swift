@@ -11,96 +11,52 @@ import UIKit
 class Record {
     
     var name: String?
-    var avatar: UIImage? // TODO
+    var avatarURL: String? // TODO
     var type: String?
-    var info: String?
+    var infoURL: String?
     var start: Int16?
     var end: Int16?
     var dynasty: String?
-    var dynasty_detail: String?
     var pinyin: String?
     var objectId: String?
     
-    init(name: String?, avatar: UIImage?, type: String?, start: Int16?, end: Int16?, dynasty: String?, dynasty_detail: String?, pinyin: String?, objectId: String, info: String = Constants.Default.defaultInfo) {
+    init(name: String?, avatarURL: String?, type: String?, start: Int16?, end: Int16?, dynasty: String?, pinyin: String?, objectId: String, infoURL: String?) {
         self.name = name
-        self.avatar = avatar
+        self.avatarURL = avatarURL
         self.type = type
-        self.info = info
+        self.infoURL = infoURL
         self.start = start
         self.end = end
         self.dynasty = dynasty
-        self.dynasty_detail = dynasty_detail
         self.pinyin = pinyin
-        self.objectId = "_" + objectId
+        self.objectId = objectId
     }
     
-    init(person: Person) {
+    init(person: PersonEntity) {
         self.name = person.name
         self.type = person.type
         self.start = person.start as? Int16
         self.end = person.end as? Int16
         self.dynasty = person.dynasty
-        self.dynasty_detail = person.dynasty_detail
         self.pinyin = person.pinyin
         self.objectId = "p" + person.objectId
-        
-        if let avatar_ = person.avatar {
-            let url = URL(string: avatar_.convertToHttps())
-            if let data = try? Data(contentsOf: url!) {
-                self.avatar = UIImage(data: data)
-            } else {
-                self.avatar = UIImage(named: Constants.Default.defaultAvatar)
-            }
-        } else {
-            self.avatar = UIImage(named: Constants.Default.defaultAvatar)
-        }
-        
-        if let info_ = person.info {
-            let url = URL(string: info_.convertToHttps())
-            if let data = try? Data(contentsOf: url!) {
-                self.info = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue)! as String
-            } else {
-                self.info = Constants.Default.defaultInfo
-            }
-        } else {
-            self.info = Constants.Default.defaultInfo
-        }
+        self.avatarURL = person.avatarURL
+        self.infoURL = person.infoURL
     }
     
-    init(event: Event) {
+    init(event: EventEntity) {
         self.name = event.name
         self.type = event.type
         self.start = event.start as? Int16
         self.end = event.end as? Int16
         self.dynasty = event.dynasty
-        self.dynasty_detail = event.dynasty_detail
         self.pinyin = event.pinyin
         self.objectId = "e" + event.objectId
-
-        if let avatar_ = event.avatar {
-            let url = URL(string: avatar_.convertToHttps())
-            if let data = try? Data(contentsOf: url!) {
-                self.avatar = UIImage(data: data)
-            } else {
-                self.avatar = UIImage(named: Constants.Default.defaultAvatar)
-            }
-        } else {
-            self.avatar = UIImage(named: Constants.Default.defaultAvatar)
-        }
-        
-        if let info_ = event.info {
-            let url = URL(string: info_.convertToHttps())
-            if let data = try? Data(contentsOf: url!) {
-                self.info = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue)! as String
-            } else {
-                self.info = Constants.Default.defaultInfo
-            }
-        } else {
-            self.info = Constants.Default.defaultInfo
-        }
+        self.avatarURL = event.avatarURL
+        self.infoURL = event.infoURL
     }
     
-    static func getRecords(events: [Event]) -> [Record] {
+    static func getRecords(events: [EventEntity]) -> [Record] {
         var records = [Record]()
         for event in events {
             records.append(Record(event: event))
@@ -108,7 +64,7 @@ class Record {
         return records
     }
     
-    static func getRecords(people: [Person]) -> [Record] {
+    static func getRecords(people: [PersonEntity]) -> [Record] {
         var records = [Record]()
         for person in people {
             records.append(Record(person: person))

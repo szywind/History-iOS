@@ -33,18 +33,13 @@ class EventManager {
         
         while base < number {
             let query = AVQuery(className: LCConstants.EventKey.className)
+            query.limit = limit
             query.skip = base
-            query.limit = limit    
-            query.findObjectsInBackground({ (objects, error) in
-                if error == nil && objects != nil {
-                    for eventObject in objects! {
-                        CoreDataManager.saveEvent(eventObject: eventObject as! AVObject)
-                    }
-                } else {
-                    print(error?.localizedDescription)
-                }
-                block(objects, error)
-            })
+            DispatchQueue.global(qos: .userInitiated).async {
+                query.findObjectsInBackground({ (objects, error) in
+                    block(objects, error)
+                })
+            }
             base += limit
         }
     }

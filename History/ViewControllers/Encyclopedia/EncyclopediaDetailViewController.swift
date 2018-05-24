@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Kingfisher
+ 
 class EncyclopediaDetailViewController: UIViewController {
 
     @IBOutlet weak var recordTextView: UITextView!
@@ -24,7 +25,7 @@ class EncyclopediaDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         recordTextView.isEditable = false
 
-        recordTextView.text = record?.info
+        recordTextView.text = record?.infoURL?.getText()
         recordTextView.isScrollEnabled = false
         
         // adjust the height of image view to the content
@@ -37,7 +38,9 @@ class EncyclopediaDetailViewController: UIViewController {
         recordTextViewHeightConstraint.constant = newSize.height + 5 * lineHeight!
         
         
-        recordImageView.image = record?.avatar
+//        recordImageView.image = record?.avatarURL?.getUIImage()
+        recordImageView.kf.setImage(with: URL(string: (record?.avatarURL!)!),
+                                      placeholder: UIImage(named: Constants.Default.defaultAvatar)!)
         recordLbl.text = record?.name
         
         addNavBarMask()
