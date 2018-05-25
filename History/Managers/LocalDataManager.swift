@@ -101,21 +101,6 @@ class LocalDataManager {
     }
     
     func addRecord(personObject: AVObject) {
-//        let context = CoreDataManager.sharedInstance.context
-//        let person = PersonEntity(context: context!)
-//        person.objectId = personObject.objectId!
-//        person.name = personObject.object(forKey: LCConstants.PersonKey.name) as? String
-//        person.type = personObject.object(forKey: LCConstants.PersonKey.type) as? String
-//        person.start = personObject.object(forKey: LCConstants.PersonKey.start) as? NSNumber
-//        person.end = personObject.object(forKey: LCConstants.PersonKey.end) as? NSNumber
-//        person.dynasty = personObject.object(forKey: LCConstants.PersonKey.dynasty) as? String
-////        person.dynasty_detail = personObject.object(forKey: LCConstants.PersonKey.dynasty_detail) as? String
-//        person.pinyin = personObject.object(forKey: LCConstants.PersonKey.pinyin) as? String
-//
-//        person.avatar = personObject.object(forKey: LCConstants.PersonKey.avatarURL) as? String
-//        person.info = personObject.object(forKey: LCConstants.PersonKey.infoURL) as? String
-//        allPeople.append(Record(person: person))
-        
         let objectId = "p" + personObject.objectId!
         let name = personObject.object(forKey: LCConstants.PersonKey.name) as? String
         let type = personObject.object(forKey: LCConstants.PersonKey.type) as? String

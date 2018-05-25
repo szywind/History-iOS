@@ -115,11 +115,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PersonManager.sharedInstance.fetchAllPeopleFromLC { (objects, error) in
             if error == nil && objects != nil {
                 for personObject in objects! {
-                    if let person = CoreDataManager.savePerson(personObject: personObject as! AVObject) {
-                        LocalDataManager.sharedInstance.addRecord(person: person)
-                    }
-//                    CoreDataManager.sharedInstance.savePerson(personObject: personObject as! AVObject)
-//                    LocalDataManager.sharedInstance.addRecord(personObject: personObject as! AVObject)
+//                    if let person = CoreDataManager.savePerson(personObject: personObject as! AVObject) {
+//                        LocalDataManager.sharedInstance.addRecord(person: person)
+//                    }
+                    CoreDataManager.savePerson(personObject: personObject as! AVObject)
+                    LocalDataManager.sharedInstance.addRecord(personObject: personObject as! AVObject)
                 }
             } else {
                 print(error?.localizedDescription)
@@ -129,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         EventManager.sharedInstance.fetchAllEventsFromLC { (objects, error) in
             if error == nil && objects != nil {
                 for eventObject in objects! {
-//                    if let event = CoreDataManager.sharedInstance.saveEvent(eventObject: eventObject as! AVObject) {
+//                    if let event = CoreDataManager.saveEvent(eventObject: eventObject as! AVObject) {
 //                        LocalDataManager.sharedInstance.addRecord(event: event)
 //                    }
                     CoreDataManager.saveEvent(eventObject: eventObject as! AVObject)
