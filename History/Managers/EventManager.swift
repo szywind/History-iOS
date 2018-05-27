@@ -16,17 +16,31 @@ class EventManager {
     }()
     
     func fetchAllEventsFromLC(withBlock block: @escaping AVArrayResultBlock) {
-        let query = AVQuery(className: LCConstants.EventKey.className)
         
-        query.findObjectsInBackground({ (objects, error) in
-            if error == nil && objects != nil {
-                for eventObject in objects! {
-                    CoreDataManager.saveEvent(eventObject: eventObject as! AVObject)
-                }
+        let query = AVQuery(className: LCConstants.EventKey.className)
+        query.countObjectsInBackground { (number, error) in
+            if error == nil {
+                self.fetchAllEventsFromLC(number: number, withBlock: block)
             } else {
                 print(error?.localizedDescription)
             }
-            block(objects, error)
-        })
+        }
+    }
+    
+    func fetchAllEventsFromLC(number: Int, withBlock block: @escaping AVArrayResultBlock) {
+        var base = 0
+        let limit = 100
+        
+        while base < number {
+            let query = AVQuery(className: LCConstants.EventKey.className)
+            query.limit = limit
+            query.skip = base
+            DispatchQueue.global(qos: .userInitiated).async {
+                query.findObjectsInBackground({ (objects, error) in
+                    block(objects, error)
+                })
+            }
+            base += limit
+        }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EncyclopediaTableViewController: UITableViewController {
 
@@ -91,8 +92,9 @@ class EncyclopediaTableViewController: UITableViewController {
         }
         
         cell.recordLbl.text = sectionData[indexPath.row].name
-        cell.recordImage.image = sectionData[indexPath.row].avatar
-        
+//        cell.recordImage.image = sectionData[indexPath.row].avatarURL?.getUIImage()
+        cell.recordImage.kf.setImage(with: URL(string: sectionData[indexPath.row].avatarURL!),
+                                    placeholder: UIImage(named: Constants.Default.defaultAvatar)!)
         return cell
     }
     

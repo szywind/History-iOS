@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J6E-WQ-UlU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J6E-WQ-UlU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1330,7 +1330,7 @@
                                                     <constraint firstAttribute="height" constant="800" id="Bbb-rh-Om8"/>
                                                 </constraints>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
@@ -1571,7 +1571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yf1-Bu-xeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="502" y="-743"/>
+            <point key="canvasLocation" x="501.60000000000002" y="-743.47826086956525"/>
         </scene>
         <!--社区-->
         <scene sceneID="Plq-ae-Meb">
@@ -1684,7 +1684,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAr-5h-Tg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2161" y="-743"/>
+            <point key="canvasLocation" x="2160.8000000000002" y="-743.47826086956525"/>
         </scene>
         <!--Community Content View Controller-->
         <scene sceneID="Zm6-Fz-XiH">
@@ -1694,11 +1694,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LuU-da-ob8">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LuU-da-ob8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RNK-xP-nVY">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="RNK-xP-nVY">
                                     <size key="itemSize" width="60" height="80"/>
                                     <size key="headerReferenceSize" width="50" height="30"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1743,7 +1743,6 @@
                                             <constraint firstItem="2h1-pw-2TT" firstAttribute="top" secondItem="WI2-3J-a2Y" secondAttribute="top" id="fCk-HB-t4g"/>
                                             <constraint firstItem="2OJ-po-ic6" firstAttribute="top" secondItem="2h1-pw-2TT" secondAttribute="bottom" id="oya-gc-HD3"/>
                                         </constraints>
-                                        <size key="customSize" width="60" height="80"/>
                                         <connections>
                                             <outlet property="topicImage" destination="2h1-pw-2TT" id="ov6-dX-qt9"/>
                                             <outlet property="topicLbl" destination="2OJ-po-ic6" id="DSx-S1-d3t"/>
@@ -1755,15 +1754,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8f-Er-ztG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                            <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83137254900000002" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" name="STLibianTC-Regular" family="Libian TC" pointSize="17"/>
+                                            <rect key="frame" x="10" y="0.0" width="365" height="30"/>
+                                            <fontDescription key="fontDescription" name="STLibianTC-Regular" family="Libian TC" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83137254900000002" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="G8f-Er-ztG" firstAttribute="leading" secondItem="fCf-87-Y6r" secondAttribute="leading" id="2ev-T2-mFg"/>
+                                        <constraint firstItem="G8f-Er-ztG" firstAttribute="leading" secondItem="fCf-87-Y6r" secondAttribute="leading" constant="10" id="2ev-T2-mFg"/>
                                         <constraint firstAttribute="bottom" secondItem="G8f-Er-ztG" secondAttribute="bottom" id="jX3-Iq-ODO"/>
                                         <constraint firstAttribute="trailing" secondItem="G8f-Er-ztG" secondAttribute="trailing" id="jkw-3p-jcx"/>
                                         <constraint firstItem="G8f-Er-ztG" firstAttribute="top" secondItem="fCf-87-Y6r" secondAttribute="top" id="wgR-tS-eiI"/>
@@ -2309,7 +2308,7 @@
                                                             <constraint firstAttribute="height" constant="300" id="O3X-Ie-Lga"/>
                                                         </constraints>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTH-yf-kVl">
@@ -3264,7 +3263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6P9-xq-byJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1564.8" y="3130.8845577211396"/>
+            <point key="canvasLocation" x="1226" y="3145"/>
         </scene>
         <!--Register Sms Code View Controller-->
         <scene sceneID="2KZ-GM-ndU">
@@ -13053,7 +13052,7 @@ AAAABAEAAAAAAAAAWQAAAAAAAAAAAAAAAAAG+mk
     <inferredMetricsTieBreakers>
         <segue reference="BBm-2H-RAy"/>
         <segue reference="hMu-CT-JcI"/>
-        <segue reference="M8a-wo-sfx"/>
-        <segue reference="zyC-HG-fuI"/>
+        <segue reference="lKc-He-ELe"/>
+        <segue reference="rtw-5d-uWV"/>
     </inferredMetricsTieBreakers>
 </document>

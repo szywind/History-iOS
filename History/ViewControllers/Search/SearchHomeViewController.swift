@@ -8,6 +8,7 @@
 
 import UIKit
 import AVOSCloud
+import Kingfisher
 
 class SearchHomeViewController: BaseViewController, UISearchBarDelegate {
     
@@ -255,12 +256,16 @@ extension SearchHomeViewController: UITableViewDelegate, UITableViewDataSource {
             let sectionData = filteredPeople
             cell1 = searchResultTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
             cell1.recordLbl.text = sectionData[indexPath.row].name
-            cell1.recordImage.image = sectionData[indexPath.row].avatar
+//            cell1.recordImage.image = sectionData[indexPath.row].avatarURL?.getUIImage()
+            cell1.recordImage.kf.setImage(with: URL(string: sectionData[indexPath.row].avatarURL!),
+                                          placeholder: UIImage(named: Constants.Default.defaultAvatar)!)
         } else if index == 1 {
             let sectionData = filteredEvents
             cell1 = searchResultTableView.dequeueReusableCell(withIdentifier: "recordCell") as! RecordTableViewCell
             cell1.recordLbl.text = sectionData[indexPath.row].name
-            cell1.recordImage.image = sectionData[indexPath.row].avatar
+//            cell1.recordImage.image = sectionData[indexPath.row].avatarURL?.getUIImage()
+            cell1.recordImage.kf.setImage(with: URL(string: sectionData[indexPath.row].avatarURL!),
+                                          placeholder: UIImage(named: Constants.Default.defaultAvatar)!)
         } else if index == 2 {
             let sectionData = filteredPosts
             cell2 = searchResultTableView.dequeueReusableCell(withIdentifier: "postCell") as! PostTableViewCell

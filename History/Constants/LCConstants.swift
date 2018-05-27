@@ -46,6 +46,10 @@ struct LCConstants {
         static let followers = "followers"
         static let followees = "followees"
         static let subscribeTopics = "subscribeTopics"
+        static let subscribeList = "subscribeList"
+        static let likeList = "likeList"
+        static let dislikeList = "dislikeList"
+        static let replyList = "replyList"
     }
     
     /**
@@ -63,7 +67,7 @@ struct LCConstants {
         static let start = "start"
         static let end = "end"
         static let dynasty = "dynasty"
-        static let dynasty_detail = "dynasty_detail"
+        static let dynasty_detail = "dynastyDetail"
         static let pinyin = "pinyin"
         static let avatarURL = "avatarURL"
         static let infoURL = "infoURL"
@@ -84,7 +88,7 @@ struct LCConstants {
         static let start = "start"
         static let end = "end"
         static let dynasty = "dynasty"
-        static let dynasty_detail = "dynasty_detail"
+        static let dynasty_detail = "dynastyDetail"
         static let pinyin = "pinyin"
         static let avatarURL = "avatarURL"
         static let infoURL = "infoURL"

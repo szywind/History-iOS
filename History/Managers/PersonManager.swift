@@ -15,18 +15,32 @@ class PersonManager {
     }()
     
     func fetchAllPeopleFromLC(withBlock block: @escaping AVArrayResultBlock) {
-        let query = AVQuery(className: LCConstants.PersonKey.className)
         
-        query.findObjectsInBackground({ (objects, error) in
-            if error == nil && objects != nil {
-                for personObject in objects! {
-                    CoreDataManager.savePerson(personObject: personObject as! AVObject)
-                }
+        let query = AVQuery(className: LCConstants.PersonKey.className)
+        query.countObjectsInBackground { (number, error) in
+            if error == nil {
+                self.fetchAllPeopleFromLC(number: number, withBlock: block)
             } else {
                 print(error?.localizedDescription)
             }
-            block(objects, error)
-        })
+        }
+    }
+    
+    func fetchAllPeopleFromLC(number: Int, withBlock block: @escaping AVArrayResultBlock) {
+        var base = 0
+        let limit = 100
+        
+        while base < number {
+            let query = AVQuery(className: LCConstants.PersonKey.className)
+            query.limit = limit
+            query.skip = base
+            DispatchQueue.global(qos: .userInitiated).async {
+                query.findObjectsInBackground({ (objects, error) in
+                    block(objects, error)
+                })
+            }
+            base += limit
+        }
     }
 }
 

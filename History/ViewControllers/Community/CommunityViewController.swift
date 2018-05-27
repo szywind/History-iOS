@@ -51,7 +51,10 @@ class CommunityViewController: UIViewController {
         }
         
         if UserManager.sharedInstance.isLogin() {
+            State.currentSubscribeTopics.removeAll()
             State.currentSubscribeTopics = Set(UserManager.sharedInstance.getSubscribeTopics()!)
+        } else {
+            State.currentSubscribeTopics.removeAll()
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshUI), name: NSNotification.Name(rawValue: Constants.Notification.refreshUI), object: nil)
@@ -101,6 +104,8 @@ class CommunityViewController: UIViewController {
             viewControllers.append(subscribeController)
             segmentioContent.append(SegmentioItem(title: "关注", image: nil))
         }
+        
+        LocalDataManager.sharedInstance.sort()
         
         let peopleController = CommunityContentViewController.create()
         peopleController.topics = LocalDataManager.sharedInstance.allPeople

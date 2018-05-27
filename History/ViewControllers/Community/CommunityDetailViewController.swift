@@ -37,7 +37,7 @@ class CommunityDetailViewController: UIViewController {
         let newSize = articleTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         let lineHeight = articleTextView.font?.lineHeight
         
-        articleTextViewHeightConstraint.constant = newSize.height + 2 * lineHeight!
+        articleTextViewHeightConstraint.constant = newSize.height + 5 * lineHeight!
         
         if let image = PostManager.sharedInstance.getImage(post: post!) {
             articleImageView.image = image

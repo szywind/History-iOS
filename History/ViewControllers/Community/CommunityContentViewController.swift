@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CommunityContentViewController: UIViewController {
     
@@ -19,7 +20,8 @@ class CommunityContentViewController: UIViewController {
     func processData() {
         //        topics = topics.sorted(by: { $0.pinyin! < $1.pinyin! || ($0.pinyin! < $1.pinyin! && $0.start! < $1.start!)}) // sort topics by alphabetical order
         for topic in topics {
-            let key = topic.dynasty
+//            let key = topic.dynasty
+            let key = topic.pinyin?.prefix(1).uppercased()
             if var value = topicDictionary[key!] {
                 value.append(topic)
                 topicDictionary[key!] = value
@@ -28,9 +30,11 @@ class CommunityContentViewController: UIViewController {
             }
         }
         
-        topicSectionTitles = topicDictionary.keys.sorted { (dynasty1, dynasty2) -> Bool in
-            return LocalDataManager.dynasty2index[dynasty1]! < LocalDataManager.dynasty2index[dynasty2]!
-        }
+        topicSectionTitles = topicDictionary.keys.sorted(by: {$0 < $1})
+        
+//        topicSectionTitles = topicDictionary.keys.sorted { (dynasty1, dynasty2) -> Bool in
+//            return LocalDataManager.dynasty2index[dynasty1]! < LocalDataManager.dynasty2index[dynasty2]!
+//        }
     }
     
     class func create() -> CommunityContentViewController {
@@ -106,8 +110,9 @@ extension CommunityContentViewController: UICollectionViewDelegate, UICollection
             return cell
         }
         cell.topicLbl.text = sectionData[indexPath.row].name
-        cell.topicImage.image = sectionData[indexPath.row].avatar
-        
+//        cell.topicImage.image = sectionData[indexPath.row].avatarURL?.getUIImage()
+        cell.topicImage.kf.setImage(with: URL(string: sectionData[indexPath.row].avatarURL!),
+                                    placeholder: UIImage(named: Constants.Default.defaultAvatar)!)
         return cell
         
     }

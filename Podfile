@@ -10,6 +10,7 @@ target 'History' do
   pod 'AVOSCloudIM'             # 实时通信模块
   pod 'Segmentio', '~> 3.0'
   pod 'SVProgressHUD'
-
+  pod 'Kingfisher', '~> 4.0'    # image loader
+  pod 'Nuke', '~> 6.0'          # image loader
 #  pod 'ISTimeline'
 end

@@ -94,6 +94,8 @@ class EncyclopediaViewController: UIViewController {
 //            ]
 //        }
 
+        LocalDataManager.sharedInstance.sort()
+        
         let peopleController = EncyclopediaTableViewController.create()
         peopleController.records = LocalDataManager.sharedInstance.allPeople
         print("person records", peopleController.records.count)

@@ -60,11 +60,32 @@ class UserManager {
     }
     
     func getSubscribeTopics(user: AVUser?=nil) -> [String]? {
-        guard user != nil else {
-            return currentUser().object(forKey: LCConstants.UserKey.subscribeTopics) as? [String] ?? []
-        }
-        return user?.object(forKey: LCConstants.UserKey.subscribeTopics) as? [String] ?? []
+        return getList(user: user, key: LCConstants.UserKey.subscribeTopics)
     }
+    
+    func getSubscribeList(user: AVUser?=nil) -> [String]? {
+        return getList(user: user, key: LCConstants.UserKey.subscribeList)
+    }
+    
+    func getLikeList(user: AVUser?=nil) -> [String]? {
+        return getList(user: user, key: LCConstants.UserKey.likeList)
+    }
+    
+    func getDislikeList(user: AVUser?=nil) -> [String]? {
+        return getList(user: user, key: LCConstants.UserKey.dislikeList)
+    }
+    
+    func getReplyList(user: AVUser?=nil) -> [String]? {
+        return getList(user: user, key: LCConstants.UserKey.replyList)
+    }
+    
+    func getList(user: AVUser?=nil, key: String) -> [String]? {
+        guard user != nil else {
+            return currentUser().object(forKey: key) as? [String] ?? []
+        }
+        return user?.object(forKey: key) as? [String] ?? []
+    }
+    
     
     func getAvatar(user: AVUser?=nil) -> UIImage? {
         guard user != nil else {
@@ -104,7 +125,27 @@ class UserManager {
     }
     
     func setSubscribeTopics(withBlock block : @escaping AVBooleanResultBlock) {
-        currentUser().setObject(Array(State.currentSubscribeTopics), forKey: LCConstants.UserKey.subscribeTopics)
+        setList(list: Array(State.currentSubscribeTopics), key: LCConstants.UserKey.subscribeTopics, withBlock: block)
+    }
+    
+    func setSubscribeList(list: Array<String>, withBlock block : @escaping AVBooleanResultBlock) {
+        setList(list: list, key: LCConstants.UserKey.subscribeList, withBlock: block)
+    }
+    
+    func setLikeList(list: Array<String>, withBlock block : @escaping AVBooleanResultBlock) {
+        setList(list: list, key: LCConstants.UserKey.likeList, withBlock: block)
+    }
+    
+    func setDislikeList(list: Array<String>, withBlock block : @escaping AVBooleanResultBlock) {
+        setList(list: list, key: LCConstants.UserKey.dislikeList, withBlock: block)
+    }
+    
+    func setReplyList(list: Array<String>, withBlock block : @escaping AVBooleanResultBlock) {
+        setList(list: list, key: LCConstants.UserKey.replyList, withBlock: block)
+    }
+    
+    func setList(list: Array<String>, key: String, withBlock block : @escaping AVBooleanResultBlock) {
+        currentUser().setObject(list, forKey: key)
         currentUser().saveInBackground(block)
     }
     
@@ -118,17 +159,16 @@ class UserManager {
         })
     }
     
+    func saveUser(nickname: String, withBlock block : @escaping AVBooleanResultBlock) {
+        self.currentUser().setObject(nickname, forKey: LCConstants.UserKey.nickname)
+        self.setUserLocation()
+        self.currentUser().saveInBackground(block)
+    }
+    
     func saveUser(nickname: String, image: UIImage, withBlock block : @escaping AVBooleanResultBlock) {
             
-        AvatarManager.sharedInstance.updateAvatarWithImage(image: image) { (succeed, error) in
-            if succeed {
-                self.currentUser().setObject(nickname, forKey: LCConstants.UserKey.nickname)
-//                self.currentUser().setObject(phone, forKey: LCConstants.UserKey.phone)
-//                self.currentUser().setObject(gender, forKey: LCConstants.UserKey.gender)
-                self.setUserLocation()
-                self.currentUser().saveInBackground(block)
-            }
-        }
+        AvatarManager.sharedInstance.updateAvatarWithImage(image: image) { (_, _) in }
+        saveUser(nickname: nickname, withBlock: block)
     }
     
     func findHotUsers(base: Int=0, pageSize: Int=10, withBlock block: @escaping AVArrayResultBlock) {
